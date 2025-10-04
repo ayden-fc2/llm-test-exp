@@ -1,0 +1,76 @@
+```java
+import mathNode.Add;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AddGeneratedTest {
+
+    private Add addNode;
+    private Expression leftNode;
+    private Expression rightNode;
+
+    @BeforeEach
+    public void setUp() {
+        // Create mock Expression nodes for testing
+        leftNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+        rightNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+        
+        addNode = new Add();
+        addNode.setLeftNode(leftNode);
+        addNode.setRightNode(rightNode);
+    }
+
+    @Test
+    public void test_clone_createsNewInstance() {
+        Add cloned = (Add) addNode.clone();
+        assertNotNull(cloned);
+        assertNotSame(addNode, cloned); // Should be different objects
+    }
+
+    @Test
+    public void test_clone_copiesLeftNode() {
+        Add cloned = (Add) addNode.clone();
+        assertNotNull(cloned.getLeftNode());
+        assertNotSame(leftNode, cloned.getLeftNode()); // Assuming clone creates new instances
+    }
+
+    @Test
+    public void test_clone_copiesRightNode() {
+        Add cloned = (Add) addNode.clone();
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(rightNode, cloned.getRightNode()); // Assuming clone creates new instances
+    }
+
+    @Test
+    public void test_clone_preservesNodeType() {
+        Add cloned = (Add) addNode.clone();
+        assertTrue(cloned instanceof Add);
+    }
+
+    @Test
+    public void test_clone_withNullLeftNode() {
+        addNode.setLeftNode(null);
+        Add cloned = (Add) addNode.clone();
+        assertNull(cloned.getLeftNode());
+    }
+
+    @Test
+    public void test_clone_withNullRightNode() {
+        addNode.setRightNode(null);
+        Add cloned = (Add) addNode.clone();
+        assertNull(cloned.getRightNode());
+    }
+}
+```

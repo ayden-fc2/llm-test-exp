@@ -1,0 +1,128 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Int#toString()}.
+ */
+class IntTest {
+
+    // Minimal stub for Int class based on provided context
+    static class Int {
+        private final int value;
+        private boolean parens;
+
+        public Int(int value) {
+            this.value = value;
+        }
+
+        public boolean isParens() {
+            return parens;
+        }
+
+        public void setParens(boolean parens) {
+            this.parens = parens;
+        }
+
+        public String toString() {
+            String str = Integer.toString(value);
+
+            if (isParens())
+                return '(' + str + ')';
+            else
+                return str;
+        }
+    }
+
+    @Test
+    void test_toString_PositiveValueNoParens() {
+        Int node = new Int(42);
+        node.setParens(false);
+        assertEquals("42", node.toString());
+    }
+
+    @Test
+    void test_toString_NegativeValueNoParens() {
+        Int node = new Int(-100);
+        node.setParens(false);
+        assertEquals("-100", node.toString());
+    }
+
+    @Test
+    void test_toString_ZeroValueNoParens() {
+        Int node = new Int(0);
+        node.setParens(false);
+        assertEquals("0", node.toString());
+    }
+
+    @Test
+    void test_toString_MaxIntNoParens() {
+        Int node = new Int(Integer.MAX_VALUE);
+        node.setParens(false);
+        assertEquals("2147483647", node.toString());
+    }
+
+    @Test
+    void test_toString_MinIntNoParens() {
+        Int node = new Int(Integer.MIN_VALUE);
+        node.setParens(false);
+        assertEquals("-2147483648", node.toString());
+    }
+
+    @Test
+    void test_toString_PositiveValueWithParens() {
+        Int node = new Int(5);
+        node.setParens(true);
+        assertEquals("(5)", node.toString());
+    }
+
+    @Test
+    void test_toString_NegativeValueWithParens() {
+        Int node = new Int(-3);
+        node.setParens(true);
+        assertEquals("(-3)", node.toString());
+    }
+
+    @Test
+    void test_toString_ZeroWithParens() {
+        Int node = new Int(0);
+        node.setParens(true);
+        assertEquals("(0)", node.toString());
+    }
+
+    @Test
+    void test_toString_MaxIntWithParens() {
+        Int node = new Int(Integer.MAX_VALUE);
+        node.setParens(true);
+        assertEquals("(2147483647)", node.toString());
+    }
+
+    @Test
+    void test_toString_MinIntWithParens() {
+        Int node = new Int(Integer.MIN_VALUE);
+        node.setParens(true);
+        assertEquals("(-2147483648)", node.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, -1, 0, 100, -100, Integer.MAX_VALUE, Integer.MIN_VALUE})
+    void test_toString_ParameterizedNoParens(int value) {
+        Int node = new Int(value);
+        node.setParens(false);
+        assertEquals(Integer.toString(value), node.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, -1, 0, 100, -100, Integer.MAX_VALUE, Integer.MIN_VALUE})
+    void test_toString_ParameterizedWithParens(int value) {
+        Int node = new Int(value);
+        node.setParens(true);
+        assertEquals("(" + Integer.toString(value) + ")", node.toString());
+    }
+}
+```

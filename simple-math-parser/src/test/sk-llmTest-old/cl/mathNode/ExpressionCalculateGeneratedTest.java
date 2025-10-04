@@ -1,0 +1,141 @@
+package mathNode;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionCalculateGeneratedTest {
+
+    // Stub implementation for testing since the actual implementation is not provided
+    private static abstract class TestExpression extends Expression {
+        @Override
+        public Object clone() {
+            try {
+                return super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @Test
+    public void test_calculate_returnsNonNullValue() {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return 42;
+            }
+        };
+        
+        Number result = expr.calculate();
+        assertNotNull(result, "Result should not be null");
+        assertEquals(42, result.intValue());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -1.0, 1.0, Double.MIN_VALUE, Double.MAX_VALUE, -Double.MAX_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    public void test_calculate_handlesEdgeDoubleValues(double value) {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return value;
+            }
+        };
+        
+        Number result = expr.calculate();
+        assertNotNull(result);
+        if (Double.isInfinite(value)) {
+            assertTrue(Double.isInfinite(result.doubleValue()));
+        } else {
+            assertEquals(value, result.doubleValue(), 1e-9);
+        }
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    public void test_calculate_handlesEdgeIntegerValues(int value) {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return value;
+            }
+        };
+        
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(value, result.intValue());
+    }
+
+    @Test
+    public void test_calculate_withVeryLargeDouble() {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return 1e308;
+            }
+        };
+        
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(1e308, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_withVerySmallDouble() {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return 1e-308;
+            }
+        };
+        
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(1e-308, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_returnsDifferentNumericTypes() {
+        Expression intExpr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return Integer.valueOf(42);
+            }
+        };
+        
+        Expression doubleExpr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return Double.valueOf(42.5);
+            }
+        };
+        
+        Number intResult = intExpr.calculate();
+        Number doubleResult = doubleExpr.calculate();
+        
+        assertNotNull(intResult);
+        assertNotNull(doubleResult);
+        assertInstanceOf(Integer.class, intResult);
+        assertInstanceOf(Double.class, doubleResult);
+        assertEquals(42, intResult.intValue());
+        assertEquals(42.5, doubleResult.doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_clone_createsNewInstance() {
+        Expression expr = new TestExpression() {
+            @Override
+            public Number calculate() {
+                return 10;
+            }
+        };
+        
+        Expression cloned = (Expression) expr.clone();
+        assertNotNull(cloned);
+        assertNotSame(expr, cloned);
+        assertEquals(expr.calculate(), cloned.calculate());
+    }
+}

@@ -1,0 +1,185 @@
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import mathNode.Pow;
+
+public class PowGeneratedTest {
+
+    // Stub for Node interface or abstract class assumed to exist
+    static abstract class Node {
+        abstract Number calculate();
+        abstract String toString();
+    }
+
+    // Stub for BinaryNode assumed to exist, implementing Node
+    static abstract class BinaryNode extends Node {
+        protected Node leftNode;
+        protected Node rightNode;
+
+        public BinaryNode(Node left, Node right) {
+            this.leftNode = left;
+            this.rightNode = right;
+        }
+
+        public Node getLeftNode() { return leftNode; }
+        public Node getRightNode() { return rightNode; }
+    }
+
+    // Minimal stub implementation of Pow extending BinaryNode
+    static class PowStub extends Pow {
+        private final Node left;
+        private final Node right;
+
+        public PowStub(Node left, Node right) {
+            super(null, null); // dummy call to satisfy constructor if needed
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public Node getLeftNode() {
+            return left;
+        }
+
+        @Override
+        public Node getRightNode() {
+            return right;
+        }
+
+        @Override
+        public String toString() {
+            return left.toString() + " ^ " + right.toString();
+        }
+    }
+
+    // Helper stub node that returns a fixed value
+    static class ValueNode extends Node {
+        private final Number value;
+
+        public ValueNode(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
+        }
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "2.0, 3.0, 8.0",
+        "5.0, 2.0, 25.0",
+        "10.0, 0.0, 1.0",
+        "0.0, 5.0, 0.0",
+        "1.0, 100.0, 1.0",
+        "-2.0, 2.0, 4.0",
+        "-2.0, 3.0, -8.0"
+    })
+    void test_calculate_basic_values(double base, double exponent, double expected) {
+        Node baseNode = new ValueNode(base);
+        Node expNode = new ValueNode(exponent);
+        Pow powNode = new PowStub(baseNode, expNode);
+
+        Number result = powNode.calculate();
+        assertEquals(expected, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_zero_to_zero() {
+        Node base = new ValueNode(0.0);
+        Node exp = new ValueNode(0.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertEquals(1.0, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_negative_base_fractional_exponent() {
+        Node base = new ValueNode(-2.0);
+        Node exp = new ValueNode(0.5);
+        Pow powNode = new PowStub(base, exp);
+
+        // Math.pow(-2.0, 0.5) returns NaN
+        Number result = powNode.calculate();
+        assertTrue(Double.isNaN(result.doubleValue()));
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_infinity_result() {
+        Node base = new ValueNode(Double.MAX_VALUE);
+        Node exp = new ValueNode(2.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertTrue(Double.isInfinite(result.doubleValue()));
+        assertTrue(result.doubleValue() > 0);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_very_small_positive_base_large_exponent() {
+        Node base = new ValueNode(0.1);
+        Node exp = new ValueNode(100.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertEquals(1e-100, result.doubleValue(), 1e-109);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_large_base_negative_exponent() {
+        Node base = new ValueNode(1000.0);
+        Node exp = new ValueNode(-2.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertEquals(1e-6, result.doubleValue(), 1e-15);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_min_values() {
+        Node base = new ValueNode(Double.MIN_VALUE);
+        Node exp = new ValueNode(1.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertEquals(Double.MIN_VALUE, result.doubleValue(), 1e-300);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_calculate_max_values() {
+        Node base = new ValueNode(Double.MAX_VALUE);
+        Node exp = new ValueNode(0.0);
+        Pow powNode = new PowStub(base, exp);
+
+        Number result = powNode.calculate();
+        assertEquals(1.0, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    void test_toString() {
+        Node base = new ValueNode(2.0);
+        Node exp = new ValueNode(3.0);
+        Pow powNode = new PowStub(base, exp);
+
+        String result = powNode.toString();
+        assertEquals("2.0 ^ 3.0", result);
+    }
+}
+```

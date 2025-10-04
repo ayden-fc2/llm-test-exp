@@ -1,0 +1,140 @@
+```java
+import mathNode.Add;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AddGeneratedTest {
+
+    // Stub implementation of MathNode to allow compilation
+    static abstract class MathNodeStub extends MathNode {
+        private final Number value;
+
+        MathNodeStub(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    static class AddStub extends Add {
+        private final MathNode left;
+        private final MathNode right;
+
+        AddStub(MathNode left, MathNode right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public MathNode getLeftNode() {
+            return left;
+        }
+
+        @Override
+        public MathNode getRightNode() {
+            return right;
+        }
+    }
+
+    static Stream<Object[]> integerTestCases() {
+        return Stream.of(
+                new Object[]{0, 0, 0},
+                new Object[]{1, 1, 2},
+                new Object[]{-1, -1, -2},
+                new Object[]{Integer.MAX_VALUE, 0, Integer.MAX_VALUE},
+                new Object[]{Integer.MIN_VALUE, 0, Integer.MIN_VALUE},
+                new Object[]{Integer.MAX_VALUE, -1, Integer.MAX_VALUE - 1},
+                new Object[]{Integer.MIN_VALUE, 1, Integer.MIN_VALUE + 1}
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("integerTestCases")
+    void test_calculate_both_integers(int leftVal, int rightVal, int expected) {
+        MathNode left = new MathNodeStub(leftVal) {};
+        MathNode right = new MathNodeStub(rightVal) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        assertTrue(result instanceof Integer, "Result should be an Integer");
+        assertEquals(expected, result.intValue());
+    }
+
+    static Stream<Object[]> mixedTypeTestCases() {
+        return Stream.of(
+                new Object[]{1, 1.0, 2.0},
+                new Object[]{1.0, 1, 2.0},
+                new Object[]{1.5, 2.5, 4.0},
+                new Object[]{0, 0.0, 0.0},
+                new Object[]{-1, -1.0, -2.0},
+                new Object[]{Integer.MAX_VALUE, 1.0, (double)Integer.MAX_VALUE + 1.0},
+                new Object[]{Double.MAX_VALUE, 1.0, Double.MAX_VALUE}, // May overflow but still double
+                new Object[]{Double.MIN_VALUE, -1.0, -1.0} // Double.MIN_VALUE is positive
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("mixedTypeTestCases")
+    void test_calculate_mixed_types(Number leftVal, Number rightVal, double expected) {
+        MathNode left = new MathNodeStub(leftVal) {};
+        MathNode right = new MathNodeStub(rightVal) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        assertTrue(result instanceof Double, "Result should be a Double");
+        assertEquals(expected, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_integer_overflow() {
+        MathNode left = new MathNodeStub(Integer.MAX_VALUE) {};
+        MathNode right = new MathNodeStub(1) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        // When integer overflow occurs, we expect it to remain as integer with wrapped value
+        assertTrue(result instanceof Integer);
+        assertEquals(Integer.MIN_VALUE, result.intValue()); // Overflow behavior
+    }
+
+    @Test
+    void test_calculate_underflow() {
+        MathNode left = new MathNodeStub(Integer.MIN_VALUE) {};
+        MathNode right = new MathNodeStub(-1) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        assertTrue(result instanceof Integer);
+        assertEquals(Integer.MAX_VALUE, result.intValue()); // Underflow behavior
+    }
+
+    @Test
+    void test_calculate_large_double_values() {
+        MathNode left = new MathNodeStub(Double.MAX_VALUE) {};
+        MathNode right = new MathNodeStub(0.0) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(Double.MAX_VALUE, result.doubleValue(), 0.0);
+    }
+
+    @Test
+    void test_calculate_very_small_positive_doubles() {
+        MathNode left = new MathNodeStub(Double.MIN_VALUE) {};
+        MathNode right = new MathNodeStub(Double.MIN_VALUE) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(2 * Double.MIN_VALUE, result.doubleValue(), 1e-9);
+    }
+}
+```

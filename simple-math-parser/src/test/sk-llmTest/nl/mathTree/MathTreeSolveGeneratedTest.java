@@ -1,0 +1,142 @@
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeSolveGeneratedTest {
+
+    // Stub class to simulate Node behavior for testing purposes
+    static class NodeStub {
+        private final Number value;
+        private final boolean throwsException;
+
+        NodeStub(Number value) {
+            this.value = value;
+            this.throwsException = false;
+        }
+
+        NodeStub(boolean throwsException) {
+            this.value = null;
+            this.throwsException = throwsException;
+        }
+
+        public Number calculate() {
+            if (throwsException) {
+                throw new RuntimeException("Calculation error");
+            }
+            return value;
+        }
+    }
+
+    @Test
+    void test_solve_returnsNull_whenRootNodeIsNull() {
+        MathTree tree = new MathTree();
+        tree.rootNode = null;
+        assertNull(tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsCorrectValue_whenRootNodeReturnsInteger() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(42);
+        assertEquals(42, tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsCorrectValue_whenRootNodeReturnsDouble() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(3.14159);
+        assertEquals(3.14159, (Double) tree.solve(), 1e-9);
+    }
+
+    @Test
+    void test_solve_returnsZero_whenRootNodeReturnsZero() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(0);
+        assertEquals(0, tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsNegativeValue_whenRootNodeReturnsNegative() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(-100);
+        assertEquals(-100, tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsMaxInteger_whenRootNodeReturnsMaxInteger() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsMinInteger_whenRootNodeReturnsMinInteger() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Integer.MIN_VALUE);
+        assertEquals(Integer.MIN_VALUE, tree.solve());
+    }
+
+    @Test
+    void test_solve_returnsMaxDouble_whenRootNodeReturnsMaxDouble() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Double.MAX_VALUE);
+        assertEquals(Double.MAX_VALUE, (Double) tree.solve(), 1e-9);
+    }
+
+    @Test
+    void test_solve_returnsMinDouble_whenRootNodeReturnsMinDouble() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Double.MIN_VALUE);
+        assertEquals(Double.MIN_VALUE, (Double) tree.solve(), 1e-9);
+    }
+
+    @Test
+    void test_solve_returnsPositiveInfinity_whenRootNodeReturnsPositiveInfinity() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Double.POSITIVE_INFINITY);
+        assertEquals(Double.POSITIVE_INFINITY, (Double) tree.solve(), 1e-9);
+    }
+
+    @Test
+    void test_solve_returnsNegativeInfinity_whenRootNodeReturnsNegativeInfinity() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Double.NEGATIVE_INFINITY);
+        assertEquals(Double.NEGATIVE_INFINITY, (Double) tree.solve(), 1e-9);
+    }
+
+    @Test
+    void test_solve_returnsNaN_whenRootNodeReturnsNaN() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(Double.NaN);
+        assertTrue(Double.isNaN((Double) tree.solve()));
+    }
+
+    @Test
+    void test_solve_propagatesException_whenRootNodeThrowsException() {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(true); // throws exception
+        assertThrows(RuntimeException.class, tree::solve);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -0.0, 1.0, -1.0, 1e-10, -1e-10, 1e10, -1e10})
+    void test_solve_handlesBoundaryDoubleValues(double value) {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(value);
+        assertEquals(value, (Double) tree.solve(), 1e-9);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MAX_VALUE, Integer.MIN_VALUE})
+    void test_solve_handlesBoundaryIntegerValues(int value) {
+        MathTree tree = new MathTree();
+        tree.rootNode = new NodeStub(value);
+        assertEquals(value, tree.solve());
+    }
+}

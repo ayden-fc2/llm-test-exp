@@ -1,0 +1,127 @@
+{
+  "task": "generate_tests",
+  "language": "java",
+  "framework": {
+    "name": "junit-jupiter",
+    "version": "5.10.2"
+  },
+  "build": {
+    "tool": "plain-javac",
+    "compile_cmd": "mkdir -p out/main && javac -d out/main $(find src -type f -name \"*.java\" ! -path \"*/test/*\")",
+    "test_cmd": "mkdir -p out/test && javac -cp \"out/main:lib/junit-platform-console-standalone.jar\" -d out/test $(find src/test -type f -name \"*.java\") && java -jar lib/junit-platform-console-standalone.jar -cp \"out/main:out/test\" --scan-classpath",
+    "java_version": "21",
+    "dependencies": {
+      "runtime": [],
+      "test": [
+        {
+          "group": "org.junit.platform",
+          "artifact": "junit-platform-console-standalone",
+          "version": "1.10.2"
+        }
+      ]
+    },
+    "stubs": []
+  },
+  "targets": [
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "calculate",
+      "signature": "abstract public Number Expression.calculate()",
+      "snippets": [
+        "   {",
+        "      return (Expression) super.clone();",
+        "   }",
+        "   /**",
+        "    * A recursive method to check if the tree is constructed correctly.",
+        "    * @return boolean"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    }
+  ],
+  "signals": {
+    "failures": [],
+    "coverage_gaps": [],
+    "repro_cmd": ""
+  },
+  "constraints": {
+    "no_io": true,
+    "no_network": true,
+    "deterministic": true,
+    "isolation": "each_test_independent",
+    "no_random_without_seed": true,
+    "time_budget_ms": 5000
+  },
+  "preferences": {
+    "mocks": "allow_minimal",
+    "assertion_style": "native",
+    "float_delta": 1e-09,
+    "type_assertions": true,
+    "naming": "test_<behavior>_<condition>",
+    "test_style": [
+      "unit",
+      "parameterized"
+    ]
+  },
+  "coverage": {
+    "types": [
+      "statement",
+      "branch",
+      "exception",
+      "boundary"
+    ],
+    "branch_min": 90,
+    "edge_values": [
+      "0",
+      "1",
+      "-1",
+      "Integer.MIN_VALUE",
+      "Integer.MAX_VALUE",
+      "Double.MIN_VALUE",
+      "Double.MAX_VALUE",
+      "very_small",
+      "very_large"
+    ]
+  },
+  "coverage_goals": {
+    "statement_min": 90,
+    "branch_min": 90,
+    "must_hit_exceptions": []
+  },
+  "oracles": {
+    "examples": [],
+    "error_cases": [],
+    "properties": []
+  },
+  "generation": {
+    "num_tests": "auto",
+    "package": "test",
+    "test_class_suffix": "GeneratedTest",
+    "path_hint": "src/test/java",
+    "parameterized_threshold": 3
+  },
+  "guidance": "Generate tests to maximize branch coverage. Include edge cases (zero, negatives, max/min, large/small doubles). Use type assertions where result type varies. Use delta for floating assertions. Avoid I/O and nondeterminism. If external types are missing, create minimal stubs to compile.",
+  "postchecks": [
+    {
+      "type": "compiles",
+      "cmd": "javac -version"
+    },
+    {
+      "type": "no_flaky_patterns"
+    }
+  ],
+  "output": {
+    "only_code": true,
+    "group_by_target": true,
+    "include_imports": true
+  }
+}

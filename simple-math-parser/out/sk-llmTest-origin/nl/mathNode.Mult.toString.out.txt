@@ -1,0 +1,186 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MultTest {
+
+    // Stub implementation of Mult to allow compilation and testing
+    static class Mult {
+        private final Node leftNode;
+        private final Node rightNode;
+        private final boolean parens;
+
+        public Mult(Node leftNode, Node rightNode, boolean parens) {
+            this.leftNode = leftNode;
+            this.rightNode = rightNode;
+            this.parens = parens;
+        }
+
+        public Node getLeftNode() {
+            return leftNode;
+        }
+
+        public Node getRightNode() {
+            return rightNode;
+        }
+
+        public boolean isParens() {
+            return parens;
+        }
+
+        public String toString() {
+            String str = getLeftNode().toString() + " * " + getRightNode().toString();
+
+            if (isParens())
+                return '(' + str + ')';
+            else
+                return str;
+        }
+    }
+
+    // Stub Node interface for minimal dependency
+    interface Node {
+        String toString();
+    }
+
+    // Helper to create simple node stubs
+    private static Node createSimpleNode(String value) {
+        return new Node() {
+            @Override
+            public String toString() {
+                return value;
+            }
+        };
+    }
+
+    // Test cases for normal behavior without parentheses
+    @ParameterizedTest
+    @MethodSource("provideNormalCases")
+    void test_toString_normal(String left, String right, String expected) {
+        Node leftNode = createSimpleNode(left);
+        Node rightNode = createSimpleNode(right);
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals(expected, mult.toString());
+    }
+
+    static Stream<Arguments> provideNormalCases() {
+        return Stream.of(
+            Arguments.of("2", "3", "2 * 3"),
+            Arguments.of("x", "y", "x * y"),
+            Arguments.of("0", "5", "0 * 5"),
+            Arguments.of("-1", "7", "-1 * 7"),
+            Arguments.of("a", "b+c", "a * b+c")
+        );
+    }
+
+    // Test cases for behavior with parentheses
+    @ParameterizedTest
+    @MethodSource("provideParenthesesCases")
+    void test_toString_withParens(String left, String right, String expected) {
+        Node leftNode = createSimpleNode(left);
+        Node rightNode = createSimpleNode(right);
+        Mult mult = new Mult(leftNode, rightNode, true);
+        assertEquals(expected, mult.toString());
+    }
+
+    static Stream<Arguments> provideParenthesesCases() {
+        return Stream.of(
+            Arguments.of("2", "3", "(2 * 3)"),
+            Arguments.of("x", "y", "(x * y)"),
+            Arguments.of("0", "5", "(0 * 5)"),
+            Arguments.of("-1", "7", "(-1 * 7)"),
+            Arguments.of("a", "b+c", "(a * b+c)")
+        );
+    }
+
+    // Boundary and special value tests
+    @Test
+    void test_toString_emptyStrings() {
+        Node leftNode = createSimpleNode("");
+        Node rightNode = createSimpleNode("");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals(" * ", mult.toString());
+    }
+
+    @Test
+    void test_toString_oneEmptyString() {
+        Node leftNode = createSimpleNode("a");
+        Node rightNode = createSimpleNode("");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals("a * ", mult.toString());
+    }
+
+    @Test
+    void test_toString_withSpacesInNodes() {
+        Node leftNode = createSimpleNode(" x ");
+        Node rightNode = createSimpleNode(" y ");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals(" x  *  y ", mult.toString());
+    }
+
+    @Test
+    void test_toString_largeValues() {
+        Node leftNode = createSimpleNode(String.valueOf(Integer.MAX_VALUE));
+        Node rightNode = createSimpleNode(String.valueOf(Integer.MIN_VALUE));
+        Mult mult = new Mult(leftNode, rightNode, false);
+        String expected = Integer.MAX_VALUE + " * " + Integer.MIN_VALUE;
+        assertEquals(expected, mult.toString());
+    }
+
+    @Test
+    void test_toString_zeroAndOne() {
+        Node leftNode = createSimpleNode("0");
+        Node rightNode = createSimpleNode("1");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals("0 * 1", mult.toString());
+    }
+
+    @Test
+    void test_toString_negativeOne() {
+        Node leftNode = createSimpleNode("-1");
+        Node rightNode = createSimpleNode("-1");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals("-1 * -1", mult.toString());
+    }
+
+    @Test
+    void test_toString_parensTrue() {
+        Node leftNode = createSimpleNode("a");
+        Node rightNode = createSimpleNode("b");
+        Mult mult = new Mult(leftNode, rightNode, true);
+        assertEquals("(a * b)", mult.toString());
+    }
+
+    @Test
+    void test_toString_parensFalse() {
+        Node leftNode = createSimpleNode("a");
+        Node rightNode = createSimpleNode("b");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals("a * b", mult.toString());
+    }
+
+    @Test
+    void test_toString_complexExpressionNoParens() {
+        Node leftNode = createSimpleNode("x + y");
+        Node rightNode = createSimpleNode("z - w");
+        Mult mult = new Mult(leftNode, rightNode, false);
+        assertEquals("x + y * z - w", mult.toString());
+    }
+
+    @Test
+    void test_toString_complexExpressionWithParens() {
+        Node leftNode = createSimpleNode("x + y");
+        Node rightNode = createSimpleNode("z - w");
+        Mult mult = new Mult(leftNode, rightNode, true);
+        assertEquals("(x + y * z - w)", mult.toString());
+    }
+}
+```

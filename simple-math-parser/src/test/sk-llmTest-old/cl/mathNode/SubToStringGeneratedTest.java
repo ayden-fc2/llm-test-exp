@@ -1,0 +1,140 @@
+package mathNode;
+
+import mathNode.Sub;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SubToStringGeneratedTest {
+
+    // Stub implementation for MathNode to enable compilation
+    static class MathNodeStub extends MathNode {
+        private final String value;
+        private final boolean parens;
+
+        MathNodeStub(String value, boolean parens) {
+            this.value = value;
+            this.parens = parens;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+
+        @Override
+        public boolean isParens() {
+            return parens;
+        }
+
+        @Override
+        public MathNode getLeftNode() {
+            return this;
+        }
+
+        @Override
+        public MathNode getRightNode() {
+            return this;
+        }
+    }
+
+    @Test
+    void testToString_withParens_returnsParenthesizedString() {
+        MathNode left = new MathNodeStub("5", false);
+        MathNode right = new MathNodeStub("3", false);
+        Sub sub = new Sub(left, right) {
+            @Override
+            public boolean isParens() {
+                return true;
+            }
+        };
+
+        String result = sub.toString();
+        assertEquals("(5 - 3)", result);
+    }
+
+    @Test
+    void testToString_withoutParens_returnsSimpleString() {
+        MathNode left = new MathNodeStub("x", false);
+        MathNode right = new MathNodeStub("y", false);
+        Sub sub = new Sub(left, right) {
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+
+        String result = sub.toString();
+        assertEquals("x - y", result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNodesForToString")
+    void testToString_parameterized(MathNode left, MathNode right, boolean hasParens, String expected) {
+        Sub sub = new Sub(left, right) {
+            @Override
+            public boolean isParens() {
+                return hasParens;
+            }
+        };
+
+        String result = sub.toString();
+        assertEquals(expected, result);
+    }
+
+    static Stream<Arguments> provideNodesForToString() {
+        return Stream.of(
+            Arguments.of(
+                new MathNodeStub("a", false),
+                new MathNodeStub("b", false),
+                false,
+                "a - b"
+            ),
+            Arguments.of(
+                new MathNodeStub("10", false),
+                new MathNodeStub("7", false),
+                true,
+                "(10 - 7)"
+            ),
+            Arguments.of(
+                new MathNodeStub("", false),
+                new MathNodeStub("", false),
+                false,
+                " - "
+            ),
+            Arguments.of(
+                new MathNodeStub("-5", false),
+                new MathNodeStub("3", false),
+                true,
+                "(-5 - 3)"
+            ),
+            Arguments.of(
+                new MathNodeStub("0", false),
+                new MathNodeStub("0", false),
+                false,
+                "0 - 0"
+            )
+        );
+    }
+
+    @Test
+    void testToString_withComplexExpressionsInNodes() {
+        MathNode complexLeft = new MathNodeStub("(2 + 3)", false);
+        MathNode complexRight = new MathNodeStub("(4 * 5)", false);
+        Sub sub = new Sub(complexLeft, complexRight) {
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+
+        String result = sub.toString();
+        assertEquals("(2 + 3) - (4 * 5)", result);
+    }
+}

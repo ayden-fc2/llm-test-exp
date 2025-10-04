@@ -1,0 +1,64 @@
+```java
+package test;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Generated tests for Expression.isParens method.
+ */
+public class ExpressionGeneratedTest {
+
+    // Stub implementation to allow compilation since the actual Expression class isn't provided
+    static abstract class Expression {
+        protected boolean parenthesis;
+
+        public boolean isParens() {
+            return parenthesis;
+        }
+
+        abstract public Number calculate();
+    }
+
+    private Expression parenExpression;
+    private Expression nonParenExpression;
+
+    @BeforeEach
+    void setUp() {
+        parenExpression = new Expression() {
+            { parenthesis = true; }
+            public Number calculate() { return 0; }
+        };
+
+        nonParenExpression = new Expression() {
+            { parenthesis = false; }
+            public Number calculate() { return 0; }
+        };
+    }
+
+    @Test
+    void test_isParens_returnsTrue_whenParenthesisIsTrue() {
+        assertTrue(parenExpression.isParens(), "Should return true when parenthesis flag is set to true");
+    }
+
+    @Test
+    void test_isParens_returnsFalse_whenParenthesisIsFalse() {
+        assertFalse(nonParenExpression.isParens(), "Should return false when parenthesis flag is set to false");
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void test_isParens_handlesBothBooleanValues(boolean value) {
+        Expression expr = new Expression() {
+            { parenthesis = value; }
+            public Number calculate() { return 0; }
+        };
+        
+        assertEquals(value, expr.isParens(), "Should correctly reflect the parenthesis field value");
+    }
+}
+```

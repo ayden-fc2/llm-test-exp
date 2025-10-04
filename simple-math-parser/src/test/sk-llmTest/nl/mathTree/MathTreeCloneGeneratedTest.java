@@ -1,0 +1,141 @@
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeCloneGeneratedTest {
+
+    // Minimal stubs to support compilation and basic behavior
+    static class mathNode {
+        interface Expression extends Cloneable {
+            Object clone() throws CloneNotSupportedException;
+        }
+
+        interface Factory extends Cloneable {
+            Object clone() throws CloneNotSupportedException;
+        }
+    }
+
+    static class MathTree implements Cloneable {
+        mathNode.Factory nodeFactory;
+        mathNode.Expression rootNode;
+
+        public MathTree(mathNode.Factory factory, mathNode.Expression root) {
+            this.nodeFactory = factory;
+            this.rootNode = root;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            MathTree clone = (MathTree) super.clone();
+            clone.nodeFactory = (mathNode.Factory) nodeFactory.clone();
+            clone.rootNode = (mathNode.Expression) rootNode.clone();
+            return clone;
+        }
+    }
+
+    // Stubs with controllable clone behaviors
+    static class MockFactory implements mathNode.Factory {
+        private final boolean throwsOnClone;
+        public MockFactory(boolean throwsOnClone) {
+            this.throwsOnClone = throwsOnClone;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            if (throwsOnClone) throw new CloneNotSupportedException("Factory clone failed");
+            return new MockFactory(false);
+        }
+    }
+
+    static class MockExpression implements mathNode.Expression {
+        private final boolean throwsOnClone;
+        public MockExpression(boolean throwsOnClone) {
+            this.throwsOnClone = throwsOnClone;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            if (throwsOnClone) throw new CloneNotSupportedException("Expression clone failed");
+            return new MockExpression(false);
+        }
+    }
+
+    @Test
+    void test_clone_normalBehavior_returnsDeepCopy() throws CloneNotSupportedException {
+        MockFactory factory = new MockFactory(false);
+        MockExpression expression = new MockExpression(false);
+        MathTree original = new MathTree(factory, expression);
+
+        MathTree cloned = (MathTree) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertNotSame(original.nodeFactory, cloned.nodeFactory);
+        assertNotSame(original.rootNode, cloned.rootNode);
+        assertInstanceOf(MathTree.class, cloned);
+    }
+
+    @Test
+    void test_clone_whenFactoryCloneThrows_exceptionPropagates() {
+        MockFactory factory = new MockFactory(true);
+        MockExpression expression = new MockExpression(false);
+        MathTree original = new MathTree(factory, expression);
+
+        assertThrows(CloneNotSupportedException.class, original::clone);
+    }
+
+    @Test
+    void test_clone_whenRootNodeCloneThrows_exceptionPropagates() {
+        MockFactory factory = new MockFactory(false);
+        MockExpression expression = new MockExpression(true);
+        MathTree original = new MathTree(factory, expression);
+
+        assertThrows(CloneNotSupportedException.class, original::clone);
+    }
+
+    @Test
+    void test_clone_whenBothChildrenThrow_exceptionsFromRootNodePropagate() {
+        MockFactory factory = new MockFactory(true);
+        MockExpression expression = new MockExpression(true);
+        MathTree original = new MathTree(factory, expression);
+
+        assertThrows(CloneNotSupportedException.class, original::clone);
+    }
+
+    @Test
+    void test_clone_isNotShallowCopy_fieldsAreIndependentlyCloned() throws CloneNotSupportedException {
+        MockFactory factory = new MockFactory(false);
+        MockExpression expression = new MockExpression(false);
+        MathTree original = new MathTree(factory, expression);
+
+        MathTree cloned = (MathTree) original.clone();
+
+        // Modify original post-cloning to verify deep copy
+        original.nodeFactory = null;
+        original.rootNode = null;
+
+        assertNotNull(cloned.nodeFactory);
+        assertNotNull(cloned.rootNode);
+    }
+
+    @Test
+    void test_clone_idempotentMultipleCalls_eachCloneIndependent() throws CloneNotSupportedException {
+        MockFactory factory = new MockFactory(false);
+        MockExpression expression = new MockExpression(false);
+        MathTree original = new MathTree(factory, expression);
+
+        MathTree firstClone = (MathTree) original.clone();
+        MathTree secondClone = (MathTree) original.clone();
+
+        assertNotSame(firstClone, secondClone);
+        assertNotSame(firstClone.nodeFactory, secondClone.nodeFactory);
+        assertNotSame(firstClone.rootNode, secondClone.rootNode);
+    }
+}

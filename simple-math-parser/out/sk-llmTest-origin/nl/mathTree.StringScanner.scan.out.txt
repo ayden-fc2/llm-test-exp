@@ -1,0 +1,186 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    void setUp() {
+        scanner = new StringScanner();
+    }
+
+    // 测试空字符串输入
+    @Test
+    void test_scan_emptyString_returnsEmptyList() {
+        LinkedList<String> result = scanner.scan("");
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    // 测试只有空白字符的情况（假设空格是分隔符）
+    @Test
+    void test_scan_onlyWhitespace_returnsEmptyTokens() {
+        LinkedList<String> result = scanner.scan("   ");
+        assertEquals(3, result.size());
+        for (String token : result) {
+            assertEquals(" ", token);
+        }
+    }
+
+    // 测试单个普通单词
+    @Test
+    void test_scan_singleWord_returnsOneToken() {
+        LinkedList<String> result = scanner.scan("hello");
+        assertEquals(1, result.size());
+        assertEquals("hello", result.get(0));
+    }
+
+    // 测试多个由空格分隔的单词
+    @Test
+    void test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens() {
+        LinkedList<String> result = scanner.scan("hello world java");
+        assertEquals(3, result.size());
+        assertEquals("hello", result.get(0));
+        assertEquals("world", result.get(1));
+        assertEquals("java", result.get(2));
+    }
+
+    // 参数化测试：测试各种单字符分隔符
+    @ParameterizedTest
+    @ValueSource(chars = {' ', '\t', '\n'})
+    void test_scan_singleDelimiter_returnsSeparateTokens(char delimiter) {
+        String input = "a" + delimiter + "b";
+        LinkedList<String> result = scanner.scan(input);
+        assertEquals(3, result.size()); // a, delimiter, b
+        assertEquals("a", result.get(0));
+        assertEquals(String.valueOf(delimiter), result.get(1));
+        assertEquals("b", result.get(2));
+    }
+
+    // 测试特殊字符处理（假定+、-、*、/为特殊字符）
+    @Test
+    void test_scan_specialCharacters_returnsSeparatedTokens() {
+        // 注意：这里需要确认specCharSet实际包含哪些字符
+        // 假设+、-、*、/是特殊字符
+        LinkedList<String> result = scanner.scan("a+b-c*d/e");
+        
+        // 预期结果应为: [a, +, b, -, c, *, d, /, e]
+        assertEquals(9, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("b", result.get(2));
+        assertEquals("-", result.get(3));
+        assertEquals("c", result.get(4));
+        assertEquals("*", result.get(5));
+        assertEquals("d", result.get(6));
+        assertEquals("/", result.get(7));
+        assertEquals("e", result.get(8));
+    }
+
+    // 测试混合字母数字和特殊字符
+    @Test
+    void test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens() {
+        LinkedList<String> result = scanner.scan("x1+y2-z3");
+        
+        // 预期结果应为: [x1, +, y2, -, z3]
+        assertEquals(5, result.size());
+        assertEquals("x1", result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("y2", result.get(2));
+        assertEquals("-", result.get(3));
+        assertEquals("z3", result.get(4));
+    }
+
+    // 测试连续特殊字符
+    @Test
+    void test_scan_consecutiveSpecialChars_returnsIndividualTokens() {
+        LinkedList<String> result = scanner.scan("++--**//");
+        
+        // 预期每个字符都是独立token
+        assertEquals(8, result.size());
+        for(int i=0; i<8; i+=2){
+            assertEquals("+", result.get(i));
+            assertEquals("-", result.get(i+1));
+        }
+    }
+
+    // 测试以分隔符开头
+    @Test
+    void test_scan_startsWithDelimiter_returnsLeadingDelimiterToken() {
+        LinkedList<String> result = scanner.scan(" hello");
+        assertEquals(2, result.size());
+        assertEquals(" ", result.get(0));
+        assertEquals("hello", result.get(1));
+    }
+
+    // 测试以分隔符结尾
+    @Test
+    void test_scan_endsWithDelimiter_returnsTrailingDelimiterToken() {
+        LinkedList<String> result = scanner.scan("hello ");
+        assertEquals(2, result.size());
+        assertEquals("hello", result.get(0));
+        assertEquals(" ", result.get(1));
+    }
+
+    // 测试长字符串输入
+    @Test
+    void test_scan_longString_returnsCorrectTokens() {
+        String longInput = "a".repeat(1000) + "+" + "b".repeat(1000);
+        LinkedList<String> result = scanner.scan(longInput);
+        
+        assertEquals(3, result.size());
+        assertEquals("a".repeat(1000), result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("b".repeat(1000), result.get(2));
+    }
+
+    // 测试Unicode字符
+    @Test
+    void test_scan_unicodeCharacters_handlesUnicodeProperly() {
+        LinkedList<String> result = scanner.scan("α+β-γ");
+        
+        // 根据实现，非分隔符和非特殊字符会被当作普通token的一部分
+        assertEquals(5, result.size());
+        assertEquals("α", result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("β", result.get(2));
+        assertEquals("-", result.get(3));
+        assertEquals("γ", result.get(4));
+    }
+
+    // 测试边界情况：单个字符
+    @Test
+    void test_scan_singleCharacter_returnsSingleToken() {
+        LinkedList<String> result = scanner.scan("a");
+        assertEquals(1, result.size());
+        assertEquals("a", result.get(0));
+    }
+
+    // 测试边界情况：单个特殊字符
+    @Test
+    void test_scan_singleSpecialCharacter_returnsSingleSpecialToken() {
+        LinkedList<String> result = scanner.scan("+");
+        assertEquals(1, result.size());
+        assertEquals("+", result.get(0));
+    }
+
+    // 测试边界情况：单个分隔符
+    @Test
+    void test_scan_singleDelimiter_returnsSingleDelimiterToken() {
+        LinkedList<String> result = scanner.scan(" ");
+        assertEquals(1, result.size());
+        assertEquals(" ", result.get(0));
+    }
+}
+```

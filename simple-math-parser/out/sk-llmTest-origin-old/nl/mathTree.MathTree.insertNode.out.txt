@@ -1,0 +1,268 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeInsertNodeTest {
+
+    // Minimal stubs for mathNode and its subclasses to enable compilation
+    static abstract class mathNode {
+        private mathNode leftNode;
+        private mathNode rightNode;
+
+        public mathNode getLeftNode() { return leftNode; }
+        public void setLeftNode(mathNode node) { this.leftNode = node; }
+        public mathNode getRightNode() { return rightNode; }
+        public void setRightNode(mathNode node) { this.rightNode = node; }
+
+        static class Operator extends mathNode {
+            private final int precedence;
+            private final boolean parens;
+
+            public Operator(int precedence, boolean parens) {
+                this.precedence = precedence;
+                this.parens = parens;
+            }
+
+            public int getPrecedence() { return precedence; }
+            public boolean isParens() { return parens; }
+        }
+
+        static class Int extends mathNode {
+            private final int value;
+            public Int(int value) { this.value = value; }
+            @Override
+            public String toString() { return "Int(" + value + ")"; }
+        }
+
+        static class Dec extends mathNode {
+            private final double value;
+            public Dec(double value) { this.value = value; }
+            @Override
+            public String toString() { return "Dec(" + value + ")"; }
+        }
+    }
+
+    // Helper method to create MathTree instance (assuming default constructor)
+    private MathTree createMathTree() {
+        return new MathTree();
+    }
+
+    // Test when root node is null
+    @Test
+    void test_InsertNode_RootIsNull_ReturnsNewNode() {
+        MathTree tree = createMathTree();
+        mathNode newNode = new mathNode.Int(42);
+        mathNode result = tree.insertNode(null, newNode);
+        assertSame(newNode, result);
+    }
+
+    // Test when new node is null
+    @Test
+    void test_InsertNode_NewNodeIsNull_ReturnsRootNode() {
+        MathTree tree = createMathTree();
+        mathNode rootNode = new mathNode.Int(42);
+        mathNode result = tree.insertNode(rootNode, null);
+        assertSame(rootNode, result);
+    }
+
+    // Test inserting operator with higher precedence than root operator
+    @Test
+    void test_InsertNode_OperatorHigherPrecedence_BecomesNewRoot() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(1, false); // lower precedence
+        mathNode.Operator newOp = new mathNode.Operator(2, false);  // higher precedence
+
+        mathNode result = tree.insertNode(rootOp, newOp);
+
+        assertSame(newOp, result);
+        assertSame(rootOp, newOp.getLeftNode());
+        assertNull(newOp.getRightNode());
+    }
+
+    // Test inserting operator with same precedence as root operator
+    @Test
+    void test_InsertNode_OperatorSamePrecedence_BecomesNewRoot() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(2, false);
+        mathNode.Operator newOp = new mathNode.Operator(2, false);
+
+        mathNode result = tree.insertNode(rootOp, newOp);
+
+        assertSame(newOp, result);
+        assertSame(rootOp, newOp.getLeftNode());
+        assertNull(newOp.getRightNode());
+    }
+
+    // Test inserting operator with lower precedence than root operator
+    @Test
+    void test_InsertNode_OperatorLowerPrecedence_AttachedToRight() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(3, false); // higher precedence
+        mathNode.Int leftChild = new mathNode.Int(1);
+        rootOp.setLeftNode(leftChild);
+
+        mathNode.Operator newOp = new mathNode.Operator(1, false);  // lower precedence
+
+        mathNode result = tree.insertNode(rootOp, newOp);
+
+        assertSame(rootOp, result);
+        assertSame(newOp, rootOp.getRightNode());
+        assertSame(leftChild, newOp.getLeftNode());
+        assertNull(newOp.getRightNode());
+    }
+
+    // Test inserting operator where traversal finds a non-operator right child
+    @Test
+    void test_InsertNode_OperatorTraversalFindsValue_PrintsErrorAndReturnsNull() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(5, false);
+        mathNode.Int rightValue = new mathNode.Int(99);
+        rootOp.setRightNode(rightValue);
+
+        mathNode.Operator newOp = new mathNode.Operator(2, false);
+
+        mathNode result = tree.insertNode(rootOp, newOp);
+
+        assertNull(result);
+        // Note: Cannot easily assert System.out output without capturing it,
+        // but we can verify the return value is null as expected.
+    }
+
+    // Test inserting parenthesized operator (should go to the rightmost empty spot)
+    @Test
+    void test_InsertNode_ParenthesizedOperator_GoesToRightmostSpot() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(1, false);
+        mathNode.Int leftVal = new mathNode.Int(3);
+        rootOp.setLeftNode(leftVal);
+
+        mathNode.Operator parenOp = new mathNode.Operator(2, true); // parenthesized
+
+        mathNode result = tree.insertNode(rootOp, parenOp);
+
+        assertSame(rootOp, result);
+        assertSame(parenOp, rootOp.getRightNode());
+        assertNull(parenOp.getLeftNode());
+        assertNull(parenOp.getRightNode());
+    }
+
+    // Test inserting integer node to valid position
+    @Test
+    void test_InsertNode_IntegerNode_ValidPlacement() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(1, false);
+        mathNode.Int leftVal = new mathNode.Int(5);
+        rootOp.setLeftNode(leftVal);
+
+        mathNode.Int newVal = new mathNode.Int(10);
+
+        mathNode result = tree.insertNode(rootOp, newVal);
+
+        assertSame(rootOp, result);
+        assertSame(newVal, rootOp.getRightNode());
+    }
+
+    // Test inserting decimal node to valid position
+    @Test
+    void test_InsertNode_DecimalNode_ValidPlacement() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(1, false);
+        mathNode.Int leftVal = new mathNode.Int(7);
+        rootOp.setLeftNode(leftVal);
+
+        mathNode.Dec newVal = new mathNode.Dec(3.14);
+
+        mathNode result = tree.insertNode(rootOp, newVal);
+
+        assertSame(rootOp, result);
+        assertSame(newVal, rootOp.getRightNode());
+    }
+
+    // Test inserting number when root is not an operator (invalid case)
+    @Test
+    void test_InsertNode_RootIsNotOperator_PrintsErrorAndReturnsNull() {
+        MathTree tree = createMathTree();
+        mathNode.Int rootVal = new mathNode.Int(42);
+        mathNode.Int newVal = new mathNode.Int(24);
+
+        mathNode result = tree.insertNode(rootVal, newVal);
+
+        assertNull(result);
+    }
+
+    // Test inserting number when rightmost node is already filled with a value (invalid case)
+    @Test
+    void test_InsertNode_RightmostFilledWithNumber_PrintsErrorAndReturnsNull() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(1, false);
+        mathNode.Int leftVal = new mathNode.Int(1);
+        mathNode.Int rightVal = new mathNode.Int(2);
+        rootOp.setLeftNode(leftVal);
+        rootOp.setRightNode(rightVal);
+
+        mathNode.Int newVal = new mathNode.Int(3);
+
+        mathNode result = tree.insertNode(rootOp, newVal);
+
+        assertNull(result);
+    }
+
+    // Parameterized test for various operator precedence scenarios
+    @ParameterizedTest
+    @MethodSource("provideOperatorPrecedenceScenarios")
+    void test_InsertNode_VariedOperatorPrecedences(
+            int rootPrecedence, int newPrecedence, boolean expectNewRoot) {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(rootPrecedence, false);
+        mathNode.Int dummyLeft = new mathNode.Int(0);
+        rootOp.setLeftNode(dummyLeft);
+
+        mathNode.Operator newOp = new mathNode.Operator(newPrecedence, false);
+
+        mathNode result = tree.insertNode(rootOp, newOp);
+
+        if (expectNewRoot) {
+            assertSame(newOp, result);
+            assertSame(rootOp, newOp.getLeftNode());
+        } else {
+            assertSame(rootOp, result);
+            assertNotNull(rootOp.getRightNode());
+            assertSame(newOp, rootOp.getRightNode());
+        }
+    }
+
+    static Stream<Arguments> provideOperatorPrecedenceScenarios() {
+        return Stream.of(
+                Arguments.of(1, 2, true),  // New has higher precedence -> becomes root
+                Arguments.of(2, 2, true),  // Same precedence -> becomes root
+                Arguments.of(3, 2, false), // New has lower precedence -> attached to right
+                Arguments.of(5, 1, false)  // Much lower precedence -> attached to right
+        );
+    }
+
+    // Boundary test: Very high and very low precedence values
+    @Test
+    void test_InsertNode_ExtremePrecedenceValues_HandlesCorrectly() {
+        MathTree tree = createMathTree();
+        mathNode.Operator rootOp = new mathNode.Operator(Integer.MAX_VALUE, false);
+        mathNode.Int dummyLeft = new mathNode.Int(0);
+        rootOp.setLeftNode(dummyLeft);
+
+        mathNode.Operator newOpLow = new mathNode.Operator(Integer.MIN_VALUE, false);
+
+        mathNode result = tree.insertNode(rootOp, newOpLow);
+
+        // Since newOpLow has much lower precedence, it should be attached to the right
+        assertSame(rootOp, result);
+        assertSame(newOpLow, rootOp.getRightNode());
+    }
+}
+```

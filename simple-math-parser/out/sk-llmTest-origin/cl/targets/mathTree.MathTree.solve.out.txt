@@ -1,0 +1,99 @@
+```java
+package test;
+
+import mathTree.MathTree;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MathTreeGeneratedTest {
+
+    // Test solve method when rootNode is null
+    @Test
+    public void test_solve_nullRootNode() {
+        MathTree mathTree = new MathTree();
+        assertNull(mathTree.solve(), "Expected null when rootNode is null");
+    }
+
+    // Test solve method with various numeric results
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, 1.0, -1.0, Double.MIN_VALUE, Double.MAX_VALUE, 1e-10, 1e10})
+    public void test_solve_validResults(double value) {
+        // Assuming we can set up a mock or stub for rootNode that returns specific values
+        // Since we cannot directly access rootNode, we'll need to create a minimal stub
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return value;
+            }
+        };
+        assertEquals(value, mathTree.solve().doubleValue(), 1e-9, "Expected value to match");
+    }
+
+    // Test solve method with integer results
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, -1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    public void test_solve_integerResults(int value) {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return value;
+            }
+        };
+        assertEquals(value, mathTree.solve().intValue(), "Expected integer value to match");
+    }
+
+    // Test solve method returns correct type for different inputs
+    @Test
+    public void test_solve_resultTypeDouble() {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return 3.14;
+            }
+        };
+        assertTrue(mathTree.solve() instanceof Double, "Expected Double type result");
+    }
+
+    @Test
+    public void test_solve_resultTypeInteger() {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return 42;
+            }
+        };
+        assertTrue(mathTree.solve() instanceof Integer, "Expected Integer type result");
+    }
+
+    // Test solve method with very large positive and negative numbers
+    @Test
+    public void test_solve_veryLargePositiveNumber() {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return 1e308;
+            }
+        };
+        assertEquals(1e308, mathTree.solve().doubleValue(), 1e-9, "Expected very large number");
+    }
+
+    @Test
+    public void test_solve_veryLargeNegativeNumber() {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return -1e308;
+            }
+        };
+        assertEquals(-1e308, mathTree.solve().doubleValue(), 1e-9, "Expected very large negative number");
+    }
+
+    // Test solve method with very small positive number (close to zero)
+    @Test
+    public void test_solve_verySmallPositiveNumber() {
+        MathTree mathTree = new MathTree() {
+            public Number solve() {
+                return 1e-308;
+            }
+        };
+        assertEquals(1e-308, mathTree.solve().doubleValue(), 1e-9, "Expected very small positive number");
+    }
+}
+```

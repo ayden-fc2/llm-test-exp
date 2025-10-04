@@ -1,0 +1,122 @@
+package mathNode;
+
+import mathNode.Div;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivCalculateGeneratedTest {
+
+    // Stub implementation of MathNode for testing purposes
+    static class TestMathNode implements MathNode {
+        private final Number value;
+
+        TestMathNode(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
+        }
+    }
+
+    static Stream<Arguments> divideTestCases() {
+        return Stream.of(
+                // Normal cases
+                Arguments.of(10.0, 2.0, 5.0),
+                Arguments.of(-10.0, 2.0, -5.0),
+                Arguments.of(10.0, -2.0, -5.0),
+                Arguments.of(-10.0, -2.0, 5.0),
+                
+                // Edge cases with zero
+                Arguments.of(0.0, 1.0, 0.0),
+                Arguments.of(1.0, Double.MAX_VALUE, 1.0 / Double.MAX_VALUE),
+                Arguments.of(-1.0, Double.MAX_VALUE, -1.0 / Double.MAX_VALUE),
+                
+                // Large values
+                Arguments.of(Double.MAX_VALUE, 2.0, Double.MAX_VALUE / 2.0),
+                Arguments.of(1e10, 1e5, 1e5),
+                
+                // Small values
+                Arguments.of(1e-10, 1e-5, 1e-5),
+                
+                // Very small denominator
+                Arguments.of(1.0, 1e-300, 1e300)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("divideTestCases")
+    void test_calculate_normal_and_edge_cases(double leftValue, double rightValue, double expected) {
+        Div div = new Div();
+        div.setLeftNode(new TestMathNode(leftValue));
+        div.setRightNode(new TestMathNode(rightValue));
+        
+        Number result = div.calculate();
+        
+        assertEquals(expected, result.doubleValue(), 1e-9, 
+            "Division of " + leftValue + " by " + rightValue + " should equal " + expected);
+        assertTrue(result instanceof Double, "Result should be a Double");
+    }
+
+    @Test
+    void test_calculate_divide_by_zero() {
+        Div div = new Div();
+        div.setLeftNode(new TestMathNode(1.0));
+        div.setRightNode(new TestMathNode(0.0));
+        
+        Number result = div.calculate();
+        
+        assertTrue(Double.isInfinite(result.doubleValue()), 
+            "Division by zero should result in infinity");
+        assertEquals(Double.POSITIVE_INFINITY, result.doubleValue());
+    }
+
+    @Test
+    void test_calculate_negative_infinity() {
+        Div div = new Div();
+        div.setLeftNode(new TestMathNode(-1.0));
+        div.setRightNode(new TestMathNode(0.0));
+        
+        Number result = div.calculate();
+        
+        assertTrue(Double.isInfinite(result.doubleValue()), 
+            "Division of negative number by zero should result in negative infinity");
+        assertEquals(Double.NEGATIVE_INFINITY, result.doubleValue());
+    }
+
+    @Test
+    void test_calculate_zero_divided_by_zero() {
+        Div div = new Div();
+        div.setLeftNode(new TestMathNode(0.0));
+        div.setRightNode(new TestMathNode(0.0));
+        
+        Number result = div.calculate();
+        
+        assertTrue(Double.isNaN(result.doubleValue()), 
+            "0/0 should result in NaN");
+    }
+
+    @Test
+    void test_toString() {
+        Div div = new Div();
+        div.setLeftNode(new TestMathNode(10));
+        div.setRightNode(new TestMathNode(2));
+        
+        String result = div.toString();
+        
+        assertEquals("10 / 2", result);
+    }
+}

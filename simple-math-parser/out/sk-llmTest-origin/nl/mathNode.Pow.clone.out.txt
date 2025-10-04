@@ -1,0 +1,366 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PowCloneTest {
+
+    private Pow powNode;
+
+    @BeforeEach
+    void setUp() {
+        powNode = new Pow();
+    }
+
+    // 正常情况：克隆一个具有普通数值的Pow节点
+    @Test
+    void test_clone_normalCase() throws CloneNotSupportedException {
+        // Arrange
+        Literal left = new Literal(2.0);
+        Literal right = new Literal(3.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        // Act
+        Pow cloned = (Pow) powNode.clone();
+
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned); // 应该是不同的对象
+        assertNotSame(powNode.getLeftNode(), cloned.getLeftNode()); // 子节点也应该被克隆
+        assertNotSame(powNode.getRightNode(), cloned.getRightNode());
+        assertEquals(((Literal) powNode.getLeftNode()).getValue(), ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(((Literal) powNode.getRightNode()).getValue(), ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左子节点为0
+    @Test
+    void test_clone_leftNodeZero() throws CloneNotSupportedException {
+        Literal left = new Literal(0.0);
+        Literal right = new Literal(5.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(0.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(5.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：右子节点为0
+    @Test
+    void test_clone_rightNodeZero() throws CloneNotSupportedException {
+        Literal left = new Literal(5.0);
+        Literal right = new Literal(0.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(5.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(0.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左右子节点都为0
+    @Test
+    void test_clone_bothNodesZero() throws CloneNotSupportedException {
+        Literal left = new Literal(0.0);
+        Literal right = new Literal(0.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(0.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(0.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左子节点为负数
+    @Test
+    void test_clone_leftNodeNegative() throws CloneNotSupportedException {
+        Literal left = new Literal(-2.0);
+        Literal right = new Literal(3.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(-2.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(3.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：右子节点为负数
+    @Test
+    void test_clone_rightNodeNegative() throws CloneNotSupportedException {
+        Literal left = new Literal(2.0);
+        Literal right = new Literal(-3.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(2.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(-3.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左右子节点都为负数
+    @Test
+    void test_clone_bothNodesNegative() throws CloneNotSupportedException {
+        Literal left = new Literal(-2.0);
+        Literal right = new Literal(-3.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(-2.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(-3.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左子节点为极大值
+    @Test
+    void test_clone_leftNodeMaxValue() throws CloneNotSupportedException {
+        Literal left = new Literal(Double.MAX_VALUE);
+        Literal right = new Literal(1.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(Double.MAX_VALUE, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(1.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：右子节点为极大值
+    @Test
+    void test_clone_rightNodeMaxValue() throws CloneNotSupportedException {
+        Literal left = new Literal(1.0);
+        Literal right = new Literal(Double.MAX_VALUE);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(1.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(Double.MAX_VALUE, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：左子节点为极小值
+    @Test
+    void test_clone_leftNodeMinValue() throws CloneNotSupportedException {
+        Literal left = new Literal(Double.MIN_VALUE);
+        Literal right = new Literal(1.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(Double.MIN_VALUE, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(1.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 边界值：右子节点为极小值
+    @Test
+    void test_clone_rightNodeMinValue() throws CloneNotSupportedException {
+        Literal left = new Literal(1.0);
+        Literal right = new Literal(Double.MIN_VALUE);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(1.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertEquals(Double.MIN_VALUE, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 特殊值：左子节点为NaN
+    @Test
+    void test_clone_leftNodeNaN() throws CloneNotSupportedException {
+        Literal left = new Literal(Double.NaN);
+        Literal right = new Literal(1.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertTrue(Double.isNaN(((Literal) cloned.getLeftNode()).getValue()));
+        assertEquals(1.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 特殊值：右子节点为NaN
+    @Test
+    void test_clone_rightNodeNaN() throws CloneNotSupportedException {
+        Literal left = new Literal(1.0);
+        Literal right = new Literal(Double.NaN);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(1.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertTrue(Double.isNaN(((Literal) cloned.getRightNode()).getValue()));
+    }
+
+    // 特殊值：左子节点为正无穷
+    @Test
+    void test_clone_leftNodePositiveInfinity() throws CloneNotSupportedException {
+        Literal left = new Literal(Double.POSITIVE_INFINITY);
+        Literal right = new Literal(1.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertTrue(Double.isInfinite(((Literal) cloned.getLeftNode()).getValue()));
+        assertEquals(1.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 特殊值：右子节点为正无穷
+    @Test
+    void test_clone_rightNodePositiveInfinity() throws CloneNotSupportedException {
+        Literal left = new Literal(1.0);
+        Literal right = new Literal(Double.POSITIVE_INFINITY);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(1.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertTrue(Double.isInfinite(((Literal) cloned.getRightNode()).getValue()));
+    }
+
+    // 特殊值：左子节点为负无穷
+    @Test
+    void test_clone_leftNodeNegativeInfinity() throws CloneNotSupportedException {
+        Literal left = new Literal(Double.NEGATIVE_INFINITY);
+        Literal right = new Literal(1.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertTrue(Double.isInfinite(((Literal) cloned.getLeftNode()).getValue()));
+        assertEquals(1.0, ((Literal) cloned.getRightNode()).getValue());
+    }
+
+    // 特殊值：右子节点为负无穷
+    @Test
+    void test_clone_rightNodeNegativeInfinity() throws CloneNotSupportedException {
+        Literal left = new Literal(1.0);
+        Literal right = new Literal(Double.NEGATIVE_INFINITY);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        Pow cloned = (Pow) powNode.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(powNode, cloned);
+        assertEquals(1.0, ((Literal) cloned.getLeftNode()).getValue());
+        assertTrue(Double.isInfinite(((Literal) cloned.getRightNode()).getValue()));
+    }
+
+    // 异常情况：左子节点不可克隆
+    @Test
+    void test_clone_leftNodeNotCloneable() {
+        Expression left = new NonCloneableExpression();
+        Expression right = new Literal(2.0);
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        assertThrows(CloneNotSupportedException.class, () -> powNode.clone());
+    }
+
+    // 异常情况：右子节点不可克隆
+    @Test
+    void test_clone_rightNodeNotCloneable() {
+        Expression left = new Literal(2.0);
+        Expression right = new NonCloneableExpression();
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        assertThrows(CloneNotSupportedException.class, () -> powNode.clone());
+    }
+
+    // 异常情况：左右子节点都不可克隆
+    @Test
+    void test_clone_bothNodesNotCloneable() {
+        Expression left = new NonCloneableExpression();
+        Expression right = new NonCloneableExpression();
+        powNode.setLeftNode(left);
+        powNode.setRightNode(right);
+
+        assertThrows(CloneNotSupportedException.class, () -> powNode.clone());
+    }
+
+    // 最小桩类：不可克隆的表达式
+    static class NonCloneableExpression extends Expression {
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            throw new CloneNotSupportedException("This node is not cloneable");
+        }
+
+        @Override
+        public double evaluate() {
+            return 0;
+        }
+    }
+
+    // 最小桩类：字面量表达式
+    static class Literal extends Expression {
+        private final double value;
+
+        public Literal(double value) {
+            this.value = value;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        @Override
+        public double evaluate() {
+            return value;
+        }
+    }
+}
+```

@@ -1,0 +1,32 @@
+package mathNode;
+
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DecCloneGeneratedTest {
+
+    @Test
+    @DisplayName("test_clone_returns_correct_type")
+    public void test_clone_returns_correct_type() {
+        Dec original = new Dec();
+        Object cloned = original.clone();
+        assertInstanceOf(Dec.class, cloned, "Cloned object should be an instance of Dec");
+    }
+
+    @Test
+    @DisplayName("test_clone_creates_new_instance")
+    public void test_clone_creates_new_instance() {
+        Dec original = new Dec();
+        Dec cloned = (Dec) original.clone();
+        assertNotSame(original, cloned, "Cloned object should not be the same reference as original");
+    }
+
+    @Test
+    @DisplayName("test_checkTree_always_returns_true")
+    public void test_checkTree_always_returns_true() {
+        Dec dec = new Dec();
+        assertTrue(dec.checkTree(), "checkTree should always return true");
+    }
+}

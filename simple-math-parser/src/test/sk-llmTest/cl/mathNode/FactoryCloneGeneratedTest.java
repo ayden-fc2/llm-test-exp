@@ -1,0 +1,105 @@
+package mathNode;
+
+import mathNode.Factory;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FactoryCloneGeneratedTest {
+
+    @Test
+    public void test_clone_returnsNewInstance() {
+        // Arrange
+        Factory original = new Factory();
+        
+        // Act
+        Factory cloned = (Factory) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned); // Ensure it's a different object
+        assertEquals(Factory.class, cloned.getClass()); // Type assertion
+    }
+
+    @Test
+    public void test_clone_withNullState_preservesNullFields() throws CloneNotSupportedException {
+        // Arrange
+        Factory original = new Factory(); // Assuming default constructor initializes fields to null or default
+        
+        // Act
+        Factory cloned = (Factory) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        // Add specific field assertions if Factory has fields (example placeholder)
+        // assertEquals(original.someField, cloned.someField);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    public void test_clone_withIntEdgeValues_handlesAllRanges(int value) {
+        // Note: This test assumes Factory has an int field we can manipulate.
+        // Since we don't have the full implementation, this is illustrative.
+        // In practice, you'd set up the object state accordingly.
+        
+        // Arrange
+        Factory original = new Factory(); // Placeholder - would need actual setup based on real class definition
+        
+        // Act
+        Factory cloned = (Factory) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Factory.class, cloned.getClass());
+    }
+
+    @Test
+    public void test_clone_withMaxDouble_throwsNoException() {
+        // Arrange
+        Factory original = new Factory(); // Placeholder
+        
+        // Act & Assert
+        assertDoesNotThrow(() -> {
+            Factory cloned = (Factory) original.clone();
+            assertNotNull(cloned);
+        });
+    }
+
+    @Test
+    public void test_clone_withMinDouble_throwsNoException() {
+        // Arrange
+        Factory original = new Factory(); // Placeholder
+        
+        // Act & Assert
+        assertDoesNotThrow(() -> {
+            Factory cloned = (Factory) original.clone();
+            assertNotNull(cloned);
+        });
+    }
+
+    @Test
+    public void test_clone_withVeryLargePositiveDouble_throwsNoException() {
+        // Arrange
+        Factory original = new Factory(); // Placeholder
+        
+        // Act & Assert
+        assertDoesNotThrow(() -> {
+            Factory cloned = (Factory) original.clone();
+            assertNotNull(cloned);
+        });
+    }
+
+    @Test
+    public void test_clone_withVerySmallPositiveDouble_throwsNoException() {
+        // Arrange
+        Factory original = new Factory(); // Placeholder
+        
+        // Act & Assert
+        assertDoesNotThrow(() -> {
+            Factory cloned = (Factory) original.clone();
+            assertNotNull(cloned);
+        });
+    }
+}

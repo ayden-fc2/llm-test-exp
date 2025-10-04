@@ -1,0 +1,194 @@
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeCleanStrListGeneratedTest {
+
+    private final MathTree mathTree = new MathTree();
+
+    // Minimal stub for StringScanner to allow compilation
+    static class StringScanner {
+        private char specialChar;
+
+        public void addSpecialChar(char c) {
+            this.specialChar = c;
+        }
+
+        public LinkedList<String> scan(String input) {
+            LinkedList<String> result = new LinkedList<>();
+            StringBuilder current = new StringBuilder();
+
+            for (int i = 0; i < input.length(); i++) {
+                char ch = input.charAt(i);
+                if (ch == specialChar) {
+                    if (current.length() > 0) {
+                        result.add(current.toString());
+                        current.setLength(0);
+                    }
+                    result.add(String.valueOf(ch));
+                } else {
+                    current.append(ch);
+                }
+            }
+
+            if (current.length() > 0) {
+                result.add(current.toString());
+            }
+
+            return result;
+        }
+    }
+
+    // Helper method to invoke the private method using reflection
+    private void invokeCleanStrList(LinkedList<String> strList) throws Exception {
+        java.lang.reflect.Method method = MathTree.class.getDeclaredMethod("cleanStrList", LinkedList.class);
+        method.setAccessible(true);
+        method.invoke(mathTree, strList);
+    }
+
+    // Test cases for normal behavior with negative numbers
+    @ParameterizedTest
+    @MethodSource("provideNormalCasesWithNegatives")
+    void test_cleanStrList_normal_with_negatives(LinkedList<String> input, LinkedList<String> expected) throws Exception {
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    static Stream<Arguments> provideNormalCasesWithNegatives() {
+        return Stream.of(
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("-3", "+", "4")),
+                new LinkedList<>(Arrays.asList("-3", "+", "4"))
+            ),
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("(-3)", "*", "2")),
+                new LinkedList<>(Arrays.asList("(", "-3", ")", "*", "2"))
+            ),
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("5", "-", "-3")),
+                new LinkedList<>(Arrays.asList("5", "-", "-3"))
+            )
+        );
+    }
+
+    // Test cases for implicit multiplication before open parenthesis
+    @ParameterizedTest
+    @MethodSource("provideImplicitMultiplicationBeforeParen")
+    void test_cleanStrList_implicit_multiplication_before_paren(LinkedList<String> input, LinkedList<String> expected) throws Exception {
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    static Stream<Arguments> provideImplicitMultiplicationBeforeParen() {
+        return Stream.of(
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("2", "(", "3", ")")),
+                new LinkedList<>(Arrays.asList("2", "*", "(", "3", ")"))
+            ),
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("x", "(", "y", ")")),
+                new LinkedList<>(Arrays.asList("x", "*", "(", "y", ")"))
+            )
+        );
+    }
+
+    // Test cases for implicit multiplication after closed parenthesis
+    @ParameterizedTest
+    @MethodSource("provideImplicitMultiplicationAfterParen")
+    void test_cleanStrList_implicit_multiplication_after_paren(LinkedList<String> input, LinkedList<String> expected) throws Exception {
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    static Stream<Arguments> provideImplicitMultiplicationAfterParen() {
+        return Stream.of(
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("(", "2", ")", "3")),
+                new LinkedList<>(Arrays.asList("(", "2", ")", "*", "3"))
+            ),
+            Arguments.of(
+                new LinkedList<>(Arrays.asList("(", "x", ")", "y")),
+                new LinkedList<>(Arrays.asList("(", "x", ")", "*", "y"))
+            )
+        );
+    }
+
+    // Test edge case: empty list
+    @Test
+    void test_cleanStrList_empty_list() throws Exception {
+        LinkedList<String> input = new LinkedList<>();
+        invokeCleanStrList(input);
+        assertTrue(input.isEmpty());
+    }
+
+    // Test edge case: single element that is not a special case
+    @Test
+    void test_cleanStrList_single_element_no_special_handling() throws Exception {
+        LinkedList<String> input = new LinkedList<>(Arrays.asList("42"));
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("42"));
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    // Test edge case: string starting with double minus (should be handled correctly)
+    @Test
+    void test_cleanStrList_double_minus_at_start() throws Exception {
+        LinkedList<String> input = new LinkedList<>(Arrays.asList("--3", "+", "4"));
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("-3", "+", "4"));
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    // Test edge case: complex expression with multiple transformations
+    @Test
+    void test_cleanStrList_complex_expression() throws Exception {
+        LinkedList<String> input = new LinkedList<>(Arrays.asList("2", "(", "-3", "+", "--4", ")", "x"));
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("2", "*", "(", "-3", "+", "4", ")", "*", "x"));
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    // Test edge case: consecutive operators should not cause issues
+    @Test
+    void test_cleanStrList_consecutive_operators() throws Exception {
+        LinkedList<String> input = new LinkedList<>(Arrays.asList("+", "-", "*", "/"));
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("+", "-", "*", "/"));
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    // Test boundary condition: very long string with many minuses
+    @Test
+    void test_cleanStrList_long_string_many_minuses() throws Exception {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 100; i++) {
+            sb.append("-");
+        }
+        sb.append("5");
+
+        LinkedList<String> input = new LinkedList<>(Arrays.asList(sb.toString()));
+        invokeCleanStrList(input);
+
+        // Should have processed all minuses properly
+        assertNotNull(input);
+        assertFalse(input.isEmpty());
+    }
+
+    // Test boundary condition: nested parentheses with implicit multiplications
+    @Test
+    void test_cleanStrList_nested_parentheses() throws Exception {
+        LinkedList<String> input = new LinkedList<>(Arrays.asList("2", "(", "3", "(", "4", ")", "5", ")"));
+        LinkedList<String> expected = new LinkedList<>(Arrays.asList("2", "*", "(", "3", "*", "(", "4", ")", "*", "5", ")"));
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+}

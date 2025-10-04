@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MathTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">mathTree</a> &gt; <span class="el_source">MathTree.java</span></div><h1>MathTree.java</h1><pre class="source lang-java linenums">package mathTree;
+import java.util.LinkedList;
+
+/**
+ * This is a math parsing tree that uses the mathNode package for the nodes.
+ * @author kevinrobell
+ *
+ */
+public class MathTree implements Cloneable
+{
+<span class="fc" id="L11">   private mathNode.Expression rootNode = null;</span>
+<span class="fc" id="L12">   private StringScanner strScanner = new StringScanner(); //Set up in the constructor</span>
+<span class="fc" id="L13">   private mathNode.Factory nodeFactory = new mathNode.Factory();</span>
+   
+   /**
+    * Constructor that sets up the strScanner.
+    */
+<span class="fc" id="L18">   public MathTree() {</span>
+      //Set up StringScanner
+<span class="fc" id="L20">      strScanner.skipWhitespace();</span>
+      //Includes all special characters except '-' which will be checked for in cleanStrList().
+<span class="fc" id="L22">      char[] specialChars = {'(', ')', '+', '*', '/', '^'};</span>
+<span class="fc" id="L23">      strScanner.addSpecialChar(specialChars);</span>
+<span class="fc" id="L24">   }</span>
+   
+   /**
+    * Takes the statement for processing and building the tree.
+    * @param mathStatement
+    * @return Returns boolean based upon whether statement is valid and tree can be built.
+    */
+   public boolean init(String mathStatement)
+   {
+<span class="fc" id="L33">      LinkedList&lt;String&gt; strList = strScanner.scan(mathStatement);</span>
+      
+<span class="fc" id="L35">      cleanStrList(strList);</span>
+      
+<span class="fc bfc" id="L37" title="All 2 branches covered.">      if(buildTree(strList))</span>
+      {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">         if(rootNode.checkTree())</span>
+<span class="fc" id="L40">            return true;</span>
+         else
+<span class="fc" id="L42">            System.out.println(&quot;Invalid: Unknown expression&quot;);</span>
+      }
+
+<span class="fc" id="L45">      rootNode = null;</span>
+<span class="fc" id="L46">      return false;</span>
+   }
+   
+   /**
+    * Cleans the list of string tokens created by the strScanner.
+    * Specifically, it discerns between minus and subtraction symbols
+    * and inserts multiplication symbols implied by parenthesis. It does
+    * this by reference so nothing is returned.
+    * @param strList
+    */
+   private void cleanStrList(LinkedList&lt;String&gt; strList)
+   {
+      //Create a new scanner for the negative sign '-'
+<span class="fc" id="L59">      StringScanner negScanner = new StringScanner();</span>
+<span class="fc" id="L60">      negScanner.addSpecialChar('-');</span>
+      
+      //Create list of operators
+<span class="fc" id="L63">      String opStr = &quot;+-*^/&quot;;</span>
+      
+      String tempStr;
+<span class="fc" id="L66">      LinkedList&lt;String&gt; newList = new LinkedList();</span>
+      
+<span class="fc bfc" id="L68" title="All 2 branches covered.">      for(int i = 0; i &lt; strList.size(); i++)</span>
+      {
+<span class="fc" id="L70">         tempStr = strList.get(i);</span>
+         
+         //Parse strings with negative signs. Some will become negative signs others substraction.
+<span class="fc bfc" id="L73" title="All 4 branches covered.">         if(tempStr.length() &gt; 1 &amp;&amp; tempStr.contains(&quot;-&quot;))</span>
+         {  
+<span class="fc" id="L75">            newList = negScanner.scan(tempStr);</span>
+            
+            //Check for negative sign at beginning of newList.
+<span class="fc bfc" id="L78" title="All 4 branches covered.">            if(newList.get(0).equals(&quot;-&quot;) &amp;&amp; !newList.get(1).equals(&quot;-&quot;))</span>
+            {
+<span class="fc" id="L80">               newList.removeFirst();</span>
+<span class="fc" id="L81">               String newStr = &quot;-&quot; + newList.removeFirst();</span>
+<span class="fc" id="L82">               newList.addFirst(newStr);</span>
+            }
+            
+            //Check for negative and subtraction signs in the middle of newList.
+<span class="fc bfc" id="L86" title="All 2 branches covered.">            for(int k = 2; k &lt; newList.size(); k++)</span>
+            {
+<span class="pc bpc" id="L88" title="1 of 4 branches missed.">               if(newList.get(k - 2).equals(&quot;-&quot;) &amp;&amp; newList.get(k - 1).equals(&quot;-&quot;) </span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">                     &amp;&amp; !newList.get(k).equals(&quot;-&quot;))</span>
+               {
+<span class="fc" id="L91">                  newList.remove(k - 1);</span>
+<span class="fc" id="L92">                  String newStr = &quot;-&quot; + newList.remove(k - 1);</span>
+<span class="fc" id="L93">                  newList.add(k - 1, newStr);</span>
+<span class="fc" id="L94">                  k--;</span>
+               }
+            }
+            
+            //Replace tempStr in strList with newList.
+<span class="fc" id="L99">            strList.remove(i);</span>
+<span class="fc" id="L100">            strList.addAll(i, newList);</span>
+            
+<span class="fc" id="L102">            i += newList.size() - 1;</span>
+         }
+         //Add implicit multiplication before open parenthesis
+<span class="fc bfc" id="L105" title="All 4 branches covered.">         else if(tempStr.equals(&quot;(&quot;) &amp;&amp; i &gt; 0)</span>
+         {
+<span class="fc" id="L107">            String prevStr = strList.get(i - 1);</span>
+            
+<span class="pc bpc" id="L109" title="1 of 4 branches missed.">            if(!opStr.contains(prevStr) &amp;&amp; prevStr != &quot;(&quot;)</span>
+            {
+<span class="fc" id="L111">               strList.add(i, &quot;*&quot;);</span>
+<span class="fc" id="L112">               i++;</span>
+            }
+<span class="fc" id="L114">         }</span>
+         //Add implicit multiplication after closed parenthesis
+<span class="fc bfc" id="L116" title="All 4 branches covered.">         else if(tempStr.equals(&quot;)&quot;) &amp;&amp; i &lt; strList.size() - 1)</span>
+         {
+<span class="fc" id="L118">            String nextStr = strList.get(i + 1);</span>
+            
+<span class="pc bpc" id="L120" title="1 of 4 branches missed.">            if(!opStr.contains(nextStr) &amp;&amp; nextStr != &quot;)&quot;)</span>
+            {
+<span class="fc" id="L122">               strList.add(i + 1, &quot;*&quot;);</span>
+<span class="fc" id="L123">               i++;</span>
+            }
+         }
+      }
+
+<span class="fc" id="L128">   }</span>
+   
+   /**
+    * A basic tree building function that calls the main tree building function below.
+    * Returns false if math statement had errors.
+    * @param strTokens
+    * @return A boolean indicating whether the tree was built correctly.
+    */
+   private boolean buildTree(LinkedList&lt;String&gt; strTokens)
+   {
+<span class="fc" id="L138">      rootNode = buildTree(strTokens, false);</span>
+
+<span class="fc bfc" id="L140" title="All 2 branches covered.">      if(rootNode == null)</span>
+<span class="fc" id="L141">         return false;</span>
+      else 
+<span class="fc" id="L143">         return true;</span>
+   }
+   
+   /**
+    * Function that builds trees of math nodes. Returns null if empty or invalid.
+    * @param strTokens
+    * @param isParens
+    * @return The root node of a new tree of math nodes.
+    */
+   private mathNode.Expression buildTree(LinkedList&lt;String&gt; strTokens, boolean isParens)
+   {
+      String token;
+<span class="fc" id="L155">      mathNode.Expression rootNode = null;</span>
+      //mathNode.Expression lastNode = null;
+<span class="fc" id="L157">      mathNode.Expression newNode = null;</span>
+      
+<span class="fc bfc" id="L159" title="All 2 branches covered.">      while(strTokens.isEmpty() == false) </span>
+      {
+<span class="fc" id="L161">         token = strTokens.poll();</span>
+         
+         //Handle closed parenthesis
+<span class="fc bfc" id="L164" title="All 2 branches covered.">         if(token.equals(&quot;)&quot;)) </span>
+         {
+<span class="pc bpc" id="L166" title="2 of 4 branches missed.">            if(isParens &amp;&amp; rootNode == null)</span>
+            {
+<span class="nc" id="L168">               System.out.println(&quot;Invalid: Empty parenthesis&quot;);</span>
+<span class="nc" id="L169">               return null;</span>
+            }
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">            else if(!isParens)</span>
+            {
+<span class="nc" id="L173">               System.out.println(&quot;Invalid: Missing \&quot;(\&quot;&quot;);</span>
+<span class="nc" id="L174">               return null;</span>
+            }
+            else
+            {
+<span class="fc" id="L178">               rootNode.setParens(true);</span>
+<span class="fc" id="L179">               return rootNode;</span>
+            }
+         }
+         
+         //Handle open parenthesis
+<span class="fc bfc" id="L184" title="All 2 branches covered.">         if(token.equals(&quot;(&quot;))</span>
+         {
+<span class="fc" id="L186">            newNode = buildTree(strTokens, true);</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">            if(newNode == null) </span>
+<span class="nc" id="L188">               return null;</span>
+            
+<span class="fc" id="L190">            rootNode = insertNode(rootNode, newNode);</span>
+            
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">            if(rootNode == null)</span>
+<span class="nc" id="L193">               return null;</span>
+            else
+               continue;
+         }
+         
+         //Create new node and place it in the tree.
+<span class="fc" id="L199">         newNode = nodeFactory.buildNode(token);</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">         if(newNode == null)</span>
+         {
+<span class="fc" id="L202">            System.out.println(&quot;Invalid: Unknown expression \&quot;&quot; + token + &quot;\&quot;&quot;);</span>
+<span class="fc" id="L203">            return null;</span>
+         } 
+         else
+<span class="fc" id="L206">            rootNode = insertNode(rootNode, newNode);</span>
+         
+<span class="fc bfc" id="L208" title="All 2 branches covered.">         if(rootNode == null)</span>
+<span class="fc" id="L209">            return null;</span>
+      }
+      
+      //Check if ending parenthesis is missing.
+<span class="pc bpc" id="L213" title="1 of 2 branches missed.">      if(isParens)</span>
+      {
+<span class="nc" id="L215">         System.out.println(&quot;Invalid: Missing \&quot;)\&quot;&quot;);</span>
+<span class="nc" id="L216">         return null;</span>
+      }
+      else
+<span class="fc" id="L219">         return rootNode;</span>
+   }
+   
+   /**
+    * Inserts the new node into the tree of the root node.
+    * @param rootNode
+    * @param newNode
+    * @return Returns root node of tree after node is inserted.
+    */
+   private mathNode.Expression insertNode(mathNode.Expression rootNode, 
+         mathNode.Expression newNode)
+   {
+      //If no root node, new node becomes the root node.
+<span class="fc bfc" id="L232" title="All 2 branches covered.">      if(rootNode == null) </span>
+<span class="fc" id="L233">         return newNode;</span>
+      //If no new node, return tree without changes.
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">      else if(newNode == null)</span>
+<span class="nc" id="L236">         return rootNode;</span>
+      //Place operator node without parenthesis in tree according to precedence.
+<span class="fc bfc" id="L238" title="All 4 branches covered.">      else if(newNode instanceof mathNode.Operator &amp;&amp; !newNode.isParens())</span>
+      {
+<span class="fc" id="L240">         mathNode.Operator newOperator = (mathNode.Operator) newNode;</span>
+         mathNode.Operator parent;
+         
+         //Check if rootNode is an operator
+<span class="fc bfc" id="L244" title="All 2 branches covered.">         if(rootNode instanceof mathNode.Operator)</span>
+<span class="fc" id="L245">            parent = (mathNode.Operator) rootNode;</span>
+         else
+         {
+<span class="fc" id="L248">            newOperator.setLeftNode(rootNode);</span>
+<span class="fc" id="L249">            return newOperator;</span>
+         }
+         
+         //Find place in tree to place new operator by comparing operator precedence.
+<span class="fc bfc" id="L253" title="All 2 branches covered.">         if(parent.getPrecedence() &lt;= newOperator.getPrecedence())</span>
+         {
+<span class="fc" id="L255">            newOperator.setLeftNode(parent);</span>
+<span class="fc" id="L256">            return newOperator;</span>
+         }
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">         while(parent.getPrecedence() &gt; newOperator.getPrecedence() </span>
+<span class="fc bfc" id="L259" title="All 2 branches covered.">               &amp;&amp; parent.getRightNode() != null </span>
+<span class="pc bpc" id="L260" title="1 of 2 branches missed.">               &amp;&amp; parent.getRightNode() instanceof mathNode.Operator)</span>
+         {
+<span class="nc" id="L262">            parent = (mathNode.Operator) parent.getRightNode();</span>
+         }
+         
+         //Check if value is missing between two operators.
+<span class="fc bfc" id="L266" title="All 2 branches covered.">         if(parent.getRightNode() == null) </span>
+         {
+<span class="fc" id="L268">            System.out.println(&quot;Invalid: Missing value between two operators&quot;);</span>
+<span class="fc" id="L269">            return null;</span>
+         }
+         else
+         {
+<span class="fc" id="L273">            newOperator.setLeftNode(parent.getRightNode());</span>
+<span class="fc" id="L274">            parent.setRightNode(newOperator);</span>
+<span class="fc" id="L275">            return rootNode;</span>
+         }
+         
+      }
+      //Place Int, Dec, or parenthesis node in tree. It goes on the rightmost empty node
+      //of the tree. If that node is filled, it means there are two numbers in a row
+      //and it is invalid.
+      else
+      {
+         mathNode.Operator parent;
+         
+<span class="pc bpc" id="L286" title="1 of 2 branches missed.">         if(rootNode instanceof mathNode.Operator)</span>
+<span class="fc" id="L287">            parent = (mathNode.Operator) rootNode;</span>
+         else
+         {
+<span class="nc" id="L290">            System.out.println(&quot;Invalid: Missing operator between &quot; + </span>
+                  rootNode + &quot; and &quot; + newNode);
+<span class="nc" id="L292">            return null;</span>
+         }
+         
+<span class="fc bfc" id="L295" title="All 2 branches covered.">         while(parent.getRightNode() != null)</span>
+         {
+<span class="pc bpc" id="L297" title="1 of 2 branches missed.">            if(parent.getRightNode() instanceof mathNode.Operator)</span>
+<span class="fc" id="L298">               parent = (mathNode.Operator) parent.getRightNode();</span>
+            else
+            {
+<span class="nc" id="L301">               System.out.println(&quot;Invalid: Missing operator between &quot; + </span>
+<span class="nc" id="L302">                     parent.getRightNode() + &quot; + &quot; + newNode);</span>
+<span class="nc" id="L303">               return null;</span>
+            }
+         }
+         
+<span class="fc" id="L307">         parent.setRightNode(newNode);</span>
+<span class="fc" id="L308">         return rootNode;</span>
+      }
+   }
+   
+   /**
+    * Calls recursive mathNode.Expression.calculate() method to find answer. If tree is empty,
+    * it return null.
+    */
+   public Number solve() 
+   { 
+<span class="nc bnc" id="L318" title="All 2 branches missed.">      if(rootNode == null)</span>
+<span class="nc" id="L319">         return null;</span>
+      else
+<span class="nc" id="L321">         return rootNode.calculate(); </span>
+   }
+   
+   /**
+    * Calls recursive mathNode.Expression.toString() method to find answer. If tree is empty,
+    * it return null.
+    */
+   public String toString()
+   {
+<span class="nc bnc" id="L330" title="All 2 branches missed.">      if(rootNode == null) </span>
+<span class="nc" id="L331">         return &quot;&quot;;</span>
+      else
+<span class="nc" id="L333">         return rootNode.toString();</span>
+   }
+   
+   public Object clone() throws CloneNotSupportedException
+   {
+<span class="nc" id="L338">      MathTree clone = (MathTree) super.clone();</span>
+<span class="nc" id="L339">      clone.nodeFactory = (mathNode.Factory) nodeFactory.clone();</span>
+<span class="nc" id="L340">      clone.rootNode = (mathNode.Expression) rootNode.clone();</span>
+      
+<span class="nc" id="L342">      return clone;</span>
+   }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

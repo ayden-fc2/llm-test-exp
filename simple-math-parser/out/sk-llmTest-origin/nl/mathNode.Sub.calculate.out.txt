@@ -1,0 +1,149 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SubTest {
+
+    // Stub class for Node to allow testing without external dependencies
+    static abstract class Node {
+        abstract Number calculate();
+    }
+
+    // Stub implementation of Sub that allows setting left and right nodes
+    static class TestableSub extends Sub {
+        private final Node left;
+        private final Node right;
+
+        TestableSub(Node left, Node right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        protected Node getLeftNode() {
+            return left;
+        }
+
+        @Override
+        protected Node getRightNode() {
+            return right;
+        }
+    }
+
+    // Helper to create a node returning a specific number
+    private Node nodeReturning(Number value) {
+        return new Node() {
+            @Override
+            Number calculate() {
+                return value;
+            }
+        };
+    }
+
+    // Provide test cases for integer subtraction branch
+    static Stream<Arguments> integerSubtractionCases() {
+        return Stream.of(
+            Arguments.of(5, 3, 2),
+            Arguments.of(0, 0, 0),
+            Arguments.of(-1, -1, 0),
+            Arguments.of(Integer.MAX_VALUE, 1, Integer.MAX_VALUE - 1),
+            Arguments.of(Integer.MIN_VALUE, -1, Integer.MIN_VALUE + 1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("integerSubtractionCases")
+    void test_IntegerSubtraction_WithValidInputs(int left, int right, int expected) {
+        Sub sub = new TestableSub(nodeReturning(left), nodeReturning(right));
+        Number result = sub.calculate();
+        assertEquals(expected, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    // Provide test cases for double subtraction branch
+    static Stream<Arguments> doubleSubtractionCases() {
+        return Stream.of(
+            Arguments.of(5.5, 2.2, 3.3),
+            Arguments.of(0.0, 0.0, 0.0),
+            Arguments.of(-1.1, -1.1, 0.0),
+            Arguments.of(Double.MAX_VALUE, 1.0, Double.MAX_VALUE - 1.0),
+            Arguments.of(Double.MIN_VALUE, 1.0, Double.MIN_VALUE - 1.0),
+            Arguments.of(1.0, 2.0, -1.0)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("doubleSubtractionCases")
+    void test_DoubleSubtraction_WithValidInputs(double left, double right, double expected) {
+        Sub sub = new TestableSub(nodeReturning(left), nodeReturning(right));
+        Number result = sub.calculate();
+        assertEquals(expected, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    // Mixed type subtraction (triggers double branch)
+    @Test
+    void test_Subtraction_MixedTypes_TriggersDoubleCalculation() {
+        Sub sub = new TestableSub(nodeReturning(5), nodeReturning(2.5));
+        Number result = sub.calculate();
+        assertEquals(2.5, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+
+        Sub sub2 = new TestableSub(nodeReturning(3.7), nodeReturning(2));
+        Number result2 = sub2.calculate();
+        assertEquals(1.7, result2.doubleValue(), 1e-9);
+        assertTrue(result2 instanceof Double);
+    }
+
+    // Edge case: large integers that may lose precision when cast to double
+    @Test
+    void test_IntegerSubtraction_LargeValues_PrecisionCheck() {
+        int largeInt = 1000000000;
+        Sub sub = new TestableSub(nodeReturning(largeInt), nodeReturning(largeInt));
+        Number result = sub.calculate();
+        assertEquals(0, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    // Edge case: very small differences in doubles
+    @Test
+    void test_DoubleSubtraction_VerySmallDifference() {
+        double a = 1.0000000000000002;
+        double b = 1.0000000000000001;
+        Sub sub = new TestableSub(nodeReturning(a), nodeReturning(b));
+        Number result = sub.calculate();
+        assertEquals(a - b, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    // Boundary values: zero handling
+    @Test
+    void test_Subtraction_ZeroHandling() {
+        // Integer zero
+        Sub sub1 = new TestableSub(nodeReturning(0), nodeReturning(0));
+        Number result1 = sub1.calculate();
+        assertEquals(0, result1.intValue());
+        assertTrue(result1 instanceof Integer);
+
+        // Double zero
+        Sub sub2 = new TestableSub(nodeReturning(0.0), nodeReturning(0.0));
+        Number result2 = sub2.calculate();
+        assertEquals(0.0, result2.doubleValue(), 1e-9);
+        assertTrue(result2 instanceof Double);
+
+        // Mixed zero
+        Sub sub3 = new TestableSub(nodeReturning(0), nodeReturning(0.0));
+        Number result3 = sub3.calculate();
+        assertEquals(0.0, result3.doubleValue(), 1e-9);
+        assertTrue(result3 instanceof Double);
+    }
+}
+```

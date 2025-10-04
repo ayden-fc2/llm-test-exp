@@ -1,0 +1,226 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AddCalculateGeneratedTest {
+
+    // Stub implementation for Node to support testing
+    private static abstract class NodeStub implements Node {
+        private final Number value;
+
+        protected NodeStub(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+
+        @Override
+        public Node getLeftNode() {
+            return null; // Not used in stub
+        }
+
+        @Override
+        public Node getRightNode() {
+            return null; // Not used in stub
+        }
+    }
+
+    // Stub implementation for Add that allows injecting left and right nodes
+    private static class AddStub extends Add {
+        private final Node left;
+        private final Node right;
+
+        AddStub(Node left, Node right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public Node getLeftNode() {
+            return left;
+        }
+
+        @Override
+        public Node getRightNode() {
+            return right;
+        }
+    }
+
+    @Test
+    void test_calculate_bothIntegers_returnsIntegerSum() {
+        Node left = new NodeStub(2) {};
+        Node right = new NodeStub(3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(5, result);
+        assertInstanceOf(Integer.class, result);
+    }
+
+    @Test
+    void test_calculate_oneDouble_returnsDoubleSum() {
+        Node left = new NodeStub(2.5) {};
+        Node right = new NodeStub(3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(5.5, result.doubleValue(), 1e-9);
+        assertInstanceOf(Double.class, result);
+    }
+
+    @Test
+    void test_calculate_bothDoubles_returnsDoubleSum() {
+        Node left = new NodeStub(2.5) {};
+        Node right = new NodeStub(3.7) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(6.2, result.doubleValue(), 1e-9);
+        assertInstanceOf(Double.class, result);
+    }
+
+    @Test
+    void test_calculate_negativeIntegers_returnsCorrectSum() {
+        Node left = new NodeStub(-2) {};
+        Node right = new NodeStub(-3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(-5, result);
+        assertInstanceOf(Integer.class, result);
+    }
+
+    @Test
+    void test_calculate_positiveAndNegativeInteger_returnsCorrectSum() {
+        Node left = new NodeStub(10) {};
+        Node right = new NodeStub(-3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(7, result);
+        assertInstanceOf(Integer.class, result);
+    }
+
+    @Test
+    void test_calculate_zeroValues_returnsZero() {
+        Node left = new NodeStub(0) {};
+        Node right = new NodeStub(0) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(0, result);
+        assertInstanceOf(Integer.class, result);
+    }
+
+    @Test
+    void test_calculate_integerMaxValues_returnsCorrectSumAsDouble() {
+        Node left = new NodeStub(Integer.MAX_VALUE) {};
+        Node right = new NodeStub(Integer.MAX_VALUE) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        double expected = (double) Integer.MAX_VALUE + (double) Integer.MAX_VALUE;
+        assertEquals(expected, result.doubleValue(), 1e-9);
+        assertInstanceOf(Double.class, result);
+    }
+
+    @Test
+    void test_calculate_integerMinAndMax_returnsCorrectSum() {
+        Node left = new NodeStub(Integer.MIN_VALUE) {};
+        Node right = new NodeStub(Integer.MAX_VALUE) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(-1, result); // MIN + MAX = -1
+        assertInstanceOf(Integer.class, result);
+    }
+
+    @Test
+    void test_calculate_largeDoubleValues_returnsCorrectSum() {
+        Node left = new NodeStub(1e308) {};
+        Node right = new NodeStub(1e308) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(2e308, result.doubleValue(), 1e292); // Delta adjusted for magnitude
+        assertInstanceOf(Double.class, result);
+    }
+
+    @Test
+    void test_calculate_verySmallDoubleValues_returnsCorrectSum() {
+        Node left = new NodeStub(1e-308) {};
+        Node right = new NodeStub(1e-308) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(2e-308, result.doubleValue(), 1e-310);
+        assertInstanceOf(Double.class, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideIntegerPairs")
+    void test_calculate_integerCombinations_returnsInteger(int a, int b, int expected) {
+        Node left = new NodeStub(a) {};
+        Node right = new NodeStub(b) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(expected, result);
+        assertInstanceOf(Integer.class, result);
+    }
+
+    static Stream<Arguments> provideIntegerPairs() {
+        return Stream.of(
+            Arguments.of(0, 0, 0),
+            Arguments.of(1, 1, 2),
+            Arguments.of(-1, -1, -2),
+            Arguments.of(Integer.MAX_VALUE, 0, Integer.MAX_VALUE),
+            Arguments.of(Integer.MIN_VALUE, 0, Integer.MIN_VALUE),
+            Arguments.of(100, -100, 0)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideMixedNumberPairs")
+    void test_calculate_mixedNumberTypes_returnsDouble(Number a, Number b, double expected) {
+        Node left = new NodeStub(a) {};
+        Node right = new NodeStub(b) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertEquals(expected, result.doubleValue(), 1e-9);
+        assertInstanceOf(Double.class, result);
+    }
+
+    static Stream<Arguments> provideMixedNumberPairs() {
+        return Stream.of(
+            Arguments.of(1, 1.0, 2.0),
+            Arguments.of(1.0, 1, 2.0),
+            Arguments.of(0.1, 0.2, 0.3),
+            Arguments.of(-1.5, 2, 0.5),
+            Arguments.of(Integer.MAX_VALUE, 0.5, Integer.MAX_VALUE + 0.5)
+        );
+    }
+}

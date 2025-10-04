@@ -1,0 +1,303 @@
+test_source_path,fqn,compiled,compile_error_excerpt,tests_total,tests_failed,pass_rate,fail_reasons,line_coverage_pct,branch_coverage_pct,boundary_rate_pct,boundary_hits,boundary_total,boundary_labels
+src/test/sk-llmTest/cl/mathNode/OperatorSetLeftNodeGeneratedTest.java,mathNode.OperatorSetLeftNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetLeftNodeGeneratedTest.java:17: error: <anonymous mathNode.OperatorSetLeftNodeGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        mockExpression = new Expression() {
+                                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetLeftNodeGeneratedTest.java:18: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetLeftNodeGeneratedTest.java:26: error: <anonymous mathNode.OperatorSetLeftNodeGeneratedTest$2> is not abstract and does not override abstract method calculate() in Expression
+        operator = new Operator() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/AddCloneGeneratedTest.java,mathNode.AddCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddCloneGeneratedTest.java:20: error: <anonymous mathNode.AddCloneGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        leftMock = new Expression() {
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddCloneGeneratedTest.java:26: error: <anonymous mathNode.AddCloneGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        rightMock = new Expression() {
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddCloneGeneratedTest.java:62: error: <anonymous mathNode.AddCloneGeneratedTest$3> is not abstract and does not override abstract method checkTree() in Expression
+        Expression intLeftMock = new Expression() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/AddToStringGeneratedTest.java,mathNode.AddToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddToStringGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddToStringGeneratedTest.java:17: error: cannot find symbol
+    static class MathNodeStub extends MathNode {
+                                      ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/OperatorCheckTreeGeneratedTest.java,mathNode.OperatorCheckTreeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorCheckTreeGeneratedTest.java:11: error: OperatorStub is not abstract and does not override abstract method toString() in Expression
+    static class OperatorStub extends Operator {
+           ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionSetParensGeneratedTest.java,mathNode.ExpressionSetParensGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionSetParensGeneratedTest.java:15: error: <anonymous mathNode.ExpressionSetParensGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        expression = new Expression() {
+                                      ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/IntCloneGeneratedTest.java,mathNode.IntCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/IntCloneGeneratedTest.java:23: error: cannot find symbol
+        assertEquals(original.getValue(), cloned.getValue(), ""Clone should have the same value as original"");
+                             ^
+  symbol:   method getValue()
+  location: variable original of type Int
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/IntCloneGeneratedTest.java:23: error: cannot find symbol
+        assertEquals(original.getValue(), cloned.getValue(), ""Clone should have the same value as original"");
+                                                ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/AddCalculateGeneratedTest.java,mathNode.AddCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddCalculateGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/AddCalculateGeneratedTest.java:17: error: cannot find symbol
+    static abstract class MathNodeStub extends MathNode {
+                                               ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/MultCalculateGeneratedTest.java,mathNode.MultCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultCalculateGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultCalculateGeneratedTest.java:17: error: cannot find symbol
+    static abstract class MathNodeStub extends MathNode {
+                                               ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/MultToStringGeneratedTest.java,mathNode.MultToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultToStringGeneratedTest.java:16: error: cannot find symbol
+    static class StubNode extends mathNode.Node {
+                                          ^
+  symbol:   class Node
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultToStringGeneratedTest.java:25: error: method does not override or implement a method from a supertype
+        @Override
+        ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/FactoryBuildNodeGeneratedTest.java,mathNode.FactoryBuildNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/FactoryBuildNodeGeneratedTest.java:30: error: cannot find symbol
+        assertEquals(value, decResult.getValue(), 1e-9);
+                                     ^
+  symbol:   method getValue()
+  location: variable decResult of type Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/FactoryBuildNodeGeneratedTest.java:41: error: cannot find symbol
+        assertEquals(input, decResult.getValue(), 1e-9);
+                                     ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DecCalculateGeneratedTest.java,mathNode.DecCalculateGeneratedTest,pass,,20,0,100.0,,100.0,N/A,83.33,10,12,double_max|double_min|float_nan|float_neg_inf|float_neg_zero|float_pos_inf|float_zero|int_minus_one|int_one|int_zero
+src/test/sk-llmTest/cl/mathNode/OperatorSetParensGeneratedTest.java,mathNode.OperatorSetParensGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetParensGeneratedTest.java:13: error: Operator is abstract; cannot be instantiated
+        Operator operator = new Operator();
+                            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetParensGeneratedTest.java:22: error: Operator is abstract; cannot be instantiated
+        Operator operator = new Operator();
+                            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetParensGeneratedTest.java:32: error: Operator is abstract; cannot be instantiated
+        Operator operator = new Operator();",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DivCalculateGeneratedTest.java,mathNode.DivCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivCalculateGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivCalculateGeneratedTest.java:17: error: cannot find symbol
+    static class TestMathNode implements MathNode {
+                                         ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionCheckTreeGeneratedTest.java,mathNode.ExpressionCheckTreeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionCheckTreeGeneratedTest.java:13: error: ConcreteExpression is not abstract and does not override abstract method toString() in Expression
+    static class ConcreteExpression extends Expression {
+           ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DecToStringGeneratedTest.java,mathNode.DecToStringGeneratedTest,pass,,18,0,100.0,,87.5,100.0,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/MultCloneGeneratedTest.java,mathNode.MultCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultCloneGeneratedTest.java:27: error: abstract method clone() in Expression cannot be accessed directly
+                    return super.clone();
+                                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultCloneGeneratedTest.java:38: error: abstract method clone() in Expression cannot be accessed directly
+                    return super.clone();
+                                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/MultCloneGeneratedTest.java:46: error: incompatible types: mathNode.MultCloneGeneratedTest.Expression cannot be converted to mathNode.Expression
+        multInstance.setLeftNode(leftNode);",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/OperatorGetPrecedenceGeneratedTest.java,mathNode.OperatorGetPrecedenceGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetPrecedenceGeneratedTest.java:13: error: TestOperator is not abstract and does not override abstract method toString() in Expression
+    static class TestOperator extends Operator {
+           ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DivCloneGeneratedTest.java,mathNode.DivCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivCloneGeneratedTest.java:21: error: <anonymous mathNode.DivCloneGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        mockLeft = new Expression() {
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivCloneGeneratedTest.java:27: error: <anonymous mathNode.DivCloneGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        mockRight = new Expression() {
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivCloneGeneratedTest.java:52: error: <anonymous mathNode.DivCloneGeneratedTest$3> is not abstract and does not override abstract method checkTree() in Expression
+        Expression leftClone = new Expression() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/IntCalculateGeneratedTest.java,mathNode.IntCalculateGeneratedTest,pass,,13,0,100.0,,100.0,N/A,25.0,3,12,int_minus_one|int_one|int_zero
+src/test/sk-llmTest/cl/mathNode/IntToStringGeneratedTest.java,mathNode.IntToStringGeneratedTest,pass,,16,0,100.0,,87.5,100.0,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/SubToStringGeneratedTest.java,mathNode.SubToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubToStringGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubToStringGeneratedTest.java:13: error: cannot find symbol
+    private MathNode leftNode;
+            ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/SubCloneGeneratedTest.java,mathNode.SubCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubCloneGeneratedTest.java:18: error: <anonymous mathNode.SubCloneGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        leftMock = new Expression() {
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubCloneGeneratedTest.java:24: error: <anonymous mathNode.SubCloneGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        rightMock = new Expression() {
+                                     ^
+2 errors",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DivToStringGeneratedTest.java,mathNode.DivToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivToStringGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DivToStringGeneratedTest.java:17: error: cannot find symbol
+    static class MathNodeStub extends MathNode {
+                                      ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionCloneGeneratedTest.java,mathNode.ExpressionCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionCloneGeneratedTest.java:14: error: Expression is abstract; cannot be instantiated
+        expression = new Expression(); // Assuming default constructor exists
+                     ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/OperatorGetRightNodeGeneratedTest.java,mathNode.OperatorGetRightNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetRightNodeGeneratedTest.java:17: error: <anonymous mathNode.OperatorGetRightNodeGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        mockExpression = new Expression() {};
+                                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetRightNodeGeneratedTest.java:18: error: Operator is abstract; cannot be instantiated
+        operator = new Operator(null, null); // Assuming default constructor exists or can be adapted
+                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetRightNodeGeneratedTest.java:34: error: <anonymous mathNode.OperatorGetRightNodeGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        Expression newExpression = new Expression() {};",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionToStringGeneratedTest.java,mathNode.ExpressionToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionToStringGeneratedTest.java:26: error: <anonymous mathNode.ExpressionToStringGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        Expression expression = new ExpressionStub() {};
+                                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionToStringGeneratedTest.java:35: error: <anonymous mathNode.ExpressionToStringGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        Expression expression = new ExpressionStub() {};
+                                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionToStringGeneratedTest.java:44: error: <anonymous mathNode.ExpressionToStringGeneratedTest$3> is not abstract and does not override abstract method checkTree() in Expression
+        Expression expression = new ExpressionStub() {};",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionIsParensGeneratedTest.java,mathNode.ExpressionIsParensGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionIsParensGeneratedTest.java:16: error: ExpressionStub is not abstract and does not override abstract method checkTree() in Expression
+    static class ExpressionStub extends Expression {
+           ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/IntCheckTreeGeneratedTest.java,mathNode.IntCheckTreeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/IntCheckTreeGeneratedTest.java:15: error: constructor Int in class Int cannot be applied to given types;
+        Int intNode = new Int();
+                      ^
+  required: int
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/IntCheckTreeGeneratedTest.java:28: error: constructor Int in class Int cannot be applied to given types;
+        Int intNode = new Int();",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/SubCalculateGeneratedTest.java,mathNode.SubCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubCalculateGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/SubCalculateGeneratedTest.java:17: error: cannot find symbol
+    static abstract class MathNodeStub implements MathNode {
+                                                  ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/PowCloneGeneratedTest.java,mathNode.PowCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowCloneGeneratedTest.java:20: error: <anonymous mathNode.PowCloneGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        leftNode = new Expression() {
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowCloneGeneratedTest.java:23: error: <anonymous mathNode.PowCloneGeneratedTest$1$1> is not abstract and does not override abstract method checkTree() in Expression
+                return new Expression() {
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowCloneGeneratedTest.java:31: error: <anonymous mathNode.PowCloneGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        rightNode = new Expression() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/OperatorSetRightNodeGeneratedTest.java,mathNode.OperatorSetRightNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetRightNodeGeneratedTest.java:17: error: <anonymous mathNode.OperatorSetRightNodeGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        mockExpression = new Expression() {
+                                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetRightNodeGeneratedTest.java:18: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorSetRightNodeGeneratedTest.java:26: error: <anonymous mathNode.OperatorSetRightNodeGeneratedTest$2> is not abstract and does not override abstract method calculate() in Expression
+        operator = new Operator() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DecCloneGeneratedTest.java,mathNode.DecCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DecCloneGeneratedTest.java:13: error: constructor Dec in class Dec cannot be applied to given types;
+        Dec original = new Dec();
+                       ^
+  required: double
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DecCloneGeneratedTest.java:21: error: constructor Dec in class Dec cannot be applied to given types;
+        Dec original = new Dec();",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/PowToStringGeneratedTest.java,mathNode.PowToStringGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowToStringGeneratedTest.java:4: error: cannot find symbol
+import mathNode.MathNode;
+               ^
+  symbol:   class MathNode
+  location: package mathNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowToStringGeneratedTest.java:17: error: cannot find symbol
+    static class MathNodeStub extends MathNode {
+                                      ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/PowCalculateGeneratedTest.java,mathNode.PowCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowCalculateGeneratedTest.java:14: error: toString() in Node cannot override toString() in Object
+        abstract String toString();
+                        ^
+  attempting to assign weaker access privileges; was public
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/PowCalculateGeneratedTest.java:37: error: constructor Pow in class Pow cannot be applied to given types;
+            super(null, null); // dummy call to satisfy constructor if needed
+            ^
+  required: no arguments",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/OperatorGetLeftNodeGeneratedTest.java,mathNode.OperatorGetLeftNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetLeftNodeGeneratedTest.java:18: error: <anonymous mathNode.OperatorGetLeftNodeGeneratedTest$1> is not abstract and does not override abstract method checkTree() in Expression
+        mockLeftNode = new Expression() {};
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetLeftNodeGeneratedTest.java:19: error: <anonymous mathNode.OperatorGetLeftNodeGeneratedTest$2> is not abstract and does not override abstract method checkTree() in Expression
+        mockRightNode = new Expression() {};
+                                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/OperatorGetLeftNodeGeneratedTest.java:20: error: <anonymous mathNode.OperatorGetLeftNodeGeneratedTest$3> is not abstract and does not override abstract method toString() in Expression
+        operator = new Operator() {",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/DecCheckTreeGeneratedTest.java,mathNode.DecCheckTreeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/DecCheckTreeGeneratedTest.java:12: error: constructor Dec in class Dec cannot be applied to given types;
+        Dec dec = new Dec();
+                  ^
+  required: double
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/FactoryCloneGeneratedTest.java,mathNode.FactoryCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/FactoryCloneGeneratedTest.java:17: error: unreported exception CloneNotSupportedException; must be caught or declared to be thrown
+        Factory cloned = (Factory) original.clone();
+                                                 ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/FactoryCloneGeneratedTest.java:50: error: unreported exception CloneNotSupportedException; must be caught or declared to be thrown
+        Factory cloned = (Factory) original.clone();
+                                                 ^
+2 errors",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathNode/ExpressionCalculateGeneratedTest.java,mathNode.ExpressionCalculateGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathNode/ExpressionCalculateGeneratedTest.java:13: error: ConcreteExpression is not abstract and does not override abstract method checkTree() in Expression
+    static class ConcreteExpression extends Expression {
+           ^
+1 error",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/MathTreeBuildTreeGeneratedTest.java,mathTree.MathTreeBuildTreeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeBuildTreeGeneratedTest.java:9: error: cannot find symbol
+import mathTree.mathNode;
+               ^
+  symbol:   class mathNode
+  location: package mathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeBuildTreeGeneratedTest.java:19: error: cannot find symbol
+    private mathNode invokeBuildTree(LinkedList<String> tokens, boolean isParens) throws Exception {
+            ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/StringScannerAddDelimiterGeneratedTest.java,mathTree.StringScannerAddDelimiterGeneratedTest,pass,,18,0,100.0,,84.21,94.44,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/StringScannerSaveTokenGeneratedTest.java,mathTree.StringScannerSaveTokenGeneratedTest,pass,,10,3,70.0,test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[4]:expected: <true> but was: <false>; test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[2]:expected: <true> but was: <false>; test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[3]:expected: <true> but was: <false>,84.21,94.44,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/MathTreeToStringGeneratedTest.java,mathTree.MathTreeToStringGeneratedTest,pass,,1,0,100.0,,86.15,82.61,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/MathTreeCleanStrListGeneratedTest.java,mathTree.MathTreeCleanStrListGeneratedTest,pass,,13,6,53.85,"test_cleanStrList_singleNegativeNumber():expected: <2> but was: <1>; test_cleanStrList_mixedOperatorsAndNegatives():expected: <7> but was: <5>; test_cleanStrList_negativeAtStart():expected: <5> but was: <4>; test_cleanStrList_edgeCases(LinkedList, LinkedList)[2]:expected: <[-, 0]> but was: <[-0]>; test_cleanStrList_edgeCases(LinkedList, LinkedList)[4]:expected: <[-, 2147483648]> but was: <[-2147483648]>; test_cleanStrList_edgeCases(LinkedList, LinkedList)[3]:expected: <[-, 999999999]> but was: <[-999999999]>",86.15,82.61,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/CalcAppMainGeneratedTest.java,mathTree.CalcAppMainGeneratedTest,pass,,12,6,50.0,test_main_withNoArgs_promptsForInput():expected: <true> but was: <false>; test_main_withVerySmallDouble():expected: <true> but was: <false>; test_main_withEmptyOrWhitespaceInput(String)[1]:Unexpected exception thrown: java.util.NoSuchElementException: No line found; test_main_withEmptyOrWhitespaceInput(String)[2]:Unexpected exception thrown: java.util.NoSuchElementException: No line found; test_main_withEmptyOrWhitespaceInput(String)[3]:Unexpected exception thrown: java.util.NoSuchElementException: No line found; test_main_withEmptyOrWhitespaceInput(String)[4]:Unexpected exception thrown: java.util.NoSuchElementException: No line found,100.0,100.0,50.0,3,6,int_one|int_zero|string_empty
+src/test/sk-llmTest/cl/mathTree/MathTreeCloneGeneratedTest.java,mathTree.MathTreeCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeCloneGeneratedTest.java:28: error: rootNode has private access in MathTree
+        original.rootNode = null; // Explicitly set to null
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeCloneGeneratedTest.java:36: error: rootNode has private access in MathTree
+        assertNull(cloned.rootNode);
+                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeCloneGeneratedTest.java:107: error: nodeFactory has private access in MathTree
+        assertNotNull(cloned.nodeFactory);",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/MathTreeInsertNodeGeneratedTest.java,mathTree.MathTreeInsertNodeGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeInsertNodeGeneratedTest.java:4: error: cannot find symbol
+import mathTree.MathTree.mathNode;
+                        ^
+  symbol:   class mathNode
+  location: class MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/MathTreeInsertNodeGeneratedTest.java:16: error: cannot find symbol
+        mathNode newNode = new mathNode(5);
+        ^",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/StringScannerIsDelimGeneratedTest.java,mathTree.StringScannerIsDelimGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerIsDelimGeneratedTest.java:22: error: constructor StringScanner in class StringScanner cannot be applied to given types;
+        scanner = new StringScanner("""");
+                  ^
+  required: no arguments
+  found:    String
+  reason: actual and formal argument lists differ in length
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerIsDelimGeneratedTest.java:36: error: isDelim(char) has private access in StringScanner
+        boolean result = scanner.isDelim(ch);",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/StringScannerScanGeneratedTest.java,mathTree.StringScannerScanGeneratedTest,pass,,21,9,57.14,"test_scan_mixedAlphanumeric_tokensParsedCorrectly():expected: <2> but was: <1>; test_scan_specialCharactersInTokens_handlesCorrectly():expected: <3> but was: <1>; test_scan_longString_performanceReasonable():expected: <1000> but was: <1>; test_scan_mixedTokensAndDelimiters_returnsCorrectTokens():expected: <3> but was: <1>; test_scan_parameterized_delimiterHandling(String, int)[4]:expected: <2> but was: <1>; test_scan_parameterized_delimiterHandling(String, int)[5]:expected: <3> but was: <1>; test_scan_parameterized_delimiterHandling(String, int)[2]:expected: <0> but was: <1>; test_scan_multipleSingleCharacterTokensSeparatedByDelimiter_returnsMultipleTokens():expected: <3> but was: <1>; test_scan_numericTokens_returnsAsStrings():expected: <3> but was: <1>",100.0,100.0,50.0,3,6,int_one|int_zero|string_empty
+src/test/sk-llmTest/cl/mathTree/MathTreeInitGeneratedTest.java,mathTree.MathTreeInitGeneratedTest,pass,,28,3,89.29,test_init_complexNestedExpression_returnsTrue():Complex nested expression should initialize ==> expected: <true> but was: <false>; test_init_deeplyNestedParentheses_returnsTrue():Deeply nested parentheses should initialize ==> expected: <true> but was: <false>; test_init_validExpressions_returnsTrue(String)[2]:Valid expression should initialize successfully: ((1 + 2) * 3) ==> expected: <true> but was: <false>,100.0,100.0,50.0,3,6,int_one|int_zero|string_empty
+src/test/sk-llmTest/cl/mathTree/StringScannerCloneGeneratedTest.java,mathTree.StringScannerCloneGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerCloneGeneratedTest.java:22: error: no suitable method found for addDelimiter(String)
+        scanner.addDelimiter("";"");
+               ^
+    method StringScanner.addDelimiter(char) is not applicable
+      (argument mismatch; String cannot be converted to char)
+    method StringScanner.addDelimiter(char[]) is not applicable
+      (argument mismatch; String cannot be converted to char[])
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerCloneGeneratedTest.java:24: error: cannot find symbol",0,0,0.0,,N/A,N/A,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/MathTreeSolveGeneratedTest.java,mathTree.MathTreeSolveGeneratedTest,pass,,18,0,100.0,,100.0,100.0,100.0,1,1,null_ref
+src/test/sk-llmTest/cl/mathTree/StringScannerAddSpecialCharGeneratedTest.java,mathTree.StringScannerAddSpecialCharGeneratedTest,pass,,16,0,100.0,,84.21,94.44,N/A,0,0,
+src/test/sk-llmTest/cl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java,mathTree.StringScannerSkipWhitespaceGeneratedTest,fail,"/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java:20: error: skipWhitespace has private access in StringScanner
+        assertFalse(scanner.skipWhitespace, ""skipWhitespace should be false by default"");
+                           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java:26: error: skipWhitespace has private access in StringScanner
+        assertTrue(scanner.skipWhitespace, ""skipWhitespace should be true after calling skipWhitespace()"");
+                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/cl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java:32: error: skipWhitespace has private access in StringScanner
+        assertFalse(scanner.skipWhitespace, ""skipWhitespace should be false by default"");",0,0,0.0,,N/A,N/A,N/A,0,0,

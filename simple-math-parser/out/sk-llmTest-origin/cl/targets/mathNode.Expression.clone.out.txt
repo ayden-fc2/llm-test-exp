@@ -1,0 +1,69 @@
+```java
+package test;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionGeneratedTest {
+
+    private Expression expression;
+
+    @BeforeEach
+    void setUp() {
+        expression = new Expression(); // Assuming default constructor exists
+    }
+
+    @Test
+    public void test_clone_returnsNewInstance() {
+        Expression cloned = (Expression) expression.clone();
+        assertNotNull(cloned);
+        assertNotSame(expression, cloned);
+        assertEquals(expression.getClass(), cloned.getClass());
+    }
+
+    @Test
+    public void test_clone_preservesState() {
+        // Assuming there are fields to check - this would need adjustment based on actual implementation
+        Expression cloned = (Expression) expression.clone();
+        // Add assertions here to verify that the state is preserved correctly
+        // For example: assertEquals(expression.getValue(), cloned.getValue());
+    }
+
+    @Test
+    public void test_clone_withNullFields() {
+        // If the expression can have null fields, test cloning behavior
+        Expression cloned = (Expression) expression.clone();
+        // Verify behavior with null fields if applicable
+    }
+
+    @Test
+    public void test_clone_withMaxValues() {
+        // If applicable, set max values and test cloning
+        Expression cloned = (Expression) expression.clone();
+        // Verify correct cloning with max values
+    }
+
+    @Test
+    public void test_clone_withMinValues() {
+        // If applicable, set min values and test cloning
+        Expression cloned = (Expression) expression.clone();
+        // Verify correct cloning with min values
+    }
+
+    @Test
+    public void test_clone_withZeroValues() {
+        // If applicable, set zero values and test cloning
+        Expression cloned = (Expression) expression.clone();
+        // Verify correct cloning with zero values
+    }
+
+    @Test
+    public void test_clone_withNegativeValues() {
+        // If applicable, set negative values and test cloning
+        Expression cloned = (Expression) expression.clone();
+        // Verify correct cloning with negative values
+    }
+}
+```

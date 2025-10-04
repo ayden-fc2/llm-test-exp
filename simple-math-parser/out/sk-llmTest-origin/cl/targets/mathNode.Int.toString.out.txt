@@ -1,0 +1,81 @@
+```java
+package test;
+
+import mathNode.Int;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class IntGeneratedTest {
+
+    // Test toString with positive number and no parentheses
+    @Test
+    public void test_toString_positiveNoParens() {
+        Int node = new Int(42);
+        node.setParens(false);
+        assertEquals("42", node.toString());
+    }
+
+    // Test toString with negative number and no parentheses
+    @Test
+    public void test_toString_negativeNoParens() {
+        Int node = new Int(-42);
+        node.setParens(false);
+        assertEquals("-42", node.toString());
+    }
+
+    // Test toString with zero and no parentheses
+    @Test
+    public void test_toString_zeroNoParens() {
+        Int node = new Int(0);
+        node.setParens(false);
+        assertEquals("0", node.toString());
+    }
+
+    // Test toString with positive number and parentheses
+    @Test
+    public void test_toString_positiveWithParens() {
+        Int node = new Int(42);
+        node.setParens(true);
+        assertEquals("(42)", node.toString());
+    }
+
+    // Test toString with negative number and parentheses
+    @Test
+    public void test_toString_negativeWithParens() {
+        Int node = new Int(-42);
+        node.setParens(true);
+        assertEquals("(-42)", node.toString());
+    }
+
+    // Test toString with zero and parentheses
+    @Test
+    public void test_toString_zeroWithParens() {
+        Int node = new Int(0);
+        node.setParens(true);
+        assertEquals("(0)", node.toString());
+    }
+
+    // Parameterized test for edge integer values without parentheses
+    @ParameterizedTest
+    @ValueSource(ints = {Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1, -1})
+    public void test_toString_edgeValuesNoParens(int value) {
+        Int node = new Int(value);
+        node.setParens(false);
+        String expected = Integer.toString(value);
+        assertEquals(expected, node.toString());
+    }
+
+    // Parameterized test for edge integer values with parentheses
+    @ParameterizedTest
+    @ValueSource(ints = {Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1, -1})
+    public void test_toString_edgeValuesWithParens(int value) {
+        Int node = new Int(value);
+        node.setParens(true);
+        String expected = "(" + Integer.toString(value) + ")";
+        assertEquals(expected, node.toString());
+    }
+}
+```

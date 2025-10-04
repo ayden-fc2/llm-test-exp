@@ -1,0 +1,82 @@
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerAddSpecialCharGeneratedTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    void setUp() {
+        scanner = new StringScanner();
+    }
+
+    // 正常情况：添加单个特殊字符
+    @Test
+    void test_AddSpecialChar_SingleCharacter() throws Exception {
+        scanner.addSpecialChar(new char[]{'@'});
+        assertTrue(getSpecCharSet(scanner).contains('@'));
+    }
+
+    // 正常情况：添加多个不同特殊字符
+    @Test
+    void test_AddSpecialChar_MultipleCharacters() throws Exception {
+        scanner.addSpecialChar(new char[]{'+', '-', '*', '/'});
+        Set<Character> set = getSpecCharSet(scanner);
+        assertTrue(set.contains('+'));
+        assertTrue(set.contains('-'));
+        assertTrue(set.contains('*'));
+        assertTrue(set.contains('/'));
+        assertEquals(4, set.size());
+    }
+
+    // 边界情况：添加空数组
+    @Test
+    void test_AddSpecialChar_EmptyArray() throws Exception {
+        scanner.addSpecialChar(new char[]{});
+        Set<Character> set = getSpecCharSet(scanner);
+        assertNotNull(set);
+        assertTrue(set.isEmpty());
+    }
+
+    // 边界情况：添加包含重复字符的数组
+    @Test
+    void test_AddSpecialChar_DuplicateCharacters() throws Exception {
+        scanner.addSpecialChar(new char[]{'!', '!', '!'});
+        Set<Character> set = getSpecCharSet(scanner);
+        assertTrue(set.contains('!'));
+        assertEquals(1, set.size()); // HashSet should deduplicate
+    }
+
+    // 特殊值：添加具有高ASCII值的字符
+    @ParameterizedTest
+    @ValueSource(chars = {'\0', '\u007F', '\u00FF'})
+    void test_AddSpecialChar_SpecialAsciiValues(char ch) throws Exception {
+        scanner.addSpecialChar(new char[]{ch});
+        assertTrue(getSpecCharSet(scanner).contains(ch));
+    }
+
+    // 参数化测试：验证各种常见特殊字符能被正确加入
+    @ParameterizedTest
+    @ValueSource(chars = {'+', '-', '=', '_', '#', '$', '%', '^', '&', '*'})
+    void test_AddSpecialChar_VariedCommonSpecialChars(char ch) throws Exception {
+        scanner.addSpecialChar(new char[]{ch});
+        assertTrue(getSpecCharSet(scanner).contains(ch));
+    }
+
+    // 获取私有字段 specCharSet 的辅助方法（用于检查内部状态）
+    @SuppressWarnings("unchecked")
+    private Set<Character> getSpecCharSet(StringScanner instance) throws Exception {
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        return (Set<Character>) field.get(instance);
+    }
+}

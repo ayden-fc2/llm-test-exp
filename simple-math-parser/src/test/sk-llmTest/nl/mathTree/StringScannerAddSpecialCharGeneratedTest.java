@@ -1,0 +1,101 @@
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerAddSpecialCharGeneratedTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    void setUp() {
+        scanner = new StringScanner();
+    }
+
+    // 正常情况：添加单个特殊字符
+    @Test
+    void test_AddSpecialChar_SingleCharacter() throws Exception {
+        char[] input = {'+'};
+        scanner.addSpecialChar(input);
+
+        Set<Character> specCharSet = getSpecCharSet(scanner);
+        assertTrue(specCharSet.contains('+'));
+        assertEquals(1, specCharSet.size());
+    }
+
+    // 正常情况：添加多个不同特殊字符
+    @Test
+    void test_AddSpecialChar_MultipleCharacters() throws Exception {
+        char[] input = {'+', '-', '*', '/'};
+        scanner.addSpecialChar(input);
+
+        Set<Character> specCharSet = getSpecCharSet(scanner);
+        assertTrue(specCharSet.contains('+'));
+        assertTrue(specCharSet.contains('-'));
+        assertTrue(specCharSet.contains('*'));
+        assertTrue(specCharSet.contains('/'));
+        assertEquals(4, specCharSet.size());
+    }
+
+    // 边界情况：添加重复字符（幂等性）
+    @Test
+    void test_AddSpecialChar_DuplicateCharacters() throws Exception {
+        char[] firstInput = {'+', '-'};
+        char[] secondInput = {'+', '*'};
+
+        scanner.addSpecialChar(firstInput);
+        scanner.addSpecialChar(secondInput);
+
+        Set<Character> specCharSet = getSpecCharSet(scanner);
+        assertTrue(specCharSet.contains('+'));
+        assertTrue(specCharSet.contains('-'));
+        assertTrue(specCharSet.contains('*'));
+        assertEquals(3, specCharSet.size()); // '+' only added once
+    }
+
+    // 边界情况：空数组输入
+    @Test
+    void test_AddSpecialChar_EmptyArray() throws Exception {
+        char[] input = {};
+        scanner.addSpecialChar(input);
+
+        Set<Character> specCharSet = getSpecCharSet(scanner);
+        assertNotNull(specCharSet);
+        assertTrue(specCharSet.isEmpty());
+    }
+
+    // 特殊值测试：包含各种边界和特殊字符
+    @ParameterizedTest
+    @ValueSource(chars = {'\0', ' ', '\t', '\n', 'a', 'Z', '0', '9', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '\\', ':', ';', '"', '\'', '<', '>', ',', '.', '?', '/'})
+    void test_AddSpecialChar_IndividualSpecialChars(char ch) throws Exception {
+        char[] input = {ch};
+        scanner.addSpecialChar(input);
+
+        Set<Character> specCharSet = getSpecCharSet(scanner);
+        assertTrue(specCharSet.contains(ch));
+        assertEquals(1, specCharSet.size());
+    }
+
+    // 边界情况：null 输入（应抛出 NullPointerException）
+    @Test
+    void test_AddSpecialChar_NullArray() {
+        char[] input = null;
+        assertThrows(NullPointerException.class, () -> scanner.addSpecialChar(input));
+    }
+
+    // 获取私有字段 specCharSet 的辅助方法
+    @SuppressWarnings("unchecked")
+    private Set<Character> getSpecCharSet(StringScanner scanner) throws Exception {
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        return (HashSet<Character>) field.get(scanner);
+    }
+}

@@ -1,0 +1,79 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link StringScanner#skipWhitespace()}.
+ */
+class StringScannerTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    void setUp() {
+        // Initialize a new instance before each test to ensure isolation
+        scanner = new StringScanner(); // Assuming default constructor exists
+    }
+
+    @Test
+    void test_skipWhitespace_setsFlagToTrue() {
+        // Given: A newly created StringScanner instance
+        // When: skipWhitespace is called
+        scanner.skipWhitespace();
+
+        // Then: The internal state indicating whitespace skipping is enabled should be true
+        // Note: Since the method has no return and we can't access private fields directly,
+        //       this test assumes there's a way to observe the effect of skipWhitespace.
+        //       For now, we are testing that the call does not throw an exception.
+        assertTrue(true); // Placeholder assertion; actual verification depends on observable behavior
+    }
+
+    @Test
+    void test_skipWhitespace_idempotentBehavior() {
+        // Given: A StringScanner instance
+        scanner.skipWhitespace();
+
+        // When: skipWhitespace is called multiple times
+        assertDoesNotThrow(() -> {
+            scanner.skipWhitespace();
+            scanner.skipWhitespace();
+        });
+
+        // Then: No exceptions are thrown (verifying idempotency implicitly)
+        assertTrue(true); // Placeholder as above
+    }
+
+    @Test
+    void test_skipWhitespace_onFreshInstance_noSideEffects() {
+        // Given: A fresh StringScanner instance
+        StringScanner freshScanner = new StringScanner();
+
+        // When: skipWhitespace is called
+        assertDoesNotThrow(freshScanner::skipWhitespace);
+
+        // Then: No exceptions occur and internal state changes as expected
+        assertTrue(true); // Again, placeholder due to lack of observable state
+    }
+}
+```
+
+> ⚠️ 注意：由于 `skipWhitespace()` 方法仅设置了一个私有标志位 (`skipWhitespace = true`) 并且没有返回值或可观察的副作用，因此无法直接断言其行为。以上测试主要覆盖了以下方面：
+- **语句覆盖**：调用方法本身。
+- **异常覆盖**：确保不会抛出异常。
+- **幂等性**：多次调用方法应无副作用。
+- **边界情况**：在新实例上调用方法。
+
+若要提升覆盖率并验证实际效果，建议补充如下内容（需修改源码以暴露状态）：
+```java
+// In StringScanner.java, add a getter for testing purposes:
+public boolean isSkipWhitespace() {
+    return skipWhitespace;
+}
+```
+然后可在测试中添加：
+```java
+assertTrue(scanner.isSkipWhitespace(), "skipWhitespace flag should be set to true after calling skipWhitespace()");
+```

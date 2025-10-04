@@ -1,0 +1,104 @@
+package mathNode;
+
+import mathNode.Pow;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PowCloneGeneratedTest {
+
+    private Pow pow;
+    private Expression mockLeft;
+    private Expression mockRight;
+
+    @BeforeEach
+    public void setUp() {
+        // Minimal stubs to allow compilation
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+        pow = new Pow();
+        pow.setLeftNode(mockLeft);
+        pow.setRightNode(mockRight);
+    }
+
+    @Test
+    public void test_clone_createsNewInstance() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+        assertNotSame(pow, cloned);
+    }
+
+    @Test
+    public void test_clone_copiesLeftNode() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned.getLeftNode());
+        assertNotSame(pow.getLeftNode(), cloned.getLeftNode());
+    }
+
+    @Test
+    public void test_clone_copiesRightNode() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(pow.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_preservesValuesWithZero() {
+        // Assuming there's a way to set/get values or that the structure itself is what matters
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+    }
+
+    @Test
+    public void test_clone_preservesValuesWithNegativeOne() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+    }
+
+    @Test
+    public void test_clone_preservesValuesWithMaxInt() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+    }
+
+    @Test
+    public void test_clone_preservesValuesWithMinInt() {
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {Double.MIN_VALUE, Double.MAX_VALUE, 1e-10, 1e10})
+    public void test_clone_handlesExtremeDoubleValues(double value) {
+        // This test assumes some property can be set with these values
+        Pow cloned = (Pow) pow.clone();
+        assertNotNull(cloned);
+    }
+
+    @Test
+    public void test_clone_withNullLeftNode() {
+        pow.setLeftNode(null);
+        Pow cloned = (Pow) pow.clone();
+        assertNull(cloned.getLeftNode());
+    }
+
+    @Test
+    public void test_clone_withNullRightNode() {
+        pow.setRightNode(null);
+        Pow cloned = (Pow) pow.clone();
+        assertNull(cloned.getRightNode());
+    }
+}

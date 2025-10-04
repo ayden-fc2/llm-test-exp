@@ -1,0 +1,72 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Factory Clone Tests")
+class FactoryCloneGeneratedTest {
+
+    @Test
+    @DisplayName("test_clone_normal_success")
+    void test_clone_normal_success() throws CloneNotSupportedException {
+        // Arrange
+        Factory original = new Factory();
+
+        // Act
+        Object cloned = original.clone();
+
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned); // Ensure it's a different object
+        assertEquals(Factory.class, cloned.getClass()); // Ensure type is preserved
+    }
+
+    @Test
+    @DisplayName("test_clone_idempotent_property")
+    void test_clone_idempotent_property() throws CloneNotSupportedException {
+        // Arrange
+        Factory original = new Factory();
+
+        // Act
+        Factory firstClone = (Factory) original.clone();
+        Factory secondClone = (Factory) firstClone.clone();
+
+        // Assert
+        assertNotNull(firstClone);
+        assertNotNull(secondClone);
+        assertNotSame(original, firstClone);
+        assertNotSame(original, secondClone);
+        assertNotSame(firstClone, secondClone);
+        assertEquals(Factory.class, firstClone.getClass());
+        assertEquals(Factory.class, secondClone.getClass());
+    }
+
+    @Test
+    @DisplayName("test_clone_returns_correct_type")
+    void test_clone_returns_correct_type() throws CloneNotSupportedException {
+        // Arrange
+        Factory original = new Factory();
+
+        // Act
+        Object result = original.clone();
+
+        // Assert
+        assertTrue(result instanceof Factory);
+    }
+
+    @Test
+    @DisplayName("test_clone_throws_exception_when_super_clone_fails")
+    void test_clone_throws_exception_when_super_clone_fails() {
+        // Arrange
+        Factory original = new Factory() {
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Simulated failure");
+            }
+        };
+
+        // Act & Assert
+        assertThrows(CloneNotSupportedException.class, original::clone);
+    }
+}

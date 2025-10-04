@@ -1,0 +1,285 @@
+```java
+package test;
+
+import mathNode.Sub;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SubGeneratedTest {
+
+    private MathNode leftNode;
+    private MathNode rightNode;
+    private Sub sub;
+
+    @BeforeEach
+    public void setUp() {
+        // Create mock MathNode implementations for testing
+        leftNode = new MathNode() {
+            private String value;
+            
+            public MathNode setValue(String val) {
+                this.value = val;
+                return this;
+            }
+            
+            @Override
+            public String toString() {
+                return value != null ? value : "left";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        rightNode = new MathNode() {
+            private String value;
+            
+            public MathNode setValue(String val) {
+                this.value = val;
+                return this;
+            }
+            
+            @Override
+            public String toString() {
+                return value != null ? value : "right";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub = new Sub();
+    }
+
+    @Test
+    public void test_toString_withParensFalse_returnsUnparenthesizedExpression() {
+        // Arrange
+        sub.setLeftNode(leftNode);
+        sub.setRightNode(rightNode);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals("left - right", result);
+    }
+
+    @Test
+    public void test_toString_withParensTrue_returnsParenthesizedExpression() {
+        // Arrange
+        sub.setLeftNode(leftNode);
+        sub.setRightNode(rightNode);
+        sub.setParens(true);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals("(left - right)", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "1", "Integer.MIN_VALUE", "Integer.MAX_VALUE"})
+    public void test_toString_withEdgeCaseValues_returnsCorrectExpression(String value) {
+        // Arrange
+        MathNode left = new MathNode() {
+            @Override
+            public String toString() {
+                return value.equals("Integer.MIN_VALUE") ? String.valueOf(Integer.MIN_VALUE) : 
+                       value.equals("Integer.MAX_VALUE") ? String.valueOf(Integer.MAX_VALUE) : value;
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        MathNode right = new MathNode() {
+            @Override
+            public String toString() {
+                return value.equals("Integer.MIN_VALUE") ? String.valueOf(Integer.MIN_VALUE) : 
+                       value.equals("Integer.MAX_VALUE") ? String.valueOf(Integer.MAX_VALUE) : value;
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        String expectedValue = value.equals("Integer.MIN_VALUE") ? String.valueOf(Integer.MIN_VALUE) : 
+                              value.equals("Integer.MAX_VALUE") ? String.valueOf(Integer.MAX_VALUE) : value;
+        assertEquals(expectedValue + " - " + expectedValue, result);
+    }
+
+    @Test
+    public void test_toString_withEmptyStrings_returnsDashWithSpaces() {
+        // Arrange
+        MathNode left = new MathNode() {
+            @Override
+            public String toString() {
+                return "";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        MathNode right = new MathNode() {
+            @Override
+            public String toString() {
+                return "";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals(" - ", result);
+    }
+
+    @Test
+    public void test_toString_withSpecialCharactersInNodes_handlesSpecialChars() {
+        // Arrange
+        MathNode left = new MathNode() {
+            @Override
+            public String toString() {
+                return "a+b";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        MathNode right = new MathNode() {
+            @Override
+            public String toString() {
+                return "c*d";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals("a+b - c*d", result);
+    }
+
+    @Test
+    public void test_toString_withVeryLargeNumbers_handlesLargeNumbers() {
+        // Arrange
+        MathNode left = new MathNode() {
+            @Override
+            public String toString() {
+                return "999999999999999999";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        MathNode right = new MathNode() {
+            @Override
+            public String toString() {
+                return "111111111111111111";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals("999999999999999999 - 111111111111111111", result);
+    }
+
+    @Test
+    public void test_toString_withNegativeZero_handlesNegativeZero() {
+        // Arrange
+        MathNode left = new MathNode() {
+            @Override
+            public String toString() {
+                return "-0.0";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        MathNode right = new MathNode() {
+            @Override
+            public String toString() {
+                return "0.0";
+            }
+            
+            @Override
+            public boolean isParens() {
+                return false;
+            }
+        };
+        
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        sub.setParens(false);
+        
+        // Act
+        String result = sub.toString();
+        
+        // Assert
+        assertEquals("-0.0 - 0.0", result);
+    }
+}
+```

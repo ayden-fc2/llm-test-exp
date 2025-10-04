@@ -1,0 +1,109 @@
+```java
+import mathNode.Factory;
+import mathNode.Expression;
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FactoryGeneratedTest {
+
+    private final Factory factory = new Factory();
+
+    @Test
+    public void testBuildNode_returnsDecInstance() {
+        Expression result = factory.buildNode(5.0);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, 1.0, -1.0, Double.MIN_VALUE, Double.MAX_VALUE, 1e-10, 1e10, -1e-10, -1e10})
+    public void testBuildNode_handlesEdgeValues(double value) {
+        Expression result = factory.buildNode(value);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(value, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withPositiveValue() {
+        double input = 42.5;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withNegativeValue() {
+        double input = -42.5;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withZero() {
+        double input = 0.0;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withVeryLargePositiveValue() {
+        double input = Double.MAX_VALUE;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withVeryLargeNegativeValue() {
+        double input = -Double.MAX_VALUE;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withVerySmallPositiveValue() {
+        double input = Double.MIN_VALUE;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+
+    @Test
+    public void testBuildNode_withVerySmallNegativeValue() {
+        double input = -Double.MIN_VALUE;
+        Expression result = factory.buildNode(input);
+        assertNotNull(result);
+        assertTrue(result instanceof Dec);
+
+        Dec decResult = (Dec) result;
+        assertEquals(input, decResult.getValue(), 1e-9);
+    }
+}
+```

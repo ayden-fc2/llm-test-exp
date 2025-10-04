@@ -1,0 +1,85 @@
+package mathNode;
+
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DecCalculateGeneratedTest {
+
+    @Test
+    void test_calculate_returnsStoredValue() {
+        double inputValue = 42.5;
+        Dec dec = new Dec(inputValue);
+        Number result = dec.calculate();
+        assertEquals(inputValue, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -1.0, 1.0, Double.MIN_VALUE, Double.MAX_VALUE, -Double.MAX_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    void test_calculate_edgeValues(double value) {
+        Dec dec = new Dec(value);
+        Number result = dec.calculate();
+        if (Double.isInfinite(value)) {
+            assertTrue(Double.isInfinite(result.doubleValue()));
+        } else {
+            assertEquals(value, result.doubleValue(), 1e-9);
+        }
+    }
+
+    @Test
+    void test_calculate_withNaN() {
+        Dec dec = new Dec(Double.NaN);
+        Number result = dec.calculate();
+        assertTrue(Double.isNaN(result.doubleValue()));
+    }
+
+    @Test
+    void test_toString_withoutParens() {
+        Dec dec = new Dec(3.14);
+        dec.setParens(false);
+        String result = dec.toString();
+        assertEquals("3.14", result);
+    }
+
+    @Test
+    void test_toString_withParens() {
+        Dec dec = new Dec(3.14);
+        dec.setParens(true);
+        String result = dec.toString();
+        assertEquals("(3.14)", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -0.0, -1.5, 1.5, Double.MIN_VALUE, Double.MAX_VALUE})
+    void test_toString_parensFlagBehavior(double value) {
+        Dec dec = new Dec(value);
+        
+        dec.setParens(false);
+        String withoutParens = dec.toString();
+        assertEquals(Double.toString(value), withoutParens);
+        
+        dec.setParens(true);
+        String withParens = dec.toString();
+        assertEquals("(" + value + ")", withParens);
+    }
+
+    @Test
+    void test_toString_withNaNAndParens() {
+        Dec dec = new Dec(Double.NaN);
+        dec.setParens(true);
+        String result = dec.toString();
+        assertEquals("(NaN)", result);
+    }
+
+    @Test
+    void test_toString_withInfinity() {
+        Dec dec = new Dec(Double.POSITIVE_INFINITY);
+        dec.setParens(true);
+        String result = dec.toString();
+        assertEquals("(Infinity)", result);
+    }
+}

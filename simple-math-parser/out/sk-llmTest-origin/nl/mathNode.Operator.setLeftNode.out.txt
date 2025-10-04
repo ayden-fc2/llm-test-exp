@@ -1,0 +1,97 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+// 最小桩类，用于模拟 Expression 接口或基类
+class DummyExpression implements Expression {
+    private String identifier;
+
+    public DummyExpression(String identifier) {
+        this.identifier = identifier;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DummyExpression)) return false;
+        DummyExpression that = (DummyExpression) o;
+        return identifier.equals(that.identifier);
+    }
+
+    @Override
+    public int hashCode() {
+        return identifier.hashCode();
+    }
+}
+
+// 如果 Expression 是接口，则可以这样定义一个最小实现
+interface Expression {}
+
+public class OperatorSetLeftNodeTest {
+
+    // 被测类的最小实现，仅包含与测试相关的内容
+    static class Operator {
+        protected Expression leftNode;
+
+        public void setLeftNode(Expression newNode) {
+            leftNode = newNode;
+        }
+
+        public Expression getLeftNode() {
+            return leftNode;
+        }
+    }
+
+    @Test
+    public void test_setLeftNode_normalAssignment() {
+        Operator operator = new Operator();
+        Expression node = new DummyExpression("normal");
+
+        operator.setLeftNode(node);
+
+        assertEquals(node, operator.getLeftNode(), "Left node should be set to the provided expression.");
+    }
+
+    @Test
+    public void test_setLeftNode_assignNull() {
+        Operator operator = new Operator();
+        operator.setLeftNode(new DummyExpression("initial"));
+
+        operator.setLeftNode(null);
+
+        assertNull(operator.getLeftNode(), "Left node should be null after setting to null.");
+    }
+
+    @Test
+    public void test_setLeftNode_reassignSameInstance() {
+        Operator operator = new Operator();
+        Expression node = new DummyExpression("same");
+
+        operator.setLeftNode(node);
+        operator.setLeftNode(node); // Reassign same instance
+
+        assertSame(node, operator.getLeftNode(), "Left node should remain the same instance after reassignment.");
+    }
+
+    @Test
+    public void test_setLeftNode_reassignDifferentInstance() {
+        Operator operator = new Operator();
+        Expression firstNode = new DummyExpression("first");
+        Expression secondNode = new DummyExpression("second");
+
+        operator.setLeftNode(firstNode);
+        operator.setLeftNode(secondNode);
+
+        assertEquals(secondNode, operator.getLeftNode(), "Left node should be updated to the new expression.");
+    }
+
+    @Test
+    public void test_setLeftNode_initialStateIsNull() {
+        Operator operator = new Operator();
+
+        assertNull(operator.getLeftNode(), "Initial left node should be null.");
+    }
+}
+```

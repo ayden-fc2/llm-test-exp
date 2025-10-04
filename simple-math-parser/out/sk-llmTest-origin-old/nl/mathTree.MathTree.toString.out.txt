@@ -1,0 +1,86 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeTest {
+
+    private MathTree mathTree;
+
+    @BeforeEach
+    void setUp() {
+        mathTree = new MathTree();
+    }
+
+    // 测试 rootNode 为 null 的情况，期望返回空字符串
+    @Test
+    void test_toString_whenRootNodeIsNull_returnsEmptyString() {
+        // Given: rootNode 默认为 null（构造函数未设置）
+        // When: 调用 toString()
+        String result = mathTree.toString();
+        // Then: 返回空字符串
+        assertEquals("", result, "toString should return empty string when rootNode is null");
+    }
+
+    // 测试 rootNode 不为 null 的情况，验证调用了 rootNode.toString()
+    @Test
+    void test_toString_whenRootNodeIsNotNull_returnsRootNodeToString() {
+        // Given: 构造一个桩节点，其 toString 返回特定值
+        MathTree.TreeNode mockNode = new MathTree.TreeNode() {
+            @Override
+            public String toString() {
+                return "MockRootNode";
+            }
+        };
+        mathTree.rootNode = mockNode;
+
+        // When: 调用 toString()
+        String result = mathTree.toString();
+
+        // Then: 应该返回 mockNode.toString() 的结果
+        assertEquals("MockRootNode", result, "toString should delegate to rootNode.toString()");
+    }
+
+    // 参数化测试：验证 rootNode 不为 null 时，能正确返回其 toString 结果
+    @ParameterizedTest
+    @ValueSource(strings = {"", "0", "-1", "123", "very_large_value_999999999", "special chars !@#$%^&*()"})
+    void test_toString_withVariousRootNodeValues_returnsExpectedString(String nodeValue) {
+        // Given: 创建一个桩节点，其 toString 返回参数化的值
+        MathTree.TreeNode mockNode = new MathTree.TreeNode() {
+            @Override
+            public String toString() {
+                return nodeValue;
+            }
+        };
+        mathTree.rootNode = mockNode;
+
+        // When: 调用 toString()
+        String result = mathTree.toString();
+
+        // Then: 应该返回对应的 nodeValue
+        assertEquals(nodeValue, result, "toString should return the value from rootNode.toString()");
+    }
+
+    // 测试 rootNode.toString() 抛出异常时的行为（虽然题目说无异常，但为了健壮性可测）
+    @Test
+    void test_toString_whenRootNodeToStringThrowsException_propagatesException() {
+        // Given: 一个会抛出运行时异常的桩节点
+        MathTree.TreeNode faultyNode = new MathTree.TreeNode() {
+            @Override
+            public String toString() {
+                throw new RuntimeException("Simulated fault in rootNode.toString()");
+            }
+        };
+        mathTree.rootNode = faultyNode;
+
+        // When & Then: 调用 toString 应该抛出异常
+        RuntimeException thrown = assertThrows(RuntimeException.class, mathTree::toString);
+        assertEquals("Simulated fault in rootNode.toString()", thrown.getMessage());
+    }
+}
+```

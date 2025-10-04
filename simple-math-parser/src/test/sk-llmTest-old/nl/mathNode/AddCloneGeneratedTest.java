@@ -1,0 +1,180 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AddCloneGeneratedTest {
+
+    // Minimal stubs to make the code compile and testable
+    static class Expression implements Cloneable {
+        private final Object value;
+
+        public Expression(Object value) {
+            this.value = value;
+        }
+
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Expression)) return false;
+            Expression that = (Expression) o;
+            return value != null ? value.equals(that.value) : that.value == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return value != null ? value.hashCode() : 0;
+        }
+    }
+
+    static class Add implements Cloneable {
+        private Expression leftNode;
+        private Expression rightNode;
+
+        public Add(Expression leftNode, Expression rightNode) {
+            this.leftNode = leftNode;
+            this.rightNode = rightNode;
+        }
+
+        public Expression getLeftNode() {
+            return leftNode;
+        }
+
+        public void setLeftNode(Expression leftNode) {
+            this.leftNode = leftNode;
+        }
+
+        public Expression getRightNode() {
+            return rightNode;
+        }
+
+        public void setRightNode(Expression rightNode) {
+            this.rightNode = rightNode;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            Add clone = (Add) super.clone();
+            clone.setLeftNode((Expression) this.getLeftNode().clone());
+            clone.setRightNode((Expression) this.getRightNode().clone());
+            return clone;
+        }
+    }
+
+    private Add baseAdd;
+    private Expression leftExpr;
+    private Expression rightExpr;
+
+    @BeforeEach
+    void setUp() {
+        leftExpr = new Expression(5);
+        rightExpr = new Expression(10);
+        baseAdd = new Add(leftExpr, rightExpr);
+    }
+
+    @Test
+    void test_clone_normalCase_createsDeepCopy() throws CloneNotSupportedException {
+        Add cloned = (Add) baseAdd.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(baseAdd, cloned);
+        assertEquals(baseAdd.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(baseAdd.getLeftNode(), cloned.getLeftNode());
+        assertEquals(baseAdd.getRightNode(), cloned.getRightNode());
+        assertNotSame(baseAdd.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    void test_clone_withNullLeftNode_throwsNullPointerExceptionDuringClone() {
+        Add addWithNullLeft = new Add(null, rightExpr);
+
+        assertThrows(NullPointerException.class, () -> addWithNullLeft.clone());
+    }
+
+    @Test
+    void test_clone_withNullRightNode_throwsNullPointerExceptionDuringClone() {
+        Add addWithNullRight = new Add(leftExpr, null);
+
+        assertThrows(NullPointerException.class, () -> addWithNullRight.clone());
+    }
+
+    @Test
+    void test_clone_withBothNodesNull_throwsNullPointerExceptionDuringClone() {
+        Add addWithBothNull = new Add(null, null);
+
+        assertThrows(NullPointerException.class, () -> addWithBothNull.clone());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideExpressionsForCloning")
+    void test_clone_withVariousExpressionValues_performsDeepCopy(Expression left, Expression right) throws CloneNotSupportedException {
+        Add add = new Add(left, right);
+        Add cloned = (Add) add.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(add, cloned);
+        assertEquals(add.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(add.getLeftNode(), cloned.getLeftNode());
+        assertEquals(add.getRightNode(), cloned.getRightNode());
+        assertNotSame(add.getRightNode(), cloned.getRightNode());
+    }
+
+    static Stream<Arguments> provideExpressionsForCloning() {
+        return Stream.of(
+                Arguments.of(new Expression(0), new Expression(0)),
+                Arguments.of(new Expression(-1), new Expression(1)),
+                Arguments.of(new Expression(Integer.MAX_VALUE), new Expression(Integer.MIN_VALUE)),
+                Arguments.of(new Expression(Double.MAX_VALUE), new Expression(Double.MIN_VALUE)),
+                Arguments.of(new Expression("test"), new Expression(""))
+        );
+    }
+
+    // Simulate a non-clonable expression to trigger CloneNotSupportedException in child nodes
+    static class NonClonableExpression extends Expression {
+        public NonClonableExpression(Object value) {
+            super(value);
+        }
+
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            throw new CloneNotSupportedException("Cannot clone NonClonableExpression");
+        }
+    }
+
+    @Test
+    void test_clone_whenLeftNodeNotCloneable_throwsCloneNotSupportedException() {
+        Expression nonClonableExpr = new NonClonableExpression("non-cloneable");
+        Add addWithNonClonableLeft = new Add(nonClonableExpr, rightExpr);
+
+        assertThrows(CloneNotSupportedException.class, () -> addWithNonClonableLeft.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeNotCloneable_throwsCloneNotSupportedException() {
+        Expression nonClonableExpr = new NonClonableExpression("non-cloneable");
+        Add addWithNonClonableRight = new Add(leftExpr, nonClonableExpr);
+
+        assertThrows(CloneNotSupportedException.class, () -> addWithNonClonableRight.clone());
+    }
+
+    @Test
+    void test_clone_whenBothNodesNotCloneable_throwsCloneNotSupportedException() {
+        Expression nonClonableLeft = new NonClonableExpression("left");
+        Expression nonClonableRight = new NonClonableExpression("right");
+        Add addWithNonClonableNodes = new Add(nonClonableLeft, nonClonableRight);
+
+        assertThrows(CloneNotSupportedException.class, () -> addWithNonClonableNodes.clone());
+    }
+}

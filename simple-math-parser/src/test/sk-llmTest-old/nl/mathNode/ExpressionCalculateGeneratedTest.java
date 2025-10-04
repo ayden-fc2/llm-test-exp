@@ -1,0 +1,202 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Expression#calculate()}.
+ * <p>
+ * These tests assume that concrete subclasses of Expression will implement
+ * the calculate() method and provide specific behavior. Since Expression is abstract,
+ * we test through minimal stub implementations to ensure coverage and correctness.
+ */
+public class ExpressionCalculateGeneratedTest {
+
+    // Minimal concrete implementation for testing purposes
+    private static class ConstantExpression extends Expression {
+        private final Number value;
+
+        ConstantExpression(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    // Another minimal implementation to simulate a more complex expression
+    private static class NegateExpression extends Expression {
+        private final Expression expr;
+
+        NegateExpression(Expression expr) {
+            this.expr = expr;
+        }
+
+        @Override
+        public Number calculate() {
+            Number val = expr.calculate();
+            if (val instanceof Double || val instanceof Float) {
+                return -val.doubleValue();
+            } else {
+                return -val.longValue();
+            }
+        }
+    }
+
+    // A simple identity expression that returns its input
+    private static class IdentityExpression extends Expression {
+        private final Number input;
+
+        IdentityExpression(Number input) {
+            this.input = input;
+        }
+
+        @Override
+        public Number calculate() {
+            return input;
+        }
+    }
+
+    // Expression that throws an exception during calculation
+    private static class FaultyExpression extends Expression {
+        private final RuntimeException exception;
+
+        FaultyExpression(RuntimeException exception) {
+            this.exception = exception;
+        }
+
+        @Override
+        public Number calculate() {
+            throw exception;
+        }
+    }
+
+    @Test
+    public void test_calculate_zero() {
+        Expression expr = new ConstantExpression(0);
+        assertEquals(0, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_one() {
+        Expression expr = new ConstantExpression(1);
+        assertEquals(1, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_negativeOne() {
+        Expression expr = new ConstantExpression(-1);
+        assertEquals(-1, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_maxInteger() {
+        Expression expr = new ConstantExpression(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_minInteger() {
+        Expression expr = new ConstantExpression(Integer.MIN_VALUE);
+        assertEquals(Integer.MIN_VALUE, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_maxDouble() {
+        Expression expr = new ConstantExpression(Double.MAX_VALUE);
+        assertEquals(Double.MAX_VALUE, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_minDouble() {
+        Expression expr = new ConstantExpression(Double.MIN_VALUE);
+        assertEquals(Double.MIN_VALUE, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_positiveDecimal() {
+        Expression expr = new ConstantExpression(3.14159);
+        assertEquals(3.14159, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_negativeDecimal() {
+        Expression expr = new ConstantExpression(-2.71828);
+        assertEquals(-2.71828, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, 1.0, -1.0, Double.MAX_VALUE, Double.MIN_VALUE, 3.14, -2.71})
+    public void test_calculate_doubleValues(double input) {
+        Expression expr = new IdentityExpression(input);
+        assertEquals(input, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, -1, Integer.MAX_VALUE, Integer.MIN_VALUE, 42, -42})
+    public void test_calculate_integerValues(int input) {
+        Expression expr = new IdentityExpression(input);
+        assertEquals(input, expr.calculate().intValue());
+    }
+
+    @Test
+    public void test_calculate_throwsArithmeticException() {
+        Expression expr = new FaultyExpression(new ArithmeticException("Division by zero"));
+        assertThrows(ArithmeticException.class, expr::calculate);
+    }
+
+    @Test
+    public void test_calculate_throwsNullPointerException() {
+        Expression expr = new FaultyExpression(new NullPointerException("Null operand"));
+        assertThrows(NullPointerException.class, expr::calculate);
+    }
+
+    @Test
+    public void test_calculate_throwsUnsupportedOperationException() {
+        Expression expr = new FaultyExpression(new UnsupportedOperationException("Not implemented"));
+        assertThrows(UnsupportedOperationException.class, expr::calculate);
+    }
+
+    @Test
+    public void test_calculate_negatePositiveInteger() {
+        Expression inner = new ConstantExpression(5);
+        Expression expr = new NegateExpression(inner);
+        assertEquals(-5L, expr.calculate().longValue());
+    }
+
+    @Test
+    public void test_calculate_negateNegativeDouble() {
+        Expression inner = new ConstantExpression(-3.5);
+        Expression expr = new NegateExpression(inner);
+        assertEquals(3.5, expr.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_negateZero() {
+        Expression inner = new ConstantExpression(0);
+        Expression expr = new NegateExpression(inner);
+        assertEquals(0L, expr.calculate().longValue());
+    }
+
+    @Test
+    public void test_calculate_chainedNegation() {
+        Expression inner = new ConstantExpression(10);
+        Expression negateOnce = new NegateExpression(inner);
+        Expression negateTwice = new NegateExpression(negateOnce);
+        assertEquals(10L, negateTwice.calculate().longValue());
+    }
+
+    @Test
+    public void test_clone_returnsNewInstance() {
+        Expression expr = new ConstantExpression(42);
+        Expression cloned = expr.clone();
+        assertNotNull(cloned);
+        assertNotSame(expr, cloned);
+        assertEquals(expr.calculate(), cloned.calculate());
+    }
+}

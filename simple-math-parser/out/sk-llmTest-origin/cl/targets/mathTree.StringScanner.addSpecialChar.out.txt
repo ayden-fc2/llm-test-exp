@@ -1,0 +1,111 @@
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import java.lang.reflect.Field;
+import java.util.Set;
+
+public class StringScannerGeneratedTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    public void setUp() {
+        scanner = new StringScanner();
+    }
+
+    @Test
+    public void test_addSpecialChar_withNullArray_throwsException() {
+        assertThrows(NullPointerException.class, () -> {
+            scanner.addSpecialChar(null);
+        });
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {'+', '-', '*', '/', '(', ')', '[', ']', '{', '}'})
+    public void test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char ch) throws Exception {
+        scanner.addSpecialChar(new char[]{ch});
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        assertTrue(specCharSet.contains(ch), "Special character '" + ch + "' should be added to the set");
+    }
+
+    @Test
+    public void test_addSpecialChar_withEmptyArray_doesNotAddAnyCharacter() throws Exception {
+        scanner.addSpecialChar(new char[]{});
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        assertEquals(0, specCharSet.size(), "No characters should be added when array is empty");
+    }
+
+    @Test
+    public void test_addSpecialChar_withDuplicateCharacters_addsOnlyUniqueCharacters() throws Exception {
+        scanner.addSpecialChar(new char[]{'*', '*', '+'});
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        assertEquals(2, specCharSet.size(), "Should contain only unique characters");
+        assertTrue(specCharSet.contains('*'), "Should contain '*' character");
+        assertTrue(specCharSet.contains('+'), "Should contain '+' character");
+    }
+
+    @Test
+    public void test_addSpecialChar_withWhitespaceCharacters_addsAllWhitespaces() throws Exception {
+        char[] whitespaceChars = {' ', '\t', '\n'};
+        scanner.addSpecialChar(whitespaceChars);
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        for (char ch : whitespaceChars) {
+            assertTrue(specCharSet.contains(ch), "Special character '" + ch + "' should be added to the set");
+        }
+    }
+
+    @Test
+    public void test_addSpecialChar_withUnicodeCharacters_addsUnicodeChars() throws Exception {
+        char[] unicodeChars = {'α', 'β', '∑', '√'};
+        scanner.addSpecialChar(unicodeChars);
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        for (char ch : unicodeChars) {
+            assertTrue(specCharSet.contains(ch), "Special character '" + ch + "' should be added to the set");
+        }
+    }
+
+    @Test
+    public void test_addSpecialChar_withMaxMinValues_addsExtremeCharacters() throws Exception {
+        // Using printable extreme values that are valid characters
+        char[] extremeChars = {(char) 0x0020, (char) 0x007E}; // Space and tilde in ASCII
+        scanner.addSpecialChar(extremeChars);
+        
+        // Access private field specCharSet using reflection
+        Field field = StringScanner.class.getDeclaredField("specCharSet");
+        field.setAccessible(true);
+        Set<Character> specCharSet = (Set<Character>) field.get(scanner);
+        
+        for (char ch : extremeChars) {
+            assertTrue(specCharSet.contains(ch), "Special character '" + ch + "' should be added to the set");
+        }
+    }
+}
+```

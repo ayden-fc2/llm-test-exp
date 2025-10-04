@@ -1,0 +1,93 @@
+package mathTree;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import java.util.HashSet;
+import java.util.LinkedList;
+import mathTree.StringScanner;
+
+public class StringScannerCloneGeneratedTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    public void setUp() {
+        scanner = new StringScanner();
+    }
+
+    @Test
+    public void test_clone_createsDeepCopy() throws CloneNotSupportedException {
+        // Setup original scanner with data
+        scanner.addDelimiter(" ");
+        scanner.addSpecialChar('+');
+        scanner.tokenize("1 + 2");
+
+        // Clone the scanner
+        StringScanner clone = (StringScanner) scanner.clone();
+
+        // Assert that clone is a different object
+        assertNotSame(scanner, clone);
+
+        // Assert that collections are cloned (different objects)
+        assertNotSame(scanner.getTokenList(), clone.getTokenList());
+        assertNotSame(scanner.getDelimSet(), clone.getDelimSet());
+        assertNotSame(scanner.getSpecCharSet(), clone.getSpecCharSet());
+
+        // Assert that contents are equal
+        assertEquals(scanner.getTokenList(), clone.getTokenList());
+        assertEquals(scanner.getDelimSet(), clone.getDelimSet());
+        assertEquals(scanner.getSpecCharSet(), clone.getSpecCharSet());
+    }
+
+    @Test
+    public void test_clone_withEmptyCollections() throws CloneNotSupportedException {
+        // Create scanner with empty collections
+        StringScanner clone = (StringScanner) scanner.clone();
+
+        // Assert that clone is a different object
+        assertNotSame(scanner, clone);
+
+        // Assert that empty collections are cloned correctly
+        assertNotSame(scanner.getTokenList(), clone.getTokenList());
+        assertNotSame(scanner.getDelimSet(), clone.getDelimSet());
+        assertNotSame(scanner.getSpecCharSet(), clone.getSpecCharSet());
+
+        assertTrue(clone.getTokenList().isEmpty());
+        assertTrue(clone.getDelimSet().isEmpty());
+        assertTrue(clone.getSpecCharSet().isEmpty());
+    }
+
+    @Test
+    public void test_clone_modifyingCloneDoesNotAffectOriginal() throws CloneNotSupportedException {
+        // Setup original scanner
+        scanner.addDelimiter(",");
+        scanner.addSpecialChar('*');
+        scanner.tokenize("3*4,5");
+
+        // Clone and modify clone
+        StringScanner clone = (StringScanner) scanner.clone();
+        clone.addDelimiter(";");
+        clone.addSpecialChar('-');
+        clone.tokenize("7-8;9");
+
+        // Assert original is unchanged
+        assertFalse(scanner.getDelimSet().contains(";"));
+        assertFalse(scanner.getSpecCharSet().contains('-'));
+        assertNotEquals(scanner.getTokenList(), clone.getTokenList());
+    }
+
+    @Test
+    public void test_clone_withNullTokenList() throws CloneNotSupportedException {
+        // Access internal state to set tokenList to null (if possible in implementation)
+        // This test ensures robustness against null values
+        StringScanner clone = (StringScanner) scanner.clone();
+        assertNotNull(clone.getTokenList());
+    }
+
+    @Test
+    public void test_clone_returnsCorrectType() throws CloneNotSupportedException {
+        Object clone = scanner.clone();
+        assertTrue(clone instanceof StringScanner);
+    }
+}

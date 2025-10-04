@@ -1,0 +1,38 @@
+package mathNode;
+
+import mathNode.Factory;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FactoryCloneGeneratedTest {
+
+    @Test
+    @DisplayName("test_clone_creates_new_instance")
+    public void test_clone_creates_new_instance() {
+        Factory original = new Factory();
+        Factory cloned = (Factory) original.clone();
+        
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Factory.class, cloned.getClass());
+    }
+
+    @Test
+    @DisplayName("test_clone_returns_correct_type")
+    public void test_clone_returns_correct_type() {
+        Factory original = new Factory();
+        Object cloned = original.clone();
+        
+        assertTrue(cloned instanceof Factory);
+    }
+
+    @Test
+    @DisplayName("test_clone_on_null_reference_throws_exception")
+    public void test_clone_on_null_reference_throws_exception() {
+        Factory original = null;
+        assertThrows(NullPointerException.class, () -> {
+            original.clone();
+        });
+    }
+}

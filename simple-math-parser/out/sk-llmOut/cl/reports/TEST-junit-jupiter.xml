@@ -1,0 +1,2134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="204" skipped="0" failures="27" errors="0" time="0.175" hostname="shiqixuans-MacBook-Air.local" timestamp="2025-10-04T16:25:46">
+<properties>
+<property name="apple.awt.application.name" value="ConsoleLauncher"/>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="/"/>
+<property name="ftp.nonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="http.nonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="java.class.path" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar"/>
+<property name="java.class.version" value="65.0"/>
+<property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.7/libexec/openjdk.jdk/Contents/Home"/>
+<property name="java.io.tmpdir" value="/var/folders/55/1ll2s_c15nz1vbqv9ypcngnm0000gn/T/"/>
+<property name="java.library.path" value="/Users/shiqixuan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="21.0.7"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="21"/>
+<property name="java.vendor" value="Homebrew"/>
+<property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.version" value="Homebrew"/>
+<property name="java.version" value="21.0.7"/>
+<property name="java.version.date" value="2025-04-15"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="21"/>
+<property name="java.vm.vendor" value="Homebrew"/>
+<property name="java.vm.version" value="21.0.7"/>
+<property name="jdk.debug" value="release"/>
+<property name="line.separator" value="
+"/>
+<property name="native.encoding" value="UTF-8"/>
+<property name="os.arch" value="aarch64"/>
+<property name="os.name" value="Mac OS X"/>
+<property name="os.version" value="15.6"/>
+<property name="path.separator" value=":"/>
+<property name="socksNonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="stderr.encoding" value="UTF-8"/>
+<property name="stdout.encoding" value="UTF-8"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.7/libexec/openjdk.jdk/Contents/Home/lib"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+<property name="sun.java.command" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/cl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/cl/test --scan-classpath --reports-dir /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/cl/reports"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="UTF-8"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="user.country" value="CN"/>
+<property name="user.dir" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser"/>
+<property name="user.home" value="/Users/shiqixuan"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="shiqixuan"/>
+<property name="user.timezone" value="Asia/Shanghai"/>
+</properties>
+<testcase name="test_toString_zeroWithParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_zeroWithParens()]
+display-name: test_toString_zeroWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withNonEmptyString_addsToTokenList()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_withNonEmptyString_addsToTokenList()]
+display-name: test_saveToken_withNonEmptyString_addsToTokenList()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[4]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#4]
+display-name: [4] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[3]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#3]
+display-name: [3] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_consecutiveOperators()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_consecutiveOperators()]
+display-name: test_cleanStrList_consecutiveOperators()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[2]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#2]
+display-name: [2] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValue_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_negativeValue_noParens()]
+display-name: test_toString_negativeValue_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[1]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#1]
+display-name: [1] 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[8]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#8]
+display-name: [8] -Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[7]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#7]
+display-name: [7] Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[6]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#6]
+display-name: [6] -1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_edgeValues(double)[5]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_calculate_edgeValues(double)]/[test-template-invocation:#5]
+display-name: [5] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_scan_mixedAlphanumeric_tokensParsedCorrectly()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_mixedAlphanumeric_tokensParsedCorrectly(StringScannerScanGeneratedTest.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_mixedAlphanumeric_tokensParsedCorrectly()]
+display-name: test_scan_mixedAlphanumeric_tokensParsedCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withWhitespaceCharacters_addsAllWhitespaces()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withWhitespaceCharacters_addsAllWhitespaces()]
+display-name: test_addSpecialChar_withWhitespaceCharacters_addsAllWhitespaces()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_resultTypeInteger()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_resultTypeInteger()]
+display-name: test_solve_resultTypeInteger()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_specialCharactersInTokens_handlesCorrectly()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_specialCharactersInTokens_handlesCorrectly(StringScannerScanGeneratedTest.java:86)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_specialCharactersInTokens_handlesCorrectly()]
+display-name: test_scan_specialCharactersInTokens_handlesCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withValidExpressionAsArg_returnsResult()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withValidExpressionAsArg_returnsResult()]
+display-name: test_main_withValidExpressionAsArg_returnsResult()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[6]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#6]
+display-name: [6] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[5]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#5]
+display-name: [5] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[2]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#2]
+display-name: [2] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[1]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#1]
+display-name: [1] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[4]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#4]
+display-name: [4] 1.0E10
+]]></system-out>
+</testcase>
+<testcase name="test_scan_consecutiveDelimiters_returnsTokensWithPossibleEmpties()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_consecutiveDelimiters_returnsTokensWithPossibleEmpties()]
+display-name: test_scan_consecutiveDelimiters_returnsTokensWithPossibleEmpties()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_withParens(double)[3]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_withParens(double)]/[test-template-invocation:#3]
+display-name: [3] 1.0E-10
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withVeryLongString_storesCorrectly()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_withVeryLongString_storesCorrectly()]
+display-name: test_saveToken_withVeryLongString_storesCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_nullRootNode()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_nullRootNode()]
+display-name: test_solve_nullRootNode()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeWithParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_negativeWithParens()]
+display-name: test_toString_negativeWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_singleNegativeNumber()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_singleNegativeNumber(MathTreeCleanStrListGeneratedTest.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_singleNegativeNumber()]
+display-name: test_cleanStrList_singleNegativeNumber()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withZeroInExpression()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withZeroInExpression()]
+display-name: test_main_withZeroInExpression()
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[5]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] -3 + 7
+]]></system-out>
+</testcase>
+<testcase name="test_scan_onlyDelimiters_returnsEmptyTokens(String)[2]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_onlyDelimiters_returnsEmptyTokens(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] 	
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[6]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] 1.5 + 2.5
+]]></system-out>
+</testcase>
+<testcase name="test_scan_onlyDelimiters_returnsEmptyTokens(String)[3]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_onlyDelimiters_returnsEmptyTokens(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_init_withLargeNumbers_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_withLargeNumbers_returnsTrue()]
+display-name: test_init_withLargeNumbers_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_onlyDelimiters_returnsEmptyTokens(String)[1]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_onlyDelimiters_returnsEmptyTokens(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1]  
+]]></system-out>
+</testcase>
+<testcase name="test_init_decimalNumbers_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_decimalNumbers_returnsTrue()]
+display-name: test_init_decimalNumbers_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValue_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_positiveValue_withParens()]
+display-name: test_toString_positiveValue_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_onlyDelimiters_returnsEmptyTokens(String)[4]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_onlyDelimiters_returnsEmptyTokens(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4]    	 
+
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[6]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] 1 + + 2
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[5]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] ( + 2)
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[4]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] (1 + )
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[3]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] ()
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[9]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#9]
+display-name: [9] 3 *
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[8]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#8]
+display-name: [8] * 3
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[7]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#7]
+display-name: [7] 1 ++ 2
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsNumericCharacters()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_addsNumericCharacters()]
+display-name: test_addDelimiter_addsNumericCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsCorrectIntegerValue(int)[3]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_returnsCorrectIntegerValue(int)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[2]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2]    
+]]></system-out>
+</testcase>
+<testcase name="test_scan_leadingAndTrailingDelimiters_returnsTokensWithoutExtras()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_leadingAndTrailingDelimiters_returnsTokensWithoutExtras()]
+display-name: test_scan_leadingAndTrailingDelimiters_returnsTokensWithoutExtras()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsCorrectIntegerValue(int)[4]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_returnsCorrectIntegerValue(int)]/[test-template-invocation:#4]
+display-name: [4] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[1]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[1]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#1]
+display-name: [1] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsCorrectIntegerValue(int)[1]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_returnsCorrectIntegerValue(int)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_duplicateCharacters()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_duplicateCharacters()]
+display-name: test_addDelimiter_duplicateCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[2]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#2]
+display-name: [2] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsCorrectIntegerValue(int)[2]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_returnsCorrectIntegerValue(int)]/[test-template-invocation:#2]
+display-name: [2] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[3]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#3]
+display-name: [3] 1.0E-10
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroWithParens()" classname="mathNode.IntToStringGeneratedTest" time="0.01">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_zeroWithParens()]
+display-name: test_toString_zeroWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[4]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#4]
+display-name: [4] 1.0E10
+]]></system-out>
+</testcase>
+<testcase name="test_init_complexNestedExpression_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<failure message="Complex nested expression should initialize ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Complex nested expression should initialize ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at mathTree.MathTreeInitGeneratedTest.test_init_complexNestedExpression_returnsTrue(MathTreeInitGeneratedTest.java:79)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_complexNestedExpression_returnsTrue()]
+display-name: test_init_complexNestedExpression_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[5]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#5]
+display-name: [5] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsCorrectIntegerValue(int)[5]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_returnsCorrectIntegerValue(int)]/[test-template-invocation:#5]
+display-name: [5] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValues_noParens(double)[6]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_variousValues_noParens(double)]/[test-template-invocation:#6]
+display-name: [6] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[1]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#1]
+display-name: [1]  
+]]></system-out>
+</testcase>
+<testcase name="test_scan_unicodeCharacters_handlesGracefully()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_unicodeCharacters_handlesGracefully()]
+display-name: test_scan_unicodeCharacters_handlesGracefully()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[2]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#2]
+display-name: [2] 	
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withEmptyArray_doesNotAddAnyCharacter()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withEmptyArray_doesNotAddAnyCharacter()]
+display-name: test_addSpecialChar_withEmptyArray_doesNotAddAnyCharacter()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsMultipleCharacters()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_addsMultipleCharacters()]
+display-name: test_addDelimiter_addsMultipleCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[7]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#7]
+display-name: [7] !
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[8]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#8]
+display-name: [8] ?
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[9]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#9]
+display-name: [9] "
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[3]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#3]
+display-name: [3] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[4]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#4]
+display-name: [4] ,
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[5]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#5]
+display-name: [5] ;
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[6]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#6]
+display-name: [6] .
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsUnicodeCharacters()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_addsUnicodeCharacters()]
+display-name: test_addDelimiter_addsUnicodeCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_withLargePositiveInteger()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_withLargePositiveInteger()]
+display-name: test_calculate_withLargePositiveInteger()
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[4]" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.StringScannerSaveTokenGeneratedTest.test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(StringScannerSaveTokenGeneratedTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[test-template:test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[2]" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.StringScannerSaveTokenGeneratedTest.test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(StringScannerSaveTokenGeneratedTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[test-template:test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2]  
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[3]" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.StringScannerSaveTokenGeneratedTest.test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(StringScannerSaveTokenGeneratedTest.java:49)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[test-template:test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 	
+]]></system-out>
+</testcase>
+<testcase name="test_main_withNoArgs_promptsForInput()" classname="mathTree.CalcAppMainGeneratedTest" time="0.012">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withNoArgs_promptsForInput(CalcAppMainGeneratedTest.java:39)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withNoArgs_promptsForInput()]
+display-name: test_main_withNoArgs_promptsForInput()
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(String)[1]" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[test-template:test_saveToken_withEmptyOrWhitespace_doesNotAddToTokenList(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_withEmptyArray()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_withEmptyArray()]
+display-name: test_addDelimiter_withEmptyArray()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeWithParens()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_negativeWithParens()]
+display-name: test_toString_negativeWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withVerySmallDouble()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withVerySmallDouble(CalcAppMainGeneratedTest.java:154)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withVerySmallDouble()]
+display-name: test_main_withVerySmallDouble()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withNaNAndParens()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_toString_withNaNAndParens()]
+display-name: test_toString_withNaNAndParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withInfinity()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_toString_withInfinity()]
+display-name: test_toString_withInfinity()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsSpecialCharacters()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_addsSpecialCharacters()]
+display-name: test_addDelimiter_addsSpecialCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withEmptyOrWhitespaceInput(String)[1]" classname="mathTree.CalcAppMainGeneratedTest" time="0.001">
+<failure message="Unexpected exception thrown: java.util.NoSuchElementException: No line found" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.util.NoSuchElementException: No line found
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:84)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:53)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:36)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3168)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withEmptyOrWhitespaceInput(CalcAppMainGeneratedTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at mathTree.CalcApp.main(CalcApp.java:25)
+	at mathTree.CalcAppMainGeneratedTest.lambda$test_main_withEmptyOrWhitespaceInput$1(CalcAppMainGeneratedTest.java:58)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:49)
+	... 42 more
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[test-template:test_main_withEmptyOrWhitespaceInput(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 
+]]></system-out>
+</testcase>
+<testcase name="test_main_withEmptyOrWhitespaceInput(String)[2]" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<failure message="Unexpected exception thrown: java.util.NoSuchElementException: No line found" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.util.NoSuchElementException: No line found
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:84)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:53)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:36)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3168)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withEmptyOrWhitespaceInput(CalcAppMainGeneratedTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at mathTree.CalcApp.main(CalcApp.java:25)
+	at mathTree.CalcAppMainGeneratedTest.lambda$test_main_withEmptyOrWhitespaceInput$1(CalcAppMainGeneratedTest.java:58)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:49)
+	... 42 more
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[test-template:test_main_withEmptyOrWhitespaceInput(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2]  
+]]></system-out>
+</testcase>
+<testcase name="test_main_withEmptyOrWhitespaceInput(String)[3]" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<failure message="Unexpected exception thrown: java.util.NoSuchElementException: No line found" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.util.NoSuchElementException: No line found
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:84)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:53)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:36)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3168)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withEmptyOrWhitespaceInput(CalcAppMainGeneratedTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at mathTree.CalcApp.main(CalcApp.java:25)
+	at mathTree.CalcAppMainGeneratedTest.lambda$test_main_withEmptyOrWhitespaceInput$1(CalcAppMainGeneratedTest.java:58)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:49)
+	... 42 more
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[test-template:test_main_withEmptyOrWhitespaceInput(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 	
+]]></system-out>
+</testcase>
+<testcase name="test_main_withEmptyOrWhitespaceInput(String)[4]" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<failure message="Unexpected exception thrown: java.util.NoSuchElementException: No line found" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: java.util.NoSuchElementException: No line found
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:84)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:53)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:36)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3168)
+	at mathTree.CalcAppMainGeneratedTest.test_main_withEmptyOrWhitespaceInput(CalcAppMainGeneratedTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at mathTree.CalcApp.main(CalcApp.java:25)
+	at mathTree.CalcAppMainGeneratedTest.lambda$test_main_withEmptyOrWhitespaceInput$1(CalcAppMainGeneratedTest.java:58)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:49)
+	... 42 more
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[test-template:test_main_withEmptyOrWhitespaceInput(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_scan_emptyString_returnsEmptyList()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_emptyString_returnsEmptyList()]
+display-name: test_scan_emptyString_returnsEmptyList()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesWithParens(int)[2]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesWithParens(int)]/[test-template-invocation:#2]
+display-name: [2] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesWithParens(int)[1]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesWithParens(int)]/[test-template-invocation:#1]
+display-name: [1] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_solve_integerResults(int)[1]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_integerResults(int)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveWithParens()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_positiveWithParens()]
+display-name: test_toString_positiveWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesWithParens(int)[4]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesWithParens(int)]/[test-template-invocation:#4]
+display-name: [4] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesWithParens(int)[3]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesWithParens(int)]/[test-template-invocation:#3]
+display-name: [3] 0
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withDuplicateCharacters_addsOnlyUniqueCharacters()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withDuplicateCharacters_addsOnlyUniqueCharacters()]
+display-name: test_addSpecialChar_withDuplicateCharacters_addsOnlyUniqueCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroValue_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_zeroValue_withParens()]
+display-name: test_toString_zeroValue_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_integerResults(int)[4]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_integerResults(int)]/[test-template-invocation:#4]
+display-name: [4] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_solve_integerResults(int)[5]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_integerResults(int)]/[test-template-invocation:#5]
+display-name: [5] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_solve_integerResults(int)[2]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_integerResults(int)]/[test-template-invocation:#2]
+display-name: [2] 1
+]]></system-out>
+</testcase>
+<testcase name="test_solve_integerResults(int)[3]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_integerResults(int)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[10]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#10]
+display-name: [10] }
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_toString_withParens()]
+display-name: test_toString_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_withNullArray()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_withNullArray()]
+display-name: test_addDelimiter_withNullArray()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesWithParens(int)[5]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesWithParens(int)]/[test-template-invocation:#5]
+display-name: [5] -1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_nullRootNode()" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[method:test_toString_nullRootNode()]
+display-name: test_toString_nullRootNode()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_verySmallPositiveNumber()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_verySmallPositiveNumber()]
+display-name: test_solve_verySmallPositiveNumber()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[3]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#3]
+display-name: [3] -1.5
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[4]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#4]
+display-name: [4] 1.5
+]]></system-out>
+</testcase>
+<testcase name="test_init_deeplyNestedParentheses_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<failure message="Deeply nested parentheses should initialize ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Deeply nested parentheses should initialize ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at mathTree.MathTreeInitGeneratedTest.test_init_deeplyNestedParentheses_returnsTrue(MathTreeInitGeneratedTest.java:111)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_deeplyNestedParentheses_returnsTrue()]
+display-name: test_init_deeplyNestedParentheses_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[1]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#1]
+display-name: [1] 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[2]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#2]
+display-name: [2] -0.0
+]]></system-out>
+</testcase>
+<testcase name="test_solve_resultTypeDouble()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_resultTypeDouble()]
+display-name: test_solve_resultTypeDouble()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withVeryLargeDouble()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withVeryLargeDouble()]
+display-name: test_main_withVeryLargeDouble()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[5]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#5]
+display-name: [5] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFlagBehavior(double)[6]" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[test-template:test_toString_parensFlagBehavior(double)]/[test-template-invocation:#6]
+display-name: [6] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withUnicodeCharacters_storesCorrectly()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_withUnicodeCharacters_storesCorrectly()]
+display-name: test_saveToken_withUnicodeCharacters_storesCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_negativeFollowedByOperator()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_negativeFollowedByOperator()]
+display-name: test_cleanStrList_negativeFollowedByOperator()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_mixedOperatorsAndNegatives()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;7&gt; but was: &lt;5&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <7> but was: <5>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_mixedOperatorsAndNegatives(MathTreeCleanStrListGeneratedTest.java:107)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_mixedOperatorsAndNegatives()]
+display-name: test_cleanStrList_mixedOperatorsAndNegatives()
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withSpecialCharacters_storesCorrectly()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_withSpecialCharacters_storesCorrectly()]
+display-name: test_saveToken_withSpecialCharacters_storesCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_longString_performanceReasonable()" classname="mathTree.StringScannerScanGeneratedTest" time="0.006">
+<failure message="expected: &lt;1000&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <1000> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_longString_performanceReasonable(StringScannerScanGeneratedTest.java:125)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_longString_performanceReasonable()]
+display-name: test_scan_longString_performanceReasonable()
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_multipleCalls_accumulatesTokens()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_multipleCalls_accumulatesTokens()]
+display-name: test_saveToken_multipleCalls_accumulatesTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_init_withVerySmallDecimals_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_withVerySmallDecimals_returnsTrue()]
+display-name: test_init_withVerySmallDecimals_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withoutParens()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_toString_withoutParens()]
+display-name: test_toString_withoutParens()
+]]></system-out>
+</testcase>
+<testcase name="test_init_singleNumber_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_singleNumber_returnsTrue()]
+display-name: test_init_singleNumber_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withNegativeNumbers()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withNegativeNumbers()]
+display-name: test_main_withNegativeNumbers()
+]]></system-out>
+</testcase>
+<testcase name="test_init_multipleOperators_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_multipleOperators_returnsTrue()]
+display-name: test_init_multipleOperators_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withUnicodeCharacters_addsUnicodeChars()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withUnicodeCharacters_addsUnicodeChars()]
+display-name: test_addSpecialChar_withUnicodeCharacters_addsUnicodeChars()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_multiCharacterTokenNoDelimiters_returnsSingleToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_multiCharacterTokenNoDelimiters_returnsSingleToken()]
+display-name: test_scan_multiCharacterTokenNoDelimiters_returnsSingleToken()
+]]></system-out>
+</testcase>
+<testcase name="test_init_negativeResultExpression_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_negativeResultExpression_returnsTrue()]
+display-name: test_init_negativeResultExpression_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_mixedTokensAndDelimiters_returnsCorrectTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_mixedTokensAndDelimiters_returnsCorrectTokens(StringScannerScanGeneratedTest.java:61)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_mixedTokensAndDelimiters_returnsCorrectTokens()]
+display-name: test_scan_mixedTokensAndDelimiters_returnsCorrectTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsSingleCharacter()" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[method:test_addDelimiter_addsSingleCharacter()]
+display-name: test_addDelimiter_addsSingleCharacter()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_withSmallNegativeInteger()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_withSmallNegativeInteger()]
+display-name: test_calculate_withSmallNegativeInteger()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValue_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_negativeValue_withParens()]
+display-name: test_toString_negativeValue_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValue_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_positiveValue_noParens()]
+display-name: test_toString_positiveValue_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[11]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#11]
+display-name: [11] (1 + 2
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[10]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#10]
+display-name: [10] 1 2 3
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_negativeAtStart()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;5&gt; but was: &lt;4&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <5> but was: <4>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_negativeAtStart(MathTreeCleanStrListGeneratedTest.java:53)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_negativeAtStart()]
+display-name: test_cleanStrList_negativeAtStart()
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[13]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#13]
+display-name: [13] x + y
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpressions_returnsFalse(String)[12]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_invalidExpressions_returnsFalse(java.lang.String)]/[test-template-invocation:#12]
+display-name: [12] 1 + 2)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withoutParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_withoutParens()]
+display-name: test_toString_withoutParens()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withNullArray_throwsException()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withNullArray_throwsException()]
+display-name: test_addSpecialChar_withNullArray_throwsException()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_emptyList()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_emptyList()]
+display-name: test_cleanStrList_emptyList()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_parameterized_delimiterHandling(String, int)[4]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_parameterized_delimiterHandling(StringScannerScanGeneratedTest.java:139)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_parameterized_delimiterHandling(java.lang.String, int)]/[test-template-invocation:#4]
+display-name: [4] a b, 2
+]]></system-out>
+</testcase>
+<testcase name="test_scan_parameterized_delimiterHandling(String, int)[5]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_parameterized_delimiterHandling(StringScannerScanGeneratedTest.java:139)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_parameterized_delimiterHandling(java.lang.String, int)]/[test-template-invocation:#5]
+display-name: [5]   a  b  c  , 3
+]]></system-out>
+</testcase>
+<testcase name="test_saveToken_withNull_throwsNullPointerException()" classname="mathTree.StringScannerSaveTokenGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSaveTokenGeneratedTest]/[method:test_saveToken_withNull_throwsNullPointerException()]
+display-name: test_saveToken_withNull_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_numbersOnly()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_numbersOnly()]
+display-name: test_cleanStrList_numbersOnly()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleCharacterToken_returnsSingleToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_singleCharacterToken_returnsSingleToken()]
+display-name: test_scan_singleCharacterToken_returnsSingleToken()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroValue_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_zeroValue_noParens()]
+display-name: test_toString_zeroValue_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[2]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[-, 0]&gt; but was: &lt;[-0]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[-, 0]> but was: <[-0]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_edgeCases(MathTreeCleanStrListGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#2]
+display-name: [2] [-0], [-, 0]
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[1]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#1]
+display-name: [1] [0], [0]
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[4]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[-, 2147483648]&gt; but was: &lt;[-2147483648]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[-, 2147483648]> but was: <[-2147483648]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_edgeCases(MathTreeCleanStrListGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#4]
+display-name: [4] [-2147483648], [-, 2147483648]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_minIntegerWithParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_minIntegerWithParens()]
+display-name: test_toString_minIntegerWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[3]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[-, 999999999]&gt; but was: &lt;[-999999999]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[-, 999999999]> but was: <[-999999999]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_edgeCases(MathTreeCleanStrListGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#3]
+display-name: [3] [-999999999], [-, 999999999]
+]]></system-out>
+</testcase>
+<testcase name="test_scan_parameterized_delimiterHandling(String, int)[2]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;0&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_parameterized_delimiterHandling(StringScannerScanGeneratedTest.java:139)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_parameterized_delimiterHandling(java.lang.String, int)]/[test-template-invocation:#2]
+display-name: [2]  , 0
+]]></system-out>
+</testcase>
+<testcase name="test_scan_parameterized_delimiterHandling(String, int)[3]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_parameterized_delimiterHandling(java.lang.String, int)]/[test-template-invocation:#3]
+display-name: [3] a, 1
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withMaxMinValues_addsExtremeCharacters()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_addSpecialChar_withMaxMinValues_addsExtremeCharacters()]
+display-name: test_addSpecialChar_withMaxMinValues_addsExtremeCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_parameterized_delimiterHandling(String, int)[1]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_parameterized_delimiterHandling(java.lang.String, int)]/[test-template-invocation:#1]
+display-name: [1] , 0
+]]></system-out>
+</testcase>
+<testcase name="test_addDelimiter_addsCommonDelimiters(char)[10]" classname="mathTree.StringScannerAddDelimiterGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddDelimiterGeneratedTest]/[test-template:test_addDelimiter_addsCommonDelimiters(char)]/[test-template-invocation:#10]
+display-name: [10] '
+]]></system-out>
+</testcase>
+<testcase name="test_main_withMaxIntValues()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withMaxIntValues()]
+display-name: test_main_withMaxIntValues()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_withNaN()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_calculate_withNaN()]
+display-name: test_calculate_withNaN()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[2]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#2]
+display-name: [2] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[3]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#3]
+display-name: [3] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[1]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#1]
+display-name: [1] 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[6]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#6]
+display-name: [6] 1.0E-10
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_withParens()]
+display-name: test_toString_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[7]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#7]
+display-name: [7] 1.0E10
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[4]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#4]
+display-name: [4] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_solve_validResults(double)[5]" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[test-template:test_solve_validResults(double)]/[test-template-invocation:#5]
+display-name: [5] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[1]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 3 + 4
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[2]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<failure message="Valid expression should initialize successfully: ((1 + 2) * 3) ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Valid expression should initialize successfully: ((1 + 2) * 3) ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at mathTree.MathTreeInitGeneratedTest.test_init_validExpressions_returnsTrue(MathTreeInitGeneratedTest.java:24)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] ((1 + 2) * 3)
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[3]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 10 - 5 / 2
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpressions_returnsTrue(String)[4]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_validExpressions_returnsTrue(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 0 * 5
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[6]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#6]
+display-name: [6] [-, *, 5], [-, *, 5]
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_edgeCases(LinkedList, LinkedList)[5]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_edgeCases(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#5]
+display-name: [5] [-, 5, -, 3], [-, 5, -, 3]
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_returnsStoredValue()" classname="mathNode.DecCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCalculateGeneratedTest]/[method:test_calculate_returnsStoredValue()]
+display-name: test_calculate_returnsStoredValue()
+]]></system-out>
+</testcase>
+<testcase name="test_main_withMinIntValues()" classname="mathTree.CalcAppMainGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.CalcAppMainGeneratedTest]/[method:test_main_withMinIntValues()]
+display-name: test_main_withMinIntValues()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_multipleSingleCharacterTokensSeparatedByDelimiter_returnsMultipleTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_multipleSingleCharacterTokensSeparatedByDelimiter_returnsMultipleTokens(StringScannerScanGeneratedTest.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_multipleSingleCharacterTokensSeparatedByDelimiter_returnsMultipleTokens()]
+display-name: test_scan_multipleSingleCharacterTokensSeparatedByDelimiter_returnsMultipleTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroNoParens()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_zeroNoParens()]
+display-name: test_toString_zeroNoParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveNoParens()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_positiveNoParens()]
+display-name: test_toString_positiveNoParens()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_veryLargeNegativeNumber()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_veryLargeNegativeNumber()]
+display-name: test_solve_veryLargeNegativeNumber()
+]]></system-out>
+</testcase>
+<testcase name="test_solve_veryLargePositiveNumber()" classname="mathTree.MathTreeSolveGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeSolveGeneratedTest]/[method:test_solve_veryLargePositiveNumber()]
+display-name: test_solve_veryLargePositiveNumber()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[5]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#5]
+display-name: [5] (
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[6]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#6]
+display-name: [6] )
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[3]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#3]
+display-name: [3] *
+]]></system-out>
+</testcase>
+<testcase name="test_toString_maxIntegerWithoutParens()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_toString_maxIntegerWithoutParens()]
+display-name: test_toString_maxIntegerWithoutParens()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[4]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#4]
+display-name: [4] /
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesNoParens(int)[4]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesNoParens(int)]/[test-template-invocation:#4]
+display-name: [4] 1
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[9]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#9]
+display-name: [9] {
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesNoParens(int)[5]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesNoParens(int)]/[test-template-invocation:#5]
+display-name: [5] -1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesNoParens(int)[2]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesNoParens(int)]/[test-template-invocation:#2]
+display-name: [2] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[7]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#7]
+display-name: [7] [
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesNoParens(int)[3]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesNoParens(int)]/[test-template-invocation:#3]
+display-name: [3] 0
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[8]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#8]
+display-name: [8] ]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_edgeValuesNoParens(int)[1]" classname="mathNode.IntToStringGeneratedTest" time="0.005">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_edgeValuesNoParens(int)]/[test-template-invocation:#1]
+display-name: [1] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_init_withZeroAndNegativeValues_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_withZeroAndNegativeValues_returnsTrue()]
+display-name: test_init_withZeroAndNegativeValues_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[1]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#1]
+display-name: [1] +
+]]></system-out>
+</testcase>
+<testcase name="test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)[2]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_addSpecialChar_withCommonOperatorsAndBrackets_addsToSpecCharSet(char)]/[test-template-invocation:#2]
+display-name: [2] -
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeNoParens()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_negativeNoParens()]
+display-name: test_toString_negativeNoParens()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_numericTokens_returnsAsStrings()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_numericTokens_returnsAsStrings(StringScannerScanGeneratedTest.java:93)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_numericTokens_returnsAsStrings()]
+display-name: test_scan_numericTokens_returnsAsStrings()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

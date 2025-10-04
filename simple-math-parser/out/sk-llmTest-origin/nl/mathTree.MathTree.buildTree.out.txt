@@ -1,0 +1,183 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeBuildTreeTest {
+
+    private MathTree mathTree;
+
+    @BeforeEach
+    void setUp() {
+        mathTree = new MathTree();
+    }
+
+    // 测试空输入（非括号模式）
+    @Test
+    void test_buildTree_emptyInput_notInParens_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNull(result);
+    }
+
+    // 测试空输入（括号模式）
+    @Test
+    void test_buildTree_emptyInput_inParens_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNull(result);
+    }
+
+    // 测试只有右括号且不在括号模式下
+    @Test
+    void test_buildTree_singleClosingParen_notInParens_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNull(result);
+    }
+
+    // 测试只有右括号且在括号模式下（空括号）
+    @Test
+    void test_buildTree_singleClosingParen_inParensEmpty_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNull(result);
+    }
+
+    // 测试括号不匹配：缺少左括号
+    @Test
+    void test_buildTree_closingParenWithoutOpening_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNull(result);
+    }
+
+    // 测试括号不匹配：缺少右括号
+    @Test
+    void test_buildTree_openingParenWithoutClosing_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNull(result);
+    }
+
+    // 测试有效简单表达式（非括号模式）
+    @Test
+    void test_buildTree_simpleValidExpression_notInParens_returnsRootNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNotNull(result);
+        assertFalse(result.isParens());
+    }
+
+    // 测试有效简单表达式（括号模式）
+    @Test
+    void test_buildTree_simpleValidExpression_inParens_returnsRootNodeWithParens() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNotNull(result);
+        assertTrue(result.isParens());
+    }
+
+    // 测试嵌套括号表达式
+    @Test
+    void test_buildTree_nestedParentheses_returnsValidTree() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+        tokens.add(")");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNotNull(result);
+        assertTrue(result.isParens());
+    }
+
+    // 测试无效标记
+    @Test
+    void test_buildTree_invalidToken_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("@");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNull(result);
+    }
+
+    // 测试多个有效标记
+    @Test
+    void test_buildTree_multipleValidTokens_notInParens_returnsRootNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("2");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNotNull(result);
+        assertFalse(result.isParens());
+    }
+
+    // 参数化测试：边界值和特殊字符
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "1", "1.5", "1000000", "(", ")", "+", "-", "*", "/"})
+    void test_buildTree_variousTokens_notInParens_handlesGracefully(String token) {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(token);
+        mathNode result = mathTree.buildTree(tokens, false);
+        // 只要不是完全无效的输入，都应该处理（具体逻辑由nodeFactory决定）
+        // 此处假设基本操作符和数字都能被处理
+        if (!token.equals("@")) { // 假设@是无效的
+            assertNotNull(result);
+        }
+    }
+
+    // 测试复杂嵌套和混合表达式
+    @Test
+    void test_buildTree_complexMixedExpression_returnsValidTree() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("2");
+        tokens.add(")");
+        tokens.add("*");
+        tokens.add("3");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNotNull(result);
+        assertTrue(result.isParens());
+    }
+
+    // 测试连续右括号
+    @Test
+    void test_buildTree_consecutiveClosingParentheses_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(")");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, false);
+        assertNull(result);
+    }
+
+    // 测试括号内嵌套空括号
+    @Test
+    void test_buildTree_nestedEmptyParentheses_returnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add(")");
+        tokens.add(")");
+        mathNode result = mathTree.buildTree(tokens, true);
+        assertNull(result);
+    }
+}
+```

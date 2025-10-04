@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringScanner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">mathTree</a> &gt; <span class="el_source">StringScanner.java</span></div><h1>StringScanner.java</h1><pre class="source lang-java linenums">package mathTree;
+import java.util.HashSet;
+import java.util.LinkedList;
+
+/**
+ * This classes breaks up strings based upon given special characters and delimiters.
+ * @author kevinrobell
+ *
+ */
+<span class="fc" id="L10">public class StringScanner implements Cloneable</span>
+{
+<span class="fc" id="L12">   private LinkedList&lt;String&gt; tokenList = new LinkedList();</span>
+<span class="fc" id="L13">   private HashSet&lt;Character&gt; delimSet = new HashSet(); //Set of delimiters</span>
+<span class="fc" id="L14">   private HashSet&lt;Character&gt; specCharSet = new HashSet(); //Set of special characters</span>
+<span class="fc" id="L15">   private boolean skipWhitespace = false;</span>
+   
+   /**
+    * Sets delimiter to skip all chars according to the Character.isWhitespace() method.
+    */
+<span class="fc" id="L20">   public void skipWhitespace() { skipWhitespace = true; }</span>
+   
+<span class="nc" id="L22">   public void addDelimiter(char delim) { delimSet.add(delim); }</span>
+   public void addDelimiter(char[] delimArray) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">      for(char ch : delimArray)</span>
+<span class="fc" id="L25">         delimSet.add(ch);</span>
+<span class="fc" id="L26">   }</span>
+   
+   /**
+    * Add character that should become individual token when scanned.
+    * @param specialChar 
+    */
+<span class="fc" id="L32">   public void addSpecialChar(char specialChar) { specCharSet.add(specialChar); }</span>
+   /**
+    * Add array of characters that should become individual tokens when scanned.
+    * @param specialCharArray
+    */
+   public void addSpecialChar(char[] specialCharArray) 
+   {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">      for(char ch : specialCharArray)</span>
+<span class="fc" id="L40">         specCharSet.add(ch); </span>
+<span class="fc" id="L41">   }</span>
+   
+   /**
+    * Scans string and breaks it up following the delimiters and special characters.
+    * Remember that delimiters have precedence over special characters. If there are
+    * any characters set as both, they will be interpreted as delimiters.
+    * @param inputStr
+    * @return LinkedList of Strings
+    */
+   public LinkedList&lt;String&gt; scan(String inputStr)
+   {
+      char ch;
+<span class="fc" id="L53">      String token = &quot;&quot;;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">      for(int i = 0; i &lt; inputStr.length(); i++) {</span>
+<span class="fc" id="L55">         ch = inputStr.charAt(i);</span>
+         
+<span class="fc bfc" id="L57" title="All 2 branches covered.">         if(isDelim(ch)) {</span>
+<span class="fc" id="L58">            saveToken(token);</span>
+<span class="fc" id="L59">            token = &quot;&quot;;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">         } else if(specCharSet.contains(ch)) {</span>
+<span class="fc" id="L61">            saveToken(token);</span>
+<span class="fc" id="L62">            saveToken(Character.toString(ch));</span>
+<span class="fc" id="L63">            token = &quot;&quot;;</span>
+         } else {
+<span class="fc" id="L65">            token = token + ch;</span>
+         }
+            
+      }
+      
+<span class="fc" id="L70">      saveToken(token);</span>
+      
+<span class="fc" id="L72">      LinkedList&lt;String&gt; copyTokenList = tokenList;</span>
+<span class="fc" id="L73">      tokenList = new LinkedList();</span>
+      
+<span class="fc" id="L75">      return copyTokenList;</span>
+   }
+   
+   private boolean isDelim(char ch) 
+   {
+<span class="pc bpc" id="L80" title="1 of 6 branches missed.">      return (skipWhitespace &amp;&amp; Character.isWhitespace(ch)) || delimSet.contains(ch);</span>
+   }
+   
+   private void saveToken(String token) 
+   {
+<span class="fc bfc" id="L85" title="All 2 branches covered.">      if(token.isEmpty() == false)</span>
+<span class="fc" id="L86">         tokenList.add(token);</span>
+<span class="fc" id="L87">   }</span>
+   
+   public Object clone() throws CloneNotSupportedException
+   {
+<span class="nc" id="L91">      StringScanner clone = (StringScanner) super.clone();</span>
+<span class="nc" id="L92">      clone.tokenList = (LinkedList) tokenList.clone();</span>
+<span class="nc" id="L93">      clone.delimSet = (HashSet) delimSet.clone(); </span>
+<span class="nc" id="L94">      clone.specCharSet = (HashSet) specCharSet.clone();</span>
+      
+<span class="nc" id="L96">      return clone;</span>
+   }
+   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,85 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * 单元测试类用于测试 {@link Expression#checkTree()} 方法。
+ * 
+ * 注意：由于 Expression 是抽象类，此处创建一个最小化的具体子类 StubExpression，
+ * 并通过构造函数注入期望的 checkTree 返回值以支持不同场景测试。
+ */
+public class ExpressionTest {
+
+    // 最小桩类，继承抽象类 Expression 以便实例化进行测试
+    private static class StubExpression extends Expression {
+        private final boolean returnValue;
+
+        public StubExpression(boolean returnValue) {
+            this.returnValue = returnValue;
+        }
+
+        @Override
+        public boolean checkTree() {
+            return returnValue;
+        }
+    }
+
+    @Test
+    public void test_checkTree_returnsTrue_whenValidTree() {
+        // Arrange: 构造返回 true 的表达式树
+        Expression expr = new StubExpression(true);
+
+        // Act: 调用 checkTree 方法
+        boolean result = expr.checkTree();
+
+        // Assert: 验证结果为 true
+        assertTrue(result, "Expected checkTree to return true for a valid tree.");
+    }
+
+    @Test
+    public void test_checkTree_returnsFalse_whenInvalidTree() {
+        // Arrange: 构造返回 false 的表达式树
+        Expression expr = new StubExpression(false);
+
+        // Act: 调用 checkTree 方法
+        boolean result = expr.checkTree();
+
+        // Assert: 验证结果为 false
+        assertFalse(result, "Expected checkTree to return false for an invalid tree.");
+    }
+
+    @Test
+    public void test_checkTree_isIdempotent_onSameInstance_returningTrue() {
+        // Arrange: 构造返回 true 的表达式树
+        Expression expr = new StubExpression(true);
+
+        // Act: 多次调用方法
+        boolean firstResult = expr.checkTree();
+        boolean secondResult = expr.checkTree();
+        boolean thirdResult = expr.checkTree();
+
+        // Assert: 所有调用都应返回相同结果
+        assertTrue(firstResult, "First call should return true.");
+        assertEquals(firstResult, secondResult, "Subsequent calls should be consistent.");
+        assertEquals(secondResult, thirdResult, "All calls should yield the same result (idempotency).");
+    }
+
+    @Test
+    public void test_checkTree_isIdempotent_onSameInstance_returningFalse() {
+        // Arrange: 构造返回 false 的表达式树
+        Expression expr = new StubExpression(false);
+
+        // Act: 多次调用方法
+        boolean firstResult = expr.checkTree();
+        boolean secondResult = expr.checkTree();
+        boolean thirdResult = expr.checkTree();
+
+        // Assert: 所有调用都应返回相同结果
+        assertFalse(firstResult, "First call should return false.");
+        assertEquals(firstResult, secondResult, "Subsequent calls should be consistent.");
+        assertEquals(secondResult, thirdResult, "All calls should yield the same result (idempotency).");
+    }
+}
+```

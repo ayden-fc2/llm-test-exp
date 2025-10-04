@@ -1,0 +1,56 @@
+package mathNode;
+
+import mathNode.Operator;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorSetParensGeneratedTest {
+
+    @Test
+    public void test_setParens_true_setsParenthesisAndPrecedence() {
+        // Arrange
+        Operator operator = new Operator();
+        
+        // Act
+        operator.setParens(true);
+        
+        // Assert (assuming we can access fields or there are getters)
+        // Since the snippet shows direct field access, we'll assume similar access in test
+        // If not accessible, minimal stubs or reflection would be needed
+        assertTrue(operator.parenthesis); 
+        assertEquals(0, operator.precedence);
+    }
+
+    @Test
+    public void test_setParens_false_setsOnlyParenthesis() {
+        // Arrange
+        Operator operator = new Operator();
+        
+        // Act
+        operator.setParens(false);
+        
+        // Assert
+        assertFalse(operator.parenthesis);
+        assertNotEquals(0, operator.precedence); // Assuming default precedence is non-zero
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void test_setParens_parameterized_bothValues(boolean value) {
+        // Arrange
+        Operator operator = new Operator();
+        
+        // Act
+        operator.setParens(value);
+        
+        // Assert
+        assertEquals(value, operator.parenthesis);
+        if (value) {
+            assertEquals(0, operator.precedence);
+        } else {
+            assertNotEquals(0, operator.precedence);
+        }
+    }
+}

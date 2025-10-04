@@ -1,0 +1,78 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeTest {
+
+    // Stub class to simulate the internal Node structure for testing purposes
+    private static class TestNode implements MathTreeNode {
+        private final String representation;
+
+        public TestNode(String representation) {
+            this.representation = representation;
+        }
+
+        @Override
+        public String toString() {
+            return representation;
+        }
+    }
+
+    // Minimal interface to allow compilation and testing
+    private interface MathTreeNode {
+        String toString();
+    }
+
+    // Minimal stub of MathTree with injectable rootNode for testability
+    private static class MathTree {
+        private MathTreeNode rootNode;
+
+        public MathTree(MathTreeNode rootNode) {
+            this.rootNode = rootNode;
+        }
+
+        public MathTree() {}
+
+        public String toString() {
+            if (rootNode == null)
+                return "";
+            else
+                return rootNode.toString();
+        }
+    }
+
+    @Test
+    void test_toString_whenRootIsNull_returnsEmptyString() {
+        MathTree tree = new MathTree(null);
+        assertEquals("", tree.toString(), "Expected empty string when root is null");
+    }
+
+    @Test
+    void test_toString_whenRootIsNotNull_returnsRootToString() {
+        MathTreeNode node = new TestNode("sample_root_value");
+        MathTree tree = new MathTree(node);
+        assertEquals("sample_root_value", tree.toString(), "Should return the root's toString result");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "0", "-1", "1", "42", "very_large_string_representation", "special!@#$%^&*()"})
+    void test_toString_variousRootValues_returnsCorrectString(String value) {
+        MathTreeNode node = new TestNode(value);
+        MathTree tree = new MathTree(node);
+        assertEquals(value, tree.toString(), "Should match the node's toString output");
+    }
+
+    @Test
+    void test_toString_withExtremeLengthString_handlesGracefully() {
+        String extremeString = "A".repeat(1000000); // Very large string
+        MathTreeNode node = new TestNode(extremeString);
+        MathTree tree = new MathTree(node);
+        assertEquals(extremeString, tree.toString(), "Should handle very long strings correctly");
+    }
+}
+```

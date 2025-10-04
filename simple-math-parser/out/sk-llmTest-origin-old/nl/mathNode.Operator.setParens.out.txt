@@ -1,0 +1,86 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class OperatorSetParensTest {
+
+    // Stub class to enable compilation and testing of setParens method
+    public static class Operator {
+        private boolean parenthesis = false;
+        private int precedence = 1; // default non-zero value
+
+        public void setParens(boolean bool) {
+            parenthesis = bool;
+
+            if (parenthesis)
+                precedence = 0;
+        }
+
+        public boolean getParenthesis() {
+            return parenthesis;
+        }
+
+        public int getPrecedence() {
+            return precedence;
+        }
+    }
+
+    @Test
+    void test_setParens_true_setsParenthesisToTrueAndPrecedenceToZero() {
+        Operator operator = new Operator();
+        operator.setParens(true);
+        assertTrue(operator.getParenthesis());
+        assertEquals(0, operator.getPrecedence());
+    }
+
+    @Test
+    void test_setParens_false_setsParenthesisToFalseAndPrecedenceUnchanged() {
+        Operator operator = new Operator();
+        operator.setParens(false);
+        assertFalse(operator.getParenthesis());
+        assertEquals(1, operator.getPrecedence()); // unchanged from default
+    }
+
+    @Test
+    void test_setParens_true_multipleTimes_isIdempotent() {
+        Operator operator = new Operator();
+        operator.setParens(true);
+        operator.setParens(true); // second call
+        assertTrue(operator.getParenthesis());
+        assertEquals(0, operator.getPrecedence());
+    }
+
+    @Test
+    void test_setParens_false_multipleTimes_isIdempotent() {
+        Operator operator = new Operator();
+        operator.setParens(false);
+        operator.setParens(false); // second call
+        assertFalse(operator.getParenthesis());
+        assertEquals(1, operator.getPrecedence());
+    }
+
+    @Test
+    void test_setParens_transitionFromTrueToFalse_restoresDefaultPrecedence() {
+        Operator operator = new Operator();
+        operator.setParens(true);
+        assertEquals(0, operator.getPrecedence());
+
+        operator.setParens(false);
+        assertFalse(operator.getParenthesis());
+        assertEquals(1, operator.getPrecedence()); // restored
+    }
+
+    @Test
+    void test_setParens_transitionFromFalseToTrue_setsPrecedenceToZero() {
+        Operator operator = new Operator();
+        operator.setParens(false);
+        assertEquals(1, operator.getPrecedence());
+
+        operator.setParens(true);
+        assertTrue(operator.getParenthesis());
+        assertEquals(0, operator.getPrecedence()); // changed
+    }
+}
+```

@@ -1,0 +1,152 @@
+```java
+package test;
+
+import mathNode.Div;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class MathNodeStub extends MathNode {
+        private final Number value;
+        private final String repr;
+
+        MathNodeStub(Number value, String repr) {
+            this.value = value;
+            this.repr = repr;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return repr;
+        }
+    }
+
+    static class ConstantNode extends MathNodeStub {
+        ConstantNode(Number value, String repr) {
+            super(value, repr);
+        }
+    }
+
+    // Test normal division operations
+    @Test
+    void test_calculate_normal_positive_division() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(10.0, "10.0"));
+        div.setRightNode(new ConstantNode(2.0, "2.0"));
+        assertEquals(5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_normal_negative_division() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(-10.0, "-10.0"));
+        div.setRightNode(new ConstantNode(2.0, "2.0"));
+        assertEquals(-5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_normal_mixed_signs_division() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(10.0, "10.0"));
+        div.setRightNode(new ConstantNode(-2.0, "-2.0"));
+        assertEquals(-5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_both_negative_division() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(-10.0, "-10.0"));
+        div.setRightNode(new ConstantNode(-2.0, "-2.0"));
+        assertEquals(5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    // Test division by zero scenarios
+    @Test
+    void test_calculate_division_by_zero_positive() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(10.0, "10.0"));
+        div.setRightNode(new ConstantNode(0.0, "0.0"));
+        assertTrue(Double.isInfinite(div.calculate().doubleValue()));
+        assertEquals(Double.POSITIVE_INFINITY, div.calculate().doubleValue());
+    }
+
+    @Test
+    void test_calculate_division_by_zero_negative() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(-10.0, "-10.0"));
+        div.setRightNode(new ConstantNode(0.0, "0.0"));
+        assertTrue(Double.isInfinite(div.calculate().doubleValue()));
+        assertEquals(Double.NEGATIVE_INFINITY, div.calculate().doubleValue());
+    }
+
+    @Test
+    void test_calculate_zero_divided_by_zero() {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(0.0, "0.0"));
+        div.setRightNode(new ConstantNode(0.0, "0.0"));
+        assertTrue(Double.isNaN(div.calculate().doubleValue()));
+    }
+
+    // Test edge cases with extreme values
+    @ParameterizedTest
+    @MethodSource("provideEdgeCaseValues")
+    void test_calculate_edge_cases(Number left, Number right, Double expected) {
+        Div div = new Div();
+        div.setLeftNode(new ConstantNode(left, left.toString()));
+        div.setRightNode(new ConstantNode(right, right.toString()));
+        
+        if (expected.isNaN()) {
+            assertTrue(div.calculate().doubleValue().isNaN());
+        } else if (expected.isInfinite()) {
+            assertTrue(div.calculate().doubleValue().isInfinite());
+            assertEquals(expected, div.calculate().doubleValue());
+        } else {
+            assertEquals(expected, div.calculate().doubleValue(), 1e-9);
+        }
+    }
+
+    static Stream<Arguments> provideEdgeCaseValues() {
+        return Stream.of(
+            Arguments.of(1, Integer.MAX_VALUE, 1.0 / Integer.MAX_VALUE),
+            Arguments.of(1, Integer.MIN_VALUE, 1.0 / Integer.MIN_VALUE),
+            Arguments.of(Integer.MAX_VALUE, 1, (double) Integer.MAX_VALUE),
+            Arguments.of(Integer.MIN_VALUE, 1, (double) Integer.MIN_VALUE),
+            Arguments.of(Double.MAX_VALUE, 1, Double.MAX_VALUE),
+            Arguments.of(1, Double.MAX_VALUE, 1.0 / Double.MAX_VALUE),
+            Arguments.of(1, Double.MIN_VALUE, 1.0 / Double.MIN_VALUE),
+            Arguments.of(Double.MIN_VALUE, 1, Double.MIN_VALUE),
+            Arguments.of(1.0, -0.0, Double.NEGATIVE_INFINITY),
+            Arguments.of(-1.0, 0.0, Double.NEGATIVE_INFINITY),
+            Arguments.of(Double.MAX_VALUE, Double.MIN_VALUE, Double.POSITIVE_INFINITY),
+            Arguments.of(Double.MIN_VALUE, Double.MAX_VALUE, 0.0)
+        );
+    }
+
+    // Test toString method
+    @Test
+    void test_toString_returns_correct_format() {
+        Div div = new Div();
+        MathNode left = new ConstantNode(5.0, "5.0");
+        MathNode right = new ConstantNode(2.0, "2.0");
+        div.setLeftNode(left);
+        div.setRightNode(right);
+        
+        String result = div.toString();
+        assertEquals("5.0 / 2.0", result);
+    }
+}
+```

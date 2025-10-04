@@ -1,0 +1,160 @@
+package mathNode;
+
+import mathNode.Add;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AddCalculateGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class MathNodeStub extends MathNode {
+        private final Number value;
+
+        MathNodeStub(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    static class AddStub extends Add {
+        private final MathNode left;
+        private final MathNode right;
+
+        AddStub(MathNode left, MathNode right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        protected MathNode getLeftNode() {
+            return left;
+        }
+
+        @Override
+        protected MathNode getRightNode() {
+            return right;
+        }
+    }
+
+    @Test
+    void test_calculate_both_integers() {
+        MathNode left = new MathNodeStub(5) {};
+        MathNode right = new MathNodeStub(3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(8, result.intValue());
+    }
+
+    @Test
+    void test_calculate_zero_add_zero() {
+        MathNode left = new MathNodeStub(0) {};
+        MathNode right = new MathNodeStub(0) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(0, result.intValue());
+    }
+
+    @Test
+    void test_calculate_negative_integers() {
+        MathNode left = new MathNodeStub(-5) {};
+        MathNode right = new MathNodeStub(-3) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(-8, result.intValue());
+    }
+
+    @Test
+    void test_calculate_positive_and_negative() {
+        MathNode left = new MathNodeStub(10) {};
+        MathNode right = new MathNodeStub(-7) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(3, result.intValue());
+    }
+
+    @Test
+    void test_calculate_integer_min_value() {
+        MathNode left = new MathNodeStub(Integer.MIN_VALUE) {};
+        MathNode right = new MathNodeStub(0) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(Integer.MIN_VALUE, result.intValue());
+    }
+
+    @Test
+    void test_calculate_integer_max_value() {
+        MathNode left = new MathNodeStub(Integer.MAX_VALUE) {};
+        MathNode right = new MathNodeStub(0) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(Integer.MAX_VALUE, result.intValue());
+    }
+
+    @Test
+    void test_calculate_overflow_integers() {
+        MathNode left = new MathNodeStub(Integer.MAX_VALUE) {};
+        MathNode right = new MathNodeStub(1) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Integer.class, result);
+        assertEquals(Integer.MIN_VALUE, result.intValue()); // Overflow behavior
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideDoubleTestCases")
+    void test_calculate_double_values(Number leftVal, Number rightVal, double expected) {
+        MathNode left = new MathNodeStub(leftVal) {};
+        MathNode right = new MathNodeStub(rightVal) {};
+        Add add = new AddStub(left, right);
+
+        Number result = add.calculate();
+
+        assertInstanceOf(Double.class, result);
+        assertEquals(expected, result.doubleValue(), 1e-9);
+    }
+
+    static Stream<Arguments> provideDoubleTestCases() {
+        return Stream.of(
+            Arguments.of(1.5, 2.5, 4.0),
+            Arguments.of(0.1, 0.2, 0.3),
+            Arguments.of(-1.5, -2.5, -4.0),
+            Arguments.of(1.0, 2, 3.0), // Mixed types
+            Arguments.of(2, 1.0, 3.0), // Mixed types
+            Arguments.of(Double.MIN_VALUE, 0.0, Double.MIN_VALUE),
+            Arguments.of(Double.MAX_VALUE, 0.0, Double.MAX_VALUE),
+            Arguments.of(1e-100, 1e-100, 2e-100),
+            Arguments.of(1e100, 1e100, 2e100)
+        );
+    }
+}

@@ -1,0 +1,130 @@
+```java
+package test;
+
+import mathNode.*;
+import mathTree.MathTree;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultGeneratedTest {
+
+    @Test
+    public void test_calculate_bothIntegers_returnsInteger() {
+        Mult mult = new Mult();
+        Int left = new Int(5);
+        Int right = new Int(3);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        Number result = mult.calculate();
+        assertInstanceOf(Integer.class, result);
+        assertEquals(15, result.intValue());
+    }
+
+    @Test
+    public void test_calculate_oneDouble_returnsDouble() throws Exception {
+        Mult mult = new Mult();
+        Int left = new Int(5);
+        // Create a Dec node (since we don't have the class, we'll mock the behavior)
+        Dec right = new Dec(3.5);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        Number result = mult.calculate();
+        assertInstanceOf(Double.class, result);
+        assertEquals(17.5, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    public void test_calculate_negativeIntegers_returnsInteger() {
+        Mult mult = new Mult();
+        Int left = new Int(-4);
+        Int right = new Int(6);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        Number result = mult.calculate();
+        assertInstanceOf(Integer.class, result);
+        assertEquals(-24, result.intValue());
+    }
+
+    @Test
+    public void test_calculate_zeroInteger_returnsInteger() {
+        Mult mult = new Mult();
+        Int left = new Int(0);
+        Int right = new Int(100);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        Number result = mult.calculate();
+        assertInstanceOf(Integer.class, result);
+        assertEquals(0, result.intValue());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {Integer.MIN_VALUE, Integer.MAX_VALUE, -1000, -1, 0, 1, 1000})
+    public void test_calculate_integerEdgeCases_returnsInteger(int value) {
+        Mult mult = new Mult();
+        Int left = new Int(value);
+        Int right = new Int(1);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        Number result = mult.calculate();
+        assertInstanceOf(Integer.class, result);
+        assertEquals(value, result.intValue());
+    }
+
+    @Test
+    public void test_toString_noParens_returnsExpression() {
+        Mult mult = new Mult();
+        Int left = new Int(2);
+        Int right = new Int(3);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+
+        String result = mult.toString();
+        assertEquals("2 * 3", result);
+    }
+
+    @Test
+    public void test_toString_withParens_returnsParenthesizedExpression() throws Exception {
+        Mult mult = new Mult();
+        Int left = new Int(2);
+        Int right = new Int(3);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        mult.setParens(true);
+
+        String result = mult.toString();
+        assertEquals("(2 * 3)", result);
+    }
+
+    @Test
+    public void test_clone_createsDeepCopy() throws CloneNotSupportedException {
+        Mult original = new Mult();
+        Int left = new Int(5);
+        Int right = new Int(3);
+        original.setLeftNode(left);
+        original.setRightNode(right);
+
+        Mult cloned = (Mult) original.clone();
+
+        // Check that the clone is a different object
+        assertNotSame(original, cloned);
+
+        // Check that the nodes are cloned as well
+        assertNotSame(original.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(original.getRightNode(), cloned.getRightNode());
+
+        // Check that values are preserved
+        assertEquals(original.toString(), cloned.toString());
+        assertEquals(original.calculate(), cloned.calculate());
+    }
+}
+```

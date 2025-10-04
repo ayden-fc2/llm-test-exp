@@ -1,0 +1,132 @@
+package mathNode;
+
+import mathNode.Operator;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorGetLeftNodeGeneratedTest {
+
+    private Operator operator;
+    private Expression mockLeftNode;
+    private Expression mockRightNode;
+
+    @BeforeEach
+    void setUp() {
+        // Create mock Expression objects for testing
+        mockLeftNode = new Expression() {};
+        mockRightNode = new Expression() {};
+        
+        // Create anonymous subclass of Operator since it's abstract
+        operator = new Operator() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return ""; }
+        };
+        
+        // Set the nodes directly for testing getters
+        operator.setLeftNode(mockLeftNode);
+        operator.setRightNode(mockRightNode);
+    }
+
+    @Test
+    void test_getLeftNode_returnsCorrectNode() {
+        // Act
+        Expression result = operator.getLeftNode();
+        
+        // Assert
+        assertSame(mockLeftNode, result, "getLeftNode should return the left node that was set");
+        assertTrue(result instanceof Expression, "Returned object should be an Expression");
+    }
+
+    @Test
+    void test_getLeftNode_returnsNullWhenNotSet() {
+        // Arrange
+        Operator emptyOperator = new Operator() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return ""; }
+        };
+        
+        // Act
+        Expression result = emptyOperator.getLeftNode();
+        
+        // Assert
+        assertNull(result, "getLeftNode should return null when no left node is set");
+    }
+
+    @Test
+    void test_getRightNode_returnsCorrectNode() {
+        // Act
+        Expression result = operator.getRightNode();
+        
+        // Assert
+        assertSame(mockRightNode, result, "getRightNode should return the right node that was set");
+        assertTrue(result instanceof Expression, "Returned object should be an Expression");
+    }
+
+    @Test
+    void test_getRightNode_returnsNullWhenNotSet() {
+        // Arrange
+        Operator emptyOperator = new Operator() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return ""; }
+        };
+        
+        // Act
+        Expression result = emptyOperator.getRightNode();
+        
+        // Assert
+        assertNull(result, "getRightNode should return null when no right node is set");
+    }
+
+    @Test
+    void test_setLeftNode_updatesNodeCorrectly() {
+        // Arrange
+        Expression newLeftNode = new Expression() {};
+        
+        // Act
+        operator.setLeftNode(newLeftNode);
+        
+        // Assert
+        assertSame(newLeftNode, operator.getLeftNode(), "setLeftNode should update the left node");
+    }
+
+    @Test
+    void test_setRightNode_updatesNodeCorrectly() {
+        // Arrange
+        Expression newRightNode = new Expression() {};
+        
+        // Act
+        operator.setRightNode(newRightNode);
+        
+        // Assert
+        assertSame(newRightNode, operator.getRightNode(), "setRightNode should update the right node");
+    }
+
+    @Test
+    void test_setLeftNode_withNull() {
+        // Act
+        operator.setLeftNode(null);
+        
+        // Assert
+        assertNull(operator.getLeftNode(), "setLeftNode should accept null values");
+    }
+
+    @Test
+    void test_setRightNode_withNull() {
+        // Act
+        operator.setRightNode(null);
+        
+        // Assert
+        assertNull(operator.getRightNode(), "setRightNode should accept null values");
+    }
+}

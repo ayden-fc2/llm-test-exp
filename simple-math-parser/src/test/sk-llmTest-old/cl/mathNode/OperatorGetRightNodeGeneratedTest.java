@@ -1,0 +1,88 @@
+package mathNode;
+
+import mathNode.Operator;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorGetRightNodeGeneratedTest {
+
+    private Operator operator;
+    private Expression mockExpression;
+
+    @BeforeEach
+    public void setUp() {
+        // Create a minimal stub for Expression to satisfy compilation
+        mockExpression = new Expression() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return "mock"; }
+        };
+        
+        // Create anonymous subclass of Operator since it's abstract
+        operator = new Operator(mockExpression, mockExpression) {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return "test"; }
+        };
+    }
+
+    @Test
+    public void test_getRightNode_returnsCorrectNode() {
+        // Arrange
+        Expression expectedNode = mockExpression;
+        
+        // Act
+        Expression actualNode = operator.getRightNode();
+        
+        // Assert
+        assertSame(expectedNode, actualNode, "getRightNode should return the right node");
+        assertTrue(actualNode instanceof Expression, "Returned node should be an Expression");
+    }
+
+    @Test
+    public void test_getRightNode_returnsDifferentNodeAfterSet() {
+        // Arrange
+        Expression initialNode = mockExpression;
+        Expression newNode = new Expression() {
+            @Override
+            public double evaluate() { return 1.0; }
+            
+            @Override
+            public String toString() { return "newNode"; }
+        };
+        
+        // Verify initial state
+        assertSame(initialNode, operator.getRightNode(), "Initial right node should match");
+        
+        // Act
+        operator.setRightNode(newNode);
+        
+        // Assert
+        assertSame(newNode, operator.getRightNode(), "getRightNode should return the newly set node");
+        assertNotSame(initialNode, operator.getRightNode(), "getRightNode should not return the old node");
+    }
+
+    @Test
+    public void test_getRightNode_withNullNode() {
+        // Arrange
+        Operator nullOperator = new Operator(mockExpression, null) {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return "nullTest"; }
+        };
+        
+        // Act
+        Expression result = nullOperator.getRightNode();
+        
+        // Assert
+        assertNull(result, "getRightNode should return null when right node is null");
+    }
+}

@@ -1,0 +1,148 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AddToStringGeneratedTest {
+
+    // Stub implementation to support compilation and testing
+    static class AddStub extends Add {
+        private final String left;
+        private final String right;
+        private final boolean parens;
+
+        AddStub(String left, String right, boolean parens) {
+            this.left = left;
+            this.right = right;
+            this.parens = parens;
+        }
+
+        @Override
+        protected Node getLeftNode() {
+            return new NodeStub(left);
+        }
+
+        @Override
+        protected Node getRightNode() {
+            return new NodeStub(right);
+        }
+
+        @Override
+        protected boolean isParens() {
+            return parens;
+        }
+    }
+
+    // Minimal stub for Node to allow construction
+    static class NodeStub extends Node {
+        private final String value;
+
+        NodeStub(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
+    // Base abstract class stub to satisfy inheritance (minimal required)
+    abstract static class Node {
+        public abstract String toString();
+    }
+
+    // Parameterized test for normal cases with and without parentheses
+    @ParameterizedTest
+    @MethodSource("provideNormalCases")
+    void test_toString_NormalCases(String left, String right, boolean parens, String expected) {
+        AddStub add = new AddStub(left, right, parens);
+        assertEquals(expected, add.toString());
+    }
+
+    static Stream<Arguments> provideNormalCases() {
+        return Stream.of(
+            Arguments.of("a", "b", false, "a + b"),
+            Arguments.of("x", "y", true, "(x + y)"),
+            Arguments.of("1", "2", false, "1 + 2"),
+            Arguments.of("left", "right", true, "(left + right)")
+        );
+    }
+
+    // Test boundary case: empty strings
+    @Test
+    void test_toString_EmptyStrings_NoParens() {
+        AddStub add = new AddStub("", "", false);
+        assertEquals(" + ", add.toString());
+    }
+
+    @Test
+    void test_toString_EmptyStrings_WithParens() {
+        AddStub add = new AddStub("", "", true);
+        assertEquals("( + )", add.toString());
+    }
+
+    // Test special values like numbers at extremes
+    @Test
+    void test_toString_SpecialNumericValues_NoParens() {
+        AddStub add = new AddStub("-2147483648", "2147483647", false);
+        assertEquals("-2147483648 + 2147483647", add.toString());
+    }
+
+    @Test
+    void test_toString_SpecialNumericValues_WithParens() {
+        AddStub add = new AddStub("0", "0", true);
+        assertEquals("(0 + 0)", add.toString());
+    }
+
+    // Test very large string representations
+    @Test
+    void test_toString_VeryLargeStrings_NoParens() {
+        String large = "VERY_LARGE_STRING_INPUT".repeat(1000);
+        AddStub add = new AddStub(large, large, false);
+        assertTrue(add.toString().startsWith(large));
+        assertTrue(add.toString().endsWith(large));
+        assertTrue(add.toString().contains(" + "));
+    }
+
+    @Test
+    void test_toString_VeryLargeStrings_WithParens() {
+        String large = "ANOTHER_LARGE_INPUT".repeat(500);
+        AddStub add = new AddStub(large, large, true);
+        assertTrue(add.toString().startsWith("(" + large));
+        assertTrue(add.toString().endsWith(large + ")"));
+        assertTrue(add.toString().contains(" + "));
+    }
+
+    // Test with null-like behavior by returning "null" from nodes
+    @Test
+    void test_toString_NullLikeNodes_NoParens() {
+        AddStub add = new AddStub("null", "null", false);
+        assertEquals("null + null", add.toString());
+    }
+
+    @Test
+    void test_toString_NullLikeNodes_WithParens() {
+        AddStub add = new AddStub("null", "null", true);
+        assertEquals("(null + null)", add.toString());
+    }
+
+    // Test single character operands
+    @Test
+    void test_toString_SingleCharacterOperands_NoParens() {
+        AddStub add = new AddStub("x", "y", false);
+        assertEquals("x + y", add.toString());
+    }
+
+    @Test
+    void test_toString_SingleCharacterOperands_WithParens() {
+        AddStub add = new AddStub("x", "y", true);
+        assertEquals("(x + y)", add.toString());
+    }
+}

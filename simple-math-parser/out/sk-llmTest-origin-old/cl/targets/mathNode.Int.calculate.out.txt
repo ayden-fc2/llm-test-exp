@@ -1,0 +1,61 @@
+```java
+package test;
+
+import mathNode.Int;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class IntGeneratedTest {
+
+    @Test
+    void test_calculate_returnsCorrectValue() {
+        Int node = new Int(42);
+        Number result = node.calculate();
+        assertEquals(42, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    void test_calculate_edgeCases(int value) {
+        Int node = new Int(value);
+        Number result = node.calculate();
+        assertEquals(value, result.intValue());
+    }
+
+    @Test
+    void test_toString_withoutParens() {
+        Int node = new Int(123);
+        node.setParens(false);
+        assertEquals("123", node.toString());
+    }
+
+    @Test
+    void test_toString_withParens() {
+        Int node = new Int(-456);
+        node.setParens(true);
+        assertEquals("(-456)", node.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    void test_toString_edgeCasesWithoutParens(int value) {
+        Int node = new Int(value);
+        node.setParens(false);
+        String expected = Integer.toString(value);
+        assertEquals(expected, node.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    void test_toString_edgeCasesWithParens(int value) {
+        Int node = new Int(value);
+        node.setParens(true);
+        String expected = "(" + value + ")";
+        assertEquals(expected, node.toString());
+    }
+}
+```

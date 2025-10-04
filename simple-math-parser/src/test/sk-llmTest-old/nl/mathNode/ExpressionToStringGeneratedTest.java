@@ -1,0 +1,91 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Expression#toString()}.
+ */
+class ExpressionToStringGeneratedTest {
+
+    // Minimal stub implementation to allow compilation and testing of toString()
+    private static class StubExpression extends Expression {
+        private final String representation;
+
+        public StubExpression(String representation) {
+            this.representation = representation;
+        }
+
+        @Override
+        public String toString() {
+            return representation;
+        }
+
+        @Override
+        public Expression clone() {
+            try {
+                return (Expression) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e); // Should not happen as Expression implements Cloneable
+            }
+        }
+    }
+
+    @Test
+    void test_toString_normal_returnsExpectedString() {
+        Expression expr = new StubExpression("x + y");
+        assertEquals("x + y", expr.toString());
+    }
+
+    @Test
+    void test_toString_emptyString_returnsEmptyString() {
+        Expression expr = new StubExpression("");
+        assertEquals("", expr.toString());
+    }
+
+    @Test
+    void test_toString_nullStringHandled_gracefully() {
+        Expression expr = new StubExpression(null);
+        assertNull(expr.toString()); // Assuming default Object.toString() behavior if field is null
+    }
+
+    @Test
+    void test_toString_specialCharacters_preservesContent() {
+        Expression expr = new StubExpression("3 * (a - b) / 2.0");
+        assertEquals("3 * (a - b) / 2.0", expr.toString());
+    }
+
+    @Test
+    void test_toString_whitespaceOnly_preservesWhitespace() {
+        Expression expr = new StubExpression("   \t\n ");
+        assertEquals("   \t\n ", expr.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "0",
+        "-1",
+        "1",
+        Integer.toString(Integer.MAX_VALUE),
+        Integer.toString(Integer.MIN_VALUE),
+        Double.toString(Double.MAX_VALUE),
+        Double.toString(Double.MIN_VALUE),
+        "very_long_expression_like_a+b*c-d/e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x_y_z"
+    })
+    void test_toString_boundaryAndSpecialValues_returnsCorrectly(String input) {
+        Expression expr = new StubExpression(input);
+        assertEquals(input, expr.toString());
+    }
+
+    @Test
+    void test_toString_idempotent_property() {
+        Expression expr = new StubExpression("a*b+c");
+        String firstCall = expr.toString();
+        String secondCall = expr.toString();
+        assertSame(firstCall, secondCall); // Identity check may vary; value equality ensured by design
+        assertEquals(firstCall, secondCall);
+    }
+}

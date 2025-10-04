@@ -1,0 +1,66 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Operator#getRightNode()}.
+ */
+class OperatorGetRightNodeGeneratedTest {
+
+    // Minimal stub for Expression to allow compilation and basic usage
+    static class Expression {}
+
+    // Minimal stub for Operator that allows setting the rightNode field
+    static class Operator {
+        private final Expression rightNode;
+
+        public Operator(Expression rightNode) {
+            this.rightNode = rightNode;
+        }
+
+        public Expression getRightNode() {
+            return rightNode;
+        }
+    }
+
+    @Test
+    void test_getRightNode_normal_returnsCorrectInstance() {
+        // Arrange
+        Expression expected = new Expression();
+        Operator operator = new Operator(expected);
+
+        // Act
+        Expression actual = operator.getRightNode();
+
+        // Assert
+        assertSame(expected, actual, "getRightNode should return the exact same instance passed during construction");
+    }
+
+    @Test
+    void test_getRightNode_withNull_returnsNull() {
+        // Arrange
+        Operator operator = new Operator(null);
+
+        // Act
+        Expression result = operator.getRightNode();
+
+        // Assert
+        assertNull(result, "getRightNode should return null when constructed with null");
+    }
+
+    @Test
+    void test_getRightNode_multipleCalls_returnsSameInstance() {
+        // Arrange
+        Expression node = new Expression();
+        Operator operator = new Operator(node);
+
+        // Act
+        Expression firstCall = operator.getRightNode();
+        Expression secondCall = operator.getRightNode();
+
+        // Assert
+        assertSame(firstCall, secondCall, "Multiple calls to getRightNode must return the same instance");
+        assertSame(node, firstCall, "The returned instance must be the one provided at construction");
+    }
+}

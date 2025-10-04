@@ -1,0 +1,20 @@
+package mathNode;
+
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class DecCheckTreeGeneratedTest {
+
+    @Test
+    void test_checkTree_alwaysReturnsTrue() {
+        // Arrange
+        Dec dec = new Dec();
+
+        // Act
+        boolean result = dec.checkTree();
+
+        // Assert
+        assertTrue(result, "checkTree should always return true");
+    }
+}

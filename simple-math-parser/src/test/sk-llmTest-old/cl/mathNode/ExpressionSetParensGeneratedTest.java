@@ -1,0 +1,32 @@
+package mathNode;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionSetParensGeneratedTest {
+
+    @Test
+    public void test_setParens_setsValueTrue() {
+        Expression expr = new Expression();
+        expr.setParens(true);
+        assertTrue(expr.isParens());
+    }
+
+    @Test
+    public void test_setParens_setsValueFalse() {
+        Expression expr = new Expression();
+        expr.setParens(false);
+        assertFalse(expr.isParens());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void test_setParens_parameterized(boolean value) {
+        Expression expr = new Expression();
+        expr.setParens(value);
+        assertEquals(value, expr.isParens());
+    }
+}

@@ -1,0 +1,55 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class ExpressionTest {
+
+    @Test
+    void test_setParens_true_setsParenthesisToTrue() {
+        Expression expr = new Expression();
+        expr.setParens(true);
+        // Assuming there's a getParens() method for testing purposes.
+        // If not, this test would require access to the 'parenthesis' field or an observable behavior.
+        // For now, we'll assume such a getter exists for testability.
+        assertTrue(expr.getParens());
+    }
+
+    @Test
+    void test_setParens_false_setsParenthesisToFalse() {
+        Expression expr = new Expression();
+        expr.setParens(false);
+        assertFalse(expr.getParens());
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void test_setParens_idempotent_behavior(boolean value) {
+        Expression expr = new Expression();
+        expr.setParens(value);
+        expr.setParens(value); // Set again
+        if (value) {
+            assertTrue(expr.getParens());
+        } else {
+            assertFalse(expr.getParens());
+        }
+    }
+
+    // Note: Since boolean only has two values, boundary testing is implicitly covered above.
+}
+```
+
+**说明：**
+- 此测试代码假设 `Expression` 类中存在一个 `getParens()` 方法以验证 `setParens` 的行为。如果该方法不存在，请补充如下最小桩代码到 `Expression.java` 中：
+```java
+public boolean getParens() {
+    return parenthesis;
+}
+```
+- 覆盖了基本的语句和分支（true/false），并使用参数化测试确保幂等性。
+- 所有测试独立构造对象，符合要求。

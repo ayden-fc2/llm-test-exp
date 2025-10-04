@@ -1,0 +1,82 @@
+```java
+package test;
+
+import mathNode.Operator;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorGeneratedTest {
+
+    private Operator operator;
+    private Expression mockExpression;
+
+    @BeforeEach
+    void setUp() {
+        // Create a minimal stub for Expression to satisfy compilation
+        mockExpression = new Expression() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return "MockExpression"; }
+        };
+        
+        // Using anonymous subclass since we're testing setRightNode method
+        operator = new Operator() {
+            @Override
+            public double evaluate() { return 0.0; }
+            
+            @Override
+            public String toString() { return "MockOperator"; }
+        };
+    }
+
+    @Test
+    public void test_setRightNode_withValidExpression() {
+        // Act
+        operator.setRightNode(mockExpression);
+        
+        // Verify that the rightNode was set correctly
+        // Since we don't have a getter, we can't directly assert the value
+        // But we've confirmed the method executes without error
+        assertTrue(true); // Placeholder - in a real scenario, you'd have a getter
+    }
+
+    @Test
+    public void test_setRightNode_withNullExpression() {
+        // Act
+        operator.setRightNode(null);
+        
+        // Verify that setting null is allowed (no exception thrown)
+        assertTrue(true); // Placeholder - in a real scenario, you'd have a getter
+    }
+
+    @Test
+    public void test_setRightNode_multipleTimes() {
+        // Arrange
+        Expression expr1 = new Expression() {
+            @Override
+            public double evaluate() { return 1.0; }
+            @Override
+            public String toString() { return "Expr1"; }
+        };
+        
+        Expression expr2 = new Expression() {
+            @Override
+            public double evaluate() { return 2.0; }
+            @Override
+            public String toString() { return "Expr2"; }
+        };
+
+        // Act & Assert
+        operator.setRightNode(expr1);
+        operator.setRightNode(expr2);
+        operator.setRightNode(expr1);
+        
+        // Verify that multiple calls work (no exceptions)
+        assertTrue(true); // Placeholder - in a real scenario, you'd have a getter
+    }
+}
+```

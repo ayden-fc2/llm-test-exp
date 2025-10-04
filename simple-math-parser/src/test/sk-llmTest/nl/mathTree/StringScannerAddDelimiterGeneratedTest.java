@@ -1,0 +1,95 @@
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerAddDelimiterGeneratedTest {
+
+    private StringScanner scanner;
+    private Set<Character> delimSet;
+
+    @BeforeEach
+    void setUp() throws Exception {
+        scanner = new StringScanner("");
+        // Use reflection to access the private delimSet field for verification
+        Field delimSetField = StringScanner.class.getDeclaredField("delimSet");
+        delimSetField.setAccessible(true);
+        delimSet = (Set<Character>) delimSetField.get(scanner);
+    }
+
+    @Test
+    void test_addDelimiter_withNullArray_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> scanner.addDelimiter(null));
+    }
+
+    @Test
+    void test_addDelimiter_withEmptyArray_doesNotChangeDelimSet() {
+        int initialSize = delimSet.size();
+        scanner.addDelimiter(new char[0]);
+        assertEquals(initialSize, delimSet.size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {' ', '\t', '\n', ',', ';', 'a', 'Z', '0', '-', '=', '+'})
+    void test_addDelimiter_withSingleCharacter_addsToDelimSet(char ch) {
+        scanner.addDelimiter(new char[]{ch});
+        assertTrue(delimSet.contains(ch));
+    }
+
+    @Test
+    void test_addDelimiter_withMultipleUniqueCharacters_allAddedToDelimSet() {
+        char[] delimiters = {'x', 'y', 'z'};
+        scanner.addDelimiter(delimiters);
+        for (char c : delimiters) {
+            assertTrue(delimSet.contains(c), "Delimiter '" + c + "' was not added.");
+        }
+    }
+
+    @Test
+    void test_addDelimiter_withDuplicateCharacters_inDelimArray_onlyOneInstanceInSet() {
+        char[] delimiters = {'!', '@', '!', '@'};
+        scanner.addDelimiter(delimiters);
+        assertEquals(2, delimSet.size()); // Only two unique elements: '!' and '@'
+        assertTrue(delimSet.contains('!'));
+        assertTrue(delimSet.contains('@'));
+    }
+
+    @Test
+    void test_addDelimiter_withSpecialUnicodeCharacters_areAddedCorrectly() {
+        char[] unicodeDelimiters = {'\u00A0', '\u2000', '\u2001'}; // Non-breaking space, en quad, em quad
+        scanner.addDelimiter(unicodeDelimiters);
+        for (char c : unicodeDelimiters) {
+            assertTrue(delimSet.contains(c), "Unicode delimiter '" + (int)c + "' was not added.");
+        }
+    }
+
+    @Test
+    void test_addDelimiter_multipleCalls_accumulatesAllDelimiters() {
+        scanner.addDelimiter(new char[]{'*'});
+        scanner.addDelimiter(new char[]{'>', '<'});
+        assertTrue(delimSet.contains('*'));
+        assertTrue(delimSet.contains('>'));
+        assertTrue(delimSet.contains('<'));
+        assertEquals(3, delimSet.size());
+    }
+
+    @Test
+    void test_addDelimiter_withMaxArraySize_noExceptionThrown() {
+        char[] largeArray = new char[10000];
+        for (int i = 0; i < largeArray.length; i++) {
+            largeArray[i] = (char) (i % 128); // Fill with ASCII characters
+        }
+        assertDoesNotThrow(() -> scanner.addDelimiter(largeArray));
+        // Verify some elements were added
+        assertTrue(delimSet.contains((char)0));
+        assertTrue(delimSet.contains((char)64));
+        assertTrue(delimSet.contains((char)127));
+    }
+}

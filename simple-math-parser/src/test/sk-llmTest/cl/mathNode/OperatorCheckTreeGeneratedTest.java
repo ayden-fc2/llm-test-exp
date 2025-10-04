@@ -1,0 +1,116 @@
+package mathNode;
+
+import mathNode.Operator;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorCheckTreeGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static class OperatorStub extends Operator {
+        private OperatorStub left;
+        private OperatorStub right;
+
+        public OperatorStub(OperatorStub left, OperatorStub right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public boolean checkTree() {
+            if (left == null || right == null)
+                return false;
+            else
+                return left.checkTree() && right.checkTree();
+        }
+
+        // Expose protected fields for testing purposes
+        public void setLeftNode(OperatorStub left) {
+            this.left = left;
+        }
+
+        public void setRightNode(OperatorStub right) {
+            this.right = right;
+        }
+    }
+
+    private OperatorStub root;
+
+    @BeforeEach
+    public void setup() {
+        root = new OperatorStub(null, null);
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenLeftNodeIsNull() {
+        // Arrange
+        root.setRightNode(new OperatorStub(null, null));
+
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenRightNodeIsNull() {
+        // Arrange
+        root.setLeftNode(new OperatorStub(null, null));
+
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenBothNodesAreNull() {
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsTrueWhenBothChildrenValidAndReturnTrue() {
+        // Arrange
+        OperatorStub leftChild = new OperatorStub(new OperatorStub(null, null), new OperatorStub(null, null));
+        OperatorStub rightChild = new OperatorStub(new OperatorStub(null, null), new OperatorStub(null, null));
+        root.setLeftNode(leftChild);
+        root.setRightNode(rightChild);
+
+        // Act & Assert
+        assertTrue(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenLeftChildInvalid() {
+        // Arrange
+        OperatorStub leftChild = new OperatorStub(null, new OperatorStub(null, null)); // Invalid: missing left
+        OperatorStub rightChild = new OperatorStub(new OperatorStub(null, null), new OperatorStub(null, null));
+        root.setLeftNode(leftChild);
+        root.setRightNode(rightChild);
+
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenRightChildInvalid() {
+        // Arrange
+        OperatorStub leftChild = new OperatorStub(new OperatorStub(null, null), new OperatorStub(null, null));
+        OperatorStub rightChild = new OperatorStub(new OperatorStub(null, null), null); // Invalid: missing right
+        root.setLeftNode(leftChild);
+        root.setRightNode(rightChild);
+
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+
+    @Test
+    public void test_checkTree_returnsFalseWhenBothChildrenInvalid() {
+        // Arrange
+        OperatorStub leftChild = new OperatorStub(null, new OperatorStub(null, null)); // Invalid: missing left
+        OperatorStub rightChild = new OperatorStub(new OperatorStub(null, null), null); // Invalid: missing right
+        root.setLeftNode(leftChild);
+        root.setRightNode(rightChild);
+
+        // Act & Assert
+        assertFalse(root.checkTree());
+    }
+}

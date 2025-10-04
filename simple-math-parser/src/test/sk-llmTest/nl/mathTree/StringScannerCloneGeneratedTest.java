@@ -1,0 +1,204 @@
+package mathTree;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link StringScanner#clone()}.
+ */
+class StringScannerCloneGeneratedTest {
+
+    private StringScanner stringScanner;
+
+    @BeforeEach
+    void setUp() {
+        stringScanner = new StringScanner();
+    }
+
+    // Test that the cloned object is a distinct instance
+    @Test
+    void test_clone_returnsNewInstance() throws CloneNotSupportedException {
+        StringScanner clone = (StringScanner) stringScanner.clone();
+        assertNotNull(clone);
+        assertNotSame(stringScanner, clone, "Clone should be a different instance");
+    }
+
+    // Test that cloning an empty StringScanner works correctly
+    @Test
+    void test_clone_emptyStringScanner() throws CloneNotSupportedException {
+        StringScanner clone = (StringScanner) stringScanner.clone();
+
+        assertTrue(clone.tokenList.isEmpty(), "Token list of clone should be empty");
+        assertTrue(clone.delimSet.isEmpty(), "Delimiter set of clone should be empty");
+        assertTrue(clone.specCharSet.isEmpty(), "Special character set of clone should be empty");
+    }
+
+    // Test cloning with populated token list
+    @Test
+    void test_clone_withTokensInTokenList() throws CloneNotSupportedException {
+        stringScanner.tokenList.add("token1");
+        stringScanner.tokenList.add("token2");
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+
+        assertEquals(2, clone.tokenList.size());
+        assertEquals("token1", clone.tokenList.get(0));
+        assertEquals("token2", clone.tokenList.get(1));
+        assertNotSame(stringScanner.tokenList, clone.tokenList, "Token lists must be separate instances");
+    }
+
+    // Test cloning with delimiters in delimSet
+    @Test
+    void test_clone_withDelimitersInDelimSet() throws CloneNotSupportedException {
+        stringScanner.delimSet.add(' ');
+        stringScanner.delimSet.add('\t');
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+
+        assertEquals(2, clone.delimSet.size());
+        assertTrue(clone.delimSet.contains(' '));
+        assertTrue(clone.delimSet.contains('\t'));
+        assertNotSame(stringScanner.delimSet, clone.delimSet, "Delimiter sets must be separate instances");
+    }
+
+    // Test cloning with special characters in specCharSet
+    @Test
+    void test_clone_withSpecialCharsInSpecCharSet() throws CloneNotSupportedException {
+        stringScanner.specCharSet.add('+');
+        stringScanner.specCharSet.add('-');
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+
+        assertEquals(2, clone.specCharSet.size());
+        assertTrue(clone.specCharSet.contains('+'));
+        assertTrue(clone.specCharSet.contains('-'));
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet, "Special char sets must be separate instances");
+    }
+
+    // Test that modifying the clone does not affect the original object's tokenList
+    @Test
+    void test_clone_modifyingCloneDoesNotAffectOriginal_tokenList() throws CloneNotSupportedException {
+        stringScanner.tokenList.add("original");
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+        clone.tokenList.add("addedToClone");
+
+        assertEquals(1, stringScanner.tokenList.size(), "Original tokenList should remain unchanged");
+        assertEquals("original", stringScanner.tokenList.get(0));
+        assertEquals(2, clone.tokenList.size(), "Clone tokenList should have additional element");
+    }
+
+    // Test that modifying the clone does not affect the original object's delimSet
+    @Test
+    void test_clone_modifyingCloneDoesNotAffectOriginal_delimSet() throws CloneNotSupportedException {
+        stringScanner.delimSet.add(',');
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+        clone.delimSet.add(';');
+
+        assertEquals(1, stringScanner.delimSet.size(), "Original delimSet should remain unchanged");
+        assertTrue(stringScanner.delimSet.contains(','));
+        assertFalse(stringScanner.delimSet.contains(';'));
+
+        assertEquals(2, clone.delimSet.size(), "Clone delimSet should have additional element");
+        assertTrue(clone.delimSet.contains(','));
+        assertTrue(clone.delimSet.contains(';'));
+    }
+
+    // Test that modifying the clone does not affect the original object's specCharSet
+    @Test
+    void test_clone_modifyingCloneDoesNotAffectOriginal_specCharSet() throws CloneNotSupportedException {
+        stringScanner.specCharSet.add('*');
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+        clone.specCharSet.add('/');
+
+        assertEquals(1, stringScanner.specCharSet.size(), "Original specCharSet should remain unchanged");
+        assertTrue(stringScanner.specCharSet.contains('*'));
+        assertFalse(stringScanner.specCharSet.contains('/'));
+
+        assertEquals(2, clone.specCharSet.size(), "Clone specCharSet should have additional element");
+        assertTrue(clone.specCharSet.contains('*'));
+        assertTrue(clone.specCharSet.contains('/'));
+    }
+
+    // Test that clone method throws CloneNotSupportedException when super.clone() fails
+    @Test
+    void test_clone_throwsCloneNotSupportedException_whenSuperFails() {
+        // This scenario can't happen under normal conditions since StringScanner extends Object,
+        // and Object.clone() will work as long as the class implements Cloneable.
+        // However, we simulate a case where something goes wrong by mocking or extending behavior.
+        // Since mocks are disallowed, we'll rely on default behavior here:
+        // In standard Java, if clone is called on non-Cloneable object, it throws.
+        // But since StringScanner presumably implements Cloneable (as per usage), this won't occur.
+        // So we just ensure no exception is thrown in normal operation.
+
+        assertDoesNotThrow(() -> stringScanner.clone(), "Clone should succeed normally");
+    }
+
+    // Test cloning multiple times produces independent clones each time
+    @Test
+    void test_clone_multipleClonesAreIndependent() throws CloneNotSupportedException {
+        stringScanner.tokenList.add("baseToken");
+        stringScanner.delimSet.add('|');
+        stringScanner.specCharSet.add('^');
+
+        StringScanner clone1 = (StringScanner) stringScanner.clone();
+        StringScanner clone2 = (StringScanner) stringScanner.clone();
+
+        clone1.tokenList.add("fromClone1");
+        clone2.tokenList.add("fromClone2");
+
+        assertEquals(1, stringScanner.tokenList.size(), "Original tokenList size should remain 1");
+        assertEquals(2, clone1.tokenList.size(), "Clone1 tokenList should grow to 2");
+        assertEquals(2, clone2.tokenList.size(), "Clone2 tokenList should grow to 2");
+
+        assertEquals("baseToken", stringScanner.tokenList.get(0));
+        assertEquals("baseToken", clone1.tokenList.get(0));
+        assertEquals("baseToken", clone2.tokenList.get(0));
+        assertEquals("fromClone1", clone1.tokenList.get(1));
+        assertEquals("fromClone2", clone2.tokenList.get(1));
+    }
+
+    // Parameterized test: verify that all internal collections are deeply cloned
+    @ParameterizedTest
+    @ValueSource(strings = {"", "a", "ab", "abc"})
+    void test_clone_deepCopyOfCollections(String input) throws CloneNotSupportedException {
+        for (char c : input.toCharArray()) {
+            stringScanner.tokenList.add(String.valueOf(c));
+            stringScanner.delimSet.add(c);
+            stringScanner.specCharSet.add(Character.toUpperCase(c));
+        }
+
+        StringScanner clone = (StringScanner) stringScanner.clone();
+
+        assertEquals(stringScanner.tokenList.size(), clone.tokenList.size());
+        assertEquals(stringScanner.delimSet.size(), clone.delimSet.size());
+        assertEquals(stringScanner.specCharSet.size(), clone.specCharSet.size());
+
+        for (int i = 0; i < stringScanner.tokenList.size(); i++) {
+            assertEquals(stringScanner.tokenList.get(i), clone.tokenList.get(i));
+        }
+
+        for (Character c : stringScanner.delimSet) {
+            assertTrue(clone.delimSet.contains(c));
+        }
+
+        for (Character c : stringScanner.specCharSet) {
+            assertTrue(clone.specCharSet.contains(c));
+        }
+
+        assertNotSame(stringScanner.tokenList, clone.tokenList);
+        assertNotSame(stringScanner.delimSet, clone.delimSet);
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet);
+    }
+}

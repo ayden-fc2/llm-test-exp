@@ -1,0 +1,111 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Dec#toString()}.
+ */
+class DecToStringGeneratedTest {
+
+    // Minimal stub to allow compilation and testing of Dec.toString()
+    private static class Dec {
+        private final double value;
+        private final boolean parens;
+
+        public Dec(double value, boolean parens) {
+            this.value = value;
+            this.parens = parens;
+        }
+
+        public boolean isParens() {
+            return parens;
+        }
+
+        public String toString() {
+            String str = Double.toString(value);
+
+            if (isParens())
+                return '(' + str + ')';
+            else
+                return str;
+        }
+    }
+
+    @Test
+    void test_toString_positiveValue_noParens() {
+        Dec dec = new Dec(42.5, false);
+        assertEquals("42.5", dec.toString());
+    }
+
+    @Test
+    void test_toString_negativeValue_noParens() {
+        Dec dec = new Dec(-7.25, false);
+        assertEquals("-7.25", dec.toString());
+    }
+
+    @Test
+    void test_toString_zero_noParens() {
+        Dec dec = new Dec(0.0, false);
+        assertEquals("0.0", dec.toString());
+    }
+
+    @Test
+    void test_toString_positiveValue_withParens() {
+        Dec dec = new Dec(3.14, true);
+        assertEquals("(3.14)", dec.toString());
+    }
+
+    @Test
+    void test_toString_negativeValue_withParens() {
+        Dec dec = new Dec(-1.5, true);
+        assertEquals("(-1.5)", dec.toString());
+    }
+
+    @Test
+    void test_toString_zero_withParens() {
+        Dec dec = new Dec(0.0, true);
+        assertEquals("(0.0)", dec.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {Double.MAX_VALUE, Double.MIN_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    void test_toString_specialValues_noParens(double val) {
+        Dec dec = new Dec(val, false);
+        assertEquals(Double.toString(val), dec.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {Double.MAX_VALUE, Double.MIN_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    void test_toString_specialValues_withParens(double val) {
+        Dec dec = new Dec(val, true);
+        assertEquals("(" + Double.toString(val) + ")", dec.toString());
+    }
+
+    @Test
+    void test_toString_nan_noParens() {
+        Dec dec = new Dec(Double.NaN, false);
+        assertEquals("NaN", dec.toString());
+    }
+
+    @Test
+    void test_toString_nan_withParens() {
+        Dec dec = new Dec(Double.NaN, true);
+        assertEquals("(NaN)", dec.toString());
+    }
+
+    @Test
+    void test_toString_verySmallPositive_noParens() {
+        Dec dec = new Dec(1e-308, false);
+        assertEquals("1.0E-308", dec.toString());
+    }
+
+    @Test
+    void test_toString_veryLargeNegative_withParens() {
+        Dec dec = new Dec(-1e308, true);
+        assertEquals("(-1.0E308)", dec.toString());
+    }
+}

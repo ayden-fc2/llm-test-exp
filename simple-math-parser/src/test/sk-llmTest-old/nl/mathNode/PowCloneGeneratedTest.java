@@ -1,0 +1,104 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PowCloneGeneratedTest {
+
+    private Pow pow;
+    private ExpressionStub leftNodeStub;
+    private ExpressionStub rightNodeStub;
+
+    @BeforeEach
+    void setUp() {
+        leftNodeStub = new ExpressionStub("left");
+        rightNodeStub = new ExpressionStub("right");
+        pow = new Pow();
+        pow.setLeftNode(leftNodeStub);
+        pow.setRightNode(rightNodeStub);
+    }
+
+    @Test
+    void test_clone_normalBehavior_createsDeepCopy() throws CloneNotSupportedException {
+        Pow cloned = (Pow) pow.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(pow, cloned);
+
+        // Check that the returned object is of correct type
+        assertTrue(cloned instanceof Pow);
+
+        // Verify deep copy: nodes should be cloned but not same instances
+        assertNotNull(cloned.getLeftNode());
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(pow.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(pow.getRightNode(), cloned.getRightNode());
+
+        // Values should match
+        assertEquals(((ExpressionStub) pow.getLeftNode()).getValue(),
+                     ((ExpressionStub) cloned.getLeftNode()).getValue());
+        assertEquals(((ExpressionStub) pow.getRightNode()).getValue(),
+                     ((ExpressionStub) cloned.getRightNode()).getValue());
+    }
+
+    @Test
+    void test_clone_whenLeftNodeIsNull_throwsNullPointerExceptionDuringClone() {
+        pow.setLeftNode(null);
+        assertThrows(NullPointerException.class, () -> pow.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeIsNull_throwsNullPointerExceptionDuringClone() {
+        pow.setRightNode(null);
+        assertThrows(NullPointerException.class, () -> pow.clone());
+    }
+
+    @Test
+    void test_clone_whenBothNodesAreNull_throwsNullPointerExceptionDuringClone() {
+        pow.setLeftNode(null);
+        pow.setRightNode(null);
+        assertThrows(NullPointerException.class, () -> pow.clone());
+    }
+
+    @Test
+    void test_clone_whenLeftNodeCloneThrows_exceptionPropagates() {
+        leftNodeStub.setShouldThrowOnClone(true);
+        assertThrows(RuntimeException.class, () -> pow.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeCloneThrows_exceptionPropagates() {
+        rightNodeStub.setShouldThrowOnClone(true);
+        assertThrows(RuntimeException.class, () -> pow.clone());
+    }
+
+    // Minimal stub for Expression to support testing without external dependencies
+    static class ExpressionStub implements Expression {
+        private final String value;
+        private boolean shouldThrowOnClone = false;
+
+        public ExpressionStub(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setShouldThrowOnClone(boolean shouldThrow) {
+            this.shouldThrowOnClone = shouldThrow;
+        }
+
+        @Override
+        public Object clone() {
+            if (shouldThrowOnClone) {
+                throw new RuntimeException("Simulated clone failure");
+            }
+            return new ExpressionStub(value);
+        }
+    }
+}

@@ -1,0 +1,114 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Expression#toString()}.
+ * <p>
+ * Since Expression is abstract, we test through a minimal concrete subclass.
+ */
+class ExpressionToStringGeneratedTest {
+
+    // Minimal concrete implementation for testing
+    private static class TestExpression extends Expression {
+        private final String representation;
+
+        TestExpression(String representation) {
+            this.representation = representation;
+        }
+
+        @Override
+        public String toString() {
+            return representation;
+        }
+
+        @Override
+        public Expression clone() {
+            try {
+                return (Expression) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new AssertionError("Clone should be supported", e);
+            }
+        }
+    }
+
+    @Test
+    void test_toString_normalValue_returnsExpectedString() {
+        Expression expr = new TestExpression("x + y");
+        assertEquals("x + y", expr.toString());
+    }
+
+    @Test
+    void test_toString_emptyString_returnsEmptyString() {
+        Expression expr = new TestExpression("");
+        assertEquals("", expr.toString());
+    }
+
+    @Test
+    void test_toString_nullString_returnsNullLiteral() {
+        Expression expr = new TestExpression(null);
+        assertNull(expr.toString());
+    }
+
+    @Test
+    void test_toString_singleCharacter_returnsCharacter() {
+        Expression expr = new TestExpression("a");
+        assertEquals("a", expr.toString());
+    }
+
+    @Test
+    void test_toString_specialCharacters_handlesCorrectly() {
+        Expression expr = new TestExpression("x * (y + z) == 0");
+        assertEquals("x * (y + z) == 0", expr.toString());
+    }
+
+    @Test
+    void test_toString_whitespaceOnly_preservesWhitespace() {
+        Expression expr = new TestExpression("   \t\n  ");
+        assertEquals("   \t\n  ", expr.toString());
+    }
+
+    @Test
+    void test_toString_veryLongString_handled() {
+        String longString = "a".repeat(10000);
+        Expression expr = new TestExpression(longString);
+        assertEquals(longString, expr.toString());
+    }
+
+    @Test
+    void test_toString_unicodeCharacters_supported() {
+        Expression expr = new TestExpression("∑(i=1 to ∞) 1/i² = π²/6");
+        assertEquals("∑(i=1 to ∞) 1/i² = π²/6", expr.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "0",
+        "-1",
+        "1",
+        Integer.MIN_VALUE + "",
+        Integer.MAX_VALUE + "",
+        Double.MIN_VALUE + "",
+        Double.MAX_VALUE + "",
+        "NaN",
+        "Infinity",
+        "-Infinity"
+    })
+    void test_toString_numericRepresentations_handlesCorrectly(String value) {
+        Expression expr = new TestExpression(value);
+        assertEquals(value, expr.toString());
+    }
+
+    // Test to ensure toString is consistent with equals/hashCode contract (if applicable)
+    @Test
+    void test_toString_consistencyOnMultipleCalls_sameResult() {
+        Expression expr = new TestExpression("test");
+        String first = expr.toString();
+        String second = expr.toString();
+        assertEquals(first, second);
+    }
+}

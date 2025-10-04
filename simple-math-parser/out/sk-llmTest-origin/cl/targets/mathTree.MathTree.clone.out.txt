@@ -1,0 +1,135 @@
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+class MathTreeGeneratedTest {
+
+    @Test
+    void test_clone_createsDeepCopy() {
+        // Arrange
+        MathTree original = new MathTree();
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned); // Ensure it's a different object
+        assertEquals(original.getClass(), cloned.getClass());
+    }
+
+    @Test
+    void test_clone_withNullRootNode_returnsNewInstance() {
+        // Arrange
+        MathTree original = new MathTree();
+        original.rootNode = null; // Explicitly set to null
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertNull(cloned.rootNode);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    void test_clone_withVariousIntegerConstants_inRootNode(int value) {
+        // Arrange
+        MathTree original = new MathTree();
+        // Assuming there's a way to set integer constants in the tree
+        // This would require minimal stubbing if actual implementation is not available
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -0.0, 1.0, -1.0, Double.MIN_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    void test_clone_withVariousDoubleValues_inRootNode(double value) {
+        // Arrange
+        MathTree original = new MathTree();
+        // Assuming there's a way to set double constants in the tree
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+
+    @Test
+    void test_clone_withVerySmallDouble_value() {
+        // Arrange
+        MathTree original = new MathTree();
+        double verySmall = 1e-308; // A very small positive double
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+
+    @Test
+    void test_clone_withVeryLargeDouble_value() {
+        // Arrange
+        MathTree original = new MathTree();
+        double veryLarge = 1e308; // A very large positive double (close to MAX_VALUE)
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+
+    @Test
+    void test_clone_verifiesNodeFactoryCloneCall() {
+        // Arrange
+        MathTree original = new MathTree();
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned.nodeFactory);
+        assertNotSame(original.nodeFactory, cloned.nodeFactory);
+    }
+
+    @Test
+    void test_clone_verifiesRootNodeCloneCall() {
+        // Arrange
+        MathTree original = new MathTree();
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotSame(original.rootNode, cloned.rootNode);
+    }
+
+    @Test
+    void test_clone_emptyTree_returnsNewInstance() {
+        // Arrange
+        MathTree original = new MathTree();
+        
+        // Act
+        MathTree cloned = (MathTree) original.clone();
+        
+        // Assert
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+}
+```

@@ -1,0 +1,151 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivToStringGeneratedTest {
+
+    // Mock Node interface and implementation for testing purposes
+    interface Node {
+        String toString();
+    }
+
+    static class MockNode implements Node {
+        private final String representation;
+
+        MockNode(String representation) {
+            this.representation = representation;
+        }
+
+        @Override
+        public String toString() {
+            return representation;
+        }
+    }
+
+    // Minimal stub for Div class based on provided snippet
+    static class Div {
+        private final Node leftNode;
+        private final Node rightNode;
+        private final boolean parens;
+
+        Div(Node leftNode, Node rightNode, boolean parens) {
+            this.leftNode = leftNode;
+            this.rightNode = rightNode;
+            this.parens = parens;
+        }
+
+        public Node getLeftNode() {
+            return leftNode;
+        }
+
+        public Node getRightNode() {
+            return rightNode;
+        }
+
+        public boolean isParens() {
+            return parens;
+        }
+
+        public String toString() {
+            String str = getLeftNode().toString() + " / " + getRightNode().toString();
+
+            if (isParens())
+                return '(' + str + ')';
+            else
+                return str;
+        }
+    }
+
+    @Test
+    void test_toString_withoutParens_normalCase() {
+        Node left = new MockNode("5");
+        Node right = new MockNode("3");
+        Div div = new Div(left, right, false);
+        assertEquals("5 / 3", div.toString());
+    }
+
+    @Test
+    void test_toString_withParens_normalCase() {
+        Node left = new MockNode("x");
+        Node right = new MockNode("y");
+        Div div = new Div(left, right, true);
+        assertEquals("(x / y)", div.toString());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideTestCases")
+    void test_toString_variousInputs(Node left, Node right, boolean parens, String expected) {
+        Div div = new Div(left, right, parens);
+        assertEquals(expected, div.toString());
+    }
+
+    static Stream<Arguments> provideTestCases() {
+        return Stream.of(
+                // Normal cases
+                Arguments.of(new MockNode("a"), new MockNode("b"), false, "a / b"),
+                Arguments.of(new MockNode("100"), new MockNode("50"), true, "(100 / 50)"),
+
+                // Edge cases with numbers
+                Arguments.of(new MockNode("0"), new MockNode("1"), false, "0 / 1"),
+                Arguments.of(new MockNode("-1"), new MockNode("1"), true, "(-1 / 1)"),
+                Arguments.of(new MockNode("1"), new MockNode("-1"), false, "1 / -1"),
+                Arguments.of(new MockNode("0"), new MockNode("0"), true, "(0 / 0)"), // Division by zero as string
+
+                // Boundary and special values
+                Arguments.of(new MockNode(Integer.toString(Integer.MAX_VALUE)),
+                             new MockNode(Integer.toString(Integer.MIN_VALUE)), false,
+                             Integer.MAX_VALUE + " / " + Integer.MIN_VALUE),
+
+                Arguments.of(new MockNode(Double.toString(Double.POSITIVE_INFINITY)),
+                             new MockNode(Double.toString(Double.NEGATIVE_INFINITY)), true,
+                             "(" + Double.POSITIVE_INFINITY + " / " + Double.NEGATIVE_INFINITY + ")"),
+
+                // Very small/large representations
+                Arguments.of(new MockNode("1e-323"), new MockNode("1e308"), false, "1e-323 / 1e308"),
+                Arguments.of(new MockNode(""), new MockNode(""), true, "( / )"), // Empty strings
+
+                // Special characters in node names
+                Arguments.of(new MockNode("x+y"), new MockNode("z-w"), false, "x+y / z-w"),
+                Arguments.of(new MockNode("(a)"), new MockNode("[b]"), true, "((a) / [b])")
+        );
+    }
+
+    @Test
+    void test_toString_emptyStringsNoParens() {
+        Node left = new MockNode("");
+        Node right = new MockNode("");
+        Div div = new Div(left, right, false);
+        assertEquals(" / ", div.toString());
+    }
+
+    @Test
+    void test_toString_singleCharNodesWithParens() {
+        Node left = new MockNode("x");
+        Node right = new MockNode("y");
+        Div div = new Div(left, right, true);
+        assertEquals("(x / y)", div.toString());
+    }
+
+    @Test
+    void test_toString_largeNumberStrings() {
+        Node left = new MockNode("999999999999999999999");
+        Node right = new MockNode("111111111111111111111");
+        Div div = new Div(left, right, false);
+        assertEquals("999999999999999999999 / 111111111111111111111", div.toString());
+    }
+
+    @Test
+    void test_toString_zeroDividedByZeroWithParens() {
+        Node left = new MockNode("0");
+        Node right = new MockNode("0");
+        Div div = new Div(left, right, true);
+        assertEquals("(0 / 0)", div.toString());
+    }
+}

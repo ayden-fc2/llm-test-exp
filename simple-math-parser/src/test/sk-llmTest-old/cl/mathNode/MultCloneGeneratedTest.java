@@ -1,0 +1,146 @@
+package mathNode;
+
+import mathNode.Mult;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultCloneGeneratedTest {
+
+    private Mult mult;
+    private Expression leftNode;
+    private Expression rightNode;
+
+    @BeforeEach
+    void setUp() {
+        // Create a concrete implementation of Expression for testing
+        leftNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+            
+            @Override
+            public double evaluate() {
+                return 5.0;
+            }
+        };
+        
+        rightNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+            
+            @Override
+            public double evaluate() {
+                return 3.0;
+            }
+        };
+        
+        mult = new Mult();
+        mult.setLeftNode(leftNode);
+        mult.setRightNode(rightNode);
+    }
+
+    @Test
+    void test_clone_createsNewInstance() {
+        Mult cloned = (Mult) mult.clone();
+        assertNotNull(cloned);
+        assertNotSame(mult, cloned);
+    }
+
+    @Test
+    void test_clone_preservesLeftNodeValue() {
+        Mult cloned = (Mult) mult.clone();
+        assertEquals(mult.getLeftNode().evaluate(), cloned.getLeftNode().evaluate());
+    }
+
+    @Test
+    void test_clone_preservesRightNodeValue() {
+        Mult cloned = (Mult) mult.clone();
+        assertEquals(mult.getRightNode().evaluate(), cloned.getRightNode().evaluate());
+    }
+
+    @Test
+    void test_clone_createsIndependentLeftNode() {
+        Mult cloned = (Mult) mult.clone();
+        assertNotSame(mult.getLeftNode(), cloned.getLeftNode());
+    }
+
+    @Test
+    void test_clone_createsIndependentRightNode() {
+        Mult cloned = (Mult) mult.clone();
+        assertNotSame(mult.getRightNode(), cloned.getRightNode());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -1.0, 1.0, Double.MIN_VALUE, Double.MAX_VALUE})
+    void test_clone_withEdgeCaseValues(double value) {
+        Expression testNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+            
+            @Override
+            public double evaluate() {
+                return value;
+            }
+        };
+        
+        mult.setLeftNode(testNode);
+        mult.setRightNode(testNode);
+        
+        Mult cloned = (Mult) mult.clone();
+        assertEquals(value, cloned.getLeftNode().evaluate());
+        assertEquals(value, cloned.getRightNode().evaluate());
+    }
+
+    @Test
+    void test_clone_withVeryLargeValues() {
+        Expression largeNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+            
+            @Override
+            public double evaluate() {
+                return 1e308;
+            }
+        };
+        
+        mult.setLeftNode(largeNode);
+        mult.setRightNode(largeNode);
+        
+        Mult cloned = (Mult) mult.clone();
+        assertEquals(1e308, cloned.getLeftNode().evaluate());
+        assertEquals(1e308, cloned.getRightNode().evaluate());
+    }
+
+    @Test
+    void test_clone_withVerySmallValues() {
+        Expression smallNode = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+            
+            @Override
+            public double evaluate() {
+                return 1e-308;
+            }
+        };
+        
+        mult.setLeftNode(smallNode);
+        mult.setRightNode(smallNode);
+        
+        Mult cloned = (Mult) mult.clone();
+        assertEquals(1e-308, cloned.getLeftNode().evaluate());
+        assertEquals(1e-308, cloned.getRightNode().evaluate());
+    }
+}

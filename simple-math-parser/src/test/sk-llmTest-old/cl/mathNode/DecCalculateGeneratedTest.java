@@ -1,0 +1,117 @@
+package mathNode;
+
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DecCalculateGeneratedTest {
+
+    @Test
+    void test_calculate_returnsStoredValue_zero() {
+        Dec dec = new Dec(0.0);
+        assertEquals(0.0, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_positive() {
+        Dec dec = new Dec(42.5);
+        assertEquals(42.5, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_negative() {
+        Dec dec = new Dec(-17.3);
+        assertEquals(-17.3, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_maxDouble() {
+        Dec dec = new Dec(Double.MAX_VALUE);
+        assertEquals(Double.MAX_VALUE, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_minDouble() {
+        Dec dec = new Dec(Double.MIN_VALUE);
+        assertEquals(Double.MIN_VALUE, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_negativeInfinity() {
+        Dec dec = new Dec(Double.NEGATIVE_INFINITY);
+        assertEquals(Double.NEGATIVE_INFINITY, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_positiveInfinity() {
+        Dec dec = new Dec(Double.POSITIVE_INFINITY);
+        assertEquals(Double.POSITIVE_INFINITY, dec.calculate().doubleValue(), 1e-9);
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @Test
+    void test_calculate_returnsStoredValue_nan() {
+        Dec dec = new Dec(Double.NaN);
+        assertTrue(Double.isNaN(dec.calculate().doubleValue()));
+        assertTrue(dec.calculate() instanceof Double);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, 1.0, -1.0, 3.14159, -2.71828, Double.MIN_NORMAL})
+    void test_toString_formatsValueWithoutParens(double value) {
+        Dec dec = new Dec(value);
+        String expected = Double.toString(value);
+        assertEquals(expected, dec.toString());
+    }
+
+    @Test
+    void test_toString_wrapsInParens_whenParensEnabled() {
+        Dec dec = new Dec(5.0);
+        dec.setParens(true);
+        assertEquals("(5.0)", dec.toString());
+    }
+
+    @Test
+    void test_toString_wrapsZeroInParens_whenParensEnabled() {
+        Dec dec = new Dec(0.0);
+        dec.setParens(true);
+        assertEquals("(0.0)", dec.toString());
+    }
+
+    @Test
+    void test_toString_wrapsNegativeValueInParens_whenParensEnabled() {
+        Dec dec = new Dec(-3.5);
+        dec.setParens(true);
+        assertEquals("(-3.5)", dec.toString());
+    }
+
+    @Test
+    void test_toString_handlesNanWithParens() {
+        Dec dec = new Dec(Double.NaN);
+        dec.setParens(true);
+        assertEquals("(NaN)", dec.toString());
+    }
+
+    @Test
+    void test_toString_handlesInfinityWithParens() {
+        Dec dec = new Dec(Double.POSITIVE_INFINITY);
+        dec.setParens(true);
+        assertEquals("(Infinity)", dec.toString());
+    }
+
+    @Test
+    void test_toString_handlesNegativeInfinityWithParens() {
+        Dec dec = new Dec(Double.NEGATIVE_INFINITY);
+        dec.setParens(true);
+        assertEquals("(-Infinity)", dec.toString());
+    }
+}

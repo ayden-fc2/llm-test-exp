@@ -1,0 +1,121 @@
+package mathNode;
+
+import mathNode.Mult;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Generated tests for Mult.calculate()
+ */
+public class MultCalculateGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class MathNodeStub extends MathNode {
+        private final Number value;
+        
+        MathNodeStub(Number value) {
+            this.value = value;
+        }
+        
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    static class MultUnderTest extends Mult {
+        private final MathNode left;
+        private final MathNode right;
+        
+        MultUnderTest(MathNode left, MathNode right) {
+            this.left = left;
+            this.right = right;
+        }
+        
+        @Override
+        public MathNode getLeftNode() {
+            return left;
+        }
+        
+        @Override
+        public MathNode getRightNode() {
+            return right;
+        }
+    }
+
+    static Stream<Arguments> integerMultiplicationProvider() {
+        return Stream.of(
+            Arguments.of(0, 5, 0),
+            Arguments.of(1, 7, 7),
+            Arguments.of(-1, 3, -3),
+            Arguments.of(2, 3, 6),
+            Arguments.of(-2, -3, 6),
+            Arguments.of(-4, 5, -20),
+            Arguments.of(Integer.MAX_VALUE, 1, Integer.MAX_VALUE),
+            Arguments.of(Integer.MIN_VALUE, 1, Integer.MIN_VALUE),
+            Arguments.of(Integer.MAX_VALUE, -1, -Integer.MAX_VALUE),
+            Arguments.of(46340, 46340, 2147395600), // Near sqrt of MAX_VALUE
+            Arguments.of(0, 0, 0)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("integerMultiplicationProvider")
+    void test_calculate_both_integers(int left, int right, int expected) {
+        MathNode leftNode = new MathNodeStub(left) {};
+        MathNode rightNode = new MathNodeStub(right) {};
+        Mult mult = new MultUnderTest(leftNode, rightNode);
+        
+        Number result = mult.calculate();
+        
+        assertInstanceOf(Integer.class, result);
+        assertEquals(expected, result.intValue());
+    }
+
+    static Stream<Arguments> mixedOrFloatingPointProvider() {
+        return Stream.of(
+            Arguments.of(2.5, 3, 7.5),
+            Arguments.of(4, 3.2, 12.8),
+            Arguments.of(2.1, 3.4, 7.14),
+            Arguments.of(0.0, 5.5, 0.0),
+            Arguments.of(-1.5, 2.0, -3.0),
+            Arguments.of(Double.MAX_VALUE, 0.5, Double.MAX_VALUE * 0.5),
+            Arguments.of(Double.MIN_VALUE, 2.0, Double.MIN_VALUE * 2.0),
+            Arguments.of(1e-10, 1e-10, 1e-20),
+            Arguments.of(1e10, 1e10, 1e20)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("mixedOrFloatingPointProvider")
+    void test_calculate_at_least_one_double(double left, double right, double expected) {
+        MathNode leftNode = new MathNodeStub(left) {};
+        MathNode rightNode = new MathNodeStub(right) {};
+        Mult mult = new MultUnderTest(leftNode, rightNode);
+        
+        Number result = mult.calculate();
+        
+        assertInstanceOf(Double.class, result);
+        assertEquals(expected, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_integer_overflow_returns_double() {
+        // Testing case where integer multiplication would overflow
+        MathNode leftNode = new MathNodeStub(Integer.MAX_VALUE) {};
+        MathNode rightNode = new MathNodeStub(2) {};
+        Mult mult = new MultUnderTest(leftNode, rightNode);
+        
+        Number result = mult.calculate();
+        
+        assertInstanceOf(Double.class, result);
+        assertEquals((double)Integer.MAX_VALUE * 2, result.doubleValue(), 1e-9);
+    }
+}

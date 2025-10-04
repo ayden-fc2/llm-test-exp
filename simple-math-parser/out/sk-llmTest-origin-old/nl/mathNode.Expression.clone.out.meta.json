@@ -1,0 +1,7 @@
+{
+  "source": "/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/prompts/nl/mathNode.Expression.clone.txt",
+  "output": "/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmTest-origin/nl/mathNode.Expression.clone.out.txt",
+  "model": "qwen3-coder-plus",
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "provider": "sk"
+}

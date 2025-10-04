@@ -1,0 +1,1531 @@
+{
+  "task": "generate_tests",
+  "language": "java",
+  "framework": {
+    "name": "junit-jupiter",
+    "version": "5.10.2"
+  },
+  "build": {
+    "tool": "plain-javac",
+    "compile_cmd": "mkdir -p out/main && javac -d out/main $(find src -type f -name \"*.java\" ! -path \"*/test/*\")",
+    "test_cmd": "mkdir -p out/test && javac -cp \"out/main:lib/junit-platform-console-standalone.jar\" -d out/test $(find src/test -type f -name \"*.java\") && java -jar lib/junit-platform-console-standalone.jar -cp \"out/main:out/test\" --scan-classpath",
+    "java_version": "21",
+    "dependencies": {
+      "runtime": [],
+      "test": [
+        {
+          "group": "org.junit.platform",
+          "artifact": "junit-platform-console-standalone",
+          "version": "1.10.2"
+        }
+      ]
+    },
+    "stubs": []
+  },
+  "targets": [
+    {
+      "file": "src/mathNode/Mult.java",
+      "package": "mathNode",
+      "class": "Mult",
+      "function": "calculate",
+      "signature": "public Number Mult.calculate()",
+      "snippets": [
+        "   {",
+        "      Number leftNum = getLeftNode().calculate();",
+        "      Number rightNum = getRightNode().calculate();",
+        "      //If both numbers below it on the tree are integers, do integer multiplication.",
+        "      if(leftNum instanceof Integer && rightNum instanceof Integer)",
+        "         return leftNum.intValue() * rightNum.intValue();"
+      ],
+      "imports": [
+        "import mathNode.Mult;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Mult.java",
+      "package": "mathNode",
+      "class": "Mult",
+      "function": "toString",
+      "signature": "public String Mult.toString()",
+      "snippets": [
+        "   {",
+        "      String str = getLeftNode().toString() + \" * \" + getRightNode().toString();",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Mult;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Mult.java",
+      "package": "mathNode",
+      "class": "Mult",
+      "function": "clone",
+      "signature": "public Object Mult.clone()",
+      "snippets": [
+        "   {",
+        "      Mult clone = (Mult) super.clone();",
+        "      clone.setLeftNode((Expression) this.getLeftNode().clone());",
+        "      clone.setRightNode((Expression) this.getRightNode().clone());",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Mult;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "getPrecedence",
+      "signature": "public int Operator.getPrecedence()",
+      "snippets": [
+        "   public int getPrecedence() { return precedence; }",
+        "   public Expression getLeftNode() { return leftNode; }",
+        "   public Expression getRightNode() { return rightNode; }",
+        "   public void setLeftNode(Expression newNode) { leftNode = newNode; }",
+        "   public void setRightNode(Expression newNode) { rightNode = newNode; }"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "getLeftNode",
+      "signature": "public Expression Operator.getLeftNode()",
+      "snippets": [
+        "   public Expression getLeftNode() { return leftNode; }",
+        "   public Expression getRightNode() { return rightNode; }",
+        "   public void setLeftNode(Expression newNode) { leftNode = newNode; }",
+        "   public void setRightNode(Expression newNode) { rightNode = newNode; }",
+        "   public void setParens(boolean bool)",
+        "   {"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "getRightNode",
+      "signature": "public Expression Operator.getRightNode()",
+      "snippets": [
+        "   public Expression getRightNode() { return rightNode; }",
+        "   public void setLeftNode(Expression newNode) { leftNode = newNode; }",
+        "   public void setRightNode(Expression newNode) { rightNode = newNode; }",
+        "   public void setParens(boolean bool)",
+        "   {",
+        "      parenthesis = bool;"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "setLeftNode",
+      "signature": "public void Operator.setLeftNode(Expression newNode)",
+      "snippets": [
+        "   public void setLeftNode(Expression newNode) { leftNode = newNode; }",
+        "   public void setRightNode(Expression newNode) { rightNode = newNode; }",
+        "   public void setParens(boolean bool)",
+        "   {",
+        "      parenthesis = bool;",
+        "      if(parenthesis)"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "setRightNode",
+      "signature": "public void Operator.setRightNode(Expression newNode)",
+      "snippets": [
+        "   public void setRightNode(Expression newNode) { rightNode = newNode; }",
+        "   public void setParens(boolean bool)",
+        "   {",
+        "      parenthesis = bool;",
+        "      if(parenthesis)",
+        "         precedence = 0;"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "setParens",
+      "signature": "public void Operator.setParens(boolean bool)",
+      "snippets": [
+        "   {",
+        "      parenthesis = bool;",
+        "      if(parenthesis)",
+        "         precedence = 0;",
+        "   }",
+        "   public boolean checkTree()"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Operator.java",
+      "package": "mathNode",
+      "class": "Operator",
+      "function": "checkTree",
+      "signature": "public boolean Operator.checkTree()",
+      "snippets": [
+        "   {",
+        "      if(leftNode == null || rightNode == null)",
+        "         return false;",
+        "      else",
+        "         return leftNode.checkTree() && rightNode.checkTree();",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Operator;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Add.java",
+      "package": "mathNode",
+      "class": "Add",
+      "function": "calculate",
+      "signature": "public Number Add.calculate()",
+      "snippets": [
+        "   {",
+        "      Number leftNum = getLeftNode().calculate();",
+        "      Number rightNum = getRightNode().calculate();",
+        "      //Do integer addition if both nodes below are integers.",
+        "      if(leftNum instanceof Integer && rightNum instanceof Integer)",
+        "         return leftNum.intValue() + rightNum.intValue();"
+      ],
+      "imports": [
+        "import mathNode.Add;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Add.java",
+      "package": "mathNode",
+      "class": "Add",
+      "function": "toString",
+      "signature": "public String Add.toString()",
+      "snippets": [
+        "   {",
+        "      String str = getLeftNode().toString() + \" + \" + getRightNode().toString();",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Add;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Add.java",
+      "package": "mathNode",
+      "class": "Add",
+      "function": "clone",
+      "signature": "public Object Add.clone()",
+      "snippets": [
+        "   {",
+        "      Add clone = (Add) super.clone();",
+        "      clone.setLeftNode((Expression) this.getLeftNode().clone());",
+        "      clone.setRightNode((Expression) this.getRightNode().clone());",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Add;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Int.java",
+      "package": "mathNode",
+      "class": "Int",
+      "function": "calculate",
+      "signature": "public Number Int.calculate()",
+      "snippets": [
+        "   public Number calculate() { return value; }",
+        "   public String toString()",
+        "   {",
+        "      String str = Integer.toString(value);",
+        "      if(isParens())",
+        "         return '(' + str + ')';"
+      ],
+      "imports": [
+        "import mathNode.Int;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Int.java",
+      "package": "mathNode",
+      "class": "Int",
+      "function": "toString",
+      "signature": "public String Int.toString()",
+      "snippets": [
+        "   {",
+        "      String str = Integer.toString(value);",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Int;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Int.java",
+      "package": "mathNode",
+      "class": "Int",
+      "function": "clone",
+      "signature": "public Object Int.clone()",
+      "snippets": [
+        "   {",
+        "      return (Int) super.clone();",
+        "   }",
+        "   @Override",
+        "   public boolean checkTree() { return true; }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Int;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Int.java",
+      "package": "mathNode",
+      "class": "Int",
+      "function": "checkTree",
+      "signature": "public boolean Int.checkTree()",
+      "snippets": [
+        "   public boolean checkTree() { return true; }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Int;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Pow.java",
+      "package": "mathNode",
+      "class": "Pow",
+      "function": "calculate",
+      "signature": "public Number Pow.calculate()",
+      "snippets": [
+        "   {",
+        "      return Math.pow(getLeftNode().calculate().doubleValue(), getRightNode().calculate().doubleValue());",
+        "   }",
+        "   public String toString()",
+        "   {",
+        "      String str = getLeftNode().toString() + \" ^ \" + getRightNode().toString();"
+      ],
+      "imports": [
+        "import mathNode.Pow;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Pow.java",
+      "package": "mathNode",
+      "class": "Pow",
+      "function": "toString",
+      "signature": "public String Pow.toString()",
+      "snippets": [
+        "   {",
+        "      String str = getLeftNode().toString() + \" ^ \" + getRightNode().toString();",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Pow;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Pow.java",
+      "package": "mathNode",
+      "class": "Pow",
+      "function": "clone",
+      "signature": "public Object Pow.clone()",
+      "snippets": [
+        "   {",
+        "      Pow clone = (Pow) super.clone();",
+        "      clone.setLeftNode((Expression) this.getLeftNode().clone());",
+        "      clone.setRightNode((Expression) this.getRightNode().clone());",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Pow;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Factory.java",
+      "package": "mathNode",
+      "class": "Factory",
+      "function": "buildNode",
+      "signature": "public Expression Factory.buildNode(String token)",
+      "snippets": [
+        "   {",
+        "      if(token.length() == 1)",
+        "      {",
+        "         Expression newNode = buildNode(token.charAt(0));",
+        "         if(newNode != null) { return newNode; }",
+        "      }"
+      ],
+      "imports": [
+        "import mathNode.Factory;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Factory.java",
+      "package": "mathNode",
+      "class": "Factory",
+      "function": "buildNode",
+      "signature": "public Expression Factory.buildNode(char ch)",
+      "snippets": [
+        "   {",
+        "      switch(ch)",
+        "      {",
+        "         case '+': return new Add();",
+        "         case '-': return new Sub();",
+        "         case '*': return new Mult();"
+      ],
+      "imports": [
+        "import mathNode.Factory;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Factory.java",
+      "package": "mathNode",
+      "class": "Factory",
+      "function": "buildNode",
+      "signature": "public Expression Factory.buildNode(int num)",
+      "snippets": [
+        "   public Expression buildNode(int num) { return new Int(num); }",
+        "   /**",
+        "    * Builds mathNode.Expression.",
+        "    * @param token",
+        "    * @return mathNode.Expression",
+        "    */"
+      ],
+      "imports": [
+        "import mathNode.Factory;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Factory.java",
+      "package": "mathNode",
+      "class": "Factory",
+      "function": "buildNode",
+      "signature": "public Expression Factory.buildNode(double num)",
+      "snippets": [
+        "   public Expression buildNode(double num) { return new Dec(num); }",
+        "   public Object clone() throws CloneNotSupportedException",
+        "   {",
+        "      return (Factory) super.clone();",
+        "   }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Factory;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Factory.java",
+      "package": "mathNode",
+      "class": "Factory",
+      "function": "clone",
+      "signature": "public Object Factory.clone()",
+      "snippets": [
+        "   {",
+        "      return (Factory) super.clone();",
+        "   }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Factory;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Div.java",
+      "package": "mathNode",
+      "class": "Div",
+      "function": "calculate",
+      "signature": "public Number Div.calculate()",
+      "snippets": [
+        "   {",
+        "      return getLeftNode().calculate().doubleValue() / getRightNode().calculate().doubleValue();",
+        "   }",
+        "   public String toString()",
+        "   {",
+        "      String str = getLeftNode().toString() + \" / \" + getRightNode().toString();"
+      ],
+      "imports": [
+        "import mathNode.Div;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Div.java",
+      "package": "mathNode",
+      "class": "Div",
+      "function": "toString",
+      "signature": "public String Div.toString()",
+      "snippets": [
+        "   {",
+        "      String str = getLeftNode().toString() + \" / \" + getRightNode().toString();",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Div;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Div.java",
+      "package": "mathNode",
+      "class": "Div",
+      "function": "clone",
+      "signature": "public Object Div.clone()",
+      "snippets": [
+        "   {",
+        "      Div clone = (Div) super.clone();",
+        "      clone.setLeftNode((Expression) this.getLeftNode().clone());",
+        "      clone.setRightNode((Expression) this.getRightNode().clone());",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Div;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "setParens",
+      "signature": "public void Expression.setParens(boolean bool)",
+      "snippets": [
+        "   public void setParens(boolean bool) { parenthesis = bool; }",
+        "   public boolean isParens() { return parenthesis; }",
+        "   /**",
+        "    * The calculate expression works recursively down the tree.",
+        "    * @return Number The boxed value of Integer or Double based upon previous expression.",
+        "    */"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "isParens",
+      "signature": "public boolean Expression.isParens()",
+      "snippets": [
+        "   public boolean isParens() { return parenthesis; }",
+        "   /**",
+        "    * The calculate expression works recursively down the tree.",
+        "    * @return Number The boxed value of Integer or Double based upon previous expression.",
+        "    */",
+        "   abstract public Number calculate();"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "calculate",
+      "signature": "abstract public Number Expression.calculate()",
+      "snippets": [
+        "   {",
+        "      return (Expression) super.clone();",
+        "   }",
+        "   /**",
+        "    * A recursive method to check if the tree is constructed correctly.",
+        "    * @return boolean"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "toString",
+      "signature": "abstract public String Expression.toString()",
+      "snippets": [
+        "   {",
+        "      return (Expression) super.clone();",
+        "   }",
+        "   /**",
+        "    * A recursive method to check if the tree is constructed correctly.",
+        "    * @return boolean"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "clone",
+      "signature": "public Object Expression.clone()",
+      "snippets": [
+        "   {",
+        "      return (Expression) super.clone();",
+        "   }",
+        "   /**",
+        "    * A recursive method to check if the tree is constructed correctly.",
+        "    * @return boolean"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Expression.java",
+      "package": "mathNode",
+      "class": "Expression",
+      "function": "checkTree",
+      "signature": "abstract public boolean Expression.checkTree()",
+      "snippets": [
+        "   abstract public boolean checkTree();",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Expression;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Dec.java",
+      "package": "mathNode",
+      "class": "Dec",
+      "function": "calculate",
+      "signature": "public Number Dec.calculate()",
+      "snippets": [
+        "   public Number calculate() { return value; }",
+        "   public String toString()",
+        "   {",
+        "      String str = Double.toString(value);",
+        "      if(isParens())",
+        "         return '(' + str + ')';"
+      ],
+      "imports": [
+        "import mathNode.Dec;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Dec.java",
+      "package": "mathNode",
+      "class": "Dec",
+      "function": "toString",
+      "signature": "public String Dec.toString()",
+      "snippets": [
+        "   {",
+        "      String str = Double.toString(value);",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Dec;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Dec.java",
+      "package": "mathNode",
+      "class": "Dec",
+      "function": "clone",
+      "signature": "public Object Dec.clone()",
+      "snippets": [
+        "   {",
+        "      return (Dec) super.clone();",
+        "   }",
+        "   @Override",
+        "   public boolean checkTree() { return true; }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Dec;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Dec.java",
+      "package": "mathNode",
+      "class": "Dec",
+      "function": "checkTree",
+      "signature": "public boolean Dec.checkTree()",
+      "snippets": [
+        "   public boolean checkTree() { return true; }",
+        "}"
+      ],
+      "imports": [
+        "import mathNode.Dec;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Sub.java",
+      "package": "mathNode",
+      "class": "Sub",
+      "function": "calculate",
+      "signature": "public Number Sub.calculate()",
+      "snippets": [
+        "   {",
+        "      Number leftNum = getLeftNode().calculate();",
+        "      Number rightNum = getRightNode().calculate();",
+        "      //If both values below it are integers do integer subtraction.",
+        "      if(leftNum instanceof Integer && rightNum instanceof Integer)",
+        "         return leftNum.intValue() - rightNum.intValue();"
+      ],
+      "imports": [
+        "import mathNode.Sub;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Sub.java",
+      "package": "mathNode",
+      "class": "Sub",
+      "function": "toString",
+      "signature": "public String Sub.toString()",
+      "snippets": [
+        "   {",
+        "      String str = getLeftNode().toString() + \" - \" + getRightNode().toString();",
+        "      if(isParens())",
+        "         return '(' + str + ')';",
+        "      else",
+        "         return str;"
+      ],
+      "imports": [
+        "import mathNode.Sub;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathNode/Sub.java",
+      "package": "mathNode",
+      "class": "Sub",
+      "function": "clone",
+      "signature": "public Object Sub.clone()",
+      "snippets": [
+        "   {",
+        "      Sub clone = (Sub) super.clone();",
+        "      clone.setLeftNode((Expression) this.getLeftNode().clone());",
+        "      clone.setRightNode((Expression) this.getRightNode().clone());",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import mathNode.Sub;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "skipWhitespace",
+      "signature": "public void StringScanner.skipWhitespace()",
+      "snippets": [
+        "   public void skipWhitespace() { skipWhitespace = true; }",
+        "   public void addDelimiter(char delim) { delimSet.add(delim); }",
+        "   public void addDelimiter(char[] delimArray) {",
+        "      for(char ch : delimArray)",
+        "         delimSet.add(ch);",
+        "   }"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "addDelimiter",
+      "signature": "public void StringScanner.addDelimiter(char delim)",
+      "snippets": [
+        "   public void addDelimiter(char delim) { delimSet.add(delim); }",
+        "   public void addDelimiter(char[] delimArray) {",
+        "      for(char ch : delimArray)",
+        "         delimSet.add(ch);",
+        "   }",
+        "   /**"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "addDelimiter",
+      "signature": "public void StringScanner.addDelimiter(char[] delimArray)",
+      "snippets": [
+        "   public void addDelimiter(char[] delimArray) {",
+        "      for(char ch : delimArray)",
+        "         delimSet.add(ch);",
+        "   }",
+        "   /**",
+        "    * Add character that should become individual token when scanned."
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "addSpecialChar",
+      "signature": "public void StringScanner.addSpecialChar(char specialChar)",
+      "snippets": [
+        "   public void addSpecialChar(char specialChar) { specCharSet.add(specialChar); }",
+        "   /**",
+        "    * Add array of characters that should become individual tokens when scanned.",
+        "    * @param specialCharArray",
+        "    */",
+        "   public void addSpecialChar(char[] specialCharArray)"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "addSpecialChar",
+      "signature": "public void StringScanner.addSpecialChar(char[] specialCharArray)",
+      "snippets": [
+        "   {",
+        "      for(char ch : specialCharArray)",
+        "         specCharSet.add(ch);",
+        "   }",
+        "   /**",
+        "    * Scans string and breaks it up following the delimiters and special characters."
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "scan",
+      "signature": "public LinkedList StringScanner.scan(String inputStr)",
+      "snippets": [
+        "   {",
+        "      char ch;",
+        "      String token = \"\";",
+        "      for(int i = 0; i < inputStr.length(); i++) {",
+        "         ch = inputStr.charAt(i);",
+        "         if(isDelim(ch)) {"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "isDelim",
+      "signature": "private boolean StringScanner.isDelim(char ch)",
+      "snippets": [
+        "   {",
+        "      return (skipWhitespace && Character.isWhitespace(ch)) || delimSet.contains(ch);",
+        "   }",
+        "   private void saveToken(String token)",
+        "   {",
+        "      if(token.isEmpty() == false)"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "saveToken",
+      "signature": "private void StringScanner.saveToken(String token)",
+      "snippets": [
+        "   {",
+        "      if(token.isEmpty() == false)",
+        "         tokenList.add(token);",
+        "   }",
+        "   public Object clone() throws CloneNotSupportedException",
+        "   {"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/StringScanner.java",
+      "package": "mathTree",
+      "class": "StringScanner",
+      "function": "clone",
+      "signature": "public Object StringScanner.clone()",
+      "snippets": [
+        "   {",
+        "      StringScanner clone = (StringScanner) super.clone();",
+        "      clone.tokenList = (LinkedList) tokenList.clone();",
+        "      clone.delimSet = (HashSet) delimSet.clone();",
+        "      clone.specCharSet = (HashSet) specCharSet.clone();",
+        "      return clone;"
+      ],
+      "imports": [
+        "import java.util.HashSet;",
+        "import java.util.LinkedList;",
+        "import mathTree.StringScanner;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/CalcApp.java",
+      "package": "mathTree",
+      "class": "CalcApp",
+      "function": "main",
+      "signature": "public static void CalcApp.main(String[] args)",
+      "snippets": [
+        "   {",
+        "      String mathExpression;",
+        "      //If there are no arguments, receive input from the console until you get an argument.",
+        "      if(args.length < 1)",
+        "      {",
+        "         Scanner in = new Scanner(System.in);"
+      ],
+      "imports": [
+        "import java.util.Scanner;",
+        "import mathTree.CalcApp;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "init",
+      "signature": "public boolean MathTree.init(String mathStatement)",
+      "snippets": [
+        "   {",
+        "      LinkedList<String> strList = strScanner.scan(mathStatement);",
+        "      cleanStrList(strList);",
+        "      if(buildTree(strList))",
+        "      {",
+        "         if(rootNode.checkTree())"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "cleanStrList",
+      "signature": "private void MathTree.cleanStrList(LinkedList strList)",
+      "snippets": [
+        "   {",
+        "      //Create a new scanner for the negative sign '-'",
+        "      StringScanner negScanner = new StringScanner();",
+        "      negScanner.addSpecialChar('-');",
+        "      //Create list of operators",
+        "      String opStr = \"+-*^/\";"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "buildTree",
+      "signature": "private boolean MathTree.buildTree(LinkedList strTokens)",
+      "snippets": [
+        "   {",
+        "      rootNode = buildTree(strTokens, false);",
+        "      if(rootNode == null)",
+        "         return false;",
+        "      else",
+        "         return true;"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "buildTree",
+      "signature": "private mathNode MathTree.buildTree(LinkedList strTokens, boolean isParens)",
+      "snippets": [
+        "   {",
+        "      String token;",
+        "      mathNode.Expression rootNode = null;",
+        "      //mathNode.Expression lastNode = null;",
+        "      mathNode.Expression newNode = null;",
+        "      while(strTokens.isEmpty() == false)"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "insertNode",
+      "signature": "private mathNode MathTree.insertNode(mathNode rootNode, mathNode newNode)",
+      "snippets": [
+        "   {",
+        "      //If no root node, new node becomes the root node.",
+        "      if(rootNode == null)",
+        "         return newNode;",
+        "      //If no new node, return tree without changes.",
+        "      else if(newNode == null)"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "solve",
+      "signature": "public Number MathTree.solve()",
+      "snippets": [
+        "   {",
+        "      if(rootNode == null)",
+        "         return null;",
+        "      else",
+        "         return rootNode.calculate();",
+        "   }"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "toString",
+      "signature": "public String MathTree.toString()",
+      "snippets": [
+        "   {",
+        "      if(rootNode == null)",
+        "         return \"\";",
+        "      else",
+        "         return rootNode.toString();",
+        "   }"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    },
+    {
+      "file": "src/mathTree/MathTree.java",
+      "package": "mathTree",
+      "class": "MathTree",
+      "function": "clone",
+      "signature": "public Object MathTree.clone()",
+      "snippets": [
+        "   {",
+        "      MathTree clone = (MathTree) super.clone();",
+        "      clone.nodeFactory = (mathNode.Factory) nodeFactory.clone();",
+        "      clone.rootNode = (mathNode.Expression) rootNode.clone();",
+        "      return clone;",
+        "   }"
+      ],
+      "imports": [
+        "import java.util.LinkedList;",
+        "import mathTree.MathTree;"
+      ],
+      "collaborators": [],
+      "semantics": {
+        "preconditions": [],
+        "postconditions": [],
+        "properties": []
+      }
+    }
+  ],
+  "signals": {
+    "failures": [],
+    "coverage_gaps": [],
+    "repro_cmd": ""
+  },
+  "constraints": {
+    "no_io": true,
+    "no_network": true,
+    "deterministic": true,
+    "isolation": "each_test_independent",
+    "no_random_without_seed": true,
+    "time_budget_ms": 5000
+  },
+  "preferences": {
+    "mocks": "allow_minimal",
+    "assertion_style": "native",
+    "float_delta": 1e-09,
+    "type_assertions": true,
+    "naming": "test_<behavior>_<condition>",
+    "test_style": [
+      "unit",
+      "parameterized"
+    ]
+  },
+  "coverage": {
+    "types": [
+      "statement",
+      "branch",
+      "exception",
+      "boundary"
+    ],
+    "branch_min": 90,
+    "edge_values": [
+      "0",
+      "1",
+      "-1",
+      "Integer.MIN_VALUE",
+      "Integer.MAX_VALUE",
+      "Double.MIN_VALUE",
+      "Double.MAX_VALUE",
+      "very_small",
+      "very_large"
+    ]
+  },
+  "coverage_goals": {
+    "statement_min": 90,
+    "branch_min": 90,
+    "must_hit_exceptions": []
+  },
+  "oracles": {
+    "examples": [],
+    "error_cases": [],
+    "properties": []
+  },
+  "generation": {
+    "num_tests": "auto",
+    "package": "test",
+    "test_class_suffix": "GeneratedTest",
+    "path_hint": "src/test/java",
+    "parameterized_threshold": 3
+  },
+  "guidance": "Generate tests to maximize branch coverage. Include edge cases (zero, negatives, max/min, large/small doubles). Use type assertions where result type varies. Use delta for floating assertions. Avoid I/O and nondeterminism. If external types are missing, create minimal stubs to compile.",
+  "postchecks": [
+    {
+      "type": "compiles",
+      "cmd": "javac -version"
+    },
+    {
+      "type": "no_flaky_patterns"
+    }
+  ],
+  "output": {
+    "only_code": true,
+    "group_by_target": true,
+    "include_imports": true
+  }
+}

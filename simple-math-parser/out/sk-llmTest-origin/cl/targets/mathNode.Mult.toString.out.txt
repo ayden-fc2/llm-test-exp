@@ -1,0 +1,120 @@
+```java
+import mathNode.Mult;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultGeneratedTest {
+
+    // Stub class to simulate Node behavior for testing Mult
+    static class StubNode extends mathNode.Node {
+        private final String representation;
+        private final boolean parens;
+
+        public StubNode(String representation, boolean parens) {
+            this.representation = representation;
+            this.parens = parens;
+        }
+
+        @Override
+        public String toString() {
+            return representation;
+        }
+
+        @Override
+        public boolean isParens() {
+            return parens;
+        }
+    }
+
+    @Test
+    public void test_toString_noParens_simpleValues() {
+        StubNode left = new StubNode("2", false);
+        StubNode right = new StubNode("3", false);
+        Mult mult = new Mult(left, right);
+
+        String result = mult.toString();
+        assertEquals("2 * 3", result);
+    }
+
+    @Test
+    public void test_toString_withParens_simpleValues() {
+        StubNode left = new StubNode("2", false);
+        StubNode right = new StubNode("3", false);
+        Mult mult = new Mult(left, right);
+        mult.setParens(true);
+
+        String result = mult.toString();
+        assertEquals("(2 * 3)", result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideEdgeCases")
+    public void test_toString_edgeCases(String leftStr, String rightStr, boolean leftParens, boolean rightParens, boolean multParens, String expected) {
+        StubNode left = new StubNode(leftStr, leftParens);
+        StubNode right = new StubNode(rightStr, rightParens);
+        Mult mult = new Mult(left, right);
+        mult.setParens(multParens);
+
+        String result = mult.toString();
+        assertEquals(expected, result);
+    }
+
+    static Stream<Arguments> provideEdgeCases() {
+        return Stream.of(
+            Arguments.of("0", "5", false, false, false, "0 * 5"),
+            Arguments.of("-1", "10", false, false, false, "-1 * 10"),
+            Arguments.of("1", "0", false, false, false, "1 * 0"),
+            Arguments.of("0", "0", false, false, false, "0 * 0"),
+            Arguments.of(Integer.toString(Integer.MAX_VALUE), "1", false, false, false, Integer.MAX_VALUE + " * 1"),
+            Arguments.of(Integer.toString(Integer.MIN_VALUE), "1", false, false, false, Integer.MIN_VALUE + " * 1"),
+            Arguments.of("1.5", "2.5", false, false, false, "1.5 * 2.5"),
+            Arguments.of("(", ")", false, false, false, "( * )"),
+            Arguments.of("", "empty", false, false, false, " * empty"),
+            Arguments.of("a", "b", false, false, true, "(a * b)"),
+            Arguments.of("x", "y", true, true, false, "x * y"),
+            Arguments.of("x", "y", true, true, true, "(x * y)")
+        );
+    }
+
+    @Test
+    public void test_toString_withNestedParens() {
+        StubNode innerLeft = new StubNode("a", false);
+        StubNode innerRight = new StubNode("b", false);
+        Mult innerMult = new Mult(innerLeft, innerRight);
+        innerMult.setParens(true); // This should make it "(a * b)"
+
+        StubNode outerLeft = new StubNode("c", false);
+        Mult outerMult = new Mult(outerLeft, innerMult);
+        outerMult.setParens(true); // Should be "(c * (a * b))"
+
+        String result = outerMult.toString();
+        assertEquals("(c * (a * b))", result);
+    }
+
+    @Test
+    public void test_toString_emptyStrings() {
+        StubNode left = new StubNode("", false);
+        StubNode right = new StubNode("", false);
+        Mult mult = new Mult(left, right);
+
+        String result = mult.toString();
+        assertEquals(" * ", result);
+    }
+
+    @Test
+    public void test_toString_specialCharacters() {
+        StubNode left = new StubNode("x+y", false);
+        StubNode right = new StubNode("z-w", false);
+        Mult mult = new Mult(left, right);
+
+        String result = mult.toString();
+        assertEquals("x+y * z-w", result);
+    }
+}
+```

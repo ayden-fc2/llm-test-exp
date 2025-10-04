@@ -1,0 +1,22 @@
+package mathNode;
+
+import mathNode.Int;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class IntCheckTreeGeneratedTest {
+
+    @Test
+    public void test_checkTree_always_returns_true() {
+        // Arrange
+        Int intNode = new Int(); // Assuming default constructor exists
+        
+        // Act
+        boolean result = intNode.checkTree();
+        
+        // Assert
+        assertTrue(result, "checkTree should always return true");
+    }
+}

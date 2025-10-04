@@ -1,0 +1,106 @@
+package mathTree;
+
+import mathTree.StringScanner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerAddDelimiterGeneratedTest {
+
+    @Test
+    void test_addDelimiter_withEmptyArray() throws Exception {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(new char[0]);
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        assertEquals(0, delimSet.size());
+    }
+
+    @Test
+    void test_addDelimiter_withSingleCharacter() throws Exception {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(new char[]{'+'});
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        assertTrue(delimSet.contains('+'));
+        assertEquals(1, delimSet.size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {' ', '\t', '\n', '(', ')', '[', ']', '{', '}'})
+    void test_addDelimiter_withWhitespaceAndBracketCharacters(char delimiter) throws Exception {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(new char[]{delimiter});
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        assertTrue(delimSet.contains(delimiter));
+        assertEquals(1, delimSet.size());
+    }
+
+    @Test
+    void test_addDelimiter_withMultipleUniqueCharacters() throws Exception {
+        StringScanner scanner = new StringScanner();
+        char[] delimiters = {'+', '-', '*', '/', '^'};
+        scanner.addDelimiter(delimiters);
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        for (char c : delimiters) {
+            assertTrue(delimSet.contains(c));
+        }
+        assertEquals(delimiters.length, delimSet.size());
+    }
+
+    @Test
+    void test_addDelimiter_withDuplicateCharacters() throws Exception {
+        StringScanner scanner = new StringScanner();
+        char[] delimiters = {'+', '+', '-'};
+        scanner.addDelimiter(delimiters);
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        assertTrue(delimSet.contains('+'));
+        assertTrue(delimSet.contains('-'));
+        assertEquals(2, delimSet.size());
+    }
+
+    @Test
+    void test_addDelimiter_withNullArray_throwsNullPointerException() {
+        StringScanner scanner = new StringScanner();
+        assertThrows(NullPointerException.class, () -> scanner.addDelimiter(null));
+    }
+
+    @Test
+    void test_addDelimiter_withSpecialUnicodeCharacters() throws Exception {
+        StringScanner scanner = new StringScanner();
+        char[] delimiters = {'★', '†', '‡'};
+        scanner.addDelimiter(delimiters);
+        
+        Field field = StringScanner.class.getDeclaredField("delimSet");
+        field.setAccessible(true);
+        Set<Character> delimSet = (Set<Character>) field.get(scanner);
+        
+        for (char c : delimiters) {
+            assertTrue(delimSet.contains(c));
+        }
+        assertEquals(3, delimSet.size());
+    }
+}

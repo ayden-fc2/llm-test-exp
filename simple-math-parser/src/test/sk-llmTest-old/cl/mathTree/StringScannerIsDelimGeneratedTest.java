@@ -1,0 +1,112 @@
+package mathTree;
+
+import mathTree.StringScanner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StringScannerIsDelimGeneratedTest {
+
+    private StringScanner scanner;
+    private Field skipWhitespaceField;
+    private Field delimSetField;
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        scanner = new StringScanner("");
+        
+        // Access private fields for testing
+        skipWhitespaceField = StringScanner.class.getDeclaredField("skipWhitespace");
+        skipWhitespaceField.setAccessible(true);
+        
+        delimSetField = StringScanner.class.getDeclaredField("delimSet");
+        delimSetField.setAccessible(true);
+    }
+
+    @Test
+    public void test_isDelim_whenSkipWhitespaceTrueAndCharIsSpace_returnsTrue() throws Exception {
+        skipWhitespaceField.set(scanner, true);
+        assertTrue(scanner.isDelim(' '));
+    }
+
+    @Test
+    public void test_isDelim_whenSkipWhitespaceTrueAndCharIsTab_returnsTrue() throws Exception {
+        skipWhitespaceField.set(scanner, true);
+        assertTrue(scanner.isDelim('\t'));
+    }
+
+    @Test
+    public void test_isDelim_whenSkipWhitespaceFalseAndCharIsSpace_returnsFalse() throws Exception {
+        skipWhitespaceField.set(scanner, false);
+        assertFalse(scanner.isDelim(' '));
+    }
+
+    @Test
+    public void test_isDelim_whenSkipWhitespaceFalseAndCharIsTab_returnsFalse() throws Exception {
+        skipWhitespaceField.set(scanner, false);
+        assertFalse(scanner.isDelim('\t'));
+    }
+
+    @Test
+    public void test_isDelim_whenCharInDelimSet_returnsTrue() throws Exception {
+        Set<Character> delimSet = Set.of(',', ';', ':');
+        delimSetField.set(scanner, delimSet);
+        
+        for (Character delim : delimSet) {
+            assertTrue(scanner.isDelim(delim));
+        }
+    }
+
+    @Test
+    public void test_isDelim_whenCharNotInDelimSetAndNotWhitespace_returnsFalse() throws Exception {
+        Set<Character> delimSet = Set.of(',', ';', ':');
+        delimSetField.set(scanner, delimSet);
+        skipWhitespaceField.set(scanner, false);
+        
+        assertFalse(scanner.isDelim('a'));
+        assertFalse(scanner.isDelim('Z'));
+        assertFalse(scanner.isDelim('9'));
+    }
+
+    @Test
+    public void test_isDelim_whenSkipWhitespaceTrueAndCharInDelimSet_returnsTrue() throws Exception {
+        Set<Character> delimSet = Set.of(',', ';', ':');
+        delimSetField.set(scanner, delimSet);
+        skipWhitespaceField.set(scanner, true);
+        
+        assertTrue(scanner.isDelim(','));
+        assertTrue(scanner.isDelim(' '));
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {' ', '\t', '\n', '\r', '\f'})
+    public void test_isDelim_withVariousWhitespaceChars_whenSkipWhitespaceTrue_returnsTrue(char ch) throws Exception {
+        skipWhitespaceField.set(scanner, true);
+        assertTrue(scanner.isDelim(ch));
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = {'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+', '=', '[', ']', '{', '}', '|', '\\', '"', '\'', '<', '>', '?', '/', '~', '`'})
+    public void test_isDelim_withSpecialChars_whenNotInDelimSet_returnsFalse(char ch) throws Exception {
+        Set<Character> delimSet = Set.of(',', ';', ':');
+        delimSetField.set(scanner, delimSet);
+        skipWhitespaceField.set(scanner, false);
+        
+        assertFalse(scanner.isDelim(ch));
+    }
+
+    @Test
+    public void test_isDelim_withNullCharacter_returnsFalse() throws Exception {
+        Set<Character> delimSet = Set.of('\0');
+        delimSetField.set(scanner, delimSet);
+        skipWhitespaceField.set(scanner, false);
+        
+        assertTrue(scanner.isDelim('\0'));
+    }
+}

@@ -1,0 +1,128 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerAddDelimiterTest {
+
+    private StringScanner scanner;
+    private Set<Character> delimSet;
+
+    @BeforeEach
+    void setUp() throws Exception {
+        scanner = new StringScanner(""); // Assuming default constructor exists or is minimally stubbed
+        // Access the private delimSet field for verification
+        Field delimSetField = StringScanner.class.getDeclaredField("delimSet");
+        delimSetField.setAccessible(true);
+        delimSet = (HashSet<Character>) delimSetField.get(scanner);
+    }
+
+    @Test
+    void test_AddDelimiter_NormalInput_AddsAllCharacters() {
+        char[] input = {' ', '\t', ','};
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.contains(' '));
+        assertTrue(delimSet.contains('\t'));
+        assertTrue(delimSet.contains(','));
+        assertEquals(3, delimSet.size());
+    }
+
+    @Test
+    void test_AddDelimiter_EmptyArray_DoesNotModifySet() {
+        char[] input = {};
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.isEmpty());
+    }
+
+    @Test
+    void test_AddDelimiter_SingleCharacter_AddsOneCharacter() {
+        char[] input = {';'};
+
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.contains(';'));
+        assertEquals(1, delimSet.size());
+    }
+
+    @Test
+    void test_AddDelimiter_DuplicateCharacters_AddsOnlyUnique() {
+        char[] input = {',', ',', ';'};
+
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.contains(','));
+        assertTrue(delimSet.contains(';'));
+        assertEquals(2, delimSet.size());
+    }
+
+    @Test
+    void test_AddDelimiter_NullInput_ThrowsNullPointerException() {
+        char[] input = null;
+
+        assertThrows(NullPointerException.class, () -> scanner.addDelimiter(input));
+    }
+
+    @Test
+    void test_AddDelimiter_UnicodeCharacters_HandlesSpecialChars() {
+        char[] input = {'\u00A0', '\u2000'}; // Non-breaking space, en quad
+
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.contains('\u00A0'));
+        assertTrue(delimSet.contains('\u2000'));
+        assertEquals(2, delimSet.size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(chars = { '\0', 'a', 'Z', '0', '#', '\n', '\r' })
+    void test_AddDelimiter_ParameterizedVariousCharacters_AllAdded(char ch) {
+        char[] input = {ch};
+
+        scanner.addDelimiter(input);
+
+        assertTrue(delimSet.contains(ch));
+        assertEquals(1, delimSet.size());
+    }
+
+    @Test
+    void test_AddDelimiter_MultipleCalls_AddsIncrementally() {
+        char[] firstInput = {' ', '\t'};
+        char[] secondInput = {',', ';', ' '}; // ' ' is duplicate
+
+        scanner.addDelimiter(firstInput);
+        scanner.addDelimiter(secondInput);
+
+        assertTrue(delimSet.contains(' '));
+        assertTrue(delimSet.contains('\t'));
+        assertTrue(delimSet.contains(','));
+        assertTrue(delimSet.contains(';'));
+        assertEquals(4, delimSet.size()); // Only 4 unique delimiters
+    }
+
+    @Test
+    void test_AddDelimiter_LargeArray_HandlesManyCharacters() {
+        char[] input = new char[1000];
+        for (int i = 0; i < input.length; i++) {
+            input[i] = (char) i; // Use first 1000 Unicode characters
+        }
+
+        scanner.addDelimiter(input);
+
+        assertEquals(1000, delimSet.size());
+        for (int i = 0; i < input.length; i++) {
+            assertTrue(delimSet.contains((char) i));
+        }
+    }
+}
+```

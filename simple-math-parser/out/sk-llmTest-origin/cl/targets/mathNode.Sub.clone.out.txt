@@ -1,0 +1,79 @@
+```java
+import mathNode.Sub;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SubGeneratedTest {
+
+    private Sub subNode;
+    private Expression leftMock;
+    private Expression rightMock;
+
+    @BeforeEach
+    public void setUp() {
+        // Create mocks for dependencies since we're doing unit testing in isolation
+        leftMock = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+        rightMock = new Expression() {
+            @Override
+            public Object clone() {
+                return this;
+            }
+        };
+
+        subNode = new Sub();
+        subNode.setLeftNode(leftMock);
+        subNode.setRightNode(rightMock);
+    }
+
+    @Test
+    public void test_clone_createsNewInstance() {
+        Sub cloned = (Sub) subNode.clone();
+        assertNotNull(cloned);
+        assertNotSame(subNode, cloned); // Should be different objects
+    }
+
+    @Test
+    public void test_clone_copiesLeftNodeReference() {
+        Sub cloned = (Sub) subNode.clone();
+        assertSame(subNode.getLeftNode(), cloned.getLeftNode());
+    }
+
+    @Test
+    public void test_clone_copiesRightNodeReference() {
+        Sub cloned = (Sub) subNode.clone();
+        assertSame(subNode.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withNullLeftNode() {
+        subNode.setLeftNode(null);
+        Sub cloned = (Sub) subNode.clone();
+        assertNull(cloned.getLeftNode());
+        assertSame(subNode.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withNullRightNode() {
+        subNode.setRightNode(null);
+        Sub cloned = (Sub) subNode.clone();
+        assertSame(subNode.getLeftNode(), cloned.getLeftNode());
+        assertNull(cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withBothNodesNull() {
+        subNode.setLeftNode(null);
+        subNode.setRightNode(null);
+        Sub cloned = (Sub) subNode.clone();
+        assertNull(cloned.getLeftNode());
+        assertNull(cloned.getRightNode());
+    }
+}
+```

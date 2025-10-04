@@ -1,0 +1,110 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link StringScanner#saveToken(String)}.
+ * <p>
+ * Since saveToken is private, we test it indirectly through a package-private
+ * accessor or by making it temporarily package-private for testing.
+ * For this test suite, we assume a package-private method `getTokens()` is added
+ * to StringScanner to expose the internal token list for verification.
+ */
+class StringScannerTest {
+
+    private StringScanner scanner;
+
+    // Stub to allow access to internal state for testing purposes
+    static class StringScanner extends mathTree.StringScanner {
+        // Assume constructor exists that initializes tokenList
+        public StringScanner() {
+            super(); // assuming parent has default constructor or adjust accordingly
+        }
+
+        // Package-private accessor for testing
+        public List<String> getTokens() {
+            return new LinkedList<>(tokenList); // defensive copy
+        }
+    }
+
+    @BeforeEach
+    void setUp() {
+        scanner = new StringScanner();
+    }
+
+    @Test
+    void test_saveToken_addsNonEmptyTokenToList() {
+        scanner.saveToken("validToken");
+        List<String> tokens = scanner.getTokens();
+        assertEquals(1, tokens.size());
+        assertEquals("validToken", tokens.get(0));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "\t", "\n", "nonEmpty"})
+    void test_saveToken_handlesVariousStrings(String input) {
+        scanner.saveToken(input);
+        List<String> tokens = scanner.getTokens();
+        if (input.isEmpty()) {
+            assertTrue(tokens.isEmpty(), "Empty string should not be added");
+        } else {
+            assertEquals(1, tokens.size());
+            assertEquals(input, tokens.get(0));
+        }
+    }
+
+    @Test
+    void test_saveToken_doesNotAddEmptyString() {
+        scanner.saveToken("");
+        List<String> tokens = scanner.getTokens();
+        assertTrue(tokens.isEmpty(), "Empty string must not be added to the list");
+    }
+
+    @Test
+    void test_saveToken_multipleCallsAccumulateTokens() {
+        scanner.saveToken("first");
+        scanner.saveToken("");
+        scanner.saveToken("second");
+        List<String> tokens = scanner.getTokens();
+        assertEquals(2, tokens.size());
+        assertEquals("first", tokens.get(0));
+        assertEquals("second", tokens.get(1));
+    }
+
+    @Test
+    void test_saveToken_withSpecialCharacters() {
+        String special = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+        scanner.saveToken(special);
+        List<String> tokens = scanner.getTokens();
+        assertEquals(1, tokens.size());
+        assertEquals(special, tokens.get(0));
+    }
+
+    @Test
+    void test_saveToken_withVeryLongString() {
+        String longString = "a".repeat(10000);
+        scanner.saveToken(longString);
+        List<String> tokens = scanner.getTokens();
+        assertEquals(1, tokens.size());
+        assertEquals(longString, tokens.get(0));
+    }
+
+    @Test
+    void test_saveToken_withUnicodeCharacters() {
+        String unicode = "🚀🌟💻🔥";
+        scanner.saveToken(unicode);
+        List<String> tokens = scanner.getTokens();
+        assertEquals(1, tokens.size());
+        assertEquals(unicode, tokens.get(0));
+    }
+}
+```

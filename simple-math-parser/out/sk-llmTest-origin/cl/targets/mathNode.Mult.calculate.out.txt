@@ -1,0 +1,238 @@
+```java
+package test;
+
+import mathNode.Mult;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MultGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class MathNodeStub extends MathNode {
+        private final Number value;
+        
+        MathNodeStub(Number value) {
+            this.value = value;
+        }
+        
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    static class TestMult extends Mult {
+        private final MathNode left;
+        private final MathNode right;
+
+        TestMult(MathNode left, MathNode right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        @Override
+        public MathNode getLeftNode() {
+            return left;
+        }
+
+        @Override
+        public MathNode getRightNode() {
+            return right;
+        }
+    }
+
+    @Test
+    void test_calculate_both_integers_positive() {
+        MathNode left = new MathNodeStub(5) {};
+        MathNode right = new MathNodeStub(3) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(15, result.intValue());
+    }
+
+    @Test
+    void test_calculate_both_integers_negative() {
+        MathNode left = new MathNodeStub(-4) {};
+        MathNode right = new MathNodeStub(-6) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(24, result.intValue());
+    }
+
+    @Test
+    void test_calculate_both_integers_zero() {
+        MathNode left = new MathNodeStub(0) {};
+        MathNode right = new MathNodeStub(100) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(0, result.intValue());
+    }
+
+    @Test
+    void test_calculate_one_integer_one_double() {
+        MathNode left = new MathNodeStub(5) {};
+        MathNode right = new MathNodeStub(2.5) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(12.5, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_both_doubles() {
+        MathNode left = new MathNodeStub(3.5) {};
+        MathNode right = new MathNodeStub(2.0) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(7.0, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_integer_and_zero_double() {
+        MathNode left = new MathNodeStub(10) {};
+        MathNode right = new MathNodeStub(0.0) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(0.0, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_negative_integer_and_positive_double() {
+        MathNode left = new MathNodeStub(-3) {};
+        MathNode right = new MathNodeStub(4.5) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(-13.5, result.doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_large_integers() {
+        MathNode left = new MathNodeStub(1000000) {};
+        MathNode right = new MathNodeStub(2000000) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(2000000000000L, result.longValue());
+    }
+
+    @Test
+    void test_calculate_integer_max_value() {
+        MathNode left = new MathNodeStub(Integer.MAX_VALUE) {};
+        MathNode right = new MathNodeStub(1) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(Integer.MAX_VALUE, result.intValue());
+    }
+
+    @Test
+    void test_calculate_integer_min_value() {
+        MathNode left = new MathNodeStub(Integer.MIN_VALUE) {};
+        MathNode right = new MathNodeStub(1) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(Integer.MIN_VALUE, result.intValue());
+    }
+
+    @Test
+    void test_calculate_small_double_values() {
+        MathNode left = new MathNodeStub(0.0000001) {};
+        MathNode right = new MathNodeStub(0.0000002) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(2e-14, result.doubleValue(), 1e-9);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideIntegerEdgeCases")
+    void test_calculate_integer_edge_cases(int leftVal, int rightVal, long expected) {
+        MathNode left = new MathNodeStub(leftVal) {};
+        MathNode right = new MathNodeStub(rightVal) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Integer || result instanceof Long);
+        if (result instanceof Integer) {
+            assertEquals((int)expected, result.intValue());
+        } else {
+            assertEquals(expected, result.longValue());
+        }
+    }
+
+    static Stream<Arguments> provideIntegerEdgeCases() {
+        return Stream.of(
+            Arguments.of(0, 0, 0),
+            Arguments.of(1, 1, 1),
+            Arguments.of(-1, -1, 1),
+            Arguments.of(1, -1, -1),
+            Arguments.of(-1, 1, -1),
+            Arguments.of(Integer.MAX_VALUE, 0, 0),
+            Arguments.of(0, Integer.MIN_VALUE, 0),
+            Arguments.of(2, Integer.MAX_VALUE/2, (long)2 * (Integer.MAX_VALUE/2))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideDoubleEdgeCases")
+    void test_calculate_double_edge_cases(double leftVal, double rightVal, double expected) {
+        MathNode left = new MathNodeStub(leftVal) {};
+        MathNode right = new MathNodeStub(rightVal) {};
+        Mult mult = new TestMult(left, right);
+        
+        Number result = mult.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(expected, result.doubleValue(), 1e-9);
+    }
+
+    static Stream<Arguments> provideDoubleEdgeCases() {
+        return Stream.of(
+            Arguments.of(0.0, 0.0, 0.0),
+            Arguments.of(1.0, 1.0, 1.0),
+            Arguments.of(-1.0, -1.0, 1.0),
+            Arguments.of(1.0, -1.0, -1.0),
+            Arguments.of(-1.0, 1.0, -1.0),
+            Arguments.of(Double.MAX_VALUE, 0.5, Double.MAX_VALUE * 0.5),
+            Arguments.of(Double.MIN_VALUE, 2.0, Double.MIN_VALUE * 2.0)
+        );
+    }
+}
+```

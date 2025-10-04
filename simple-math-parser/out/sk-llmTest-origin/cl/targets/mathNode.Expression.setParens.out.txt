@@ -1,0 +1,88 @@
+```java
+package test;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionGeneratedTest {
+
+    private Expression expression;
+
+    @BeforeEach
+    public void setUp() {
+        // Using a subclass to access the abstract Expression class
+        expression = new Expression() {
+            @Override
+            public Number calculate() {
+                return 0;
+            }
+        };
+    }
+
+    @Test
+    public void test_setParens_true() {
+        // Act
+        expression.setParens(true);
+        
+        // Assert
+        assertTrue(expression.isParens());
+    }
+
+    @Test
+    public void test_setParens_false() {
+        // Arrange
+        expression.setParens(true); // Set to true first
+        
+        // Act
+        expression.setParens(false);
+        
+        // Assert
+        assertFalse(expression.isParens());
+    }
+
+    @Test
+    public void test_setParens_multipleCallsTrue() {
+        // Act
+        expression.setParens(true);
+        expression.setParens(true);
+        expression.setParens(true);
+        
+        // Assert
+        assertTrue(expression.isParens());
+    }
+
+    @Test
+    public void test_setParens_multipleCallsFalse() {
+        // Arrange
+        expression.setParens(true);
+        
+        // Act
+        expression.setParens(false);
+        expression.setParens(false);
+        expression.setParens(false);
+        
+        // Assert
+        assertFalse(expression.isParens());
+    }
+
+    @Test
+    public void test_setParens_toggleValues() {
+        // Initially false
+        assertFalse(expression.isParens());
+        
+        // Set to true
+        expression.setParens(true);
+        assertTrue(expression.isParens());
+        
+        // Set to false
+        expression.setParens(false);
+        assertFalse(expression.isParens());
+        
+        // Set to true again
+        expression.setParens(true);
+        assertTrue(expression.isParens());
+    }
+}
+```

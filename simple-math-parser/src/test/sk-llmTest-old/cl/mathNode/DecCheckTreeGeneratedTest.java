@@ -1,0 +1,17 @@
+package mathNode;
+
+import mathNode.Dec;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DecCheckTreeGeneratedTest {
+
+    @Test
+    @DisplayName("test_checkTree_returnsTrue")
+    public void test_checkTree_returnsTrue() {
+        Dec dec = new Dec();
+        boolean result = dec.checkTree();
+        assertTrue(result, "checkTree should return true");
+    }
+}

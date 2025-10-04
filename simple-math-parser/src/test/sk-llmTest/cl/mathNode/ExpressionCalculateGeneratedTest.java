@@ -1,0 +1,115 @@
+package mathNode;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionCalculateGeneratedTest {
+
+    // Since Expression is abstract, we need a concrete implementation for testing
+    static class ConcreteExpression extends Expression {
+        private final Number value;
+
+        public ConcreteExpression(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forPositiveInteger() {
+        Expression expr = new ConcreteExpression(42);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(42, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forZero() {
+        Expression expr = new ConcreteExpression(0);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(0, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forNegativeInteger() {
+        Expression expr = new ConcreteExpression(-10);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(-10, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forMaxInteger() {
+        Expression expr = new ConcreteExpression(Integer.MAX_VALUE);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(Integer.MAX_VALUE, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forMinInteger() {
+        Expression expr = new ConcreteExpression(Integer.MIN_VALUE);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(Integer.MIN_VALUE, result.intValue());
+        assertTrue(result instanceof Integer);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forPositiveDouble() {
+        Expression expr = new ConcreteExpression(3.14159);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(3.14159, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forVerySmallPositiveDouble() {
+        Expression expr = new ConcreteExpression(Double.MIN_VALUE);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(Double.MIN_VALUE, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forVeryLargeDouble() {
+        Expression expr = new ConcreteExpression(Double.MAX_VALUE);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(Double.MAX_VALUE, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @Test
+    public void test_calculate_returnsCorrectValue_forNegativeDouble() {
+        Expression expr = new ConcreteExpression(-2.71828);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(-2.71828, result.doubleValue(), 1e-9);
+        assertTrue(result instanceof Double);
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -0.0, 1.0, -1.0, 1e-9, -1e-9})
+    public void test_calculate_handlesBoundaryDoubles(double input) {
+        Expression expr = new ConcreteExpression(input);
+        Number result = expr.calculate();
+        assertNotNull(result);
+        assertEquals(input, result.doubleValue(), 1e-9);
+    }
+}

@@ -1,0 +1,1795 @@
+$ javac -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Mult.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Operator.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Add.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Int.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Pow.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Factory.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Div.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Expression.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Dec.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathNode/Sub.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathTree/StringScanner.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathTree/CalcApp.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/mathTree/MathTree.java
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetLeftNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorCheckTreeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_2.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetParensGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCheckTreeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetPrecedenceGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetRightNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionIsParensGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCheckTreeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetRightNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetLeftNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCheckTreeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_1.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCalculateGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddDelimiterGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerSaveTokenGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeToStringGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeCleanStrListGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerScanGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInitGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddSpecialCharGeneratedTest.java /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetLeftNodeGeneratedTest.java:10: error: invalid method declaration; return type required
+    public DummyExpression(String identifier) {
+           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_1.java:6: error: invalid method declaration; return type required
+    public Dec(double value) {
+           ^
+2 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetLeftNodeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetLeftNodeGeneratedTest.java:10: error: invalid method declaration; return type required
+    public DummyExpression(String identifier) {
+           ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorCheckTreeGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:14: error: Expression is abstract; cannot be instantiated
+        Expression expr = new Expression();
+                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:19: error: cannot find symbol
+        assertTrue(expr.getParens());
+                       ^
+  symbol:   method getParens()
+  location: variable expr of type Expression
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:24: error: Expression is abstract; cannot be instantiated
+        Expression expr = new Expression();
+                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:26: error: cannot find symbol
+        assertFalse(expr.getParens());
+                        ^
+  symbol:   method getParens()
+  location: variable expr of type Expression
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:32: error: Expression is abstract; cannot be instantiated
+        Expression expr = new Expression();
+                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:36: error: cannot find symbol
+            assertTrue(expr.getParens());
+                           ^
+  symbol:   method getParens()
+  location: variable expr of type Expression
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionSetParensGeneratedTest.java:38: error: cannot find symbol
+            assertFalse(expr.getParens());
+                            ^
+  symbol:   method getParens()
+  location: variable expr of type Expression
+7 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java:15: error: cannot find symbol
+    private static class MockNode implements Node {
+                                             ^
+  symbol:   class Node
+  location: class AddCalculateGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java:22: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java:31: error: incompatible types: MockNode cannot be converted to Expression
+        add.setLeftNode(new MockNode(left));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/AddCalculateGeneratedTest.java:32: error: incompatible types: MockNode cannot be converted to Expression
+        add.setRightNode(new MockNode(right));
+                         ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+4 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_2.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_2.java:3: error: interface Expression is public, should be declared in a file named Expression.java
+public interface Expression {}
+       ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java:15: error: cannot find symbol
+    private static class StubNode implements Node {
+                                             ^
+  symbol:   class Node
+  location: class MultCalculateGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java:22: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java:31: error: incompatible types: StubNode cannot be converted to Expression
+        mult.setLeftNode(new StubNode(left));
+                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCalculateGeneratedTest.java:32: error: incompatible types: StubNode cannot be converted to Expression
+        mult.setRightNode(new StubNode(right));
+                          ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+4 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:22: error: cannot find symbol
+        assertEquals(input, ((Dec) result).getValue(), 1e-9);
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:30: error: cannot find symbol
+        assertEquals(input, ((Dec) result).getValue(), 1e-9);
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:38: error: cannot find symbol
+        assertEquals(input, ((Dec) result).getValue(), 1e-9);
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:48: error: cannot find symbol
+        assertEquals(value, ((Dec) result).getValue());
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:56: error: cannot find symbol
+        assertTrue(Double.isNaN(((Dec) result).getValue()));
+                                              ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:65: error: cannot find symbol
+        assertEquals(input, ((Dec) result).getValue(), 1e-309);
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest.java:73: error: cannot find symbol
+        assertEquals(input, ((Dec) result).getValue(), 1e-309);
+                                          ^
+  symbol:   method getValue()
+  location: class Dec
+7 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCalculateGeneratedTest.java:15: error: constructor Dec in class Dec cannot be applied to given types;
+        Dec dec = new Dec();
+                  ^
+  required: double
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetParensGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java:15: error: cannot find symbol
+    private static class MockNode implements Node {
+                                             ^
+  symbol:   class Node
+  location: class DivCalculateGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java:22: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java:31: error: incompatible types: MockNode cannot be converted to Expression
+        div.setLeftNode(new MockNode(left));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCalculateGeneratedTest.java:32: error: incompatible types: MockNode cannot be converted to Expression
+        div.setRightNode(new MockNode(right));
+                         ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+4 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCheckTreeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCheckTreeGeneratedTest.java:15: error: StubExpression is not abstract and does not override abstract method toString() in Expression
+    private static class StubExpression extends Expression {
+                   ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/MultCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetPrecedenceGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetPrecedenceGeneratedTest.java:15: error: TestOperator is not abstract and does not override abstract method toString() in Expression
+    private static class TestOperator extends Operator {
+                   ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCloneGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivCloneGeneratedTest.java:117: error: cannot find symbol
+        assertThrows(NullPointerException.class, () -> divWithNullBoth.clone());
+                                                       ^
+  symbol:   variable divWithNullBoth
+  location: class DivCloneGeneratedTest
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCalculateGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:14: error: cannot find symbol
+abstract class BinaryNode extends Node {
+                                  ^
+  symbol: class Node
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:15: error: cannot find symbol
+    private final Node left;
+                  ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:16: error: cannot find symbol
+    private final Node right;
+                  ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:19: error: cannot find symbol
+    protected BinaryNode(Node left, Node right, boolean parens) {
+                         ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:19: error: cannot find symbol
+    protected BinaryNode(Node left, Node right, boolean parens) {
+                                    ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:25: error: cannot find symbol
+    Node getLeftNode() { return left; }
+    ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:26: error: cannot find symbol
+    Node getRightNode() { return right; }
+    ^
+  symbol:   class Node
+  location: class BinaryNode
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:32: error: cannot find symbol
+    Sub(Node left, Node right, boolean parens) {
+        ^
+  symbol:   class Node
+  location: class Sub
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:32: error: cannot find symbol
+    Sub(Node left, Node right, boolean parens) {
+                   ^
+  symbol:   class Node
+  location: class Sub
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:50: error: cannot find symbol
+    static class SimpleNode extends Node {
+                                    ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:11: error: toString() in SubToStringGeneratedTest cannot override toString() in Object
+    abstract String toString();
+                    ^
+  attempting to assign weaker access privileges; was public
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:36: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:57: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:65: error: cannot find symbol
+        Node left = new SimpleNode("5");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:66: error: cannot find symbol
+        Node right = new SimpleNode("3");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:73: error: cannot find symbol
+        Node left = new SimpleNode("x");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:74: error: cannot find symbol
+        Node right = new SimpleNode("y");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:82: error: cannot find symbol
+        Node left = new SimpleNode(operand);
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:83: error: cannot find symbol
+        Node right = new SimpleNode("test");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:91: error: cannot find symbol
+        Node left = new SimpleNode("test");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:92: error: cannot find symbol
+        Node right = new SimpleNode(operand);
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:99: error: cannot find symbol
+        Node left = new SimpleNode("");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:100: error: cannot find symbol
+        Node right = new SimpleNode("");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:107: error: cannot find symbol
+        Node left = new SimpleNode("");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:108: error: cannot find symbol
+        Node right = new SimpleNode("");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:115: error: cannot find symbol
+        Node left = new SimpleNode("a+b");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:116: error: cannot find symbol
+        Node right = new SimpleNode("c*d");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:123: error: cannot find symbol
+        Node left = new SimpleNode("a/b");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:124: error: cannot find symbol
+        Node right = new SimpleNode("e^f");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:132: error: cannot find symbol
+        Node left = new Node() {
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:132: error: cannot find symbol
+        Node left = new Node() {
+                        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:133: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:138: error: cannot find symbol
+        Node right = new SimpleNode("valid");
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:146: error: cannot find symbol
+        Node left = new Node() {
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:146: error: cannot find symbol
+        Node left = new Node() {
+                        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:147: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:152: error: cannot find symbol
+        Node right = new Node() {
+        ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:152: error: cannot find symbol
+        Node right = new Node() {
+                         ^
+  symbol:   class Node
+  location: class SubTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubToStringGeneratedTest.java:153: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+39 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DivToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetRightNodeGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionToStringGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionToStringGeneratedTest.java:17: error: TestExpression is not abstract and does not override abstract method checkTree() in Expression
+    private static class TestExpression extends Expression {
+                   ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionIsParensGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCheckTreeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/IntCheckTreeGeneratedTest.java:14: error: constructor Int in class Int cannot be applied to given types;
+        Int node = new Int(); // Default constructor assumed to exist
+                   ^
+  required: int
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java:30: error: getLeftNode() in TestableSub cannot override getLeftNode() in Operator
+        protected Node getLeftNode() {
+                       ^
+  attempting to assign weaker access privileges; was public
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java:29: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java:35: error: getRightNode() in TestableSub cannot override getRightNode() in Operator
+        protected Node getRightNode() {
+                       ^
+  attempting to assign weaker access privileges; was public
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/SubCalculateGeneratedTest.java:34: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+4 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java:330: error: NonCloneableExpression is not abstract and does not override abstract method checkTree() in Expression
+    static class NonCloneableExpression extends Expression {
+           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java:336: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java:343: error: Literal is not abstract and does not override abstract method checkTree() in Expression
+    static class Literal extends Expression {
+           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCloneGeneratedTest.java:359: error: method does not override or implement a method from a supertype
+        @Override
+        ^
+4 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorSetRightNodeGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowToStringGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowToStringGeneratedTest.java:16: error: toString() in MathNode cannot override toString() in Object
+        abstract String toString();
+                        ^
+  attempting to assign weaker access privileges; was public
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowToStringGeneratedTest.java:57: error: toString() in <anonymous mathNode.PowToStringGeneratedTest$1> cannot override toString() in Object
+            String toString() {
+                   ^
+  attempting to assign weaker access privileges; was public
+2 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/PowCalculateGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/OperatorGetLeftNodeGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCheckTreeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/DecCheckTreeGeneratedTest.java:14: error: constructor Dec in class Dec cannot be applied to given types;
+        Dec dec = new Dec();
+                  ^
+  required: double
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_1.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryBuildNodeGeneratedTest_1.java:6: error: invalid method declaration; return type required
+    public Dec(double value) {
+           ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/FactoryCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCalculateGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCalculateGeneratedTest.java:15: error: ConstantExpression is not abstract and does not override abstract method checkTree() in Expression
+    static class ConstantExpression extends Expression {
+           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCalculateGeneratedTest.java:29: error: ConditionalExpression is not abstract and does not override abstract method checkTree() in Expression
+    static class ConditionalExpression extends Expression {
+           ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathNode/ExpressionCalculateGeneratedTest.java:49: error: ExceptionalExpression is not abstract and does not override abstract method checkTree() in Expression
+    static class ExceptionalExpression extends Expression {
+           ^
+3 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:25: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:25: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:33: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:33: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:42: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:42: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:51: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:51: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:61: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:61: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:71: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:71: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:80: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:80: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:91: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:91: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:104: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:104: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:114: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:114: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:125: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:125: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:136: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:136: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:156: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:156: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:167: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, false);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:167: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, false);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:178: error: cannot find symbol
+        mathNode result = mathTree.buildTree(tokens, true);
+        ^
+  symbol:   class mathNode
+  location: class MathTreeBuildTreeGeneratedTest
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeBuildTreeGeneratedTest.java:178: error: method buildTree in class MathTree cannot be applied to given types;
+        mathNode result = mathTree.buildTree(tokens, true);
+                                  ^
+  required: LinkedList<String>,boolean
+  found:    LinkedList<String>,boolean
+  reason: buildTree(LinkedList<String>,boolean) has private access in MathTree
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+30 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddDelimiterGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddDelimiterGeneratedTest.java:20: error: constructor StringScanner in class StringScanner cannot be applied to given types;
+        scanner = new StringScanner("");
+                  ^
+  required: no arguments
+  found:    String
+  reason: actual and formal argument lists differ in length
+Note: /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddDelimiterGeneratedTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerSaveTokenGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerSaveTokenGeneratedTest.java:53: error: expression not allowed as annotation value
+        "a".repeat(1000) // large string
+                  ^
+1 error
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeToStringGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeCleanStrListGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeCloneGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:70: error: incompatible types: mathNode cannot be converted to Expression
+        mathNode result = mathTree.insertNode(null, newNode);
+                                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:78: error: incompatible types: mathNode cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootNode, null);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:87: error: incompatible types: mathNode cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootNode, newNode);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:100: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newOp);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:116: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newOp);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:133: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newOp);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:147: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newOp);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:163: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, parenOp);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:180: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newNode);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:197: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newNode);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:217: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, new mathNode.Int(4));
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:232: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newNode);
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInsertNodeGeneratedTest.java:248: error: incompatible types: Operator cannot be converted to Expression
+        mathNode result = mathTree.insertNode(rootOp, newNode);
+                                              ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+13 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:74: error: incompatible types: possible lossy conversion from int to char
+    @ValueSource(chars = { 0, 1, -1, Character.MIN_VALUE, Character.MAX_VALUE })
+                                 ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:25: error: constructor StringScanner in class StringScanner cannot be applied to given types;
+        scannerWithWhitespaceEnabled = new StringScanner("") {
+                                       ^
+  required: no arguments
+  found:    String
+  reason: actual and formal argument lists differ in length
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:27: error: skipWhitespace has private access in StringScanner
+                skipWhitespace = true;
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:28: error: delimSet has private access in StringScanner
+                delimSet = new HashSet<>();
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:29: error: delimSet has private access in StringScanner
+                delimSet.add(',');
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:30: error: delimSet has private access in StringScanner
+                delimSet.add(';');
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:34: error: constructor StringScanner in class StringScanner cannot be applied to given types;
+        scannerWithWhitespaceDisabled = new StringScanner("") {
+                                        ^
+  required: no arguments
+  found:    String
+  reason: actual and formal argument lists differ in length
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:36: error: skipWhitespace has private access in StringScanner
+                skipWhitespace = false;
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:37: error: delimSet has private access in StringScanner
+                delimSet = new HashSet<>();
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:38: error: delimSet has private access in StringScanner
+                delimSet.add(',');
+                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerIsDelimGeneratedTest.java:39: error: delimSet has private access in StringScanner
+                delimSet.add(';');
+                ^
+11 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerScanGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeInitGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:40: error: tokenList has private access in StringScanner
+        assertTrue(clone.tokenList.isEmpty(), "Token list of clone should be empty");
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:41: error: delimSet has private access in StringScanner
+        assertTrue(clone.delimSet.isEmpty(), "Delimiter set of clone should be empty");
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:42: error: specCharSet has private access in StringScanner
+        assertTrue(clone.specCharSet.isEmpty(), "Special character set of clone should be empty");
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:48: error: tokenList has private access in StringScanner
+        stringScanner.tokenList.add("token1");
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:49: error: tokenList has private access in StringScanner
+        stringScanner.tokenList.add("token2");
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:53: error: tokenList has private access in StringScanner
+        assertEquals(2, clone.tokenList.size());
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:54: error: tokenList has private access in StringScanner
+        assertEquals("token1", clone.tokenList.get(0));
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:55: error: tokenList has private access in StringScanner
+        assertEquals("token2", clone.tokenList.get(1));
+                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:56: error: tokenList has private access in StringScanner
+        assertNotSame(stringScanner.tokenList, clone.tokenList, "Token lists must be separate instances");
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:56: error: tokenList has private access in StringScanner
+        assertNotSame(stringScanner.tokenList, clone.tokenList, "Token lists must be separate instances");
+                                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:62: error: delimSet has private access in StringScanner
+        stringScanner.delimSet.add(' ');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:63: error: delimSet has private access in StringScanner
+        stringScanner.delimSet.add('\t');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:67: error: delimSet has private access in StringScanner
+        assertEquals(2, clone.delimSet.size());
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:68: error: delimSet has private access in StringScanner
+        assertTrue(clone.delimSet.contains(' '));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:69: error: delimSet has private access in StringScanner
+        assertTrue(clone.delimSet.contains('\t'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:70: error: delimSet has private access in StringScanner
+        assertNotSame(stringScanner.delimSet, clone.delimSet, "Delimiter sets must be separate instances");
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:70: error: delimSet has private access in StringScanner
+        assertNotSame(stringScanner.delimSet, clone.delimSet, "Delimiter sets must be separate instances");
+                                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:76: error: specCharSet has private access in StringScanner
+        stringScanner.specCharSet.add('+');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:77: error: specCharSet has private access in StringScanner
+        stringScanner.specCharSet.add('-');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:81: error: specCharSet has private access in StringScanner
+        assertEquals(2, clone.specCharSet.size());
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:82: error: specCharSet has private access in StringScanner
+        assertTrue(clone.specCharSet.contains('+'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:83: error: specCharSet has private access in StringScanner
+        assertTrue(clone.specCharSet.contains('-'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:84: error: specCharSet has private access in StringScanner
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet, "Special char sets must be separate instances");
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:84: error: specCharSet has private access in StringScanner
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet, "Special char sets must be separate instances");
+                                                      ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:90: error: tokenList has private access in StringScanner
+        stringScanner.tokenList.add("original");
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:93: error: tokenList has private access in StringScanner
+        clone.tokenList.add("addedToClone");
+             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:95: error: tokenList has private access in StringScanner
+        assertEquals(1, stringScanner.tokenList.size(), "Original tokenList should remain unchanged");
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:96: error: tokenList has private access in StringScanner
+        assertEquals("original", stringScanner.tokenList.get(0));
+                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:97: error: tokenList has private access in StringScanner
+        assertEquals(2, clone.tokenList.size(), "Clone tokenList should have additional element");
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:103: error: delimSet has private access in StringScanner
+        stringScanner.delimSet.add(',');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:106: error: delimSet has private access in StringScanner
+        clone.delimSet.add(';');
+             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:108: error: delimSet has private access in StringScanner
+        assertEquals(1, stringScanner.delimSet.size(), "Original delimSet should remain unchanged");
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:109: error: delimSet has private access in StringScanner
+        assertTrue(stringScanner.delimSet.contains(','));
+                                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:110: error: delimSet has private access in StringScanner
+        assertFalse(stringScanner.delimSet.contains(';'));
+                                 ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:112: error: delimSet has private access in StringScanner
+        assertEquals(2, clone.delimSet.size(), "Clone delimSet should have additional element");
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:113: error: delimSet has private access in StringScanner
+        assertTrue(clone.delimSet.contains(','));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:114: error: delimSet has private access in StringScanner
+        assertTrue(clone.delimSet.contains(';'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:120: error: specCharSet has private access in StringScanner
+        stringScanner.specCharSet.add('*');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:123: error: specCharSet has private access in StringScanner
+        clone.specCharSet.add('/');
+             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:125: error: specCharSet has private access in StringScanner
+        assertEquals(1, stringScanner.specCharSet.size(), "Original specCharSet should remain unchanged");
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:126: error: specCharSet has private access in StringScanner
+        assertTrue(stringScanner.specCharSet.contains('*'));
+                                ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:127: error: specCharSet has private access in StringScanner
+        assertFalse(stringScanner.specCharSet.contains('/'));
+                                 ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:129: error: specCharSet has private access in StringScanner
+        assertEquals(2, clone.specCharSet.size(), "Clone specCharSet should have additional element");
+                             ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:130: error: specCharSet has private access in StringScanner
+        assertTrue(clone.specCharSet.contains('*'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:131: error: specCharSet has private access in StringScanner
+        assertTrue(clone.specCharSet.contains('/'));
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:151: error: tokenList has private access in StringScanner
+        stringScanner.tokenList.add("baseToken");
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:152: error: delimSet has private access in StringScanner
+        stringScanner.delimSet.add('|');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:153: error: specCharSet has private access in StringScanner
+        stringScanner.specCharSet.add('^');
+                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:158: error: tokenList has private access in StringScanner
+        clone1.tokenList.add("fromClone1");
+              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:159: error: tokenList has private access in StringScanner
+        clone2.tokenList.add("fromClone2");
+              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:161: error: tokenList has private access in StringScanner
+        assertEquals(1, stringScanner.tokenList.size(), "Original tokenList size should remain 1");
+                                     ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:162: error: tokenList has private access in StringScanner
+        assertEquals(2, clone1.tokenList.size(), "Clone1 tokenList should grow to 2");
+                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:163: error: tokenList has private access in StringScanner
+        assertEquals(2, clone2.tokenList.size(), "Clone2 tokenList should grow to 2");
+                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:165: error: tokenList has private access in StringScanner
+        assertEquals("baseToken", stringScanner.tokenList.get(0));
+                                               ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:166: error: tokenList has private access in StringScanner
+        assertEquals("baseToken", clone1.tokenList.get(0));
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:167: error: tokenList has private access in StringScanner
+        assertEquals("baseToken", clone2.tokenList.get(0));
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:168: error: tokenList has private access in StringScanner
+        assertEquals("fromClone1", clone1.tokenList.get(1));
+                                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:169: error: tokenList has private access in StringScanner
+        assertEquals("fromClone2", clone2.tokenList.get(1));
+                                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:177: error: tokenList has private access in StringScanner
+            stringScanner.tokenList.add(String.valueOf(c));
+                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:178: error: delimSet has private access in StringScanner
+            stringScanner.delimSet.add(c);
+                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:179: error: specCharSet has private access in StringScanner
+            stringScanner.specCharSet.add(Character.toUpperCase(c));
+                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:184: error: tokenList has private access in StringScanner
+        assertEquals(stringScanner.tokenList.size(), clone.tokenList.size());
+                                  ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:184: error: tokenList has private access in StringScanner
+        assertEquals(stringScanner.tokenList.size(), clone.tokenList.size());
+                                                          ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:185: error: delimSet has private access in StringScanner
+        assertEquals(stringScanner.delimSet.size(), clone.delimSet.size());
+                                  ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:185: error: delimSet has private access in StringScanner
+        assertEquals(stringScanner.delimSet.size(), clone.delimSet.size());
+                                                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:186: error: specCharSet has private access in StringScanner
+        assertEquals(stringScanner.specCharSet.size(), clone.specCharSet.size());
+                                  ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:186: error: specCharSet has private access in StringScanner
+        assertEquals(stringScanner.specCharSet.size(), clone.specCharSet.size());
+                                                            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:188: error: tokenList has private access in StringScanner
+        for (int i = 0; i < stringScanner.tokenList.size(); i++) {
+                                         ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:189: error: tokenList has private access in StringScanner
+            assertEquals(stringScanner.tokenList.get(i), clone.tokenList.get(i));
+                                      ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:189: error: tokenList has private access in StringScanner
+            assertEquals(stringScanner.tokenList.get(i), clone.tokenList.get(i));
+                                                              ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:192: error: delimSet has private access in StringScanner
+        for (Character c : stringScanner.delimSet) {
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:193: error: delimSet has private access in StringScanner
+            assertTrue(clone.delimSet.contains(c));
+                            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:196: error: specCharSet has private access in StringScanner
+        for (Character c : stringScanner.specCharSet) {
+                                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:197: error: specCharSet has private access in StringScanner
+            assertTrue(clone.specCharSet.contains(c));
+                            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:200: error: tokenList has private access in StringScanner
+        assertNotSame(stringScanner.tokenList, clone.tokenList);
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:200: error: tokenList has private access in StringScanner
+        assertNotSame(stringScanner.tokenList, clone.tokenList);
+                                                    ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:201: error: delimSet has private access in StringScanner
+        assertNotSame(stringScanner.delimSet, clone.delimSet);
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:201: error: delimSet has private access in StringScanner
+        assertNotSame(stringScanner.delimSet, clone.delimSet);
+                                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:202: error: specCharSet has private access in StringScanner
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet);
+                                   ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerCloneGeneratedTest.java:202: error: specCharSet has private access in StringScanner
+        assertNotSame(stringScanner.specCharSet, clone.specCharSet);
+                                                      ^
+80 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:39: error: rootNode has private access in MathTree
+        tree.rootNode = null;
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:46: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(42);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:46: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(42);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:53: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(3.14159);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:53: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(3.14159);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:60: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(0);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:60: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(0);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:67: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(-100);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:67: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(-100);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:74: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Integer.MAX_VALUE);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:74: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Integer.MAX_VALUE);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:81: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Integer.MIN_VALUE);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:81: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Integer.MIN_VALUE);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:88: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Double.MAX_VALUE);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:88: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Double.MAX_VALUE);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:95: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Double.MIN_VALUE);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:95: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Double.MIN_VALUE);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:102: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Double.POSITIVE_INFINITY);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:102: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Double.POSITIVE_INFINITY);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:109: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Double.NEGATIVE_INFINITY);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:109: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Double.NEGATIVE_INFINITY);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:116: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(Double.NaN);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:116: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(Double.NaN);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:123: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(true); // throws exception
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:123: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(true); // throws exception
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:131: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(value);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:131: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(value);
+                        ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:139: error: rootNode has private access in MathTree
+        tree.rootNode = new NodeStub(value);
+            ^
+/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/MathTreeSolveGeneratedTest.java:139: error: incompatible types: NodeStub cannot be converted to Expression
+        tree.rootNode = new NodeStub(value);
+                        ^
+29 errors
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerAddSpecialCharGeneratedTest.java
+
+$ javac -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -d /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src/test/sk-llmTest/nl/mathTree/StringScannerSkipWhitespaceGeneratedTest.java
+
+$ java -javaagent:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/jacocoagent.jar=destfile=/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/jacoco.exec,append=false,includes=* -jar /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test --scan-classpath --reports-dir /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/reports
+
+Thanks for using JUnit! Support its development at https://junit.org/sponsoring
+
+Invalid: Unknown expression
+Invalid: Unknown expression "4.9E"
+Invalid: Missing value between two operators
+Invalid: Unknown expression "invalid"
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  ├─[0m [36mIntToStringGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_negativeValueNoParens_returnsPlainString()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_minIntegerWithParens_returnsParenthesizedMin()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_variousValuesNoParens_matchesIntegerToString(int)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[5] -100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[6] 2147483647[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[7] -2147483648[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_maxIntegerNoParens_returnsMaxAsString()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_maxIntegerWithParens_returnsParenthesizedMax()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_negativeValueWithParens_returnsParenthesizedString()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_variousValuesWithParens_wrappedInParentheses(int)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[5] -100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[6] 2147483647[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[7] -2147483648[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_positiveValueWithParens_returnsParenthesizedString()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_minIntegerNoParens_returnsMinAsString()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_zeroWithParens_returnsParenthesizedZero()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_positiveValueNoParens_returnsPlainString()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_toString_zeroNoParens_returnsZeroAsString()[0m [32m✔[0m
+[36m│  ├─[0m [36mStringScannerAddSpecialCharGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_AddSpecialChar_NullArray()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_AddSpecialChar_DuplicateCharacters()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_AddSpecialChar_IndividualSpecialChars(char)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] .[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2]  [0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3]  [0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4]  [0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[5] a[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[6] Z[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[7] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[8] 9[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[9] ~[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[10] ![0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[11] @[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[12] #[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[13] $[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[14] %[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[15] ^[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[16] &[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[17] *[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[18] ([0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[19] )[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[20] -[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[21] _[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[22] =[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[23] +[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[24] [[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[25] ][0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[26] {[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[27] }[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[28] |[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[29] \[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[30] :[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[31] ;[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[32] "[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[33] '[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[34] <[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[35] >[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[36] ,[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[37] .[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[38] ?[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[39] /[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_AddSpecialChar_MultipleCharacters()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_AddSpecialChar_EmptyArray()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_AddSpecialChar_SingleCharacter()[0m [32m✔[0m
+[36m│  ├─[0m [36mExpression Clone Tests[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNegativeValue_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_onCloneableInstance_doesNotThrowException[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullName_throwsNullPointerException[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withEmptyName_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normalObject_returnsEqualButNotSameInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withMinIntValue_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withZeroValue_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_whenCalledOnClone_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withMaxIntValue_returnsEqualInstance[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_multipleTimes_returnsEqualInstances[0m [32m✔[0m
+[36m│  ├─[0m [36mStringScannerSkipWhitespaceGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_skipWhitespace_idempotentBehavior()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_skipWhitespace_onFreshInstance_noSideEffects()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_skipWhitespace_setsFlagToTrue()[0m [32m✔[0m
+[36m│  ├─[0m [36mOperatorGetLeftNodeGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getLeftNode_withNullLeftNode_returnsNull()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getLeftNode_withSpecialCharacterExpression_returnsExpression()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getLeftNode_withEmptyStringExpression_returnsExpression()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getLeftNode_normalCase_returnsCorrectExpression()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_getLeftNode_withVeryLongStringExpression_returnsExpression()[0m [32m✔[0m
+[36m│  ├─[0m [36mOperatorSetRightNodeGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setRightNode_replacesExistingNode()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setRightNode_withNonNullNode()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setRightNode_multipleCallsWithSameNode()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_setRightNode_withNullNode()[0m [32m✔[0m
+[36m│  ├─[0m [36mAddCloneGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullRightNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_methodDeclaresCloneNotSupportedException()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] mathNode.AddCloneGeneratedTest$Expression@0, mathNode.AddCloneGeneratedTest$...[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] mathNode.AddCloneGeneratedTest$Expression@ffffffff, mathNode.AddCloneGenerat...[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] mathNode.AddCloneGeneratedTest$Expression@80000000, mathNode.AddCloneGenerat...[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] mathNode.AddCloneGeneratedTest$Expression@1, mathNode.AddCloneGeneratedTest$...[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] mathNode.AddCloneGeneratedTest$Expression@364492, mathNode.AddCloneGenerated...[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normalCase_createsDeepCopy()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullLeftNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withBothNodesNull_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_modifyingOriginal_doesNotAffectClone()[0m [32m✔[0m
+[36m│  ├─[0m [36mStringScannerScanGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_scan_specialCharacters_returnsSeparatedTokens()[0m [31m✘[0m [31mexpected: <9> but was: <1>[0m
+[36m│  │  ├─[0m [31mtest_scan_startsWithDelimiter_returnsLeadingDelimiterToken()[0m [31m✘[0m [31mexpected: <2> but was: <1>[0m
+[36m│  │  ├─[0m [31mtest_scan_unicodeCharacters_handlesUnicodeProperly()[0m [31m✘[0m [31mexpected: <5> but was: <1>[0m
+[36m│  │  ├─[0m [34mtest_scan_singleCharacter_returnsSingleToken()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_scan_singleDelimiter_returnsSeparateTokens(char)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [31m[1]  [0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  │  ├─[0m [31m[2]  [0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  │  └─[0m [31m[3]  [0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  ├─[0m [34mtest_scan_emptyString_returnsEmptyList()[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_scan_onlyWhitespace_returnsEmptyTokens()[0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  ├─[0m [34mtest_scan_singleWord_returnsOneToken()[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens()[0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  ├─[0m [34mtest_scan_singleDelimiter_returnsSingleDelimiterToken()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_scan_singleSpecialCharacter_returnsSingleSpecialToken()[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens()[0m [31m✘[0m [31mexpected: <5> but was: <1>[0m
+[36m│  │  ├─[0m [31mtest_scan_consecutiveSpecialChars_returnsIndividualTokens()[0m [31m✘[0m [31mexpected: <8> but was: <1>[0m
+[36m│  │  ├─[0m [31mtest_scan_longString_returnsCorrectTokens()[0m [31m✘[0m [31mexpected: <3> but was: <1>[0m
+[36m│  │  └─[0m [31mtest_scan_endsWithDelimiter_returnsTrailingDelimiterToken()[0m [31m✘[0m [31mexpected: <2> but was: <1>[0m
+[36m│  ├─[0m [36mMathTreeCloneGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_whenRootNodeCloneThrows_exceptionPropagates()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_isNotShallowCopy_fieldsAreIndependentlyCloned()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_whenBothChildrenThrow_exceptionsFromRootNodePropagate()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normalBehavior_returnsDeepCopy()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_idempotentMultipleCalls_eachCloneIndependent()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_whenFactoryCloneThrows_exceptionPropagates()[0m [32m✔[0m
+[36m│  ├─[0m [36mOperatorSetParensGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setParens_false_setsParenthesisToFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_setParens_idempotent_behavior(boolean)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] true[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[2] false[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setParens_true_setsParenthesisToTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setParens_true_setsPrecedenceToZero()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_setParens_false_doesNotChangePrecedenceFromDefault()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_setParens_false_afterTrue_resetsPrecedenceToNonZero()[0m [32m✔[0m
+[36m│  ├─[0m [36mOperatorCheckTreeGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_checkTree_singleLevelInvalid_returnsFalse()[0m [31m✘[0m [31mexpected: <true> but was: <false>[0m
+[36m│  │  ├─[0m [34mtest_checkTree_deepInvalidBranch_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_checkTree_rightNodeIsNull_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_checkTree_allNodesValid_returnsTrue()[0m [31m✘[0m [31mexpected: <true> but was: <false>[0m
+[36m│  │  ├─[0m [34mtest_checkTree_emptyTree_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_checkTree_leftNodeIsNull_returnsFalse()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_checkTree_bothChildrenInvalid_returnsFalse()[0m [32m✔[0m
+[36m│  ├─[0m [36mMathTreeCleanStrListGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_cleanStrList_normal_with_negatives(LinkedList, LinkedList)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] [-3, +, 4], [-3, +, 4][0m [32m✔[0m
+[36m│  │  │  ├─[0m [31m[2] [(-3), *, 2], [(, -3, ), *, 2][0m [31m✘[0m [31mexpected: <[(, -3, ), *, 2]> but was: <[(, -, 3), *, 2]>[0m
+[36m│  │  │  └─[0m [34m[3] [5, -, -3], [5, -, -3][0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_cleanStrList_complex_expression()[0m [31m✘[0m [31mexpected: <[2, *, (, -3, +, 4, ), *, x]> but was: <[2, *, (, -3, +, -, -4, ), *, x]>[0m
+[36m│  │  ├─[0m [34mtest_cleanStrList_long_string_many_minuses()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_cleanStrList_consecutive_operators()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_cleanStrList_single_element_no_special_handling()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_cleanStrList_empty_list()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_cleanStrList_implicit_multiplication_before_paren(LinkedList, LinkedList)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] [2, (, 3, )], [2, *, (, 3, )][0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[2] [x, (, y, )], [x, *, (, y, )][0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_cleanStrList_nested_parentheses()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_cleanStrList_implicit_multiplication_after_paren(LinkedList, LinkedList)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] [(, 2, ), 3], [(, 2, ), *, 3][0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[2] [(, x, ), y], [(, x, ), *, y][0m [32m✔[0m
+[36m│  │  └─[0m [31mtest_cleanStrList_double_minus_at_start()[0m [31m✘[0m [31mexpected: <[-3, +, 4]> but was: <[-, -3, +, 4]>[0m
+[36m│  ├─[0m [36mTests for mathNode.Int.clone()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_idempotent_property[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normal_negative_value[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normal_positive_value[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_throws_exception_when_not_cloneable_internally[0m [32m✔[0m
+[36m│  │  └─[0m [36mtest_clone_boundary_values[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[1] 0[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[2] 1[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[3] -1[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[4] 2147483647[0m [32m✔[0m
+[36m│  │     └─[0m [34m[5] -2147483648[0m [32m✔[0m
+[36m│  ├─[0m [36mMultCloneGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_isIdempotent_multipleClonesAreIndependent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullRightNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normalCase_createsDeepCopy()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullLeftNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withBothNodesNull_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_clone_withExtremeIntegerValues_preservesValues(int)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] -2147483648[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 1[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] 2147483647[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_withVeryLargeStrings_preservesValues()[0m [32m✔[0m
+[36m│  ├─[0m [36mOperatorGetRightNodeGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getRightNode_normal_returnsCorrectInstance()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_getRightNode_withNull_returnsNull()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_getRightNode_multipleCalls_returnsSameInstance()[0m [32m✔[0m
+[36m│  ├─[0m [36mSubCloneGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_leftNodeIsClonedIndependently()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullRightNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_isNotShallowCopy()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_whenRightNodeCloneThrows_exceptionPropagates()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withNullLeftNode_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_rightNodeIsClonedIndependently()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_preservesValues()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_clone_withBoundaryValueExpressions(int)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 2147483647[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[4] -2147483648[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_withBothNodesNull_throwsNullPointerException()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_createsNewInstance()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_returnsCorrectType()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_whenLeftNodeCloneThrows_exceptionPropagates()[0m [32m✔[0m
+[36m│  ├─[0m [36mMultToStringGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_normal(String, String, String)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 2, 3, 2 * 3[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] x, y, x * y[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0, 5, 0 * 5[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] -1, 7, -1 * 7[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] a, b+c, a * b+c[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_withSpacesInNodes()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_largeValues()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_emptyStrings()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_parensTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_complexExpressionWithParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_negativeOne()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_oneEmptyString()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_parensFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_withParens(String, String, String)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 2, 3, (2 * 3)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] x, y, (x * y)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0, 5, (0 * 5)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] -1, 7, (-1 * 7)[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] a, b+c, (a * b+c)[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_zeroAndOne()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_toString_complexExpressionNoParens()[0m [32m✔[0m
+[36m│  ├─[0m [36mIntCalculateGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_minIntegerValue()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_calculate_normalValues(int)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[5] -100[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[6] 2147483647[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[7] -2147483648[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_maxIntegerValue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_positiveValue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_withDoubleConstructor_truncatesToInteger()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_negativeValue()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_calculate_zeroValue()[0m [32m✔[0m
+[36m│  ├─[0m [36mPowCalculateGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_negative_base_fractional_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_negative_base_odd_integer_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_negative_base_even_integer_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_calculate_parametrized_cases(double, double, double)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 2.0, 3.0, 8.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 5.0, 0.0, 1.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] 0.0, 5.0, 0.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] -2.0, 2.0, 4.0[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] 4.0, 0.5, 2.0[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_zero_base_positive_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_positive_base_fractional_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_positive_base_positive_integer_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_one_base_any_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_zero_base_negative_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_any_base_zero_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_calculate_zero_base_zero_exponent()[0m [32m✔[0m
+[36m│  │  ├─[0m [31mtest_calculate_large_positive_base_large_positive_exponent()[0m [31m✘[0m [31mexpected: <Infinity> but was: <1.0E308>[0m
+[36m│  │  ├─[0m [34mtest_calculate_positive_base_negative_integer_exponent()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_calculate_large_positive_base_large_negative_exponent()[0m [32m✔[0m
+[36m│  ├─[0m [36mFactory Clone Tests[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_on_null_reference_should_throw_NullPointerException[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normal_instance_should_return_deep_copy[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_called_twice_should_produce_independent_objects[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_clone_when_super_clone_throws_exception_should_propagate_exception[0m [32m✔[0m
+[36m│  ├─[0m [36mMathTreeInitGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_init_boundaryIntegerValues_returnsTrue(String)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] -1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 2147483647[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] -2147483648[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_veryLargeExpression_returnsTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_checkTreeFails_setsRootToNullAndReturnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_emptyString_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_validExpression_returnsTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_whitespaceOnly_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_init_boundaryDoubleValues_returnsTrue(String)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 1.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 0.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] -1.0[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] 1.7976931348623157E308[0m [32m✔[0m
+[36m│  │  │  └─[0m [31m[5] 4.9E-324[0m [31m✘[0m [31mexpected: <true> but was: <false>[0m
+[36m│  │  ├─[0m [34mtest_init_invalidExpression_returnsFalse()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_complexValidExpression_returnsTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_leadingAndTrailingSpaces_returnsTrue()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_init_multipleCalls_invalidThenValid_returnsFalseThenTrue()[0m [32m✔[0m
+[36m│  │  └─[0m [31mtest_init_nullInput_returnsFalse()[0m [31m✘[0m [31mCannot invoke "String.length()" because "<parameter1>" is null[0m
+[36m│  ├─[0m [36mAddToStringGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_bothNodesEmpty_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_veryLongStrings_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_branch_true()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_normal_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_branch_false()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_oneNodeEmpty_withParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_combinations(Node, Node, boolean, String)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 0, 1, false, 0 + 1[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] -1, 1, true, (-1 + 1)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] , empty, false,  + empty[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[4] MAX_INT, MIN_INT, true, (MAX_INT + MIN_INT)[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[5] very_large_string_aaaaaaaaaaaaaaaaaaaa, very_large_string_bbbbbbbbbbbbbbbbbb...[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_toString_normal_withParens()[0m [32m✔[0m
+[36m│  ├─[0m [36mDecToStringGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_specialValues_withParens(double)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 1.7976931348623157E308[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 4.9E-324[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] Infinity[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[4] -Infinity[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_positiveValue_withParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_verySmallPositive_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_nan_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_positiveValue_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_zero_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_negativeValue_noParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_negativeValue_withParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [36mtest_toString_specialValues_noParens(double)[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[1] 1.7976931348623157E308[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[2] 4.9E-324[0m [32m✔[0m
+[36m│  │  │  ├─[0m [34m[3] Infinity[0m [32m✔[0m
+[36m│  │  │  └─[0m [34m[4] -Infinity[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_zero_withParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_nan_withParens()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_toString_veryLargeNegative_withParens()[0m [32m✔[0m
+[36m│  ├─[0m [36mExpressionIsParensGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_isParens_whenParenthesisIsFalse_shouldReturnFalse()[0m [32m✔[0m
+[36m│  │  └─[0m [34mtest_isParens_whenParenthesisIsTrue_shouldReturnTrue()[0m [32m✔[0m
+[36m│  ├─[0m [36mDec Clone Tests[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_with_nan_value[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normal_negative_value[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_normal_positive_value[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_clone_throws_exception_when_not_cloneable_internally[0m [32m✔[0m
+[36m│  │  └─[0m [36mtest_clone_boundary_values[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[1] 0.0[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[2] -0.0[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[3] 1.0[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[4] -1.0[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[5] 1.7976931348623157E308[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[6] 4.9E-324[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[7] Infinity[0m [32m✔[0m
+[36m│  │     └─[0m [34m[8] -Infinity[0m [32m✔[0m
+[36m│  ├─[0m [36mDivToStringGeneratedTest[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_emptyStringsNoParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_withParens_normalCase()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_zeroDividedByZeroWithParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_withoutParens_normalCase()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_singleCharNodesWithParens()[0m [32m✔[0m
+[36m│  │  ├─[0m [34mtest_toString_largeNumberStrings()[0m [32m✔[0m
+[36m│  │  └─[0m [36mtest_toString_variousInputs(Node, Node, boolean, String)[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[1] a, b, false, a / b[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[2] 100, 50, true, (100 / 50)[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[3] 0, 1, false, 0 / 1[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[4] -1, 1, true, (-1 / 1)[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[5] 1, -1, false, 1 / -1[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[6] 0, 0, true, (0 / 0)[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[7] 2147483647, -2147483648, false, 2147483647 / -2147483648[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[8] Infinity, -Infinity, true, (Infinity / -Infinity)[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[9] 1e-323, 1e308, false, 1e-323 / 1e308[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[10] , , true, ( / )[0m [32m✔[0m
+[36m│  │     ├─[0m [34m[11] x+y, z-w, false, x+y / z-w[0m [32m✔[0m
+[36m│  │     └─[0m [34m[12] (a), [b], true, ((a) / [b])[0m [32m✔[0m
+[36m│  └─[0m [36mMathTreeToStringGeneratedTest[0m [32m✔[0m
+[36m│     ├─[0m [34mtest_toString_whenRootIsNotNull_returnsRootToString()[0m [32m✔[0m
+[36m│     ├─[0m [34mtest_toString_withExtremeLengthString_handlesGracefully()[0m [32m✔[0m
+[36m│     ├─[0m [36mtest_toString_variousRootValues_returnsCorrectString(String)[0m [32m✔[0m
+[36m│     │  ├─[0m [34m[1] [0m [32m✔[0m
+[36m│     │  ├─[0m [34m[2] 0[0m [32m✔[0m
+[36m│     │  ├─[0m [34m[3] -1[0m [32m✔[0m
+[36m│     │  ├─[0m [34m[4] 1[0m [32m✔[0m
+[36m│     │  ├─[0m [34m[5] 42[0m [32m✔[0m
+[36m│     │  ├─[0m [34m[6] very_large_string_representation[0m [32m✔[0m
+[36m│     │  └─[0m [34m[7] special!@#$%^&*()[0m [32m✔[0m
+[36m│     └─[0m [34mtest_toString_whenRootIsNull_returnsEmptyString()[0m [32m✔[0m
+[36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
+[36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
+
+Failures (20):
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_specialCharacters_returnsSeparatedTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_specialCharacters_returnsSeparatedTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <9> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_specialCharacters_returnsSeparatedTokens(StringScannerScanGeneratedTest.java:78)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_startsWithDelimiter_returnsLeadingDelimiterToken()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_startsWithDelimiter_returnsLeadingDelimiterToken', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_startsWithDelimiter_returnsLeadingDelimiterToken(StringScannerScanGeneratedTest.java:121)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_unicodeCharacters_handlesUnicodeProperly()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_unicodeCharacters_handlesUnicodeProperly', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <5> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_unicodeCharacters_handlesUnicodeProperly(StringScannerScanGeneratedTest.java:153)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_singleDelimiter_returnsSeparateTokens(char):[1]  
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_singleDelimiter_returnsSeparateTokens', methodParameterTypes = 'char']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+       java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+       [...]
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_singleDelimiter_returnsSeparateTokens(char):[2] 	
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_singleDelimiter_returnsSeparateTokens', methodParameterTypes = 'char']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+       java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+       [...]
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_singleDelimiter_returnsSeparateTokens(char):[3] 
+
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_singleDelimiter_returnsSeparateTokens', methodParameterTypes = 'char']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+       java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+       [...]
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_onlyWhitespace_returnsEmptyTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_onlyWhitespace_returnsEmptyTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_onlyWhitespace_returnsEmptyTokens(StringScannerScanGeneratedTest.java:34)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens(StringScannerScanGeneratedTest.java:52)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <5> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens(StringScannerScanGeneratedTest.java:96)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_consecutiveSpecialChars_returnsIndividualTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_consecutiveSpecialChars_returnsIndividualTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <8> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_consecutiveSpecialChars_returnsIndividualTokens(StringScannerScanGeneratedTest.java:110)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_longString_returnsCorrectTokens()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_longString_returnsCorrectTokens', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_longString_returnsCorrectTokens(StringScannerScanGeneratedTest.java:141)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:StringScannerScanGeneratedTest:test_scan_endsWithDelimiter_returnsTrailingDelimiterToken()
+    MethodSource [className = 'mathTree.StringScannerScanGeneratedTest', methodName = 'test_scan_endsWithDelimiter_returnsTrailingDelimiterToken', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+       mathTree.StringScannerScanGeneratedTest.test_scan_endsWithDelimiter_returnsTrailingDelimiterToken(StringScannerScanGeneratedTest.java:130)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:OperatorCheckTreeGeneratedTest:test_checkTree_singleLevelInvalid_returnsFalse()
+    MethodSource [className = 'mathNode.OperatorCheckTreeGeneratedTest', methodName = 'test_checkTree_singleLevelInvalid_returnsFalse', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+       org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+       mathNode.OperatorCheckTreeGeneratedTest.test_checkTree_singleLevelInvalid_returnsFalse(OperatorCheckTreeGeneratedTest.java:60)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:OperatorCheckTreeGeneratedTest:test_checkTree_allNodesValid_returnsTrue()
+    MethodSource [className = 'mathNode.OperatorCheckTreeGeneratedTest', methodName = 'test_checkTree_allNodesValid_returnsTrue', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+       org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+       mathNode.OperatorCheckTreeGeneratedTest.test_checkTree_allNodesValid_returnsTrue(OperatorCheckTreeGeneratedTest.java:53)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:MathTreeCleanStrListGeneratedTest:test_cleanStrList_normal_with_negatives(LinkedList, LinkedList):[2] [(-3), *, 2], [(, -3, ), *, 2]
+    MethodSource [className = 'mathTree.MathTreeCleanStrListGeneratedTest', methodName = 'test_cleanStrList_normal_with_negatives', methodParameterTypes = 'java.util.LinkedList, java.util.LinkedList']
+    => org.opentest4j.AssertionFailedError: expected: <[(, -3, ), *, 2]> but was: <[(, -, 3), *, 2]>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+       mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_normal_with_negatives(MathTreeCleanStrListGeneratedTest.java:63)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+       java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+       [...]
+  JUnit Jupiter:MathTreeCleanStrListGeneratedTest:test_cleanStrList_complex_expression()
+    MethodSource [className = 'mathTree.MathTreeCleanStrListGeneratedTest', methodName = 'test_cleanStrList_complex_expression', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <[2, *, (, -3, +, 4, ), *, x]> but was: <[2, *, (, -3, +, -, -4, ), *, x]>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+       mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_complex_expression(MathTreeCleanStrListGeneratedTest.java:157)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:MathTreeCleanStrListGeneratedTest:test_cleanStrList_double_minus_at_start()
+    MethodSource [className = 'mathTree.MathTreeCleanStrListGeneratedTest', methodName = 'test_cleanStrList_double_minus_at_start', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <[-3, +, 4]> but was: <[-, -3, +, 4]>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+       mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_double_minus_at_start(MathTreeCleanStrListGeneratedTest.java:148)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:PowCalculateGeneratedTest:test_calculate_large_positive_base_large_positive_exponent()
+    MethodSource [className = 'mathNode.PowCalculateGeneratedTest', methodName = 'test_calculate_large_positive_base_large_positive_exponent', methodParameterTypes = '']
+    => org.opentest4j.AssertionFailedError: expected: <Infinity> but was: <1.0E308>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+       org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+       org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+       mathNode.PowCalculateGeneratedTest.test_calculate_large_positive_base_large_positive_exponent(PowCalculateGeneratedTest.java:126)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+  JUnit Jupiter:MathTreeInitGeneratedTest:test_init_boundaryDoubleValues_returnsTrue(String):[5] 4.9E-324
+    MethodSource [className = 'mathTree.MathTreeInitGeneratedTest', methodName = 'test_init_boundaryDoubleValues_returnsTrue', methodParameterTypes = 'java.lang.String']
+    => org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+       org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+       org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+       org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+       org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+       org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+       mathTree.MathTreeInitGeneratedTest.test_init_boundaryDoubleValues_returnsTrue(MathTreeInitGeneratedTest.java:67)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+       java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+       [...]
+  JUnit Jupiter:MathTreeInitGeneratedTest:test_init_nullInput_returnsFalse()
+    MethodSource [className = 'mathTree.MathTreeInitGeneratedTest', methodName = 'test_init_nullInput_returnsFalse', methodParameterTypes = '']
+    => java.lang.NullPointerException: Cannot invoke "String.length()" because "<parameter1>" is null
+       mathTree.StringScanner.scan(StringScanner.java:54)
+       mathTree.MathTree.init(MathTree.java:33)
+       mathTree.MathTreeInitGeneratedTest.test_init_nullInput_returnsFalse(MathTreeInitGeneratedTest.java:40)
+       java.base/java.lang.reflect.Method.invoke(Method.java:580)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+       java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+Test run finished after 233 ms
+[        54 containers found      ]
+[         0 containers skipped    ]
+[        54 containers started    ]
+[         0 containers aborted    ]
+[        54 containers successful ]
+[         0 containers failed     ]
+[       337 tests found           ]
+[         0 tests skipped         ]
+[       337 tests started         ]
+[         0 tests aborted         ]
+[       317 tests successful      ]
+[        20 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.
+
+$ java -jar /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/jacococli.jar report /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/jacoco.exec --classfiles /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main --sourcefiles /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/src --xml /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/jacoco.xml --html /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/jacoco-html
+[INFO] Loading execution data file /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/jacoco.exec.
+[INFO] Analyzing 13 classes.
+

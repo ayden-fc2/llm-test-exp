@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Factory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">mathNode</a> &gt; <span class="el_source">Factory.java</span></div><h1>Factory.java</h1><pre class="source lang-java linenums">package mathNode;
+
+/**
+ * This factory builds math nodes.
+ * @author kevinrobell
+ *
+ */
+<span class="nc" id="L8">public class Factory implements Cloneable</span>
+{
+   /**
+    * Builds mathNode.Expression. If token is invalid, it returns null.
+    * @param token
+    * @return mathNode.Expression or null.
+    */
+   public Expression buildNode(String token)
+   {
+<span class="nc bnc" id="L17" title="All 2 branches missed.">      if(token.length() == 1)</span>
+      {
+<span class="nc" id="L19">         Expression newNode = buildNode(token.charAt(0));</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">         if(newNode != null) { return newNode; }</span>
+      }
+      
+      try {
+<span class="nc" id="L24">         int numInt = Integer.parseInt(token);</span>
+<span class="nc" id="L25">         return buildNode(numInt);</span>
+<span class="nc" id="L26">      } catch(NumberFormatException e1) {</span>
+         try {
+<span class="nc" id="L28">            double numDub = Double.parseDouble(token);</span>
+<span class="nc" id="L29">            return buildNode(numDub);</span>
+<span class="nc" id="L30">         } catch(NumberFormatException e2) {</span>
+<span class="nc" id="L31">            return null;</span>
+         }
+      }
+   }
+   
+   /**
+    * Builds mathNode.Expression. If char is invalid, it returns null.
+    * @param token
+    * @return mathNode.Expression or null.
+    */
+   public Expression buildNode(char ch) 
+   {
+<span class="nc bnc" id="L43" title="All 6 branches missed.">      switch(ch)</span>
+      {
+<span class="nc" id="L45">         case '+': return new Add();</span>
+<span class="nc" id="L46">         case '-': return new Sub();</span>
+<span class="nc" id="L47">         case '*': return new Mult();</span>
+<span class="nc" id="L48">         case '/': return new Div();</span>
+<span class="nc" id="L49">         case '^': return new Pow();</span>
+<span class="nc" id="L50">         default: return null;</span>
+      }
+   }
+   
+   /**
+    * Builds mathNode.Expression.
+    * @param token
+    * @return mathNode.Expression
+    */
+<span class="nc" id="L59">   public Expression buildNode(int num) { return new Int(num); }</span>
+   
+   /**
+    * Builds mathNode.Expression.
+    * @param token
+    * @return mathNode.Expression
+    */
+<span class="nc" id="L66">   public Expression buildNode(double num) { return new Dec(num); }</span>
+   public Object clone() throws CloneNotSupportedException
+   {
+<span class="nc" id="L69">      return (Factory) super.clone();</span>
+   }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

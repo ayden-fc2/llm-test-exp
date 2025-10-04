@@ -1,0 +1,104 @@
+package mathNode;
+
+import mathNode.Div;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DivCloneGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class ExpressionStub implements Expression, Cloneable {
+        public abstract Object clone();
+    }
+
+    @Test
+    public void test_clone_returnsNewInstance() {
+        Div original = new Div();
+        Div cloned = (Div) original.clone();
+        
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+
+    @Test
+    public void test_clone_preservesLeftAndRightNodes() {
+        Div leftChild = new Div();
+        Div rightChild = new Div();
+        Div original = new Div();
+        original.setLeftNode(leftChild);
+        original.setRightNode(rightChild);
+
+        Div cloned = (Div) original.clone();
+
+        assertNotNull(cloned.getLeftNode());
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(leftChild, cloned.getLeftNode());
+        assertNotSame(rightChild, cloned.getRightNode());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, -1, Integer.MIN_VALUE, Integer.MAX_VALUE})
+    public void test_clone_withIntegerEdgeCases(int value) {
+        Div leftChild = new Div();
+        Div rightChild = new Div();
+        Div original = new Div();
+        original.setLeftNode(leftChild);
+        original.setRightNode(rightChild);
+
+        Div cloned = (Div) original.clone();
+
+        assertNotNull(cloned.getLeftNode());
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(leftChild, cloned.getLeftNode());
+        assertNotSame(rightChild, cloned.getRightNode());
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, -0.0, 1.0, -1.0, Double.MIN_VALUE, Double.MAX_VALUE, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY})
+    public void test_clone_withDoubleEdgeCases(double value) {
+        Div leftChild = new Div();
+        Div rightChild = new Div();
+        Div original = new Div();
+        original.setLeftNode(leftChild);
+        original.setRightNode(rightChild);
+
+        Div cloned = (Div) original.clone();
+
+        assertNotNull(cloned.getLeftNode());
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(leftChild, cloned.getLeftNode());
+        assertNotSame(rightChild, cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withVeryLargeStructure() {
+        Div root = new Div();
+        Div current = root;
+        for (int i = 0; i < 100; i++) {
+            Div next = new Div();
+            current.setRightNode(next);
+            current = next;
+        }
+
+        Div cloned = (Div) root.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(root, cloned);
+        assertNotNull(cloned.getRightNode());
+        assertNotSame(root.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withNullChildren() {
+        Div original = new Div(); // Assuming default constructor sets children to null or allows it
+        
+        Div cloned = (Div) original.clone();
+        
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+    }
+}

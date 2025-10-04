@@ -1,0 +1,264 @@
+package mathNode;
+
+import mathNode.Sub;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SubCloneGeneratedTest {
+
+    private Sub sub;
+    private Expression mockLeft;
+    private Expression mockRight;
+
+    @BeforeEach
+    void setUp() {
+        // Create mock expressions that implement clone properly for testing
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 5.0;
+            }
+        };
+
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 3.0;
+            }
+        };
+
+        sub = new Sub();
+        sub.setLeftNode(mockLeft);
+        sub.setRightNode(mockRight);
+    }
+
+    @Test
+    public void test_clone_createsDeepCopy() throws CloneNotSupportedException {
+        Sub cloned = (Sub) sub.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(sub, cloned);
+        assertNotSame(sub.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(sub.getRightNode(), cloned.getRightNode());
+        assertEquals(sub.evaluate(), cloned.evaluate(), 1e-9);
+    }
+
+    @Test
+    public void test_clone_withNullLeftNode() throws CloneNotSupportedException {
+        sub.setLeftNode(null);
+        Sub cloned = (Sub) sub.clone();
+
+        assertNotNull(cloned);
+        assertNull(cloned.getLeftNode());
+        assertNotSame(sub, cloned);
+        assertNotSame(sub.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    public void test_clone_withNullRightNode() throws CloneNotSupportedException {
+        sub.setRightNode(null);
+        Sub cloned = (Sub) sub.clone();
+
+        assertNotNull(cloned);
+        assertNull(cloned.getRightNode());
+        assertNotSame(sub, cloned);
+        assertNotSame(sub.getLeftNode(), cloned.getLeftNode());
+    }
+
+    @Test
+    public void test_clone_withBothNodesNull() throws CloneNotSupportedException {
+        sub.setLeftNode(null);
+        sub.setRightNode(null);
+        Sub cloned = (Sub) sub.clone();
+
+        assertNotNull(cloned);
+        assertNull(cloned.getLeftNode());
+        assertNull(cloned.getRightNode());
+        assertNotSame(sub, cloned);
+    }
+
+    @Test
+    public void test_clone_preservesEvaluationSemantics_positiveValues() throws CloneNotSupportedException {
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 10.5;
+            }
+        };
+
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 4.2;
+            }
+        };
+
+        sub.setLeftNode(mockLeft);
+        sub.setRightNode(mockRight);
+
+        Sub cloned = (Sub) sub.clone();
+        assertEquals(sub.evaluate(), cloned.evaluate(), 1e-9);
+    }
+
+    @Test
+    public void test_clone_preservesEvaluationSemantics_negativeValues() throws CloneNotSupportedException {
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return -7.3;
+            }
+        };
+
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return -2.1;
+            }
+        };
+
+        sub.setLeftNode(mockLeft);
+        sub.setRightNode(mockRight);
+
+        Sub cloned = (Sub) sub.clone();
+        assertEquals(sub.evaluate(), cloned.evaluate(), 1e-9);
+    }
+
+    @Test
+    public void test_clone_preservesEvaluationSemantics_zeroValues() throws CloneNotSupportedException {
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 0.0;
+            }
+        };
+
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return 0.0;
+            }
+        };
+
+        sub.setLeftNode(mockLeft);
+        sub.setRightNode(mockRight);
+
+        Sub cloned = (Sub) sub.clone();
+        assertEquals(0.0, cloned.evaluate(), 1e-9);
+        assertEquals(sub.evaluate(), cloned.evaluate(), 1e-9);
+    }
+
+    @Test
+    public void test_clone_preservesEvaluationSemantics_maxDoubleValues() throws CloneNotSupportedException {
+        mockLeft = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return Double.MAX_VALUE;
+            }
+        };
+
+        mockRight = new Expression() {
+            @Override
+            public Object clone() {
+                try {
+                    return super.clone();
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public double evaluate() {
+                return Double.MIN_VALUE;
+            }
+        };
+
+        sub.setLeftNode(mockLeft);
+        sub.setRightNode(mockRight);
+
+        Sub cloned = (Sub) sub.clone();
+        assertEquals(sub.evaluate(), cloned.evaluate(), 1e-9);
+    }
+}

@@ -1,0 +1,146 @@
+package mathNode;
+
+import mathNode.Mult;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+public class MultToStringGeneratedTest {
+
+    // Stub implementation of MathNode to enable compilation
+    static class MathNodeStub extends MathNode {
+        private final String value;
+        private final boolean parens;
+
+        MathNodeStub(String value, boolean parens) {
+            this.value = value;
+            this.parens = parens;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+
+        @Override
+        public boolean isParens() {
+            return parens;
+        }
+    }
+
+    @Test
+    public void test_toString_withoutParens() {
+        MathNode left = new MathNodeStub("2", false);
+        MathNode right = new MathNodeStub("3", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("2 * 3", result);
+    }
+
+    @Test
+    public void test_toString_withParens() {
+        MathNode left = new MathNodeStub("2", true);
+        MathNode right = new MathNodeStub("3", true);
+        Mult mult = new Mult(left, right);
+        mult.setParens(true);
+        
+        String result = mult.toString();
+        
+        assertEquals("(2 * 3)", result);
+    }
+
+    @Test
+    public void test_toString_withZeroValues() {
+        MathNode left = new MathNodeStub("0", false);
+        MathNode right = new MathNodeStub("0", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("0 * 0", result);
+    }
+
+    @Test
+    public void test_toString_withNegativeValues() {
+        MathNode left = new MathNodeStub("-5", false);
+        MathNode right = new MathNodeStub("-10", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("-5 * -10", result);
+    }
+
+    @Test
+    public void test_toString_withLargeNumbers() {
+        MathNode left = new MathNodeStub(String.valueOf(Integer.MAX_VALUE), false);
+        MathNode right = new MathNodeStub(String.valueOf(Integer.MIN_VALUE), false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals(Integer.MAX_VALUE + " * " + Integer.MIN_VALUE, result);
+    }
+
+    @Test
+    public void test_toString_withDoubleValues() {
+        MathNode left = new MathNodeStub("3.14", false);
+        MathNode right = new MathNodeStub("2.71", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("3.14 * 2.71", result);
+    }
+
+    @Test
+    public void test_toString_withVerySmallDoubles() {
+        MathNode left = new MathNodeStub("1.0E-100", false);
+        MathNode right = new MathNodeStub("1.0E-200", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("1.0E-100 * 1.0E-200", result);
+    }
+
+    @Test
+    public void test_toString_withVeryLargeDoubles() {
+        MathNode left = new MathNodeStub("1.0E100", false);
+        MathNode right = new MathNodeStub("1.0E200", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("1.0E100 * 1.0E200", result);
+    }
+
+    @Test
+    public void test_toString_withMixedPositiveAndNegative() {
+        MathNode left = new MathNodeStub("15", false);
+        MathNode right = new MathNodeStub("-7", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals("15 * -7", result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"x", "y", "a", "b", "result", "value"})
+    public void test_toString_withVariableNames(String varName) {
+        MathNode left = new MathNodeStub(varName, false);
+        MathNode right = new MathNodeStub("2", false);
+        Mult mult = new Mult(left, right);
+        
+        String result = mult.toString();
+        
+        assertEquals(varName + " * 2", result);
+    }
+}

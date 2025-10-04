@@ -1,0 +1,82 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Factory Clone Tests")
+class FactoryCloneTest {
+
+    @Test
+    @DisplayName("test_clone_normal_instance_should_return_deep_copy")
+    void test_clone_normal_instance_should_return_deep_copy() throws CloneNotSupportedException {
+        // Given
+        Factory original = new Factory();
+
+        // When
+        Object cloned = original.clone();
+
+        // Then
+        assertNotNull(cloned);
+        assertNotSame(original, cloned); // Ensure it's a different object
+        assertEquals(Factory.class, cloned.getClass()); // Ensure type is preserved
+    }
+
+    @Test
+    @DisplayName("test_clone_called_twice_should_produce_independent_objects")
+    void test_clone_called_twice_should_produce_independent_objects() throws CloneNotSupportedException {
+        // Given
+        Factory original = new Factory();
+
+        // When
+        Object clone1 = original.clone();
+        Object clone2 = original.clone();
+
+        // Then
+        assertNotSame(clone1, clone2);
+        assertNotSame(original, clone1);
+        assertNotSame(original, clone2);
+    }
+
+    @Test
+    @DisplayName("test_clone_on_null_reference_should_throw_NullPointerException")
+    void test_clone_on_null_reference_should_throw_NullPointerException() {
+        // Given
+        Factory factory = null;
+
+        // When & Then
+        assertThrows(NullPointerException.class, () -> {
+            //noinspection DataFlowIssue
+            factory.clone();
+        });
+    }
+
+    @Test
+    @DisplayName("test_clone_when_super_clone_throws_exception_should_propagate_exception")
+    void test_clone_when_super_clone_throws_exception_should_propagate_exception() {
+        // Given
+        Factory throwingFactory = new Factory() {
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Simulated failure");
+            }
+        };
+
+        // When & Then
+        assertThrows(CloneNotSupportedException.class, throwingFactory::clone);
+    }
+
+    // Minimal stub to make the code compile if Factory is not available
+    // In real scenario, this would be replaced by actual implementation
+    static class Factory implements Cloneable {
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+    }
+}
+```

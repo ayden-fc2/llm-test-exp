@@ -1,0 +1,111 @@
+```java
+import mathNode.Pow;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.stream.Stream;
+
+class PowGeneratedTest {
+
+    // Stub class to simulate MathNode behavior for compilation
+    static class MathNodeStub {
+        private String value;
+        private boolean parens;
+
+        public MathNodeStub(String value, boolean parens) {
+            this.value = value;
+            this.parens = parens;
+        }
+
+        public String toString() {
+            return value;
+        }
+
+        public boolean isParens() {
+            return parens;
+        }
+    }
+
+    // Helper method to create Pow instances with stub nodes
+    private Pow createPow(String left, String right, boolean parens) {
+        MathNodeStub leftNode = new MathNodeStub(left, false);
+        MathNodeStub rightNode = new MathNodeStub(right, false);
+        
+        return new Pow() {
+            @Override
+            public Object getLeftNode() {
+                return leftNode;
+            }
+            
+            @Override
+            public Object getRightNode() {
+                return rightNode;
+            }
+            
+            @Override
+            public boolean isParens() {
+                return parens;
+            }
+        };
+    }
+
+    @Test
+    void test_toString_withoutParens() {
+        Pow pow = createPow("2", "3", false);
+        assertEquals("2 ^ 3", pow.toString());
+    }
+
+    @Test
+    void test_toString_withParens() {
+        Pow pow = createPow("2", "3", true);
+        assertEquals("(2 ^ 3)", pow.toString());
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideEdgeCases")
+    void test_toString_edgeCases(String left, String right, boolean parens, String expected) {
+        Pow pow = createPow(left, right, parens);
+        if (parens) {
+            assertEquals("(" + left + " ^ " + right + ")", pow.toString());
+        } else {
+            assertEquals(left + " ^ " + right, pow.toString());
+        }
+    }
+
+    static Stream<Arguments> provideEdgeCases() {
+        return Stream.of(
+            Arguments.of("0", "1", false, "0 ^ 1"),
+            Arguments.of("-1", "2", false, "-1 ^ 2"),
+            Arguments.of("0", "0", true, "(0 ^ 0)"),
+            Arguments.of(Integer.toString(Integer.MAX_VALUE), "1", false, Integer.toString(Integer.MAX_VALUE) + " ^ 1"),
+            Arguments.of(Integer.toString(Integer.MIN_VALUE), "1", false, Integer.toString(Integer.MIN_VALUE) + " ^ 1"),
+            Arguments.of(Double.toString(Double.MAX_VALUE), "1", false, Double.toString(Double.MAX_VALUE) + " ^ 1"),
+            Arguments.of(Double.toString(Double.MIN_VALUE), "1", false, Double.toString(Double.MIN_VALUE) + " ^ 1"),
+            Arguments.of("very_large", "small", false, "very_large ^ small"),
+            Arguments.of("", "empty", false, " ^ empty"),
+            Arguments.of("negative_zero", "-0", true, "(negative_zero ^ -0)")
+        );
+    }
+
+    @Test
+    void test_toString_withEmptyStrings() {
+        Pow pow = createPow("", "", false);
+        assertEquals(" ^ ", pow.toString());
+    }
+
+    @Test
+    void test_toString_withSpecialCharacters() {
+        Pow pow = createPow("x+y", "z*w", false);
+        assertEquals("x+y ^ z*w", pow.toString());
+    }
+
+    @Test
+    void test_toString_withWhitespace() {
+        Pow pow = createPow(" 2 ", " 3 ", true);
+        assertEquals("( 2  ^  3 )", pow.toString());
+    }
+}
+```

@@ -1,0 +1,41 @@
+```java
+package test;
+
+import mathNode.Operator;
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class OperatorGeneratedTest {
+
+    private Operator operator;
+    private Expression mockExpression;
+
+    @BeforeEach
+    void setUp() {
+        // Create a minimal stub for Expression since it's not provided
+        mockExpression = new Expression() {};
+        operator = new Operator(null, null); // Assuming default constructor exists or can be adapted
+    }
+
+    @Test
+    public void test_getRightNode_returnsNullWhenUninitialized() {
+        assertNull(operator.getRightNode(), "getRightNode should return null when rightNode is uninitialized");
+    }
+
+    @Test
+    public void test_getRightNode_returnsSetValue() {
+        operator.setRightNode(mockExpression);
+        assertSame(mockExpression, operator.getRightNode(), "getRightNode should return the value set by setRightNode");
+    }
+
+    @Test
+    public void test_getRightNode_returnsUpdatedValueAfterSet() {
+        Expression newExpression = new Expression() {};
+        operator.setRightNode(mockExpression);
+        operator.setRightNode(newExpression);
+        assertSame(newExpression, operator.getRightNode(), "getRightNode should reflect the most recently set value");
+    }
+}
+```

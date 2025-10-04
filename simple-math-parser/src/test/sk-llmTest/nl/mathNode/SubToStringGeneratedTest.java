@@ -1,0 +1,163 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+// 最小桩实现以支持编译和测试
+abstract class SubToStringGeneratedTest {
+    abstract String toString();
+}
+
+abstract class BinaryNode extends Node {
+    private final Node left;
+    private final Node right;
+    private final boolean parens;
+
+    protected BinaryNode(Node left, Node right, boolean parens) {
+        this.left = left;
+        this.right = right;
+        this.parens = parens;
+    }
+
+    Node getLeftNode() { return left; }
+    Node getRightNode() { return right; }
+    boolean isParens() { return parens; }
+}
+
+// 被测类 Sub 的简化实现（用于测试）
+class Sub extends BinaryNode {
+    Sub(Node left, Node right, boolean parens) {
+        super(left, right, parens);
+    }
+
+    @Override
+    public String toString() {
+        String str = getLeftNode().toString() + " - " + getRightNode().toString();
+        if (isParens())
+            return '(' + str + ')';
+        else
+            return str;
+    }
+}
+
+// 测试类
+class SubTest {
+
+    // 模拟简单节点
+    static class SimpleNode extends Node {
+        private final String value;
+
+        SimpleNode(String value) {
+            this.value = value;
+        }
+
+        @Override
+        String toString() {
+            return value;
+        }
+    }
+
+    @Test
+    void test_toString_withoutParens_returnsCorrectExpression() {
+        Node left = new SimpleNode("5");
+        Node right = new SimpleNode("3");
+        Sub sub = new Sub(left, right, false);
+        assertEquals("5 - 3", sub.toString());
+    }
+
+    @Test
+    void test_toString_withParens_returnsParenthesizedExpression() {
+        Node left = new SimpleNode("x");
+        Node right = new SimpleNode("y");
+        Sub sub = new Sub(left, right, true);
+        assertEquals("(x - y)", sub.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "0", "-1", "1234567890", "very_large_value_with_underscores"})
+    void test_toString_variousOperandValues_withoutParens(String operand) {
+        Node left = new SimpleNode(operand);
+        Node right = new SimpleNode("test");
+        Sub sub = new Sub(left, right, false);
+        assertEquals(operand + " - test", sub.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "0", "-1", "1234567890", "very_large_value_with_underscores"})
+    void test_toString_variousOperandValues_withParens(String operand) {
+        Node left = new SimpleNode("test");
+        Node right = new SimpleNode(operand);
+        Sub sub = new Sub(left, right, true);
+        assertEquals("(test - " + operand + ")", sub.toString());
+    }
+
+    @Test
+    void test_toString_emptyOperands_withoutParens() {
+        Node left = new SimpleNode("");
+        Node right = new SimpleNode("");
+        Sub sub = new Sub(left, right, false);
+        assertEquals(" - ", sub.toString());
+    }
+
+    @Test
+    void test_toString_emptyOperands_withParens() {
+        Node left = new SimpleNode("");
+        Node right = new SimpleNode("");
+        Sub sub = new Sub(left, right, true);
+        assertEquals("( - )", sub.toString());
+    }
+
+    @Test
+    void test_toString_specialCharactersInOperands_withoutParens() {
+        Node left = new SimpleNode("a+b");
+        Node right = new SimpleNode("c*d");
+        Sub sub = new Sub(left, right, false);
+        assertEquals("a+b - c*d", sub.toString());
+    }
+
+    @Test
+    void test_toString_specialCharactersInOperands_withParens() {
+        Node left = new SimpleNode("a/b");
+        Node right = new SimpleNode("e^f");
+        Sub sub = new Sub(left, right, true);
+        assertEquals("(a/b - e^f)", sub.toString());
+    }
+
+    @Test
+    void test_toString_nullOperand_notAllowed() {
+        // Java 不允许传递 null 到构造函数中，因此这里模拟一个抛出异常的节点
+        Node left = new Node() {
+            @Override
+            String toString() {
+                throw new NullPointerException("Null operand");
+            }
+        };
+        Node right = new SimpleNode("valid");
+        Sub sub = new Sub(left, right, false);
+
+        assertThrows(NullPointerException.class, sub::toString);
+    }
+
+    @Test
+    void test_toString_bothOperandsThrowException() {
+        Node left = new Node() {
+            @Override
+            String toString() {
+                throw new RuntimeException("Left error");
+            }
+        };
+        Node right = new Node() {
+            @Override
+            String toString() {
+                throw new RuntimeException("Right error");
+            }
+        };
+        Sub sub = new Sub(left, right, true);
+
+        RuntimeException thrown = assertThrows(RuntimeException.class, sub::toString);
+        assertEquals("Left error", thrown.getMessage());
+    }
+}

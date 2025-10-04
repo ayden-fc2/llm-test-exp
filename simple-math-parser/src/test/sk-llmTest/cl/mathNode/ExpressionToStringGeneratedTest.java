@@ -1,0 +1,49 @@
+package mathNode;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ExpressionToStringGeneratedTest {
+
+    // Stub implementation to allow compilation
+    static abstract class ExpressionStub extends Expression {
+        @Override
+        public String toString() {
+            return "stub";
+        }
+        
+        @Override
+        public Expression clone() {
+            return this;
+        }
+    }
+
+    @Test
+    @DisplayName("test_toString_returnsNonNullString")
+    public void test_toString_returnsNonNullString() {
+        Expression expression = new ExpressionStub() {};
+        String result = expression.toString();
+        assertNotNull(result, "toString() should not return null");
+        assertTrue(result instanceof String, "toString() should return a String");
+    }
+
+    @Test
+    @DisplayName("test_toString_returnsConsistentValue")
+    public void test_toString_returnsConsistentValue() {
+        Expression expression = new ExpressionStub() {};
+        String result1 = expression.toString();
+        String result2 = expression.toString();
+        assertEquals(result1, result2, "toString() should return consistent values");
+    }
+
+    @Test
+    @DisplayName("test_toString_onClonedExpression_returnsSameValue")
+    public void test_toString_onClonedExpression_returnsSameValue() {
+        Expression expression = new ExpressionStub() {};
+        Expression cloned = expression.clone();
+        assertEquals(expression.toString(), cloned.toString(), 
+            "toString() of cloned expression should match original");
+    }
+}

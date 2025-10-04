@@ -1,0 +1,181 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivCloneGeneratedTest {
+
+    // Minimal stubs to support compilation and testing
+    static class Expression implements Cloneable {
+        private final Object value;
+
+        public Expression(Object value) {
+            this.value = value;
+        }
+
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Expression)) return false;
+            Expression that = (Expression) o;
+            return value != null ? value.equals(that.value) : that.value == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return value != null ? value.hashCode() : 0;
+        }
+    }
+
+    static class Div extends Expression implements Cloneable {
+        private Expression leftNode;
+        private Expression rightNode;
+
+        public Div(Expression leftNode, Expression rightNode) {
+            super(null);
+            this.leftNode = leftNode;
+            this.rightNode = rightNode;
+        }
+
+        public Expression getLeftNode() {
+            return leftNode;
+        }
+
+        public void setLeftNode(Expression leftNode) {
+            this.leftNode = leftNode;
+        }
+
+        public Expression getRightNode() {
+            return rightNode;
+        }
+
+        public void setRightNode(Expression rightNode) {
+            this.rightNode = rightNode;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            Div clone = (Div) super.clone();
+            clone.setLeftNode((Expression) this.getLeftNode().clone());
+            clone.setRightNode((Expression) this.getRightNode().clone());
+            return clone;
+        }
+    }
+
+    private Expression mockLeftNode;
+    private Expression mockRightNode;
+    private Div divInstance;
+
+    @BeforeEach
+    void setUp() {
+        mockLeftNode = new Expression(42);
+        mockRightNode = new Expression(24);
+        divInstance = new Div(mockLeftNode, mockRightNode);
+    }
+
+    @Test
+    void test_clone_normalCase_createsDeepCopy() throws CloneNotSupportedException {
+        Div cloned = (Div) divInstance.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(divInstance, cloned);
+
+        assertEquals(divInstance.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(divInstance.getLeftNode(), cloned.getLeftNode());
+
+        assertEquals(divInstance.getRightNode(), cloned.getRightNode());
+        assertNotSame(divInstance.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    void test_clone_withNullLeftNode_throwsNullPointerExceptionDuringClone() {
+        Div divWithNullLeft = new Div(null, mockRightNode);
+
+        assertThrows(NullPointerException.class, () -> divWithNullLeft.clone());
+    }
+
+    @Test
+    void test_clone_withNullRightNode_throwsNullPointerExceptionDuringClone() {
+        Div divWithNullRight = new Div(mockLeftNode, null);
+
+        assertThrows(NullPointerException.class, () -> divWithNullRight.clone());
+    }
+
+    @Test
+    void test_clone_withBothNodesNull_throwsNullPointerExceptionDuringClone() {
+        Div divWithBothNull = new Div(null, null);
+
+        assertThrows(NullPointerException.class, () -> divWithNullBoth.clone());
+    }
+
+    @Test
+    void test_clone_whenLeftNodeCloneFails_propagatesException() {
+        class FailingExpression extends Expression {
+            public FailingExpression() {
+                super("fail");
+            }
+
+            @Override
+            protected Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Intentional failure");
+            }
+        }
+
+        Div divWithFailingLeft = new Div(new FailingExpression(), mockRightNode);
+
+        assertThrows(CloneNotSupportedException.class, () -> divWithFailingLeft.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeCloneFails_propagatesException() {
+        class FailingExpression extends Expression {
+            public FailingExpression() {
+                super("fail");
+            }
+
+            @Override
+            protected Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Intentional failure");
+            }
+        }
+
+        Div divWithFailingRight = new Div(mockLeftNode, new FailingExpression());
+
+        assertThrows(CloneNotSupportedException.class, () -> divWithFailingRight.clone());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, Integer.MAX_VALUE, Integer.MIN_VALUE})
+    void test_clone_withSpecialIntegerValues_inExpressions_performsCorrectly(Integer value) throws CloneNotSupportedException {
+        Expression left = new Expression(value);
+        Expression right = new Expression(value + 1);
+        Div div = new Div(left, right);
+
+        Div cloned = (Div) div.clone();
+
+        assertNotNull(cloned);
+        assertEquals(div.getLeftNode(), cloned.getLeftNode());
+        assertEquals(div.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    void test_clone_multipleInvocations_producesIndependentCopies() throws CloneNotSupportedException {
+        Div firstClone = (Div) divInstance.clone();
+        Div secondClone = (Div) divInstance.clone();
+
+        assertNotSame(firstClone, secondClone);
+        assertEquals(firstClone.getLeftNode(), secondClone.getLeftNode());
+        assertNotSame(firstClone.getLeftNode(), secondClone.getLeftNode());
+        assertEquals(firstClone.getRightNode(), secondClone.getRightNode());
+        assertNotSame(firstClone.getRightNode(), secondClone.getRightNode());
+    }
+}

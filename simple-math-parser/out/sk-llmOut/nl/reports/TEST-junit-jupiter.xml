@@ -1,0 +1,2509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="337" skipped="0" failures="19" errors="1" time="0.183" hostname="shiqixuans-MacBook-Air.local" timestamp="2025-10-04T16:26:21">
+<properties>
+<property name="apple.awt.application.name" value="ConsoleLauncher"/>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="/"/>
+<property name="ftp.nonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="http.nonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="java.class.path" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar"/>
+<property name="java.class.version" value="65.0"/>
+<property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.7/libexec/openjdk.jdk/Contents/Home"/>
+<property name="java.io.tmpdir" value="/var/folders/55/1ll2s_c15nz1vbqv9ypcngnm0000gn/T/"/>
+<property name="java.library.path" value="/Users/shiqixuan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="21.0.7"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="21"/>
+<property name="java.vendor" value="Homebrew"/>
+<property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+<property name="java.vendor.version" value="Homebrew"/>
+<property name="java.version" value="21.0.7"/>
+<property name="java.version.date" value="2025-04-15"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="21"/>
+<property name="java.vm.vendor" value="Homebrew"/>
+<property name="java.vm.version" value="21.0.7"/>
+<property name="jdk.debug" value="release"/>
+<property name="line.separator" value="
+"/>
+<property name="native.encoding" value="UTF-8"/>
+<property name="os.arch" value="aarch64"/>
+<property name="os.name" value="Mac OS X"/>
+<property name="os.version" value="15.6"/>
+<property name="path.separator" value=":"/>
+<property name="socksNonProxyHosts" value="127.0.0.1|192.168.0.0/16|*.192.168.0.0/16|10.0.0.0/8|*.10.0.0.0/8|172.16.0.0/12|*.172.16.0.0/12|172.29.0.0/16|*.172.29.0.0/16|localhost|*.localhost|local|*.local|crashlytics.com|*.crashlytics.com|&lt;local&gt;|*.&lt;local&gt;"/>
+<property name="stderr.encoding" value="UTF-8"/>
+<property name="stdout.encoding" value="UTF-8"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.7/libexec/openjdk.jdk/Contents/Home/lib"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+<property name="sun.java.command" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/lib/junit-platform-console-standalone.jar -cp /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/main:/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/test --scan-classpath --reports-dir /Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser/out/sk-llmOut/nl/reports"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="UTF-8"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="user.country" value="CN"/>
+<property name="user.dir" value="/Users/shiqixuan/Documents/dev/llm-test-case-recovery/new/tasks/steps/1-MVP/simple-math-parser"/>
+<property name="user.home" value="/Users/shiqixuan"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="shiqixuan"/>
+<property name="user.timezone" value="Asia/Shanghai"/>
+</properties>
+<testcase name="test_clone_when_super_clone_throws_exception_should_propagate_exception()" classname="mathNode.FactoryCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.FactoryCloneGeneratedTest]/[method:test_clone_when_super_clone_throws_exception_should_propagate_exception()]
+display-name: test_clone_when_super_clone_throws_exception_should_propagate_exception
+]]></system-out>
+</testcase>
+<testcase name="test_toString_nan_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_nan_withParens()]
+display-name: test_toString_nan_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_implicit_multiplication_after_paren(LinkedList, LinkedList)[1]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_implicit_multiplication_after_paren(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#1]
+display-name: [1] [(, 2, ), 3], [(, 2, ), *, 3]
+]]></system-out>
+</testcase>
+<testcase name="test_getRightNode_withNull_returnsNull()" classname="mathNode.OperatorGetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetRightNodeGeneratedTest]/[method:test_getRightNode_withNull_returnsNull()]
+display-name: test_getRightNode_withNull_returnsNull()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_implicit_multiplication_after_paren(LinkedList, LinkedList)[2]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_implicit_multiplication_after_paren(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#2]
+display-name: [2] [(, x, ), y], [(, x, ), *, y]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal_withParens()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_normal_withParens()]
+display-name: test_toString_normal_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[32]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#32]
+display-name: [32] "
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal(String, String, String)[2]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_normal(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] x, y, x * y
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[33]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#33]
+display-name: [33] '
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal(String, String, String)[1]" classname="mathNode.MultToStringGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_normal(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 2, 3, 2 * 3
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[30]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#30]
+display-name: [30] :
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[31]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#31]
+display-name: [31] ;
+]]></system-out>
+</testcase>
+<testcase name="test_init_multipleCalls_invalidThenValid_returnsFalseThenTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_multipleCalls_invalidThenValid_returnsFalseThenTrue()]
+display-name: test_init_multipleCalls_invalidThenValid_returnsFalseThenTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_deepInvalidBranch_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_deepInvalidBranch_returnsFalse()]
+display-name: test_checkTree_deepInvalidBranch_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal(String, String, String)[5]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_normal(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] a, b+c, a * b+c
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal(String, String, String)[4]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_normal(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] -1, 7, -1 * 7
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValue_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_negativeValue_noParens()]
+display-name: test_toString_negativeValue_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal(String, String, String)[3]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_normal(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 0, 5, 0 * 5
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[29]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#29]
+display-name: [29] \
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[27]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#27]
+display-name: [27] }
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[28]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#28]
+display-name: [28] |
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[25]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#25]
+display-name: [25] ]
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[26]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#26]
+display-name: [26] {
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[23]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#23]
+display-name: [23] +
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[24]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#24]
+display-name: [24] [
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_parametrized_cases(double, double, double)[5]" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[test-template:test_calculate_parametrized_cases(double, double, double)]/[test-template-invocation:#5]
+display-name: [5] 4.0, 0.5, 2.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensTrue()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_parensTrue()]
+display-name: test_toString_parensTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_parametrized_cases(double, double, double)[4]" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[test-template:test_calculate_parametrized_cases(double, double, double)]/[test-template-invocation:#4]
+display-name: [4] -2.0, 2.0, 4.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_nan_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_nan_noParens()]
+display-name: test_toString_nan_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_returnsCorrectType()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_returnsCorrectType()]
+display-name: test_clone_returnsCorrectType()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_parametrized_cases(double, double, double)[1]" classname="mathNode.PowCalculateGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[test-template:test_calculate_parametrized_cases(double, double, double)]/[test-template-invocation:#1]
+display-name: [1] 2.0, 3.0, 8.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_parametrized_cases(double, double, double)[3]" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[test-template:test_calculate_parametrized_cases(double, double, double)]/[test-template-invocation:#3]
+display-name: [3] 0.0, 5.0, 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_parametrized_cases(double, double, double)[2]" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[test-template:test_calculate_parametrized_cases(double, double, double)]/[test-template-invocation:#2]
+display-name: [2] 5.0, 0.0, 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_MultipleCharacters()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_AddSpecialChar_MultipleCharacters()]
+display-name: test_AddSpecialChar_MultipleCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_getLeftNode_normalCase_returnsCorrectExpression()" classname="mathNode.OperatorGetLeftNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetLeftNodeGeneratedTest]/[method:test_getLeftNode_normalCase_returnsCorrectExpression()]
+display-name: test_getLeftNode_normalCase_returnsCorrectExpression()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_complexExpressionWithParens()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_complexExpressionWithParens()]
+display-name: test_toString_complexExpressionWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withMinIntValue_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withMinIntValue_returnsEqualInstance()]
+display-name: test_clone_withMinIntValue_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normalBehavior_returnsDeepCopy()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_normalBehavior_returnsDeepCopy()]
+display-name: test_clone_normalBehavior_returnsDeepCopy()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_negative_base_even_integer_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_negative_base_even_integer_exponent()]
+display-name: test_calculate_negative_base_even_integer_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[38]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#38]
+display-name: [38] ?
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[39]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#39]
+display-name: [39] /
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[36]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#36]
+display-name: [36] ,
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleCharacter_returnsSingleToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_singleCharacter_returnsSingleToken()]
+display-name: test_scan_singleCharacter_returnsSingleToken()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[37]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#37]
+display-name: [37] .
+]]></system-out>
+</testcase>
+<testcase name="test_clone_throws_exception_when_not_cloneable_internally()" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[method:test_clone_throws_exception_when_not_cloneable_internally()]
+display-name: test_clone_throws_exception_when_not_cloneable_internally
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[34]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#34]
+display-name: [34] <
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBothNodesNull_throwsNullPointerException()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_withBothNodesNull_throwsNullPointerException()]
+display-name: test_clone_withBothNodesNull_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[35]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#35]
+display-name: [35] >
+]]></system-out>
+</testcase>
+<testcase name="test_clone_onCloneableInstance_doesNotThrowException()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_onCloneableInstance_doesNotThrowException()]
+display-name: test_clone_onCloneableInstance_doesNotThrowException
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenRootNodeCloneThrows_exceptionPropagates()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_whenRootNodeCloneThrows_exceptionPropagates()]
+display-name: test_clone_whenRootNodeCloneThrows_exceptionPropagates()
+]]></system-out>
+</testcase>
+<testcase name="test_getLeftNode_withVeryLongStringExpression_returnsExpression()" classname="mathNode.OperatorGetLeftNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetLeftNodeGeneratedTest]/[method:test_getLeftNode_withVeryLongStringExpression_returnsExpression()]
+display-name: test_getLeftNode_withVeryLongStringExpression_returnsExpression()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValueNoParens_returnsPlainString()" classname="mathNode.IntToStringGeneratedTest" time="0.008">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_negativeValueNoParens_returnsPlainString()]
+display-name: test_toString_negativeValueNoParens_returnsPlainString()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_singleLevelInvalid_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathNode.OperatorCheckTreeGeneratedTest.test_checkTree_singleLevelInvalid_returnsFalse(OperatorCheckTreeGeneratedTest.java:60)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_singleLevelInvalid_returnsFalse()]
+display-name: test_checkTree_singleLevelInvalid_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_init_emptyString_returnsFalse()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_emptyString_returnsFalse()]
+display-name: test_init_emptyString_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_oneNodeEmpty_withParens()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_oneNodeEmpty_withParens()]
+display-name: test_toString_oneNodeEmpty_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_whenRootIsNull_returnsEmptyString()" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[method:test_toString_whenRootIsNull_returnsEmptyString()]
+display-name: test_toString_whenRootIsNull_returnsEmptyString()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_isNotShallowCopy_fieldsAreIndependentlyCloned()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_isNotShallowCopy_fieldsAreIndependentlyCloned()]
+display-name: test_clone_isNotShallowCopy_fieldsAreIndependentlyCloned()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenCalledOnClone_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_whenCalledOnClone_returnsEqualInstance()]
+display-name: test_clone_whenCalledOnClone_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_init_checkTreeFails_setsRootToNullAndReturnsFalse()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_checkTreeFails_setsRootToNullAndReturnsFalse()]
+display-name: test_init_checkTreeFails_setsRootToNullAndReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_leftNodeIsClonedIndependently()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_leftNodeIsClonedIndependently()]
+display-name: test_clone_leftNodeIsClonedIndependently()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_combinations(Node, Node, boolean, String)[2]" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[test-template:test_toString_combinations(mathNode.AddToStringGeneratedTest$Node, mathNode.AddToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] -1, 1, true, (-1 + 1)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_largeNumberStrings()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_largeNumberStrings()]
+display-name: test_toString_largeNumberStrings()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_combinations(Node, Node, boolean, String)[1]" classname="mathNode.AddToStringGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[test-template:test_toString_combinations(mathNode.AddToStringGeneratedTest$Node, mathNode.AddToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 0, 1, false, 0 + 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_minIntegerNoParens_returnsMinAsString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_minIntegerNoParens_returnsMinAsString()]
+display-name: test_toString_minIntegerNoParens_returnsMinAsString()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_combinations(Node, Node, boolean, String)[5]" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[test-template:test_toString_combinations(mathNode.AddToStringGeneratedTest$Node, mathNode.AddToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] very_large_string_aaaaaaaaaaaaaaaaaaaa, very_large_string_bbbbbbbbbbbbbbbbbbbb, false, very_large_string_aaaaaaaaaaaaaaaaaaaa + very_large_string_bbbbbbbbbbbbbbbbbbbb
+]]></system-out>
+</testcase>
+<testcase name="test_toString_combinations(Node, Node, boolean, String)[4]" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[test-template:test_toString_combinations(mathNode.AddToStringGeneratedTest$Node, mathNode.AddToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] MAX_INT, MIN_INT, true, (MAX_INT + MIN_INT)
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_complex_expression()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[2, *, (, -3, +, 4, ), *, x]&gt; but was: &lt;[2, *, (, -3, +, -, -4, ), *, x]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[2, *, (, -3, +, 4, ), *, x]> but was: <[2, *, (, -3, +, -, -4, ), *, x]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_complex_expression(MathTreeCleanStrListGeneratedTest.java:157)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_complex_expression()]
+display-name: test_cleanStrList_complex_expression()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_combinations(Node, Node, boolean, String)[3]" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[test-template:test_toString_combinations(mathNode.AddToStringGeneratedTest$Node, mathNode.AddToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] , empty, false,  + empty
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_any_base_zero_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_any_base_zero_exponent()]
+display-name: test_calculate_any_base_zero_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValue_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_positiveValue_withParens()]
+display-name: test_toString_positiveValue_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withZeroValue_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withZeroValue_returnsEqualInstance()]
+display-name: test_clone_withZeroValue_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_setRightNode_withNullNode()" classname="mathNode.OperatorSetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetRightNodeGeneratedTest]/[method:test_setRightNode_withNullNode()]
+display-name: test_setRightNode_withNullNode()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_veryLongStrings_noParens()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_veryLongStrings_noParens()]
+display-name: test_toString_veryLongStrings_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_isParens_whenParenthesisIsFalse_shouldReturnFalse()" classname="mathNode.ExpressionIsParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionIsParensGeneratedTest]/[method:test_isParens_whenParenthesisIsFalse_shouldReturnFalse()]
+display-name: test_isParens_whenParenthesisIsFalse_shouldReturnFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_implicit_multiplication_before_paren(LinkedList, LinkedList)[1]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_implicit_multiplication_before_paren(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#1]
+display-name: [1] [2, (, 3, )], [2, *, (, 3, )]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens(String, String, String)[1]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_withParens(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 2, 3, (2 * 3)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens(String, String, String)[2]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_withParens(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] x, y, (x * y)
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_negative_base_odd_integer_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_negative_base_odd_integer_exponent()]
+display-name: test_calculate_negative_base_odd_integer_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_implicit_multiplication_before_paren(LinkedList, LinkedList)[2]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_implicit_multiplication_before_paren(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#2]
+display-name: [2] [x, (, y, )], [x, *, (, y, )]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens(String, String, String)[5]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_withParens(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] a, b+c, (a * b+c)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens(String, String, String)[3]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_withParens(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 0, 5, (0 * 5)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens(String, String, String)[4]" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[test-template:test_toString_withParens(java.lang.String, java.lang.String, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] -1, 7, (-1 * 7)
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_emptyTree_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_emptyTree_returnsFalse()]
+display-name: test_checkTree_emptyTree_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_getRightNode_multipleCalls_returnsSameInstance()" classname="mathNode.OperatorGetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetRightNodeGeneratedTest]/[method:test_getRightNode_multipleCalls_returnsSameInstance()]
+display-name: test_getRightNode_multipleCalls_returnsSameInstance()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroDividedByZeroWithParens()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_zeroDividedByZeroWithParens()]
+display-name: test_toString_zeroDividedByZeroWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_branch_true()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_branch_true()]
+display-name: test_toString_branch_true()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_zero_base_zero_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_zero_base_zero_exponent()]
+display-name: test_calculate_zero_base_zero_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBothNodesNull_throwsNullPointerException()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_withBothNodesNull_throwsNullPointerException()]
+display-name: test_clone_withBothNodesNull_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValueNoParens_returnsPlainString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_positiveValueNoParens_returnsPlainString()]
+display-name: test_toString_positiveValueNoParens_returnsPlainString()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBothNodesNull_throwsNullPointerException()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_withBothNodesNull_throwsNullPointerException()]
+display-name: test_clone_withBothNodesNull_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_negative_base_fractional_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_negative_base_fractional_exponent()]
+display-name: test_calculate_negative_base_fractional_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroNoParens_returnsZeroAsString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_zeroNoParens_returnsZeroAsString()]
+display-name: test_toString_zeroNoParens_returnsZeroAsString()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullLeftNode_throwsNullPointerException()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_withNullLeftNode_throwsNullPointerException()]
+display-name: test_clone_withNullLeftNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_onlyWhitespace_returnsEmptyTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_onlyWhitespace_returnsEmptyTokens(StringScannerScanGeneratedTest.java:34)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_onlyWhitespace_returnsEmptyTokens()]
+display-name: test_scan_onlyWhitespace_returnsEmptyTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryDoubleValues_returnsTrue(String)[3]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryDoubleValues_returnsTrue(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryDoubleValues_returnsTrue(String)[4]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryDoubleValues_returnsTrue(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryDoubleValues_returnsTrue(String)[5]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathTree.MathTreeInitGeneratedTest.test_init_boundaryDoubleValues_returnsTrue(MathTreeInitGeneratedTest.java:67)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryDoubleValues_returnsTrue(java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[8]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#8]
+display-name: [8] -Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[7]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#7]
+display-name: [7] Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[6]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#6]
+display-name: [6] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[5]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#5]
+display-name: [5] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[4]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#4]
+display-name: [4] -1.0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_maxIntegerWithParens_returnsParenthesizedMax()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_maxIntegerWithParens_returnsParenthesizedMax()]
+display-name: test_toString_maxIntegerWithParens_returnsParenthesizedMax()
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_false_afterTrue_resetsPrecedenceToNonZero()" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[method:test_setParens_false_afterTrue_resetsPrecedenceToNonZero()]
+display-name: test_setParens_false_afterTrue_resetsPrecedenceToNonZero()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[1]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zero_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_zero_withParens()]
+display-name: test_toString_zero_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[3]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#3]
+display-name: [3] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[2]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#2]
+display-name: [2] 1
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[2]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#2]
+display-name: [2] -0.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[3]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(double)[1]" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[test-template:test_clone_boundary_values(double)]/[test-template-invocation:#1]
+display-name: [1] 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[4]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#4]
+display-name: [4] 100
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[5]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#5]
+display-name: [5] -100
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroAndOne()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_zeroAndOne()]
+display-name: test_toString_zeroAndOne()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withParens_normalCase()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_withParens_normalCase()]
+display-name: test_toString_withParens_normalCase()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullRightNode_throwsNullPointerException()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_withNullRightNode_throwsNullPointerException()]
+display-name: test_clone_withNullRightNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_EmptyArray()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_AddSpecialChar_EmptyArray()]
+display-name: test_AddSpecialChar_EmptyArray()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_large_positive_base_large_negative_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_large_positive_base_large_negative_exponent()]
+display-name: test_calculate_large_positive_base_large_negative_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_getLeftNode_withEmptyStringExpression_returnsExpression()" classname="mathNode.OperatorGetLeftNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetLeftNodeGeneratedTest]/[method:test_getLeftNode_withEmptyStringExpression_returnsExpression()]
+display-name: test_getLeftNode_withEmptyStringExpression_returnsExpression()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_endsWithDelimiter_returnsTrailingDelimiterToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_endsWithDelimiter_returnsTrailingDelimiterToken(StringScannerScanGeneratedTest.java:130)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_endsWithDelimiter_returnsTrailingDelimiterToken()]
+display-name: test_scan_endsWithDelimiter_returnsTrailingDelimiterToken()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_called_twice_should_produce_independent_objects()" classname="mathNode.FactoryCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.FactoryCloneGeneratedTest]/[method:test_clone_called_twice_should_produce_independent_objects()]
+display-name: test_clone_called_twice_should_produce_independent_objects
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_normal_with_negatives(LinkedList, LinkedList)[1]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_normal_with_negatives(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#1]
+display-name: [1] [-3, +, 4], [-3, +, 4]
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_normal_with_negatives(LinkedList, LinkedList)[2]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[(, -3, ), *, 2]&gt; but was: &lt;[(, -, 3), *, 2]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[(, -3, ), *, 2]> but was: <[(, -, 3), *, 2]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_normal_with_negatives(MathTreeCleanStrListGeneratedTest.java:63)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_normal_with_negatives(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#2]
+display-name: [2] [(-3), *, 2], [(, -3, ), *, 2]
+]]></system-out>
+</testcase>
+<testcase name="test_scan_unicodeCharacters_handlesUnicodeProperly()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;5&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <5> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_unicodeCharacters_handlesUnicodeProperly(StringScannerScanGeneratedTest.java:153)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_unicodeCharacters_handlesUnicodeProperly()]
+display-name: test_scan_unicodeCharacters_handlesUnicodeProperly()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_normal_with_negatives(LinkedList, LinkedList)[3]" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[test-template:test_cleanStrList_normal_with_negatives(java.util.LinkedList, java.util.LinkedList)]/[test-template-invocation:#3]
+display-name: [3] [5, -, -3], [5, -, -3]
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withExtremeLengthString_handlesGracefully()" classname="mathTree.MathTreeToStringGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[method:test_toString_withExtremeLengthString_handlesGracefully()]
+display-name: test_toString_withExtremeLengthString_handlesGracefully()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryIntegerValues_returnsTrue(String)[1]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryIntegerValues_returnsTrue(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_scan_consecutiveSpecialChars_returnsIndividualTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;8&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <8> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_consecutiveSpecialChars_returnsIndividualTokens(StringScannerScanGeneratedTest.java:110)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_consecutiveSpecialChars_returnsIndividualTokens()]
+display-name: test_scan_consecutiveSpecialChars_returnsIndividualTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryIntegerValues_returnsTrue(String)[3]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryIntegerValues_returnsTrue(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryIntegerValues_returnsTrue(String)[2]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryIntegerValues_returnsTrue(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[12]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#12]
+display-name: [12] (a), [b], true, ((a) / [b])
+]]></system-out>
+</testcase>
+<testcase name="test_clone_idempotentMultipleCalls_eachCloneIndependent()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_idempotentMultipleCalls_eachCloneIndependent()]
+display-name: test_clone_idempotentMultipleCalls_eachCloneIndependent()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryIntegerValues_returnsTrue(String)[5]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryIntegerValues_returnsTrue(java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleDelimiter_returnsSingleDelimiterToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_singleDelimiter_returnsSingleDelimiterToken()]
+display-name: test_scan_singleDelimiter_returnsSingleDelimiterToken()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryIntegerValues_returnsTrue(String)[4]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryIntegerValues_returnsTrue(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_DuplicateCharacters()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_AddSpecialChar_DuplicateCharacters()]
+display-name: test_AddSpecialChar_DuplicateCharacters()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[6]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#6]
+display-name: [6] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_normalValues(int)[7]" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[test-template:test_calculate_normalValues(int)]/[test-template-invocation:#7]
+display-name: [7] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_scan_emptyString_returnsEmptyList()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_emptyString_returnsEmptyList()]
+display-name: test_scan_emptyString_returnsEmptyList()
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_false_doesNotChangePrecedenceFromDefault()" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[method:test_setParens_false_doesNotChangePrecedenceFromDefault()]
+display-name: test_setParens_false_doesNotChangePrecedenceFromDefault()
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryDoubleValues_returnsTrue(String)[1]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryDoubleValues_returnsTrue(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 1.0
+]]></system-out>
+</testcase>
+<testcase name="test_init_boundaryDoubleValues_returnsTrue(String)[2]" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[test-template:test_init_boundaryDoubleValues_returnsTrue(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] 0.0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_isIdempotent_multipleClonesAreIndependent()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_isIdempotent_multipleClonesAreIndependent()]
+display-name: test_clone_isIdempotent_multipleClonesAreIndependent()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[9]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#9]
+display-name: [9] ~
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_withDoubleConstructor_truncatesToInteger()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_withDoubleConstructor_truncatesToInteger()]
+display-name: test_calculate_withDoubleConstructor_truncatesToInteger()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValueWithParens_returnsParenthesizedString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_negativeValueWithParens_returnsParenthesizedString()]
+display-name: test_toString_negativeValueWithParens_returnsParenthesizedString()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[7]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#7]
+display-name: [7] 0
+]]></system-out>
+</testcase>
+<testcase name="test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;5&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <5> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens(StringScannerScanGeneratedTest.java:96)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens()]
+display-name: test_scan_mixedAlphanumericAndSpecialChars_returnsProperTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[8]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#8]
+display-name: [8] 9
+]]></system-out>
+</testcase>
+<testcase name="test_toString_verySmallPositive_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_verySmallPositive_noParens()]
+display-name: test_toString_verySmallPositive_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleWord_returnsOneToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_singleWord_returnsOneToken()]
+display-name: test_scan_singleWord_returnsOneToken()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeOne()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_negativeOne()]
+display-name: test_toString_negativeOne()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[11]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#11]
+display-name: [11] x+y, z-w, false, x+y / z-w
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[10]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#10]
+display-name: [10] , , true, ( / )
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[5]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#5]
+display-name: [5] a
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[6]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#6]
+display-name: [6] Z
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[3]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#3]
+display-name: [3] 	
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[4]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#4]
+display-name: [4] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[1]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#1]
+display-name: [1] &#0;
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[2]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#2]
+display-name: [2]  
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normal_negative_value()" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[method:test_clone_normal_negative_value()]
+display-name: test_clone_normal_negative_value
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_true_setsParenthesisToTrue()" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[method:test_setParens_true_setsParenthesisToTrue()]
+display-name: test_setParens_true_setsParenthesisToTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_leftNodeIsNull_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_leftNodeIsNull_returnsFalse()]
+display-name: test_checkTree_leftNodeIsNull_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withSpacesInNodes()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_withSpacesInNodes()]
+display-name: test_toString_withSpacesInNodes()
+]]></system-out>
+</testcase>
+<testcase name="test_getLeftNode_withSpecialCharacterExpression_returnsExpression()" classname="mathNode.OperatorGetLeftNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetLeftNodeGeneratedTest]/[method:test_getLeftNode_withSpecialCharacterExpression_returnsExpression()]
+display-name: test_getLeftNode_withSpecialCharacterExpression_returnsExpression()
+]]></system-out>
+</testcase>
+<testcase name="test_init_veryLargeExpression_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_veryLargeExpression_returnsTrue()]
+display-name: test_init_veryLargeExpression_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normal_positive_value()" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[method:test_clone_normal_positive_value()]
+display-name: test_clone_normal_positive_value
+]]></system-out>
+</testcase>
+<testcase name="test_clone_createsNewInstance()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_createsNewInstance()]
+display-name: test_clone_createsNewInstance()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_positive_base_fractional_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_positive_base_fractional_exponent()]
+display-name: test_calculate_positive_base_fractional_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_maxIntegerValue()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_maxIntegerValue()]
+display-name: test_calculate_maxIntegerValue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_modifyingOriginal_doesNotAffectClone()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_modifyingOriginal_doesNotAffectClone()]
+display-name: test_clone_modifyingOriginal_doesNotAffectClone()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_zeroValue()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_zeroValue()]
+display-name: test_calculate_zeroValue()
+]]></system-out>
+</testcase>
+<testcase name="test_init_invalidExpression_returnsFalse()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_invalidExpression_returnsFalse()]
+display-name: test_init_invalidExpression_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_withoutParens_normalCase()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_withoutParens_normalCase()]
+display-name: test_toString_withoutParens_normalCase()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_parensFalse()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_parensFalse()]
+display-name: test_toString_parensFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_setRightNode_replacesExistingNode()" classname="mathNode.OperatorSetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetRightNodeGeneratedTest]/[method:test_setRightNode_replacesExistingNode()]
+display-name: test_setRightNode_replacesExistingNode()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_emptyStrings()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_emptyStrings()]
+display-name: test_toString_emptyStrings()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_throws_exception_when_not_cloneable_internally()" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[method:test_clone_throws_exception_when_not_cloneable_internally()]
+display-name: test_clone_throws_exception_when_not_cloneable_internally
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_nested_parentheses()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_nested_parentheses()]
+display-name: test_cleanStrList_nested_parentheses()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenRightNodeCloneThrows_exceptionPropagates()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_whenRightNodeCloneThrows_exceptionPropagates()]
+display-name: test_clone_whenRightNodeCloneThrows_exceptionPropagates()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_empty_list()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_empty_list()]
+display-name: test_cleanStrList_empty_list()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_allNodesValid_returnsTrue()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at mathNode.OperatorCheckTreeGeneratedTest.test_checkTree_allNodesValid_returnsTrue(OperatorCheckTreeGeneratedTest.java:53)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_allNodesValid_returnsTrue()]
+display-name: test_checkTree_allNodesValid_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_one_base_any_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_one_base_any_exponent()]
+display-name: test_calculate_one_base_any_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_setRightNode_multipleCallsWithSameNode()" classname="mathNode.OperatorSetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetRightNodeGeneratedTest]/[method:test_setRightNode_multipleCallsWithSameNode()]
+display-name: test_setRightNode_multipleCallsWithSameNode()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normalCase_createsDeepCopy()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_normalCase_createsDeepCopy()]
+display-name: test_clone_normalCase_createsDeepCopy()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenLeftNodeCloneThrows_exceptionPropagates()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_whenLeftNodeCloneThrows_exceptionPropagates()]
+display-name: test_clone_whenLeftNodeCloneThrows_exceptionPropagates()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_largeValues()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_largeValues()]
+display-name: test_toString_largeValues()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_oneEmptyString()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_oneEmptyString()]
+display-name: test_toString_oneEmptyString()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullLeftNode_throwsNullPointerException()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_withNullLeftNode_throwsNullPointerException()]
+display-name: test_clone_withNullLeftNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleDelimiter_returnsSeparateTokens(char)[1]" classname="mathTree.StringScannerScanGeneratedTest" time="0.001">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_singleDelimiter_returnsSeparateTokens(char)]/[test-template-invocation:#1]
+display-name: [1]  
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_false_setsParenthesisToFalse()" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[method:test_setParens_false_setsParenthesisToFalse()]
+display-name: test_setParens_false_setsParenthesisToFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_skipWhitespace_setsFlagToTrue()" classname="mathTree.StringScannerSkipWhitespaceGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSkipWhitespaceGeneratedTest]/[method:test_skipWhitespace_setsFlagToTrue()]
+display-name: test_skipWhitespace_setsFlagToTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleDelimiter_returnsSeparateTokens(char)[3]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_singleDelimiter_returnsSeparateTokens(char)]/[test-template-invocation:#3]
+display-name: [3] 
+
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleDelimiter_returnsSeparateTokens(char)[2]" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_singleDelimiter_returnsSeparateTokens(StringScannerScanGeneratedTest.java:64)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[test-template:test_scan_singleDelimiter_returnsSeparateTokens(char)]/[test-template-invocation:#2]
+display-name: [2] 	
+]]></system-out>
+</testcase>
+<testcase name="test_toString_singleCharNodesWithParens()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_singleCharNodesWithParens()]
+display-name: test_toString_singleCharNodesWithParens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_maxIntegerNoParens_returnsMaxAsString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_maxIntegerNoParens_returnsMaxAsString()]
+display-name: test_toString_maxIntegerNoParens_returnsMaxAsString()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullRightNode_throwsNullPointerException()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_withNullRightNode_throwsNullPointerException()]
+display-name: test_clone_withNullRightNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_isNotShallowCopy()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_isNotShallowCopy()]
+display-name: test_clone_isNotShallowCopy()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullName_throwsNullPointerException()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withNullName_throwsNullPointerException()]
+display-name: test_clone_withNullName_throwsNullPointerException
+]]></system-out>
+</testcase>
+<testcase name="test_getLeftNode_withNullLeftNode_returnsNull()" classname="mathNode.OperatorGetLeftNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetLeftNodeGeneratedTest]/[method:test_getLeftNode_withNullLeftNode_returnsNull()]
+display-name: test_getLeftNode_withNullLeftNode_returnsNull()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withVeryLargeStrings_preservesValues()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_withVeryLargeStrings_preservesValues()]
+display-name: test_clone_withVeryLargeStrings_preservesValues()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_branch_false()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_branch_false()]
+display-name: test_toString_branch_false()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normalObject_returnsEqualButNotSameInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_normalObject_returnsEqualButNotSameInstance()]
+display-name: test_clone_normalObject_returnsEqualButNotSameInstance
+]]></system-out>
+</testcase>
+<testcase name="test_scan_startsWithDelimiter_returnsLeadingDelimiterToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_startsWithDelimiter_returnsLeadingDelimiterToken(StringScannerScanGeneratedTest.java:121)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_startsWithDelimiter_returnsLeadingDelimiterToken()]
+display-name: test_scan_startsWithDelimiter_returnsLeadingDelimiterToken()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_zero_base_negative_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_zero_base_negative_exponent()]
+display-name: test_calculate_zero_base_negative_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[1]" classname="mathNode.IntToStringGeneratedTest" time="0.005">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#1]
+display-name: [1] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[3]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#3]
+display-name: [3] 0
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[2]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#2]
+display-name: [2] -1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[5]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#5]
+display-name: [5] -100
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[4]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#4]
+display-name: [4] 100
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[7]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#7]
+display-name: [7] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_clone_multipleTimes_returnsEqualInstances()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_multipleTimes_returnsEqualInstances()]
+display-name: test_clone_multipleTimes_returnsEqualInstances
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesNoParens_matchesIntegerToString(int)[6]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesNoParens_matchesIntegerToString(int)]/[test-template-invocation:#6]
+display-name: [6] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_toString_veryLargeNegative_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_veryLargeNegative_withParens()]
+display-name: test_toString_veryLargeNegative_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_true_setsPrecedenceToZero()" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[method:test_setParens_true_setsPrecedenceToZero()]
+display-name: test_setParens_true_setsPrecedenceToZero()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_noParens(double)[2]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_noParens(double)]/[test-template-invocation:#2]
+display-name: [2] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_noParens(double)[3]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_noParens(double)]/[test-template-invocation:#3]
+display-name: [3] Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_noParens(double)[4]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_noParens(double)]/[test-template-invocation:#4]
+display-name: [4] -Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_clone_with_nan_value()" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[method:test_clone_with_nan_value()]
+display-name: test_clone_with_nan_value
+]]></system-out>
+</testcase>
+<testcase name="test_getRightNode_normal_returnsCorrectInstance()" classname="mathNode.OperatorGetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorGetRightNodeGeneratedTest]/[method:test_getRightNode_normal_returnsCorrectInstance()]
+display-name: test_getRightNode_normal_returnsCorrectInstance()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_negativeValue_withParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_negativeValue_withParens()]
+display-name: test_toString_negativeValue_withParens()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_consecutive_operators()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_consecutive_operators()]
+display-name: test_cleanStrList_consecutive_operators()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_noParens(double)[1]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_noParens(double)]/[test-template-invocation:#1]
+display-name: [1] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[4]" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[test-template:test_clone_variousExpressionValues_performsDeepCopy(mathNode.AddCloneGeneratedTest$Expression, mathNode.AddCloneGeneratedTest$Expression)]/[test-template-invocation:#4]
+display-name: [4] mathNode.AddCloneGeneratedTest$Expression@1, mathNode.AddCloneGeneratedTest$Expression@80100000
+]]></system-out>
+</testcase>
+<testcase name="test_setRightNode_withNonNullNode()" classname="mathNode.OperatorSetRightNodeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetRightNodeGeneratedTest]/[method:test_setRightNode_withNonNullNode()]
+display-name: test_setRightNode_withNonNullNode()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[3]" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[test-template:test_clone_variousExpressionValues_performsDeepCopy(mathNode.AddCloneGeneratedTest$Expression, mathNode.AddCloneGeneratedTest$Expression)]/[test-template-invocation:#3]
+display-name: [3] mathNode.AddCloneGeneratedTest$Expression@80000000, mathNode.AddCloneGeneratedTest$Expression@7fffffff
+]]></system-out>
+</testcase>
+<testcase name="test_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[2]" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[test-template:test_clone_variousExpressionValues_performsDeepCopy(mathNode.AddCloneGeneratedTest$Expression, mathNode.AddCloneGeneratedTest$Expression)]/[test-template-invocation:#2]
+display-name: [2] mathNode.AddCloneGeneratedTest$Expression@ffffffff, mathNode.AddCloneGeneratedTest$Expression@1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValue_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_positiveValue_noParens()]
+display-name: test_toString_positiveValue_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normal_positive_value()" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[method:test_clone_normal_positive_value()]
+display-name: test_clone_normal_positive_value
+]]></system-out>
+</testcase>
+<testcase name="test_skipWhitespace_idempotentBehavior()" classname="mathTree.StringScannerSkipWhitespaceGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSkipWhitespaceGeneratedTest]/[method:test_skipWhitespace_idempotentBehavior()]
+display-name: test_skipWhitespace_idempotentBehavior()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[1]" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[test-template:test_clone_variousExpressionValues_performsDeepCopy(mathNode.AddCloneGeneratedTest$Expression, mathNode.AddCloneGeneratedTest$Expression)]/[test-template-invocation:#1]
+display-name: [1] mathNode.AddCloneGeneratedTest$Expression@0, mathNode.AddCloneGeneratedTest$Expression@0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_variousExpressionValues_performsDeepCopy(Expression, Expression)[5]" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[test-template:test_clone_variousExpressionValues_performsDeepCopy(mathNode.AddCloneGeneratedTest$Expression, mathNode.AddCloneGeneratedTest$Expression)]/[test-template-invocation:#5]
+display-name: [5] mathNode.AddCloneGeneratedTest$Expression@364492, mathNode.AddCloneGeneratedTest$Expression@2eefaa
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withExtremeIntegerValues_preservesValues(int)[1]" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[test-template:test_clone_withExtremeIntegerValues_preservesValues(int)]/[test-template-invocation:#1]
+display-name: [1] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withExtremeIntegerValues_preservesValues(int)[2]" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[test-template:test_clone_withExtremeIntegerValues_preservesValues(int)]/[test-template-invocation:#2]
+display-name: [2] -1
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withExtremeIntegerValues_preservesValues(int)[3]" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[test-template:test_clone_withExtremeIntegerValues_preservesValues(int)]/[test-template-invocation:#3]
+display-name: [3] 0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withExtremeIntegerValues_preservesValues(int)[4]" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[test-template:test_clone_withExtremeIntegerValues_preservesValues(int)]/[test-template-invocation:#4]
+display-name: [4] 1
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withExtremeIntegerValues_preservesValues(int)[5]" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[test-template:test_clone_withExtremeIntegerValues_preservesValues(int)]/[test-template-invocation:#5]
+display-name: [5] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_toString_complexExpressionNoParens()" classname="mathNode.MultToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultToStringGeneratedTest]/[method:test_toString_complexExpressionNoParens()]
+display-name: test_toString_complexExpressionNoParens()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_SingleCharacter()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_AddSpecialChar_SingleCharacter()]
+display-name: test_AddSpecialChar_SingleCharacter()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_rightNodeIsNull_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_rightNodeIsNull_returnsFalse()]
+display-name: test_checkTree_rightNodeIsNull_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullLeftNode_throwsNullPointerException()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_withNullLeftNode_throwsNullPointerException()]
+display-name: test_clone_withNullLeftNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normalCase_createsDeepCopy()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_normalCase_createsDeepCopy()]
+display-name: test_clone_normalCase_createsDeepCopy()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normal_negative_value()" classname="mathNode.DecCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecCloneGeneratedTest]/[method:test_clone_normal_negative_value()]
+display-name: test_clone_normal_negative_value
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_positive_base_positive_integer_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_positive_base_positive_integer_exponent()]
+display-name: test_calculate_positive_base_positive_integer_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_large_positive_base_large_positive_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<failure message="expected: &lt;Infinity&gt; but was: &lt;1.0E308&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Infinity> but was: <1.0E308>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+	at mathNode.PowCalculateGeneratedTest.test_calculate_large_positive_base_large_positive_exponent(PowCalculateGeneratedTest.java:126)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_large_positive_base_large_positive_exponent()]
+display-name: test_calculate_large_positive_base_large_positive_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNullRightNode_throwsNullPointerException()" classname="mathNode.MultCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.MultCloneGeneratedTest]/[method:test_clone_withNullRightNode_throwsNullPointerException()]
+display-name: test_clone_withNullRightNode_throwsNullPointerException()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_minIntegerValue()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_minIntegerValue()]
+display-name: test_calculate_minIntegerValue()
+]]></system-out>
+</testcase>
+<testcase name="test_init_validExpression_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_validExpression_returnsTrue()]
+display-name: test_init_validExpression_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenBothChildrenThrow_exceptionsFromRootNodePropagate()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_whenBothChildrenThrow_exceptionsFromRootNodePropagate()]
+display-name: test_clone_whenBothChildrenThrow_exceptionsFromRootNodePropagate()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zeroWithParens_returnsParenthesizedZero()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_zeroWithParens_returnsParenthesizedZero()]
+display-name: test_toString_zeroWithParens_returnsParenthesizedZero()
+]]></system-out>
+</testcase>
+<testcase name="test_skipWhitespace_onFreshInstance_noSideEffects()" classname="mathTree.StringScannerSkipWhitespaceGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerSkipWhitespaceGeneratedTest]/[method:test_skipWhitespace_onFreshInstance_noSideEffects()]
+display-name: test_skipWhitespace_onFreshInstance_noSideEffects()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_preservesValues()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_preservesValues()]
+display-name: test_clone_preservesValues()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_whenRootIsNotNull_returnsRootToString()" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[method:test_toString_whenRootIsNotNull_returnsRootToString()]
+display-name: test_toString_whenRootIsNotNull_returnsRootToString()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_specialCharacters_returnsSeparatedTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0.004">
+<failure message="expected: &lt;9&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <9> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_specialCharacters_returnsSeparatedTokens(StringScannerScanGeneratedTest.java:78)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_specialCharacters_returnsSeparatedTokens()]
+display-name: test_scan_specialCharacters_returnsSeparatedTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_zero_base_positive_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_zero_base_positive_exponent()]
+display-name: test_calculate_zero_base_positive_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[5]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] 42
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[4]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[7]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#7]
+display-name: [7] special!@#$%^&*()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[6]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] very_large_string_representation
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBoundaryValueExpressions(int)[1]" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[test-template:test_clone_withBoundaryValueExpressions(int)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_whenFactoryCloneThrows_exceptionPropagates()" classname="mathTree.MathTreeCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCloneGeneratedTest]/[method:test_clone_whenFactoryCloneThrows_exceptionPropagates()]
+display-name: test_clone_whenFactoryCloneThrows_exceptionPropagates()
+]]></system-out>
+</testcase>
+<testcase name="test_isParens_whenParenthesisIsTrue_shouldReturnTrue()" classname="mathNode.ExpressionIsParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionIsParensGeneratedTest]/[method:test_isParens_whenParenthesisIsTrue_shouldReturnTrue()]
+display-name: test_isParens_whenParenthesisIsTrue_shouldReturnTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[1]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] 
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[3]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousRootValues_returnsCorrectString(String)[2]" classname="mathTree.MathTreeToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeToStringGeneratedTest]/[test-template:test_toString_variousRootValues_returnsCorrectString(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] 0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withMaxIntValue_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withMaxIntValue_returnsEqualInstance()]
+display-name: test_clone_withMaxIntValue_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_negativeValue()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_negativeValue()]
+display-name: test_calculate_negativeValue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_on_null_reference_should_throw_NullPointerException()" classname="mathNode.FactoryCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.FactoryCloneGeneratedTest]/[method:test_clone_on_null_reference_should_throw_NullPointerException()]
+display-name: test_clone_on_null_reference_should_throw_NullPointerException
+]]></system-out>
+</testcase>
+<testcase name="test_init_leadingAndTrailingSpaces_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_leadingAndTrailingSpaces_returnsTrue()]
+display-name: test_init_leadingAndTrailingSpaces_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBoundaryValueExpressions(int)[4]" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[test-template:test_clone_withBoundaryValueExpressions(int)]/[test-template-invocation:#4]
+display-name: [4] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_toString_minIntegerWithParens_returnsParenthesizedMin()" classname="mathNode.IntToStringGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_minIntegerWithParens_returnsParenthesizedMin()]
+display-name: test_toString_minIntegerWithParens_returnsParenthesizedMin()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_rightNodeIsClonedIndependently()" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[method:test_clone_rightNodeIsClonedIndependently()]
+display-name: test_clone_rightNodeIsClonedIndependently()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBoundaryValueExpressions(int)[2]" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[test-template:test_clone_withBoundaryValueExpressions(int)]/[test-template-invocation:#2]
+display-name: [2] -1
+]]></system-out>
+</testcase>
+<testcase name="test_init_complexValidExpression_returnsTrue()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_complexValidExpression_returnsTrue()]
+display-name: test_init_complexValidExpression_returnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withBoundaryValueExpressions(int)[3]" classname="mathNode.SubCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.SubCloneGeneratedTest]/[test-template:test_clone_withBoundaryValueExpressions(int)]/[test-template-invocation:#3]
+display-name: [3] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(int)[5]" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[test-template:test_clone_boundary_values(int)]/[test-template-invocation:#5]
+display-name: [5] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_init_nullInput_returnsFalse()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<error message="Cannot invoke &quot;String.length()&quot; because &quot;&lt;parameter1&gt;&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.length()" because "<parameter1>" is null
+	at mathTree.StringScanner.scan(StringScanner.java:54)
+	at mathTree.MathTree.init(MathTree.java:33)
+	at mathTree.MathTreeInitGeneratedTest.test_init_nullInput_returnsFalse(MathTreeInitGeneratedTest.java:40)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_nullInput_returnsFalse()]
+display-name: test_init_nullInput_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(int)[4]" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[test-template:test_clone_boundary_values(int)]/[test-template-invocation:#4]
+display-name: [4] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(int)[1]" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[test-template:test_clone_boundary_values(int)]/[test-template-invocation:#1]
+display-name: [1] 0
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(int)[3]" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[test-template:test_clone_boundary_values(int)]/[test-template-invocation:#3]
+display-name: [3] -1
+]]></system-out>
+</testcase>
+<testcase name="test_clone_boundary_values(int)[2]" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[test-template:test_clone_boundary_values(int)]/[test-template-invocation:#2]
+display-name: [2] 1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_emptyStringsNoParens()" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[method:test_toString_emptyStringsNoParens()]
+display-name: test_toString_emptyStringsNoParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withNegativeValue_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withNegativeValue_returnsEqualInstance()]
+display-name: test_clone_withNegativeValue_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_toString_zero_noParens()" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[method:test_toString_zero_noParens()]
+display-name: test_toString_zero_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens(StringScannerScanGeneratedTest.java:52)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens()]
+display-name: test_scan_multipleWordsSeparatedBySpaces_returnsMultipleTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_positive_base_negative_integer_exponent()" classname="mathNode.PowCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.PowCalculateGeneratedTest]/[method:test_calculate_positive_base_negative_integer_exponent()]
+display-name: test_calculate_positive_base_negative_integer_exponent()
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_long_string_many_minuses()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_long_string_many_minuses()]
+display-name: test_cleanStrList_long_string_many_minuses()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_idempotent_property()" classname="mathNode.IntCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCloneGeneratedTest]/[method:test_clone_idempotent_property()]
+display-name: test_clone_idempotent_property
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[1]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] a, b, false, a / b
+]]></system-out>
+</testcase>
+<testcase name="test_clone_normal_instance_should_return_deep_copy()" classname="mathNode.FactoryCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.FactoryCloneGeneratedTest]/[method:test_clone_normal_instance_should_return_deep_copy()]
+display-name: test_clone_normal_instance_should_return_deep_copy
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[2]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] 100, 50, true, (100 / 50)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[5]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] 1, -1, false, 1 / -1
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[6]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] 0, 0, true, (0 / 0)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[3]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] 0, 1, false, 0 / 1
+]]></system-out>
+</testcase>
+<testcase name="test_init_whitespaceOnly_returnsFalse()" classname="mathTree.MathTreeInitGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeInitGeneratedTest]/[method:test_init_whitespaceOnly_returnsFalse()]
+display-name: test_init_whitespaceOnly_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[4]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] -1, 1, true, (-1 / 1)
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[10]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#10]
+display-name: [10] !
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[11]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#11]
+display-name: [11] @
+]]></system-out>
+</testcase>
+<testcase name="test_toString_normal_noParens()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_normal_noParens()]
+display-name: test_toString_normal_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_clone_withEmptyName_returnsEqualInstance()" classname="mathNode.ExpressionCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.ExpressionCloneGeneratedTest]/[method:test_clone_withEmptyName_returnsEqualInstance()]
+display-name: test_clone_withEmptyName_returnsEqualInstance
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[7]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#7]
+display-name: [7] -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[6]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#6]
+display-name: [6] 2147483647
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_NullArray()" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[method:test_AddSpecialChar_NullArray()]
+display-name: test_AddSpecialChar_NullArray()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[5]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#5]
+display-name: [5] -100
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[4]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#4]
+display-name: [4] 100
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[3]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#3]
+display-name: [3] 0
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_single_element_no_special_handling()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_single_element_no_special_handling()]
+display-name: test_cleanStrList_single_element_no_special_handling()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[2]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#2]
+display-name: [2] -1
+]]></system-out>
+</testcase>
+<testcase name="test_scan_longString_returnsCorrectTokens()" classname="mathTree.StringScannerScanGeneratedTest" time="0.002">
+<failure message="expected: &lt;3&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <3> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at mathTree.StringScannerScanGeneratedTest.test_scan_longString_returnsCorrectTokens(StringScannerScanGeneratedTest.java:141)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_longString_returnsCorrectTokens()]
+display-name: test_scan_longString_returnsCorrectTokens()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousValuesWithParens_wrappedInParentheses(int)[1]" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[test-template:test_toString_variousValuesWithParens_wrappedInParentheses(int)]/[test-template-invocation:#1]
+display-name: [1] 1
+]]></system-out>
+</testcase>
+<testcase name="test_scan_singleSpecialCharacter_returnsSingleSpecialToken()" classname="mathTree.StringScannerScanGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerScanGeneratedTest]/[method:test_scan_singleSpecialCharacter_returnsSingleSpecialToken()]
+display-name: test_scan_singleSpecialCharacter_returnsSingleSpecialToken()
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[9]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#9]
+display-name: [9] 1e-323, 1e308, false, 1e-323 / 1e308
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[7]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#7]
+display-name: [7] 2147483647, -2147483648, false, 2147483647 / -2147483648
+]]></system-out>
+</testcase>
+<testcase name="test_toString_variousInputs(Node, Node, boolean, String)[8]" classname="mathNode.DivToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DivToStringGeneratedTest]/[test-template:test_toString_variousInputs(mathNode.DivToStringGeneratedTest$Node, mathNode.DivToStringGeneratedTest$Node, boolean, java.lang.String)]/[test-template-invocation:#8]
+display-name: [8] Infinity, -Infinity, true, (Infinity / -Infinity)
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_withParens(double)[3]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_withParens(double)]/[test-template-invocation:#3]
+display-name: [3] Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_withParens(double)[4]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_withParens(double)]/[test-template-invocation:#4]
+display-name: [4] -Infinity
+]]></system-out>
+</testcase>
+<testcase name="test_cleanStrList_double_minus_at_start()" classname="mathTree.MathTreeCleanStrListGeneratedTest" time="0">
+<failure message="expected: &lt;[-3, +, 4]&gt; but was: &lt;[-, -3, +, 4]&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <[-3, +, 4]> but was: <[-, -3, +, 4]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at mathTree.MathTreeCleanStrListGeneratedTest.test_cleanStrList_double_minus_at_start(MathTreeCleanStrListGeneratedTest.java:148)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.MathTreeCleanStrListGeneratedTest]/[method:test_cleanStrList_double_minus_at_start()]
+display-name: test_cleanStrList_double_minus_at_start()
+]]></system-out>
+</testcase>
+<testcase name="test_calculate_positiveValue()" classname="mathNode.IntCalculateGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntCalculateGeneratedTest]/[method:test_calculate_positiveValue()]
+display-name: test_calculate_positiveValue()
+]]></system-out>
+</testcase>
+<testcase name="test_checkTree_bothChildrenInvalid_returnsFalse()" classname="mathNode.OperatorCheckTreeGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorCheckTreeGeneratedTest]/[method:test_checkTree_bothChildrenInvalid_returnsFalse()]
+display-name: test_checkTree_bothChildrenInvalid_returnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[21]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#21]
+display-name: [21] _
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[22]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#22]
+display-name: [22] =
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[20]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#20]
+display-name: [20] -
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_withParens(double)[1]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_withParens(double)]/[test-template-invocation:#1]
+display-name: [1] 1.7976931348623157E308
+]]></system-out>
+</testcase>
+<testcase name="test_toString_specialValues_withParens(double)[2]" classname="mathNode.DecToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.DecToStringGeneratedTest]/[test-template:test_toString_specialValues_withParens(double)]/[test-template-invocation:#2]
+display-name: [2] 4.9E-324
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[18]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#18]
+display-name: [18] (
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[19]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#19]
+display-name: [19] )
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[16]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#16]
+display-name: [16] &
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_idempotent_behavior(boolean)[1]" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[test-template:test_setParens_idempotent_behavior(boolean)]/[test-template-invocation:#1]
+display-name: [1] true
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[17]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#17]
+display-name: [17] *
+]]></system-out>
+</testcase>
+<testcase name="test_setParens_idempotent_behavior(boolean)[2]" classname="mathNode.OperatorSetParensGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.OperatorSetParensGeneratedTest]/[test-template:test_setParens_idempotent_behavior(boolean)]/[test-template-invocation:#2]
+display-name: [2] false
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[14]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#14]
+display-name: [14] %
+]]></system-out>
+</testcase>
+<testcase name="test_clone_methodDeclaresCloneNotSupportedException()" classname="mathNode.AddCloneGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddCloneGeneratedTest]/[method:test_clone_methodDeclaresCloneNotSupportedException()]
+display-name: test_clone_methodDeclaresCloneNotSupportedException()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[15]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#15]
+display-name: [15] ^
+]]></system-out>
+</testcase>
+<testcase name="test_toString_bothNodesEmpty_noParens()" classname="mathNode.AddToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.AddToStringGeneratedTest]/[method:test_toString_bothNodesEmpty_noParens()]
+display-name: test_toString_bothNodesEmpty_noParens()
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[12]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#12]
+display-name: [12] #
+]]></system-out>
+</testcase>
+<testcase name="test_AddSpecialChar_IndividualSpecialChars(char)[13]" classname="mathTree.StringScannerAddSpecialCharGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathTree.StringScannerAddSpecialCharGeneratedTest]/[test-template:test_AddSpecialChar_IndividualSpecialChars(char)]/[test-template-invocation:#13]
+display-name: [13] $
+]]></system-out>
+</testcase>
+<testcase name="test_toString_positiveValueWithParens_returnsParenthesizedString()" classname="mathNode.IntToStringGeneratedTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:mathNode.IntToStringGeneratedTest]/[method:test_toString_positiveValueWithParens_returnsParenthesizedString()]
+display-name: test_toString_positiveValueWithParens_returnsParenthesizedString()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

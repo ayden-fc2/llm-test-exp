@@ -1,0 +1,22 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+/**
+ * Unit tests for {@link Dec#checkTree()} method.
+ */
+class DecCheckTreeGeneratedTest {
+
+    @Test
+    void test_checkTree_alwaysReturnsTrue() {
+        // Arrange
+        Dec dec = new Dec();
+
+        // Act
+        boolean result = dec.checkTree();
+
+        // Assert
+        assertTrue(result, "checkTree should always return true");
+    }
+}

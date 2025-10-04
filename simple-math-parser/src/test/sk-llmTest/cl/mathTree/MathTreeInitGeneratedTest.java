@@ -1,0 +1,121 @@
+package mathTree;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import mathTree.MathTree;
+
+public class MathTreeInitGeneratedTest {
+
+    // Test valid mathematical expressions that should initialize successfully
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "3 + 4",
+        "((1 + 2) * 3)",
+        "10 - 5 / 2",
+        "0 * 5",
+        "-3 + 7",
+        "1.5 + 2.5"
+    })
+    void test_init_validExpressions_returnsTrue(String expression) {
+        MathTree tree = new MathTree();
+        boolean result = tree.init(expression);
+        assertTrue(result, "Valid expression should initialize successfully: " + expression);
+    }
+
+    // Test invalid expressions that should fail initialization
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "",
+        "   ",
+        "()",
+        "(1 + )",
+        "( + 2)",
+        "1 + + 2",
+        "1 ++ 2",
+        "* 3",
+        "3 *",
+        "1 2 3",
+        "(1 + 2",
+        "1 + 2)",
+        "x + y"
+    })
+    void test_init_invalidExpressions_returnsFalse(String expression) {
+        MathTree tree = new MathTree();
+        boolean result = tree.init(expression);
+        assertFalse(result, "Invalid expression should fail initialization: " + expression);
+    }
+
+    // Test expressions with boundary values
+    @Test
+    void test_init_withZeroAndNegativeValues_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("0 + (-5)");
+        assertTrue(result, "Expression with zero and negative values should initialize");
+    }
+
+    // Test large numbers
+    @Test
+    void test_init_withLargeNumbers_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("1000000 + 2000000");
+        assertTrue(result, "Expression with large numbers should initialize");
+    }
+
+    // Test very small decimal numbers
+    @Test
+    void test_init_withVerySmallDecimals_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("0.000001 + 0.000002");
+        assertTrue(result, "Expression with very small decimals should initialize");
+    }
+
+    // Test complex nested expressions
+    @Test
+    void test_init_complexNestedExpression_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("((1 + 2) * (3 - 4)) / (5 + 6)");
+        assertTrue(result, "Complex nested expression should initialize");
+    }
+
+    // Test expression with multiple operators
+    @Test
+    void test_init_multipleOperators_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("2 * 3 + 4 / 2 - 1");
+        assertTrue(result, "Expression with multiple operators should initialize");
+    }
+
+    // Test single number initialization
+    @Test
+    void test_init_singleNumber_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("42");
+        assertTrue(result, "Single number should initialize");
+    }
+
+    // Test expression with negative result
+    @Test
+    void test_init_negativeResultExpression_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("5 - 10");
+        assertTrue(result, "Expression with negative result should initialize");
+    }
+
+    // Test deeply nested parentheses
+    @Test
+    void test_init_deeplyNestedParentheses_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("(((1 + 2) + 3) + 4)");
+        assertTrue(result, "Deeply nested parentheses should initialize");
+    }
+
+    // Test expression with decimal numbers
+    @Test
+    void test_init_decimalNumbers_returnsTrue() {
+        MathTree tree = new MathTree();
+        boolean result = tree.init("3.14 * 2.5");
+        assertTrue(result, "Expression with decimal numbers should initialize");
+    }
+}

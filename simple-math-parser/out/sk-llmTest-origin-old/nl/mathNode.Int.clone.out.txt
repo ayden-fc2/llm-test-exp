@@ -1,0 +1,113 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Int#clone()}.
+ */
+class IntTest {
+
+    @Test
+    void test_clone_returnsNewInstanceWithSameValue() throws CloneNotSupportedException {
+        Int original = new Int(42);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned); // Ensure it's a different object
+        assertEquals(original.getValue(), cloned.getValue()); // Same value
+        assertTrue(cloned instanceof Int); // Correct type
+    }
+
+    @Test
+    void test_clone_withZeroValue() throws CloneNotSupportedException {
+        Int original = new Int(0);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(0, cloned.getValue());
+    }
+
+    @Test
+    void test_clone_withNegativeValue() throws CloneNotSupportedException {
+        Int original = new Int(-123);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(-123, cloned.getValue());
+    }
+
+    @Test
+    void test_clone_withMaxIntValue() throws CloneNotSupportedException {
+        Int original = new Int(Integer.MAX_VALUE);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Integer.MAX_VALUE, cloned.getValue());
+    }
+
+    @Test
+    void test_clone_withMinIntValue() throws CloneNotSupportedException {
+        Int original = new Int(Integer.MIN_VALUE);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Integer.MIN_VALUE, cloned.getValue());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, -1, 100, -100, Integer.MAX_VALUE, Integer.MIN_VALUE})
+    void test_clone_parameterized(int value) throws CloneNotSupportedException {
+        Int original = new Int(value);
+        Int cloned = (Int) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(value, cloned.getValue());
+    }
+
+    @Test
+    void test_clone_throwsCloneNotSupportedException_whenObjectNotCloneable() {
+        // Create a subclass that does not properly implement clone
+        class NonCloneableInt extends Int {
+            NonCloneableInt(int value) {
+                super(value);
+            }
+
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Mocked failure");
+            }
+        }
+
+        NonCloneableInt original = new NonCloneableInt(5);
+        assertThrows(CloneNotSupportedException.class, original::clone);
+    }
+
+    // Minimal stub for Int class to make the test self-contained
+    static class Int implements Cloneable {
+        private int value;
+
+        public Int(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+    }
+}
+```

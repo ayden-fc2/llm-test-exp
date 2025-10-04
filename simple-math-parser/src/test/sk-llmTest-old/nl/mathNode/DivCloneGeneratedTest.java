@@ -1,0 +1,130 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivCloneGeneratedTest {
+
+    private Div div;
+    private Expression leftNode;
+    private Expression rightNode;
+
+    // Minimal stub for Expression to allow compilation and testing
+    static class ExpressionStub implements Expression, Cloneable {
+        private final String value;
+
+        public ExpressionStub(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof ExpressionStub)) return false;
+            return this.value.equals(((ExpressionStub) obj).value);
+        }
+
+        @Override
+        public int hashCode() {
+            return value.hashCode();
+        }
+    }
+
+    @BeforeEach
+    void setUp() {
+        leftNode = new ExpressionStub("left");
+        rightNode = new ExpressionStub("right");
+        div = new Div();
+        div.setLeftNode(leftNode);
+        div.setRightNode(rightNode);
+    }
+
+    @Test
+    void test_clone_normalBehavior_createsDeepCopy() throws CloneNotSupportedException {
+        Div cloned = (Div) div.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(div, cloned);
+        assertNotSame(div.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(div.getRightNode(), cloned.getRightNode());
+        assertEquals(div.getLeftNode(), cloned.getLeftNode());
+        assertEquals(div.getRightNode(), cloned.getRightNode());
+    }
+
+    @Test
+    void test_clone_whenLeftNodeIsNull_throwsExceptionDuringClone() {
+        div.setLeftNode(null);
+        assertThrows(NullPointerException.class, () -> div.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeIsNull_throwsExceptionDuringClone() {
+        div.setRightNode(null);
+        assertThrows(NullPointerException.class, () -> div.clone());
+    }
+
+    @Test
+    void test_clone_whenBothNodesAreNull_throwsExceptionDuringClone() {
+        div.setLeftNode(null);
+        div.setRightNode(null);
+        assertThrows(NullPointerException.class, () -> div.clone());
+    }
+
+    @Test
+    void test_clone_whenLeftNodeNotCloneable_throwsCloneNotSupportedException() {
+        class NonCloneableExpression implements Expression {
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Not cloneable");
+            }
+        }
+        div.setLeftNode(new NonCloneableExpression());
+        assertThrows(CloneNotSupportedException.class, () -> div.clone());
+    }
+
+    @Test
+    void test_clone_whenRightNodeNotCloneable_throwsCloneNotSupportedException() {
+        class NonCloneableExpression implements Expression {
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                throw new CloneNotSupportedException("Not cloneable");
+            }
+        }
+        div.setRightNode(new NonCloneableExpression());
+        assertThrows(CloneNotSupportedException.class, () -> div.clone());
+    }
+
+    @Test
+    void test_clone_idempotentProperty_secondCloneIsIndependent() throws CloneNotSupportedException {
+        Div firstClone = (Div) div.clone();
+        Div secondClone = (Div) div.clone();
+
+        assertNotSame(firstClone, secondClone);
+        assertEquals(firstClone.getLeftNode(), secondClone.getLeftNode());
+        assertEquals(firstClone.getRightNode(), secondClone.getRightNode());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1", "1", "123456789", "-987654321"})
+    void test_clone_withVariousExpressionValues_performsDeepCopy(String value) throws CloneNotSupportedException {
+        ExpressionStub left = new ExpressionStub(value);
+        ExpressionStub right = new ExpressionStub("other_" + value);
+        div.setLeftNode(left);
+        div.setRightNode(right);
+
+        Div cloned = (Div) div.clone();
+
+        assertEquals(left, cloned.getLeftNode());
+        assertEquals(right, cloned.getRightNode());
+        assertNotSame(left, cloned.getLeftNode());
+        assertNotSame(right, cloned.getRightNode());
+    }
+}

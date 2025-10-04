@@ -1,0 +1,88 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Operator#getLeftNode()}.
+ */
+class OperatorGetLeftNodeGeneratedTest {
+
+    // Minimal stub for Expression to allow compilation and testing
+    static class Expression {
+        private final String value;
+
+        public Expression(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Expression)) return false;
+            Expression that = (Expression) o;
+            return value != null ? value.equals(that.value) : that.value == null;
+        }
+
+        @Override
+        public int hashCode() {
+            return value != null ? value.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            return "Expression{" +
+                    "value='" + value + '\'' +
+                    '}';
+        }
+    }
+
+    // Stub for Operator to allow setting the left node via constructor
+    static class Operator {
+        private final Expression leftNode;
+
+        public Operator(Expression leftNode) {
+            this.leftNode = leftNode;
+        }
+
+        public Expression getLeftNode() {
+            return leftNode;
+        }
+    }
+
+    @Test
+    void test_getLeftNode_whenLeftNodeIsNull_returnsNull() {
+        Operator operator = new Operator(null);
+        assertNull(operator.getLeftNode(), "Expected null when leftNode is null");
+    }
+
+    @Test
+    void test_getLeftNode_whenLeftNodeIsNonNull_returnsSameInstance() {
+        Expression expr = new Expression("test-value");
+        Operator operator = new Operator(expr);
+        assertSame(expr, operator.getLeftNode(), "Expected the same instance of Expression");
+    }
+
+    @Test
+    void test_getLeftNode_whenLeftNodeHasSpecialStringValue_returnsCorrectInstance() {
+        Expression expr = new Expression("");
+        Operator operator = new Operator(expr);
+        assertSame(expr, operator.getLeftNode(), "Expected the same instance even with empty string value");
+
+        Expression exprWithSpaces = new Expression("   ");
+        Operator operatorWithSpaces = new Operator(exprWithSpaces);
+        assertSame(exprWithSpaces, operatorWithSpaces.getLeftNode(), "Expected the same instance with whitespace-only string");
+    }
+
+    @Test
+    void test_getLeftNode_multipleCalls_returnSameReference() {
+        Expression expr = new Expression("consistent-reference");
+        Operator operator = new Operator(expr);
+
+        Expression firstCallResult = operator.getLeftNode();
+        Expression secondCallResult = operator.getLeftNode();
+
+        assertSame(firstCallResult, secondCallResult, "Multiple calls should return the exact same reference");
+        assertEquals(firstCallResult, secondCallResult, "Values from multiple calls must be equal");
+    }
+}

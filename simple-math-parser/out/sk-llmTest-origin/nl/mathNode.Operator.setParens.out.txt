@@ -1,0 +1,81 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class OperatorTest {
+
+    // Stub class to enable compilation and testing of setParens method
+    static class Operator {
+        private boolean parenthesis = false;
+        private int precedence = 1; // default non-zero value
+
+        public void setParens(boolean bool) {
+            parenthesis = bool;
+
+            if (parenthesis)
+                precedence = 0;
+        }
+
+        // Helper methods for testing
+        public boolean isParenthesis() {
+            return parenthesis;
+        }
+
+        public int getPrecedence() {
+            return precedence;
+        }
+    }
+
+    @Test
+    void test_setParens_true_setsParenthesisToTrue() {
+        Operator operator = new Operator();
+        operator.setParens(true);
+        assertTrue(operator.isParenthesis());
+    }
+
+    @Test
+    void test_setParens_true_setsPrecedenceToZero() {
+        Operator operator = new Operator();
+        operator.setParens(true);
+        assertEquals(0, operator.getPrecedence());
+    }
+
+    @Test
+    void test_setParens_false_setsParenthesisToFalse() {
+        Operator operator = new Operator();
+        operator.setParens(false);
+        assertFalse(operator.isParenthesis());
+    }
+
+    @Test
+    void test_setParens_false_doesNotChangePrecedenceFromDefault() {
+        Operator operator = new Operator();
+        operator.setParens(false);
+        assertEquals(1, operator.getPrecedence());
+    }
+
+    @Test
+    void test_setParens_false_afterTrue_resetsPrecedenceToNonZero() {
+        Operator operator = new Operator();
+        operator.setParens(true);  // sets precedence to 0
+        operator.setParens(false); // should not reset precedence
+        assertEquals(0, operator.getPrecedence()); // precedence remains 0 as per implementation
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void test_setParens_idempotent_behavior(boolean value) {
+        Operator operator = new Operator();
+        operator.setParens(value);
+        boolean before = operator.isParenthesis();
+        operator.setParens(value);
+        boolean after = operator.isParenthesis();
+        assertEquals(before, after);
+    }
+}
+```

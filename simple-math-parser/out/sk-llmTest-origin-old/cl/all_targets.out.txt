@@ -1,0 +1,554 @@
+```java
+import mathNode.*;
+import mathTree.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import java.util.LinkedList;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MathNodeGeneratedTest {
+
+    // Test Mult.calculate with integer operands
+    @Test
+    public void test_Mult_calculate_integerMultiplication() {
+        Mult mult = new Mult();
+        Int left = new Int(3);
+        Int right = new Int(4);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        Number result = mult.calculate();
+        assertTrue(result instanceof Integer);
+        assertEquals(12, result.intValue());
+    }
+
+    // Test Mult.calculate with double operands
+    @Test
+    public void test_Mult_calculate_doubleMultiplication() {
+        Mult mult = new Mult();
+        Dec left = new Dec(2.5);
+        Dec right = new Dec(4.0);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        Number result = mult.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(10.0, result.doubleValue(), 1e-9);
+    }
+
+    // Test Mult.toString without parentheses
+    @Test
+    public void test_Mult_toString_noParens() {
+        Mult mult = new Mult();
+        mult.setParens(false);
+        Int left = new Int(3);
+        Int right = new Int(4);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        assertEquals("3 * 4", mult.toString());
+    }
+
+    // Test Mult.toString with parentheses
+    @Test
+    public void test_Mult_toString_withParens() {
+        Mult mult = new Mult();
+        mult.setParens(true);
+        Int left = new Int(3);
+        Int right = new Int(4);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        assertEquals("(3 * 4)", mult.toString());
+    }
+
+    // Test Mult.clone creates a deep copy
+    @Test
+    public void test_Mult_clone_deepCopy() throws CloneNotSupportedException {
+        Mult mult = new Mult();
+        Int left = new Int(3);
+        Int right = new Int(4);
+        mult.setLeftNode(left);
+        mult.setRightNode(right);
+        Mult cloned = (Mult) mult.clone();
+        assertNotSame(mult, cloned);
+        assertNotSame(mult.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(mult.getRightNode(), cloned.getRightNode());
+        assertEquals(mult.toString(), cloned.toString());
+    }
+
+    // Test Operator.getPrecedence returns correct value
+    @Test
+    public void test_Operator_getPrecedence_returnsCorrectValue() {
+        Mult mult = new Mult();
+        assertEquals(2, mult.getPrecedence());
+    }
+
+    // Test Operator.setParens changes precedence
+    @Test
+    public void test_Operator_setParens_changesPrecedence() {
+        Mult mult = new Mult();
+        int originalPrecedence = mult.getPrecedence();
+        mult.setParens(true);
+        assertEquals(0, mult.getPrecedence());
+        mult.setParens(false);
+        assertEquals(originalPrecedence, mult.getPrecedence());
+    }
+
+    // Test Operator.checkTree with null nodes
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void test_Operator_checkTree_withNullNodes(boolean nullLeft) {
+        Mult mult = new Mult();
+        if (nullLeft) {
+            mult.setLeftNode(null);
+            mult.setRightNode(new Int(5));
+        } else {
+            mult.setLeftNode(new Int(5));
+            mult.setRightNode(null);
+        }
+        assertFalse(mult.checkTree());
+    }
+
+    // Test Operator.checkTree with valid nodes
+    @Test
+    public void test_Operator_checkTree_withValidNodes() {
+        Mult mult = new Mult();
+        mult.setLeftNode(new Int(3));
+        mult.setRightNode(new Int(4));
+        assertTrue(mult.checkTree());
+    }
+
+    // Test Add.calculate with integer operands
+    @Test
+    public void test_Add_calculate_integerAddition() {
+        Add add = new Add();
+        Int left = new Int(3);
+        Int right = new Int(4);
+        add.setLeftNode(left);
+        add.setRightNode(right);
+        Number result = add.calculate();
+        assertTrue(result instanceof Integer);
+        assertEquals(7, result.intValue());
+    }
+
+    // Test Add.calculate with double operands
+    @Test
+    public void test_Add_calculate_doubleAddition() {
+        Add add = new Add();
+        Dec left = new Dec(2.5);
+        Dec right = new Dec(4.0);
+        add.setLeftNode(left);
+        add.setRightNode(right);
+        Number result = add.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(6.5, result.doubleValue(), 1e-9);
+    }
+
+    // Test Add.toString without parentheses
+    @Test
+    public void test_Add_toString_noParens() {
+        Add add = new Add();
+        add.setParens(false);
+        Int left = new Int(3);
+        Int right = new Int(4);
+        add.setLeftNode(left);
+        add.setRightNode(right);
+        assertEquals("3 + 4", add.toString());
+    }
+
+    // Test Add.clone creates a deep copy
+    @Test
+    public void test_Add_clone_deepCopy() throws CloneNotSupportedException {
+        Add add = new Add();
+        Int left = new Int(3);
+        Int right = new Int(4);
+        add.setLeftNode(left);
+        add.setRightNode(right);
+        Add cloned = (Add) add.clone();
+        assertNotSame(add, cloned);
+        assertNotSame(add.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(add.getRightNode(), cloned.getRightNode());
+        assertEquals(add.toString(), cloned.toString());
+    }
+
+    // Test Int.calculate returns stored value
+    @Test
+    public void test_Int_calculate_returnsStoredValue() {
+        Int integer = new Int(42);
+        Number result = integer.calculate();
+        assertTrue(result instanceof Integer);
+        assertEquals(42, result.intValue());
+    }
+
+    // Test Int.toString without parentheses
+    @Test
+    public void test_Int_toString_noParens() {
+        Int integer = new Int(42);
+        integer.setParens(false);
+        assertEquals("42", integer.toString());
+    }
+
+    // Test Int.toString with parentheses
+    @Test
+    public void test_Int_toString_withParens() {
+        Int integer = new Int(42);
+        integer.setParens(true);
+        assertEquals("(42)", integer.toString());
+    }
+
+    // Test Int.clone creates a copy
+    @Test
+    public void test_Int_clone_createsCopy() throws CloneNotSupportedException {
+        Int integer = new Int(42);
+        Int cloned = (Int) integer.clone();
+        assertNotSame(integer, cloned);
+        assertEquals(integer.calculate().intValue(), cloned.calculate().intValue());
+    }
+
+    // Test Int.checkTree always returns true
+    @Test
+    public void test_Int_checkTree_alwaysReturnsTrue() {
+        Int integer = new Int(42);
+        assertTrue(integer.checkTree());
+    }
+
+    // Test Pow.calculate computes power correctly
+    @Test
+    public void test_Pow_calculate_computesPower() {
+        Pow pow = new Pow();
+        Int base = new Int(2);
+        Int exponent = new Int(3);
+        pow.setLeftNode(base);
+        pow.setRightNode(exponent);
+        Number result = pow.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(8.0, result.doubleValue(), 1e-9);
+    }
+
+    // Test Pow.toString without parentheses
+    @Test
+    public void test_Pow_toString_noParens() {
+        Pow pow = new Pow();
+        pow.setParens(false);
+        Int base = new Int(2);
+        Int exponent = new Int(3);
+        pow.setLeftNode(base);
+        pow.setRightNode(exponent);
+        assertEquals("2 ^ 3", pow.toString());
+    }
+
+    // Test Pow.clone creates a deep copy
+    @Test
+    public void test_Pow_clone_deepCopy() throws CloneNotSupportedException {
+        Pow pow = new Pow();
+        Int base = new Int(2);
+        Int exponent = new Int(3);
+        pow.setLeftNode(base);
+        pow.setRightNode(exponent);
+        Pow cloned = (Pow) pow.clone();
+        assertNotSame(pow, cloned);
+        assertNotSame(pow.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(pow.getRightNode(), cloned.getRightNode());
+        assertEquals(pow.toString(), cloned.toString());
+    }
+
+    // Test Factory.buildNode with char operator
+    @ParameterizedTest
+    @ValueSource(chars = {'+', '-', '*', '/', '^'})
+    public void test_Factory_buildNode_withCharOperator(char op) {
+        Factory factory = new Factory();
+        Expression node = factory.buildNode(op);
+        assertNotNull(node);
+        switch (op) {
+            case '+': assertTrue(node instanceof Add); break;
+            case '-': assertTrue(node instanceof Sub); break;
+            case '*': assertTrue(node instanceof Mult); break;
+            case '/': assertTrue(node instanceof Div); break;
+            case '^': assertTrue(node instanceof Pow); break;
+        }
+    }
+
+    // Test Factory.buildNode with int number
+    @Test
+    public void test_Factory_buildNode_withIntNumber() {
+        Factory factory = new Factory();
+        Expression node = factory.buildNode(42);
+        assertNotNull(node);
+        assertTrue(node instanceof Int);
+        assertEquals(42, ((Int) node).calculate().intValue());
+    }
+
+    // Test Factory.buildNode with double number
+    @Test
+    public void test_Factory_buildNode_withDoubleNumber() {
+        Factory factory = new Factory();
+        Expression node = factory.buildNode(3.14);
+        assertNotNull(node);
+        assertTrue(node instanceof Dec);
+        assertEquals(3.14, ((Dec) node).calculate().doubleValue(), 1e-9);
+    }
+
+    // Test Factory.clone creates a copy
+    @Test
+    public void test_Factory_clone_createsCopy() throws CloneNotSupportedException {
+        Factory factory = new Factory();
+        Factory cloned = (Factory) factory.clone();
+        assertNotSame(factory, cloned);
+    }
+
+    // Test Div.calculate performs division
+    @Test
+    public void test_Div_calculate_performsDivision() {
+        Div div = new Div();
+        Int numerator = new Int(10);
+        Int denominator = new Int(2);
+        div.setLeftNode(numerator);
+        div.setRightNode(denominator);
+        Number result = div.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(5.0, result.doubleValue(), 1e-9);
+    }
+
+    // Test Div.toString without parentheses
+    @Test
+    public void test_Div_toString_noParens() {
+        Div div = new Div();
+        div.setParens(false);
+        Int numerator = new Int(10);
+        Int denominator = new Int(2);
+        div.setLeftNode(numerator);
+        div.setRightNode(denominator);
+        assertEquals("10 / 2", div.toString());
+    }
+
+    // Test Div.clone creates a deep copy
+    @Test
+    public void test_Div_clone_deepCopy() throws CloneNotSupportedException {
+        Div div = new Div();
+        Int numerator = new Int(10);
+        Int denominator = new Int(2);
+        div.setLeftNode(numerator);
+        div.setRightNode(denominator);
+        Div cloned = (Div) div.clone();
+        assertNotSame(div, cloned);
+        assertNotSame(div.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(div.getRightNode(), cloned.getRightNode());
+        assertEquals(div.toString(), cloned.toString());
+    }
+
+    // Test Expression.setParens and isParens
+    @Test
+    public void test_Expression_setParens_and_isParens() {
+        Mult mult = new Mult();
+        assertFalse(mult.isParens());
+        mult.setParens(true);
+        assertTrue(mult.isParens());
+        mult.setParens(false);
+        assertFalse(mult.isParens());
+    }
+
+    // Test Dec.calculate returns stored value
+    @Test
+    public void test_Dec_calculate_returnsStoredValue() {
+        Dec decimal = new Dec(3.14);
+        Number result = decimal.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(3.14, result.doubleValue(), 1e-9);
+    }
+
+    // Test Dec.toString without parentheses
+    @Test
+    public void test_Dec_toString_noParens() {
+        Dec decimal = new Dec(3.14);
+        decimal.setParens(false);
+        assertEquals("3.14", decimal.toString());
+    }
+
+    // Test Dec.clone creates a copy
+    @Test
+    public void test_Dec_clone_createsCopy() throws CloneNotSupportedException {
+        Dec decimal = new Dec(3.14);
+        Dec cloned = (Dec) decimal.clone();
+        assertNotSame(decimal, cloned);
+        assertEquals(decimal.calculate().doubleValue(), cloned.calculate().doubleValue(), 1e-9);
+    }
+
+    // Test Dec.checkTree always returns true
+    @Test
+    public void test_Dec_checkTree_alwaysReturnsTrue() {
+        Dec decimal = new Dec(3.14);
+        assertTrue(decimal.checkTree());
+    }
+
+    // Test Sub.calculate with integer operands
+    @Test
+    public void test_Sub_calculate_integerSubtraction() {
+        Sub sub = new Sub();
+        Int left = new Int(10);
+        Int right = new Int(3);
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        Number result = sub.calculate();
+        assertTrue(result instanceof Integer);
+        assertEquals(7, result.intValue());
+    }
+
+    // Test Sub.calculate with double operands
+    @Test
+    public void test_Sub_calculate_doubleSubtraction() {
+        Sub sub = new Sub();
+        Dec left = new Dec(10.5);
+        Dec right = new Dec(3.2);
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        Number result = sub.calculate();
+        assertTrue(result instanceof Double);
+        assertEquals(7.3, result.doubleValue(), 1e-9);
+    }
+
+    // Test Sub.toString without parentheses
+    @Test
+    public void test_Sub_toString_noParens() {
+        Sub sub = new Sub();
+        sub.setParens(false);
+        Int left = new Int(10);
+        Int right = new Int(3);
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        assertEquals("10 - 3", sub.toString());
+    }
+
+    // Test Sub.clone creates a deep copy
+    @Test
+    public void test_Sub_clone_deepCopy() throws CloneNotSupportedException {
+        Sub sub = new Sub();
+        Int left = new Int(10);
+        Int right = new Int(3);
+        sub.setLeftNode(left);
+        sub.setRightNode(right);
+        Sub cloned = (Sub) sub.clone();
+        assertNotSame(sub, cloned);
+        assertNotSame(sub.getLeftNode(), cloned.getLeftNode());
+        assertNotSame(sub.getRightNode(), cloned.getRightNode());
+        assertEquals(sub.toString(), cloned.toString());
+    }
+
+    // Test StringScanner.skipWhitespace enables whitespace skipping
+    @Test
+    public void test_StringScanner_skipWhitespace_enablesSkipping() {
+        StringScanner scanner = new StringScanner();
+        scanner.skipWhitespace();
+        LinkedList<String> result = scanner.scan("a b");
+        assertEquals(2, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("b", result.get(1));
+    }
+
+    // Test StringScanner.addDelimiter adds single delimiter
+    @Test
+    public void test_StringScanner_addDelimiter_addsSingleDelimiter() {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(',');
+        LinkedList<String> result = scanner.scan("a,b");
+        assertEquals(2, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("b", result.get(1));
+    }
+
+    // Test StringScanner.addDelimiter adds array of delimiters
+    @Test
+    public void test_StringScanner_addDelimiter_addsArrayOfDelimiters() {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(new char[]{',', ';'});
+        LinkedList<String> result = scanner.scan("a,b;c");
+        assertEquals(3, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("b", result.get(1));
+        assertEquals("c", result.get(2));
+    }
+
+    // Test StringScanner.addSpecialChar adds single special character
+    @Test
+    public void test_StringScanner_addSpecialChar_addsSingleSpecialChar() {
+        StringScanner scanner = new StringScanner();
+        scanner.addSpecialChar('-');
+        LinkedList<String> result = scanner.scan("a-b");
+        assertEquals(3, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("-", result.get(1));
+        assertEquals("b", result.get(2));
+    }
+
+    // Test StringScanner.addSpecialChar adds array of special characters
+    @Test
+    public void test_StringScanner_addSpecialChar_addsArrayOfSpecialChars() {
+        StringScanner scanner = new StringScanner();
+        scanner.addSpecialChar(new char[]{'-', '+'});
+        LinkedList<String> result = scanner.scan("a-b+c");
+        assertEquals(5, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("-", result.get(1));
+        assertEquals("b", result.get(2));
+        assertEquals("+", result.get(3));
+        assertEquals("c", result.get(4));
+    }
+
+    // Test StringScanner.clone creates a deep copy
+    @Test
+    public void test_StringScanner_clone_deepCopy() throws CloneNotSupportedException {
+        StringScanner scanner = new StringScanner();
+        scanner.addDelimiter(',');
+        scanner.addSpecialChar('-');
+        StringScanner cloned = (StringScanner) scanner.clone();
+        assertNotSame(scanner, cloned);
+        assertNotSame(scanner.delimSet, cloned.delimSet);
+        assertNotSame(scanner.specCharSet, cloned.specCharSet);
+        LinkedList<String> originalResult = scanner.scan("a-,b");
+        LinkedList<String> clonedResult = cloned.scan("a-,b");
+        assertEquals(originalResult.size(), clonedResult.size());
+        for (int i = 0; i < originalResult.size(); i++) {
+            assertEquals(originalResult.get(i), clonedResult.get(i));
+        }
+    }
+
+    // Test MathTree.init builds valid tree
+    @Test
+    public void test_MathTree_init_buildsValidTree() {
+        MathTree tree = new MathTree();
+        assertTrue(tree.init("3 + 4"));
+        Number result = tree.solve();
+        assertNotNull(result);
+        assertTrue(result instanceof Integer);
+        assertEquals(7, result.intValue());
+    }
+
+    // Test MathTree.solve calculates expression correctly
+    @Test
+    public void test_MathTree_solve_calculatesExpression() {
+        MathTree tree = new MathTree();
+        tree.init("2 * 3 + 4");
+        Number result = tree.solve();
+        assertNotNull(result);
+        assertTrue(result instanceof Integer);
+        assertEquals(10, result.intValue());
+    }
+
+    // Test MathTree.toString returns correct string representation
+    @Test
+    public void test_MathTree_toString_returnsCorrectString() {
+        MathTree tree = new MathTree();
+        tree.init("2 * (3 + 4)");
+        assertEquals("2 * (3 + 4)", tree.toString());
+    }
+
+    // Test MathTree.clone creates a deep copy
+    @Test
+    public void test_MathTree_clone_deepCopy() throws CloneNotSupportedException {
+        MathTree tree = new MathTree();
+        tree.init("3 + 4");
+        MathTree cloned = (MathTree) tree.clone();
+        assertNotSame(tree, cloned);
+        assertNotSame(tree.rootNode, cloned.rootNode);
+        assertEquals(tree.toString(), cloned.toString());
+        assertEquals(tree.solve().doubleValue(), cloned.solve().doubleValue(), 1e-9);
+    }
+}
+```

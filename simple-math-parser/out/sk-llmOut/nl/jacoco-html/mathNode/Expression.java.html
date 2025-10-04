@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Expression.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">mathNode</a> &gt; <span class="el_source">Expression.java</span></div><h1>Expression.java</h1><pre class="source lang-java linenums">package mathNode;
+
+/**
+ * Abstract expression node class.
+ * @author kevinrobell
+ *
+ */
+<span class="fc" id="L8">public abstract class Expression implements Cloneable</span>
+{
+<span class="fc" id="L10">   protected boolean parenthesis = false; //bool to indicate parenthesis around this expression</span>
+   
+<span class="nc" id="L12">   public void setParens(boolean bool) { parenthesis = bool; }</span>
+<span class="fc" id="L13">   public boolean isParens() { return parenthesis; }</span>
+   
+   /**
+    * The calculate expression works recursively down the tree.
+    * @return Number The boxed value of Integer or Double based upon previous expression.
+    */
+   abstract public Number calculate();
+   abstract public String toString();
+   public Object clone() throws CloneNotSupportedException
+   {
+<span class="nc" id="L23">      return (Expression) super.clone();</span>
+   }
+   
+   /**
+    * A recursive method to check if the tree is constructed correctly.
+    * @return boolean
+    */
+   abstract public boolean checkTree();
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

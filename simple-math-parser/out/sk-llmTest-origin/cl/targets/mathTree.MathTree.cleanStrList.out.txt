@@ -1,0 +1,148 @@
+```java
+package test;
+
+import mathTree.MathTree;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.LinkedList;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MathTreeGeneratedTest {
+
+    private MathTree mathTree;
+
+    @BeforeEach
+    public void setUp() {
+        mathTree = new MathTree();
+    }
+
+    // Since cleanStrList is private, we need to use reflection to access it
+    private void invokeCleanStrList(LinkedList<String> strList) throws Exception {
+        java.lang.reflect.Method method = MathTree.class.getDeclaredMethod("cleanStrList", LinkedList.class);
+        method.setAccessible(true);
+        method.invoke(mathTree, strList);
+    }
+
+    @Test
+    public void test_cleanStrList_emptyList() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        invokeCleanStrList(list);
+        assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public void test_cleanStrList_singleNegativeNumber() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("-5");
+        invokeCleanStrList(list);
+        assertEquals(2, list.size());
+        assertEquals("-", list.get(0));
+        assertEquals("5", list.get(1));
+    }
+
+    @Test
+    public void test_cleanStrList_negativeAtStart() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("-"); list.add("3"); list.add("+"); list.add("4");
+        invokeCleanStrList(list);
+        assertEquals(5, list.size());
+        assertEquals("-", list.get(0));
+        assertEquals("3", list.get(1));
+        assertEquals("+", list.get(2));
+        assertEquals("4", list.get(3));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideEdgeCases")
+    public void test_cleanStrList_edgeCases(LinkedList<String> input, LinkedList<String> expected) throws Exception {
+        invokeCleanStrList(input);
+        assertEquals(expected, input);
+    }
+
+    static Stream<Arguments> provideEdgeCases() {
+        return Stream.of(
+            // Zero case
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("0")),
+                new LinkedList<>(java.util.Arrays.asList("0"))
+            ),
+            // Negative zero
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("-0")),
+                new LinkedList<>(java.util.Arrays.asList("-", "0"))
+            ),
+            // Large negative number
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("-999999999")),
+                new LinkedList<>(java.util.Arrays.asList("-", "999999999"))
+            ),
+            // Min value
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("-2147483648")),
+                new LinkedList<>(java.util.Arrays.asList("-", "2147483648"))
+            ),
+            // Multiple negatives
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("-", "5", "-", "3")),
+                new LinkedList<>(java.util.Arrays.asList("-", "5", "-", "3"))
+            ),
+            // Operator after negative
+            Arguments.of(
+                new LinkedList<>(java.util.Arrays.asList("-", "*", "5")),
+                new LinkedList<>(java.util.Arrays.asList("-", "*", "5"))
+            )
+        );
+    }
+
+    @Test
+    public void test_cleanStrList_mixedOperatorsAndNegatives() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("-"); list.add("3"); list.add("*"); list.add("-"); list.add("4");
+        invokeCleanStrList(list);
+        assertEquals(7, list.size());
+        assertEquals("-", list.get(0));
+        assertEquals("3", list.get(1));
+        assertEquals("*", list.get(2));
+        assertEquals("-", list.get(3));
+        assertEquals("4", list.get(4));
+    }
+
+    @Test
+    public void test_cleanStrList_consecutiveOperators() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("+"); list.add("-"); list.add("*");
+        invokeCleanStrList(list);
+        assertEquals(3, list.size());
+        assertEquals("+", list.get(0));
+        assertEquals("-", list.get(1));
+        assertEquals("*", list.get(2));
+    }
+
+    @Test
+    public void test_cleanStrList_numbersOnly() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("123"); list.add("456");
+        invokeCleanStrList(list);
+        assertEquals(2, list.size());
+        assertEquals("123", list.get(0));
+        assertEquals("456", list.get(1));
+    }
+
+    @Test
+    public void test_cleanStrList_negativeFollowedByOperator() throws Exception {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("-"); list.add("+"); list.add("5");
+        invokeCleanStrList(list);
+        assertEquals(3, list.size());
+        assertEquals("-", list.get(0));
+        assertEquals("+", list.get(1));
+        assertEquals("5", list.get(2));
+    }
+}
+```

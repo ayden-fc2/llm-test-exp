@@ -1,0 +1,133 @@
+```java
+package test;
+
+import mathTree.MathTree;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MathTreeGeneratedTest {
+
+    // Test valid mathematical expressions that should initialize successfully
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "3 + 4",
+        "((2 * 3) + 5)",
+        "10 / 2 - 3",
+        "1.5 + 2.5",
+        "-5 + 3",
+        "0 * 100"
+    })
+    void test_init_validMathStatements(String mathStatement) {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(mathStatement);
+        assertTrue(result, "Initialization should succeed for valid math statement: " + mathStatement);
+    }
+
+    // Test invalid mathematical expressions that should fail to initialize
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "",
+        "   ",
+        "()",
+        "(3 + 4",
+        "3 + 4)",
+        "+",
+        "*",
+        "3 ++ 4",
+        "3 / 0", // Division by zero might be syntactically valid but semantically invalid
+        "abc + def"
+    })
+    void test_init_invalidMathStatements(String mathStatement) {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(mathStatement);
+        assertFalse(result, "Initialization should fail for invalid math statement: " + mathStatement);
+    }
+
+    // Test edge cases with numbers
+    @Test
+    void test_init_withZeroValues() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init("0 + 0");
+        assertTrue(result, "Should handle zero values correctly");
+    }
+
+    @Test
+    void test_init_withNegativeNumbers() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init("-10 + 5");
+        assertTrue(result, "Should handle negative numbers correctly");
+    }
+
+    @Test
+    void test_init_withMaxIntegerValues() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(Integer.MAX_VALUE + " + 0");
+        assertTrue(result, "Should handle Integer.MAX_VALUE correctly");
+    }
+
+    @Test
+    void test_init_withMinIntegerValues() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(Integer.MIN_VALUE + " + 0");
+        assertTrue(result, "Should handle Integer.MIN_VALUE correctly");
+    }
+
+    // Test with very large and very small double values
+    @Test
+    void test_init_withVeryLargeDoubleValues() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(Double.MAX_VALUE + " + 0.0");
+        assertTrue(result, "Should handle Double.MAX_VALUE correctly");
+    }
+
+    @Test
+    void test_init_withVerySmallDoubleValues() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(Double.MIN_VALUE + " + 0.0");
+        assertTrue(result, "Should handle Double.MIN_VALUE correctly");
+    }
+
+    // Test boundary conditions with empty and whitespace-only strings
+    @ParameterizedTest
+    @ValueSource(strings = {
+        "",
+        " ",
+        "\t",
+        "\n",
+        "  \t \n "
+    })
+    void test_init_withWhitespaceOnlyStrings(String mathStatement) {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init(mathStatement);
+        assertFalse(result, "Initialization should fail for whitespace-only string: \"" + mathStatement + "\"");
+    }
+
+    // Test deeply nested expressions
+    @Test
+    void test_init_withDeeplyNestedExpression() {
+        MathTree mathTree = new MathTree();
+        String deeplyNested = "((((((1+2))))))";
+        boolean result = mathTree.init(deeplyNested);
+        assertTrue(result, "Should handle deeply nested expressions correctly");
+    }
+
+    // Test complex expression with multiple operators
+    @Test
+    void test_init_withComplexExpression() {
+        MathTree mathTree = new MathTree();
+        String complexExpr = "3.14 * (2.5 + 1.5) / 2.0 - 0.1";
+        boolean result = mathTree.init(complexExpr);
+        assertTrue(result, "Should handle complex expression correctly");
+    }
+
+    // Test initialization with null-equivalent behavior (empty string)
+    @Test
+    void test_init_emptyString() {
+        MathTree mathTree = new MathTree();
+        boolean result = mathTree.init("");
+        assertFalse(result, "Initialization should fail for empty string");
+    }
+}
+```

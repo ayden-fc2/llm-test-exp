@@ -1,0 +1,60 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ExpressionSetParensGeneratedTest {
+
+    @Test
+    void test_setParens_true_setsParenthesisToTrue() {
+        // Arrange
+        Expression expression = new Expression();
+        
+        // Act
+        expression.setParens(true);
+        
+        // Assert
+        // Assuming there's a getParens() method for validation.
+        // If not, this test might need adjustment based on actual observable behavior.
+        assertTrue(expression.getParens());
+    }
+
+    @Test
+    void test_setParens_false_setsParenthesisToFalse() {
+        // Arrange
+        Expression expression = new Expression();
+        expression.setParens(true); // Set to true first to ensure change is observed
+        
+        // Act
+        expression.setParens(false);
+        
+        // Assert
+        assertFalse(expression.getParens());
+    }
+
+    @Test
+    void test_setParens_idempotent_true() {
+        // Arrange
+        Expression expression = new Expression();
+        
+        // Act
+        expression.setParens(true);
+        expression.setParens(true);
+        
+        // Assert
+        assertTrue(expression.getParens());
+    }
+
+    @Test
+    void test_setParens_idempotent_false() {
+        // Arrange
+        Expression expression = new Expression();
+        
+        // Act
+        expression.setParens(false);
+        expression.setParens(false);
+        
+        // Assert
+        assertFalse(expression.getParens());
+    }
+}

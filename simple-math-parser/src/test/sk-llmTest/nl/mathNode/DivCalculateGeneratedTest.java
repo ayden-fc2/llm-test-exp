@@ -1,0 +1,168 @@
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class DivCalculateGeneratedTest {
+
+    // Mock Node implementation for testing
+    private static class MockNode implements Node {
+        private final Number value;
+
+        MockNode(Number value) {
+            this.value = value;
+        }
+
+        @Override
+        public Number calculate() {
+            return value;
+        }
+    }
+
+    // Helper to create a Div node with mock children
+    private Div createDivNode(Number left, Number right) {
+        Div div = new Div();
+        div.setLeftNode(new MockNode(left));
+        div.setRightNode(new MockNode(right));
+        return div;
+    }
+
+    @Test
+    void test_calculate_normal_positive_division() {
+        Div div = createDivNode(10.0, 2.0);
+        assertEquals(5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_negative_numerator() {
+        Div div = createDivNode(-10.0, 2.0);
+        assertEquals(-5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_negative_denominator() {
+        Div div = createDivNode(10.0, -2.0);
+        assertEquals(-5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_both_negative() {
+        Div div = createDivNode(-10.0, -2.0);
+        assertEquals(5.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_fraction_result() {
+        Div div = createDivNode(1.0, 3.0);
+        assertEquals(1.0 / 3.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_division_by_one() {
+        Div div = createDivNode(42.0, 1.0);
+        assertEquals(42.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_division_of_one() {
+        Div div = createDivNode(1.0, 42.0);
+        assertEquals(1.0 / 42.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_zero_numerator() {
+        Div div = createDivNode(0.0, 5.0);
+        assertEquals(0.0, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_zero_denominator_positive_numerator() {
+        Div div = createDivNode(5.0, 0.0);
+        assertTrue(Double.isInfinite(div.calculate().doubleValue()));
+        assertTrue(div.calculate().doubleValue() > 0); // Positive infinity
+    }
+
+    @Test
+    void test_calculate_zero_denominator_negative_numerator() {
+        Div div = createDivNode(-5.0, 0.0);
+        assertTrue(Double.isInfinite(div.calculate().doubleValue()));
+        assertTrue(div.calculate().doubleValue() < 0); // Negative infinity
+    }
+
+    @Test
+    void test_calculate_zero_divided_by_zero() {
+        Div div = createDivNode(0.0, 0.0);
+        assertTrue(Double.isNaN(div.calculate().doubleValue()));
+    }
+
+    @Test
+    void test_calculate_very_large_numerator() {
+        Div div = createDivNode(Double.MAX_VALUE, 1.0);
+        assertEquals(Double.MAX_VALUE, div.calculate().doubleValue(), 1e-9);
+    }
+
+    @Test
+    void test_calculate_very_small_denominator() {
+        Div div = createDivNode(1.0, Double.MIN_VALUE);
+        assertTrue(div.calculate().doubleValue() > 0);
+        assertFalse(Double.isInfinite(div.calculate().doubleValue())); // Should be a large finite number
+    }
+
+    @Test
+    void test_calculate_extreme_values_positive_infinity() {
+        Div div = createDivNode(Double.MAX_VALUE, Double.MIN_VALUE);
+        assertTrue(Double.isInfinite(div.calculate().doubleValue()));
+        assertTrue(div.calculate().doubleValue() > 0);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNormalCases")
+    void test_calculate_parameterized_normal_cases(Number left, Number right, double expected) {
+        Div div = createDivNode(left, right);
+        assertEquals(expected, div.calculate().doubleValue(), 1e-9);
+    }
+
+    static Stream<Arguments> provideNormalCases() {
+        return Stream.of(
+            Arguments.of(10, 2, 5.0),
+            Arguments.of(-10, 2, -5.0),
+            Arguments.of(10, -2, -5.0),
+            Arguments.of(-10, -2, 5.0),
+            Arguments.of(1, 3, 1.0 / 3.0),
+            Arguments.of(42, 1, 42.0),
+            Arguments.of(1, 42, 1.0 / 42.0),
+            Arguments.of(0, 5, 0.0)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideSpecialCases")
+    void test_calculate_parameterized_special_cases(Number left, Number right, boolean isNaN, boolean isPositiveInfinity, boolean isNegativeInfinity) {
+        Div div = createDivNode(left, right);
+        double result = div.calculate().doubleValue();
+
+        if (isNaN) {
+            assertTrue(Double.isNaN(result));
+        } else if (isPositiveInfinity) {
+            assertTrue(Double.isInfinite(result));
+            assertTrue(result > 0);
+        } else if (isNegativeInfinity) {
+            assertTrue(Double.isInfinite(result));
+            assertTrue(result < 0);
+        }
+    }
+
+    static Stream<Arguments> provideSpecialCases() {
+        return Stream.of(
+            Arguments.of(5.0, 0.0, false, true, false),   // Positive infinity
+            Arguments.of(-5.0, 0.0, false, false, true),  // Negative infinity
+            Arguments.of(0.0, 0.0, true, false, false)    // NaN
+        );
+    }
+}

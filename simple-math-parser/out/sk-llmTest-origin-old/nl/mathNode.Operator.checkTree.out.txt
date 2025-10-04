@@ -1,0 +1,112 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class OperatorTest {
+
+    // Minimal stub for Node to support testing
+    static class NodeStub {
+        NodeStub left;
+        NodeStub right;
+
+        NodeStub(NodeStub left, NodeStub right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        boolean checkTree() {
+            if (left == null || right == null)
+                return false;
+            else
+                return left.checkTree() && right.checkTree();
+        }
+    }
+
+    // Extend stub as Operator to test the method under test
+    static class TestableOperator extends NodeStub {
+        TestableOperator(NodeStub left, NodeStub right) {
+            super(left, right);
+        }
+
+        public boolean checkTree() {
+            return super.checkTree();
+        }
+    }
+
+    @Test
+    void test_checkTree_bothChildrenNull_returnsFalse() {
+        TestableOperator operator = new TestableOperator(null, null);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_leftChildNull_returnsFalse() {
+        NodeStub rightChild = new NodeStub(null, null); // Valid child
+        TestableOperator operator = new TestableOperator(null, rightChild);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_rightChildNull_returnsFalse() {
+        NodeStub leftChild = new NodeStub(null, null); // Valid child
+        TestableOperator operator = new TestableOperator(leftChild, null);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_childrenWithNullLeaves_returnsFalse() {
+        NodeStub invalidSubtree = new NodeStub(null, null);
+        TestableOperator operator = new TestableOperator(invalidSubtree, invalidSubtree);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_validChildrenButLeftInvalidGrandchild_returnsFalse() {
+        NodeStub validRightSubtree = new NodeStub(
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null)),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+
+        NodeStub invalidLeftSubtree = new NodeStub(
+                new NodeStub(null, null),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+
+        TestableOperator operator = new TestableOperator(invalidLeftSubtree, validRightSubtree);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_validChildrenButRightInvalidGrandchild_returnsFalse() {
+        NodeStub validLeftSubtree = new NodeStub(
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null)),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+
+        NodeStub invalidRightSubtree = new NodeStub(
+                new NodeStub(null, null),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+
+        TestableOperator operator = new TestableOperator(validLeftSubtree, invalidRightSubtree);
+        assertFalse(operator.checkTree());
+    }
+
+    @Test
+    void test_checkTree_allNodesValid_returnsTrue() {
+        NodeStub leftSubtree = new NodeStub(
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null)),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+        NodeStub rightSubtree = new NodeStub(
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null)),
+                new NodeStub(new NodeStub(null, null), new NodeStub(null, null))
+        );
+
+        TestableOperator operator = new TestableOperator(leftSubtree, rightSubtree);
+        assertTrue(operator.checkTree());
+    }
+}
+```

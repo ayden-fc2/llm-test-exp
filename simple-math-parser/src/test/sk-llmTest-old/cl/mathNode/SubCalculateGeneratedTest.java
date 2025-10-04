@@ -1,0 +1,177 @@
+package mathNode;
+
+import mathNode.Sub;
+import mathNode.MathNode;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+
+// Stub for MathNode since it's not provided
+abstract class SubCalculateGeneratedTest {
+    abstract Number calculate();
+    
+    MathNode getLeftNode() { return null; }
+    MathNode getRightNode() { return null; }
+}
+
+// Extended Sub class to allow setting child nodes for testing
+class TestableSub extends Sub {
+    private MathNode left;
+    private MathNode right;
+    
+    TestableSub(MathNode left, MathNode right) {
+        this.left = left;
+        this.right = right;
+    }
+    
+    @Override
+    MathNode getLeftNode() {
+        return left;
+    }
+    
+    @Override
+    MathNode getRightNode() {
+        return right;
+    }
+}
+
+// Stub nodes for providing test values
+class ValueNode extends MathNode {
+    private final Number value;
+    
+    ValueNode(Number value) {
+        this.value = value;
+    }
+    
+    @Override
+    Number calculate() {
+        return value;
+    }
+}
+
+class TestMathNodeSubGeneratedTest {
+    
+    // Test with integer subtraction
+    @ParameterizedTest
+    @MethodSource("integerPairs")
+    void test_calculate_integerSubtraction(Pair<Integer, Integer> pair) {
+        int left = pair.first;
+        int right = pair.second;
+        MathNode leftNode = new ValueNode(left);
+        MathNode rightNode = new ValueNode(right);
+        Sub sub = new TestableSub(leftNode, rightNode);
+        
+        Number result = sub.calculate();
+        
+        assertTrue(result instanceof Integer, "Result should be Integer when both operands are integers");
+        assertEquals(left - right, result.intValue());
+    }
+    
+    static Stream<Pair<Integer, Integer>> integerPairs() {
+        return Stream.of(
+            new Pair<>(0, 0),
+            new Pair<>(1, 0),
+            new Pair<>(0, 1),
+            new Pair<>(-1, -1),
+            new Pair<>(Integer.MAX_VALUE, 0),
+            new Pair<>(Integer.MIN_VALUE, 0),
+            new Pair<>(Integer.MAX_VALUE, 1),
+            new Pair<>(Integer.MIN_VALUE, -1)
+        );
+    }
+    
+    // Test with mixed types (one double)
+    @ParameterizedTest
+    @MethodSource("mixedTypePairs")
+    void test_calculate_mixedTypes(Pair<Number, Number> pair) {
+        Number left = pair.first;
+        Number right = pair.second;
+        MathNode leftNode = new ValueNode(left);
+        MathNode rightNode = new ValueNode(right);
+        Sub sub = new TestableSub(leftNode, rightNode);
+        
+        Number result = sub.calculate();
+        
+        assertTrue(result instanceof Double, "Result should be Double when at least one operand is double");
+        assertEquals(left.doubleValue() - right.doubleValue(), result.doubleValue(), 1e-9);
+    }
+    
+    static Stream<Pair<Number, Number>> mixedTypePairs() {
+        return Stream.of(
+            new Pair<>((Number) 1, 1.0),
+            new Pair<>((Number) 1.0, 1),
+            new Pair<>((Number) 0, 0.0),
+            new Pair<>((Number) -1, -1.5),
+            new Pair<>((Number) Integer.MAX_VALUE, Double.MAX_VALUE),
+            new Pair<>((Number) Double.MIN_VALUE, Integer.MIN_VALUE)
+        );
+    }
+    
+    // Test with double subtraction
+    @ParameterizedTest
+    @MethodSource("doublePairs")
+    void test_calculate_doubleSubtraction(Pair<Double, Double> pair) {
+        double left = pair.first;
+        double right = pair.second;
+        MathNode leftNode = new ValueNode(left);
+        MathNode rightNode = new ValueNode(right);
+        Sub sub = new TestableSub(leftNode, rightNode);
+        
+        Number result = sub.calculate();
+        
+        assertTrue(result instanceof Double, "Result should be Double when both operands are doubles");
+        assertEquals(left - right, result.doubleValue(), 1e-9);
+    }
+    
+    static Stream<Pair<Double, Double>> doublePairs() {
+        return Stream.of(
+            new Pair<>(0.0, 0.0),
+            new Pair<>(1.5, 0.5),
+            new Pair<>(-1.5, -0.5),
+            new Pair<>(Double.MAX_VALUE, 0.0),
+            new Pair<>(Double.MIN_VALUE, 0.0),
+            new Pair<>(Double.POSITIVE_INFINITY, 1.0),
+            new Pair<>(Double.NEGATIVE_INFINITY, -1.0)
+        );
+    }
+    
+    // Test edge case: large numbers
+    @Test
+    void test_calculate_largeIntegerValues() {
+        MathNode leftNode = new ValueNode(Integer.MAX_VALUE);
+        MathNode rightNode = new ValueNode(-1);
+        Sub sub = new TestableSub(leftNode, rightNode);
+        
+        Number result = sub.calculate();
+        
+        assertTrue(result instanceof Integer);
+        assertEquals(Integer.MAX_VALUE - (-1), result.intValue());
+    }
+    
+    // Test edge case: very small double difference
+    @Test
+    void test_calculate_verySmallDoubleDifference() {
+        MathNode leftNode = new ValueNode(1.0000000000000002);
+        MathNode rightNode = new ValueNode(1.0000000000000001);
+        Sub sub = new TestableSub(leftNode, rightNode);
+        
+        Number result = sub.calculate();
+        
+        assertTrue(result instanceof Double);
+        assertEquals(1.0000000000000002 - 1.0000000000000001, result.doubleValue(), 1e-9);
+    }
+    
+    // Helper class for pairs
+    static class Pair<T, U> {
+        final T first;
+        final U second;
+        
+        Pair(T first, U second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+}

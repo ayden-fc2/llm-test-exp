@@ -1,0 +1,78 @@
+```java
+package test;
+
+import mathTree.StringScanner;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StringScannerGeneratedTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    public void setUp() {
+        scanner = new StringScanner();
+    }
+
+    @Test
+    public void test_skipWhitespace_defaultState() {
+        // Test that skipWhitespace flag is initially false
+        assertFalse(scanner.skipWhitespace);
+        scanner.skipWhitespace();
+        assertTrue(scanner.skipWhitespace);
+    }
+
+    @Test
+    public void test_addDelimiter_singleCharacter() {
+        assertFalse(scanner.delimSet.contains('a'));
+        scanner.addDelimiter('a');
+        assertTrue(scanner.delimSet.contains('a'));
+    }
+
+    @Test
+    public void test_addDelimiter_multipleCharacters() {
+        char[] delimiters = {' ', '\t', '\n'};
+        for (char c : delimiters) {
+            assertFalse(scanner.delimSet.contains(c));
+        }
+        scanner.addDelimiter(delimiters);
+        for (char c : delimiters) {
+            assertTrue(scanner.delimSet.contains(c));
+        }
+    }
+
+    @Test
+    public void test_addDelimiter_emptyArray() {
+        char[] emptyArray = {};
+        scanner.addDelimiter(emptyArray);
+        assertEquals(0, scanner.delimSet.size());
+    }
+
+    @Test
+    public void test_addDelimiter_specialCharacters() {
+        char[] specialChars = {'@', '#', '$', '%', '^', '&', '*', '(', ')'};
+        scanner.addDelimiter(specialChars);
+        for (char c : specialChars) {
+            assertTrue(scanner.delimSet.contains(c));
+        }
+    }
+
+    @Test
+    public void test_addDelimiter_duplicateCharacters() {
+        scanner.addDelimiter('x');
+        scanner.addDelimiter('x');
+        assertEquals(1, scanner.delimSet.size());
+        assertTrue(scanner.delimSet.contains('x'));
+    }
+
+    @Test
+    public void test_addDelimiter_unicodeCharacters() {
+        char[] unicodeChars = {'\u00A9', '\u00AE', '\u2122'}; // ©, ®, ™
+        scanner.addDelimiter(unicodeChars);
+        for (char c : unicodeChars) {
+            assertTrue(scanner.delimSet.contains(c));
+        }
+    }
+}
+```

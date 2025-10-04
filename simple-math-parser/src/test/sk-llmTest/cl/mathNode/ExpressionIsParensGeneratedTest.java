@@ -1,0 +1,73 @@
+package mathNode;
+
+import mathNode.Expression;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Generated tests for Expression.isParens method
+ */
+public class ExpressionIsParensGeneratedTest {
+
+    // Stub implementation to compile tests since the actual class isn't provided
+    static class ExpressionStub extends Expression {
+        private boolean parenthesis;
+        
+        public ExpressionStub(boolean parenthesis) {
+            this.parenthesis = parenthesis;
+        }
+        
+        @Override
+        public Number calculate() {
+            return 0;
+        }
+        
+        @Override
+        public boolean isParens() {
+            return parenthesis;
+        }
+    }
+
+    private ExpressionStub parenExpression;
+    private ExpressionStub noParenExpression;
+
+    @BeforeEach
+    void setUp() {
+        parenExpression = new ExpressionStub(true);
+        noParenExpression = new ExpressionStub(false);
+    }
+
+    @Test
+    void test_isParens_whenParenthesisTrue_returnsTrue() {
+        assertTrue(parenExpression.isParens(), "Expression with parenthesis should return true");
+    }
+
+    @Test
+    void test_isParens_whenParenthesisFalse_returnsFalse() {
+        assertFalse(noParenExpression.isParens(), "Expression without parenthesis should return false");
+    }
+
+    @Test
+    void test_isParens_consistentReturn_whenCalledMultipleTimes() {
+        // Test idempotency
+        assertTrue(parenExpression.isParens());
+        assertTrue(parenExpression.isParens());
+        assertTrue(parenExpression.isParens());
+    }
+
+    @Test
+    void test_isParens_differentInstances_correctValues() {
+        ExpressionStub trueExp1 = new ExpressionStub(true);
+        ExpressionStub trueExp2 = new ExpressionStub(true);
+        ExpressionStub falseExp1 = new ExpressionStub(false);
+        ExpressionStub falseExp2 = new ExpressionStub(false);
+
+        assertTrue(trueExp1.isParens());
+        assertTrue(trueExp2.isParens());
+        assertFalse(falseExp1.isParens());
+        assertFalse(falseExp2.isParens());
+    }
+}

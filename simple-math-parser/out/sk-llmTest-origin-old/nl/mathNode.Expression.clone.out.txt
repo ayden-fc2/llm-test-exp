@@ -1,0 +1,140 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Expression Clone Tests")
+class ExpressionTest {
+
+    // Minimal stub to make the class cloneable and compilable
+    static class Expression implements Cloneable {
+        private int value;
+
+        public Expression() {
+            this.value = 0;
+        }
+
+        public Expression(int value) {
+            this.value = value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof Expression)) return false;
+            Expression other = (Expression) obj;
+            return this.value == other.value;
+        }
+
+        @Override
+        public int hashCode() {
+            return Integer.hashCode(value);
+        }
+    }
+
+    @Test
+    @DisplayName("test_clone_normalBehavior_returnsNewInstanceWithSameValues")
+    void test_clone_normalBehavior_returnsNewInstanceWithSameValues() throws CloneNotSupportedException {
+        Expression original = new Expression(42);
+        Expression cloned = (Expression) original.clone();
+
+        assertNotNull(cloned, "Cloned object should not be null");
+        assertNotSame(original, cloned, "Clone should be a different instance");
+        assertEquals(original.getValue(), cloned.getValue(), "Cloned object should have same value");
+        assertEquals(original, cloned, "Cloned object should be equal to original");
+    }
+
+    @Test
+    @DisplayName("test_clone_withZeroValue_clonesSuccessfully")
+    void test_clone_withZeroValue_clonesSuccessfully() throws CloneNotSupportedException {
+        Expression original = new Expression(0);
+        Expression cloned = (Expression) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(0, cloned.getValue());
+        assertEquals(original, cloned);
+    }
+
+    @Test
+    @DisplayName("test_clone_withNegativeValue_clonesSuccessfully")
+    void test_clone_withNegativeValue_clonesSuccessfully() throws CloneNotSupportedException {
+        Expression original = new Expression(-1);
+        Expression cloned = (Expression) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(-1, cloned.getValue());
+        assertEquals(original, cloned);
+    }
+
+    @Test
+    @DisplayName("test_clone_withMaxIntValue_clonesSuccessfully")
+    void test_clone_withMaxIntValue_clonesSuccessfully() throws CloneNotSupportedException {
+        Expression original = new Expression(Integer.MAX_VALUE);
+        Expression cloned = (Expression) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Integer.MAX_VALUE, cloned.getValue());
+        assertEquals(original, cloned);
+    }
+
+    @Test
+    @DisplayName("test_clone_withMinIntValue_clonesSuccessfully")
+    void test_clone_withMinIntValue_clonesSuccessfully() throws CloneNotSupportedException {
+        Expression original = new Expression(Integer.MIN_VALUE);
+        Expression cloned = (Expression) original.clone();
+
+        assertNotNull(cloned);
+        assertNotSame(original, cloned);
+        assertEquals(Integer.MIN_VALUE, cloned.getValue());
+        assertEquals(original, cloned);
+    }
+
+    @Test
+    @DisplayName("test_clone_modificationOnClone_doesNotAffectOriginal")
+    void test_clone_modificationOnClone_doesNotAffectOriginal() throws CloneNotSupportedException {
+        Expression original = new Expression(100);
+        Expression cloned = (Expression) original.clone();
+
+        cloned.setValue(200);
+
+        assertEquals(100, original.getValue(), "Original should remain unchanged after clone modification");
+        assertEquals(200, cloned.getValue(), "Clone should reflect the change");
+        assertNotEquals(original, cloned, "Modified clone should no longer equal original");
+    }
+
+    @Test
+    @DisplayName("test_clone_calledTwice_producesIndependentInstances")
+    void test_clone_calledTwice_producesIndependentInstances() throws CloneNotSupportedException {
+        Expression original = new Expression(50);
+        Expression clone1 = (Expression) original.clone();
+        Expression clone2 = (Expression) original.clone();
+
+        assertNotSame(clone1, clone2, "Two clones should be different instances");
+        assertEquals(clone1, clone2, "Two clones from same original should be equal");
+        assertEquals(original, clone1, "First clone should equal original");
+        assertEquals(original, clone2, "Second clone should equal original");
+
+        clone1.setValue(75);
+        assertEquals(50, clone2.getValue(), "Modifying first clone should not affect second");
+        assertNotEquals(clone1, clone2, "Clones should differ after one is modified");
+    }
+}
+```

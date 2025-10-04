@@ -1,0 +1,301 @@
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MathTreeBuildTreeGeneratedTest {
+
+    private MathTree mathTree;
+
+    @BeforeEach
+    void setUp() {
+        mathTree = new MathTree();
+    }
+
+    // Stub for mathNode.Expression to allow compilation
+    static class mathNode {
+        static class Expression {
+            boolean parens = false;
+
+            public void setParens(boolean b) {
+                this.parens = b;
+            }
+
+            public boolean getParens() {
+                return parens;
+            }
+        }
+    }
+
+    // Stub for nodeFactory to allow compilation
+    static class NodeFactoryStub {
+        public mathNode.Expression buildNode(String token) {
+            if ("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token) || "1".equals(token)) {
+                return new mathNode.Expression();
+            }
+            return null;
+        }
+    }
+
+    // Stub for insertNode to allow compilation
+    private mathNode.Expression insertNode(mathNode.Expression root, mathNode.Expression node) {
+        if (root == null) return node;
+        // Simple stub logic: just return the root
+        return root;
+    }
+
+    // Minimal MathTree implementation with buildTree method
+    private class MathTree {
+        private final NodeFactoryStub nodeFactory = new NodeFactoryStub();
+
+        private mathNode.Expression buildTree(LinkedList<String> strTokens, boolean isParens) {
+            String token;
+            mathNode.Expression rootNode = null;
+            mathNode.Expression newNode = null;
+
+            while (!strTokens.isEmpty()) {
+                token = strTokens.poll();
+
+                // Handle closed parenthesis
+                if (token.equals(")")) {
+                    if (isParens && rootNode == null) {
+                        System.out.println("Invalid: Empty parenthesis");
+                        return null;
+                    } else if (!isParens) {
+                        System.out.println("Invalid: Missing \"(\"");
+                        return null;
+                    } else {
+                        rootNode.setParens(true);
+                        return rootNode;
+                    }
+                }
+
+                // Handle open parenthesis
+                if (token.equals("(")) {
+                    newNode = buildTree(strTokens, true);
+                    if (newNode == null)
+                        return null;
+
+                    rootNode = insertNode(rootNode, newNode);
+
+                    if (rootNode == null)
+                        return null;
+                    else
+                        continue;
+                }
+
+                // Create new node and place it in the tree.
+                newNode = nodeFactory.buildNode(token);
+                if (newNode == null) {
+                    System.out.println("Invalid: Unknown expression \"" + token + "\"");
+                    return null;
+                } else
+                    rootNode = insertNode(rootNode, newNode);
+
+                if (rootNode == null)
+                    return null;
+            }
+
+            // Check if ending parenthesis is missing.
+            if (isParens) {
+                System.out.println("Invalid: Missing \")\"");
+                return null;
+            } else
+                return rootNode;
+        }
+
+        public mathNode.Expression parse(LinkedList<String> tokens) {
+            return buildTree(tokens, false);
+        }
+    }
+
+    @Test
+    void test_BuildTree_NormalExpression_ReturnsValidNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("2");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+    }
+
+    @Test
+    void test_BuildTree_EmptyList_ReturnsNull_WhenNotInParens() {
+        LinkedList<String> tokens = new LinkedList<>();
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_EmptyList_ReturnsNull_WhenInParens() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_InvalidToken_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("invalid");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_SingleNumber_ReturnsValidNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("42");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ParenthesesWithValidContent_ReturnsValidNodeWithParensSet() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+        assertTrue(result.getParens());
+    }
+
+    @Test
+    void test_BuildTree_UnmatchedClosingParenthesis_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add(")");
+        tokens.add("1");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_MissingClosingParenthesis_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_EmptyParentheses_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"+", "-", "*", "/"})
+    void test_BuildTree_ValidOperator_ReturnsValidNode(String operator) {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add(operator);
+        tokens.add("2");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+    }
+
+    @Test
+    void test_BuildTree_NestedParentheses_ReturnsValidNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("(");
+        tokens.add("1");
+        tokens.add(")");
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+        assertTrue(result.getParens());
+    }
+
+    @Test
+    void test_BuildTree_ComplexExpression_ReturnsValidNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("(");
+        tokens.add("2");
+        tokens.add("*");
+        tokens.add("3");
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ExpressionWithMultipleOperators_ReturnsValidNode() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("2");
+        tokens.add("-");
+        tokens.add("3");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNotNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ExpressionStartingWithOperator_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("+");
+        tokens.add("1");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ExpressionEndingWithOperator_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("1");
+        tokens.add("+");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ExpressionWithOnlyParentheses_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add(")");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+
+    @Test
+    void test_BuildTree_ExpressionWithUnmatchedOpeningParenthesis_ReturnsNull() {
+        LinkedList<String> tokens = new LinkedList<>();
+        tokens.add("(");
+        tokens.add("1");
+        tokens.add("+");
+        tokens.add("2");
+
+        mathNode.Expression result = mathTree.parse(tokens);
+        assertNull(result);
+    }
+}

@@ -1,0 +1,160 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.lang.reflect.Field;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CalcAppTest {
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayInputStream inContent = new ByteArrayInputStream(new byte[0]);
+
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
+    // Helper to simulate user input for stdin testing
+    private void setInput(String input) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+    }
+
+    // Helper to reset calcTree state between tests (if mutable/static)
+    private void resetCalcTreeState() throws Exception {
+        Field calcTreeField = CalcApp.class.getDeclaredField("calcTree");
+        calcTreeField.setAccessible(true);
+        Object calcTreeInstance = calcTreeField.get(null);
+
+        if (calcTreeInstance != null) {
+            Field initializedField = calcTreeInstance.getClass().getDeclaredField("initialized"); // assuming such field exists
+            initializedField.setAccessible(true);
+            initializedField.setBoolean(calcTreeInstance, false); // reset internal state if needed
+        }
+    }
+
+    @Test
+    public void test_main_withValidExpressionAsArgument_printsCorrectResult() throws Exception {
+        resetCalcTreeState(); // Ensure clean initial state
+
+        String[] args = {"2+3*4"};
+        CalcApp.main(args);
+
+        assertEquals("14.0\r\n", outContent.toString()); // Expected result of 2 + 3 * 4 = 14
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "10/2",
+            "(1+2)*3",
+            "100 - 50 + 25",
+            "-5 + 3",
+            "0 * 100"
+    })
+    public void test_main_withVariousValidExpressionsAsArguments_returnsExpectedResults(String expression) throws Exception {
+        resetCalcTreeState();
+
+        String[] args = {expression};
+        CalcApp.main(args);
+
+        double expected = switch (expression) {
+            case "10/2" -> 5.0;
+            case "(1+2)*3" -> 9.0;
+            case "100 - 50 + 25" -> 75.0;
+            case "-5 + 3" -> -2.0;
+            case "0 * 100" -> 0.0;
+            default -> throw new IllegalArgumentException("Unexpected expression: " + expression);
+        };
+
+        assertTrue(outContent.toString().contains(Double.toString(expected)),
+                () -> "Output should contain '" + expected + "' but was: " + outContent.toString());
+    }
+
+    @Test
+    public void test_main_withBlankInputThenValidInputFromConsole_readsUntilNonBlankAndPrintsResult() throws Exception {
+        resetCalcTreeState();
+
+        setInput("\n \n2 + 2\n");
+
+        CalcApp.main(new String[]{});
+
+        assertTrue(outContent.toString().contains("4.0"),
+                () -> "Should read non-blank input and compute result; actual output: " + outContent.toString());
+    }
+
+    @Test
+    public void test_main_withInvalidExpressionAsArgument_doesNotPrintAnything() throws Exception {
+        resetCalcTreeState();
+
+        String[] args = {"invalid_expression"};
+        CalcApp.main(args);
+
+        assertEquals("", outContent.toString(), "No output expected for invalid expression.");
+    }
+
+    @Test
+    public void test_main_withEmptyArgsAndOnlyWhitespaceInputFromConsole_loopsUntilNonBlankInputProvided() throws Exception {
+        resetCalcTreeState();
+
+        setInput("   \n\t\n  3*7\n");
+
+        CalcApp.main(new String[]{});
+
+        assertTrue(outContent.toString().contains("21.0"),
+                () -> "Should skip blank lines and process first non-blank line; actual output: " + outContent.toString());
+    }
+
+    @Test
+    public void test_main_withDivisionByZeroInExpression_handlesGracefullyWithoutCrashing() throws Exception {
+        resetCalcTreeState();
+
+        String[] args = {"1 / 0"};
+        CalcApp.main(args);
+
+        // Depending on implementation behavior when dividing by zero,
+        // it may either throw or handle gracefully. Here we assume graceful handling without crash.
+        assertFalse(outContent.toString().toLowerCase().contains("exception"),
+                () -> "Should not crash on division by zero; output was: " + outContent.toString());
+    }
+
+    @Test
+    public void test_main_withVeryLargeNumberExpression_computesCorrectly() throws Exception {
+        resetCalcTreeState();
+
+        String largeNumExpr = "1000000 * 1000000";
+        String[] args = {largeNumExpr};
+        CalcApp.main(args);
+
+        assertTrue(outContent.toString().contains("1.0E12") || outContent.toString().contains("1000000000000"),
+                () -> "Should correctly compute very large numbers; output was: " + outContent.toString());
+    }
+
+    @Test
+    public void test_main_withExtremeFloatValues_computesWithinPrecisionLimits() throws Exception {
+        resetCalcTreeState();
+
+        String extremeFloatExpr = "1.7976931348623157E308 / 1.0"; //接近 Double.MAX_VALUE 的表达式
+        String[] args = {extremeFloatExpr};
+        CalcApp.main(args);
+
+        // Should at least produce some numeric-like output without crashing
+        assertDoesNotThrow(() -> Double.parseDouble(outContent.toString().trim()),
+                () -> "Output should be parseable as double; actual output: " + outContent.toString());
+    }
+}
+```

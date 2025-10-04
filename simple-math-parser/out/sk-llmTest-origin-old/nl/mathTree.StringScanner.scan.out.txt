@@ -1,0 +1,185 @@
+```java
+package mathTree;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class StringScannerTest {
+
+    private StringScanner scanner;
+
+    @BeforeEach
+    void setUp() {
+        scanner = new StringScanner();
+    }
+
+    // 测试空字符串输入
+    @Test
+    void test_scan_emptyString_returnsEmptyList() {
+        LinkedList<String> result = scanner.scan("");
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    // 测试仅包含分隔符的字符串
+    @Test
+    void test_scan_onlyDelimiters_returnsEmptyTokens() {
+        LinkedList<String> result = scanner.scan(" \t\n ");
+        // 假设默认实现中 saveToken 会过滤空 token
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+    }
+
+    // 测试单个普通字符
+    @Test
+    void test_scan_singleCharacter_returnsSingleToken() {
+        LinkedList<String> result = scanner.scan("a");
+        assertEquals(1, result.size());
+        assertEquals("a", result.get(0));
+    }
+
+    // 测试多个普通字符组成一个token
+    @Test
+    void test_scan_multipleCharactersNoDelim_returnsOneToken() {
+        LinkedList<String> result = scanner.scan("abc");
+        assertEquals(1, result.size());
+        assertEquals("abc", result.get(0));
+    }
+
+    // 测试包含分隔符的情况
+    @ParameterizedTest
+    @ValueSource(strings = {"a b", "a\tb", "a\nb", " a ", "a  b"})
+    void test_scan_withDelimiters_splitsTokens(String input) {
+        LinkedList<String> result = scanner.scan(input);
+        assertEquals(2, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("b", result.get(1));
+    }
+
+    // 测试特殊字符处理（假设+是特殊字符）
+    @Test
+    void test_scan_withSpecialChar_splitsIntoSeparateTokens() {
+        // 注意：这里需要确保scanner内部specCharSet包含'+'
+        // 如果不包含，需在StringScanner构造函数或初始化块中添加
+        LinkedList<String> result = scanner.scan("a+b");
+        assertEquals(3, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("b", result.get(2));
+    }
+
+    // 测试连续特殊字符
+    @Test
+    void test_scan_consecutiveSpecialChars_eachAsSeparateToken() {
+        LinkedList<String> result = scanner.scan("++");
+        assertEquals(2, result.size());
+        assertEquals("+", result.get(0));
+        assertEquals("+", result.get(1));
+    }
+
+    // 测试混合情况：普通字符、分隔符、特殊字符
+    @Test
+    void test_scan_mixedContent_correctTokenization() {
+        LinkedList<String> result = scanner.scan("a + b * c");
+        assertEquals(5, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("+", result.get(1));
+        assertEquals("b", result.get(2));
+        assertEquals("*", result.get(3));
+        assertEquals("c", result.get(4));
+    }
+
+    // 测试以特殊字符开头
+    @Test
+    void test_scan_startsWithSpecialChar_handledCorrectly() {
+        LinkedList<String> result = scanner.scan("+a");
+        assertEquals(2, result.size());
+        assertEquals("+", result.get(0));
+        assertEquals("a", result.get(1));
+    }
+
+    // 测试以特殊字符结尾
+    @Test
+    void test_scan_endsWithSpecialChar_handledCorrectly() {
+        LinkedList<String> result = scanner.scan("a+");
+        assertEquals(2, result.size());
+        assertEquals("a", result.get(0));
+        assertEquals("+", result.get(1));
+    }
+
+    // 测试非常长的输入字符串（边界测试）
+    @Test
+    void test_scan_veryLongString_handledWithoutError() {
+        String longStr = "a".repeat(10000); // 10k chars
+        LinkedList<String> result = scanner.scan(longStr);
+        assertEquals(1, result.size());
+        assertEquals(longStr, result.get(0));
+    }
+
+    // 测试包含各种空白字符的输入
+    @Test
+    void test_scan_variousWhitespaceChars_handledAsDelimiters() {
+        LinkedList<String> result = scanner.scan("a\u00A0b\u2000c"); // 包含不间断空格和其它Unicode空格
+        // 实际结果取决于isDelim方法的实现
+        // 此处假定这些也被视为分隔符
+        assertEquals(3, result.size());
+        assertEquals("a", result.get(0));
+        // 中间可能有空token被过滤掉
+        assertEquals("b", result.get(1));
+        assertEquals("c", result.get(2));
+    }
+
+    // 测试数字字符串
+    @Test
+    void test_scan_numericString_treatedAsSingleToken() {
+        LinkedList<String> result = scanner.scan("12345");
+        assertEquals(1, result.size());
+        assertEquals("12345", result.get(0));
+    }
+
+    // 测试带有负号的数字（如果-是特殊字符）
+    @Test
+    void test_scan_negativeNumberWithMinus_signHandledAsSeparateToken() {
+        LinkedList<String> result = scanner.scan("-123");
+        // 假设'-'是特殊字符
+        assertEquals(2, result.size());
+        assertEquals("-", result.get(0));
+        assertEquals("123", result.get(1));
+    }
+
+    // 测试所有字符都是特殊字符的情况
+    @Test
+    void test_scan_allSpecialChars_eachCharIsToken() {
+        LinkedList<String> result = scanner.scan("+-*/");
+        assertEquals(4, result.size());
+        assertEquals("+", result.get(0));
+        assertEquals("-", result.get(1));
+        assertEquals("*", result.get(2));
+        assertEquals("/", result.get(3));
+    }
+
+    // 测试极端情况：null输入（虽然方法签名不抛异常，但实际可能NPE）
+    // 注意：由于方法签名声明不抛出异常且为String类型，我们假设不会传入null
+    // 如果允许null，应根据实际行为调整测试
+
+    // 验证返回对象是新的LinkedList实例（不变量）
+    @Test
+    void test_scan_returnsNewLinkedListInstance() {
+        LinkedList<String> result1 = scanner.scan("a");
+        LinkedList<String> result2 = scanner.scan("b");
+        assertNotSame(result1, result2);
+        // 并且两次调用互不影响
+        assertEquals(1, result1.size());
+        assertEquals("a", result1.get(0));
+        assertEquals(1, result2.size());
+        assertEquals("b", result2.get(0));
+    }
+}
+```

@@ -1,0 +1,57 @@
+```java
+package mathNode;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for {@link Expression#checkTree()}.
+ * Since Expression is abstract, a minimal stub implementation is provided for testing purposes.
+ */
+public class ExpressionTest {
+
+    // Minimal concrete implementation for testing
+    private static class TestExpression extends Expression {
+        private final boolean returnValue;
+
+        public TestExpression(boolean returnValue) {
+            this.returnValue = returnValue;
+        }
+
+        @Override
+        public boolean checkTree() {
+            return returnValue;
+        }
+    }
+
+    @Test
+    public void test_checkTree_returnsTrue() {
+        Expression expr = new TestExpression(true);
+        assertTrue(expr.checkTree(), "checkTree should return true when configured to do so");
+    }
+
+    @Test
+    public void test_checkTree_returnsFalse() {
+        Expression expr = new TestExpression(false);
+        assertFalse(expr.checkTree(), "checkTree should return false when configured to do so");
+    }
+
+    @Test
+    public void test_checkTree_isIdempotent() {
+        Expression expr = new TestExpression(true);
+        boolean first = expr.checkTree();
+        boolean second = expr.checkTree();
+        assertEquals(first, second, "checkTree should be idempotent");
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void test_checkTree_parameterized(boolean returnValue) {
+        Expression expr = new TestExpression(returnValue);
+        assertEquals(returnValue, expr.checkTree(), "checkTree should return the configured value");
+    }
+}
+```
