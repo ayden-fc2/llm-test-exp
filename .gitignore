@@ -55,3 +55,7 @@ jacoco.exec
 *.tmp
 *.temp
 
+# Force include everything under simple-math-parser
+!simple-math-parser/
+!simple-math-parser/**
+
